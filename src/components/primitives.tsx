@@ -4,7 +4,7 @@ import {GitFork,ArrowUpRight,FlaskConical} from 'lucide-react';
 import type {Attempt,PublicCard} from '../server/repository';
 import {formatAmount} from '../domain/amounts';
 export function Header({children}:{children?:React.ReactNode}) {
-  return <header className="header"><Link className="brand" href="/"><span className="brand-mark"><GitFork size={22}/></span>forktrade<span className="wordmark-dot">.</span></Link><nav aria-label="Main"><Link href="/" className="nav-active">Workspace</Link><a href="https://app.dreamdex.io/docs/developers/perps-testnet" target="_blank" rel="noreferrer">Protocol docs <ArrowUpRight size={13}/></a></nav><div className="header-actions">{children}<span className="tag testnet">TESTNET</span></div></header>;
+  return <header className="header"><Link className="brand" href="/"><span className="brand-mark"><GitFork size={22}/></span>forktrade<span className="wordmark-dot">.</span></Link><nav aria-label="Main"><Link href="/" className="nav-active">Workspace</Link><Link href="/market">Public market</Link><a href="https://app.dreamdex.io/docs/developers/perps-testnet" target="_blank" rel="noreferrer">Protocol docs <ArrowUpRight size={13}/></a></nav><div className="header-actions">{children}<span className="tag testnet">TESTNET</span></div></header>;
 }
 export function OfflineBanner(){return <div className="offline-banner"><FlaskConical size={15}/><span><strong>Offline lab.</strong> Deterministic synthetic data. No wallet calls, transactions or live execution evidence.</span><span className="banner-pill">PAPER FUNDS</span></div>;}
 export function Receipt({attempt,onRefresh}:{attempt:Attempt;onRefresh?:()=>void}) {

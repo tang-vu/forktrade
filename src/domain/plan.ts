@@ -17,6 +17,8 @@ export type MarketContext = {
   markPrice: string; maxQuantity: string; availableCollateral: string; feeBps: string; initialMarginBps: string;
   maxNotional: string; owner: string; signer: string; marginMode: string; permissions: boolean;
   priceable: boolean; placeable: boolean; limitedBy: string; observedAt: number; block: string; source: string;
+  risk?: {requiredMargin:string;feeReserve:string;initialMarginPortion:string;adverseGapPortion:string;leverageSurcharge:string;
+    equity:string;lockedCollateral:string;accountStateHash:string;walletPull:string;mainWalletPull:string;autoFundingPrevented:boolean};
 };
 export function hash(value: unknown): string {
   return createHash('sha256').update(JSON.stringify(canonical(value))).digest('hex');
@@ -59,10 +61,12 @@ export function makePreview(input: PlanInput, ctx: MarketContext, now = Date.now
   const amounts = validatePlan(input,ctx);
   invariant(BigInt(amounts.quantity) <= BigInt(ctx.maxQuantity), `Account sizing limit: ${ctx.limitedBy}`);
   invariant(BigInt(amounts.notional) <= BigInt(ctx.maxNotional), 'Protocol notional limit exceeded');
-  const feeBps = BigInt(ctx.feeBps), marginBps = BigInt(ctx.initialMarginBps);
-  invariant(feeBps >= 0n && feeBps <= 10_000n && marginBps > 0n && marginBps <= 10_000n, 'Fee/margin rules unavailable');
-  const estimatedFee = ceilDiv(BigInt(amounts.notional) * feeBps,10_000n);
-  const estimatedMargin = ceilDiv(BigInt(amounts.notional) * marginBps,10_000n);
+  const feeRate = parseAmount(ctx.feeBps,3,false), marginBps = BigInt(ctx.initialMarginBps);
+  invariant(feeRate <= 10_000_000n && marginBps > 0n && marginBps <= 10_000n, 'Fee/margin rules unavailable');
+  const estimatedFee = ctx.risk?BigInt(ctx.risk.feeReserve):ceilDiv(BigInt(amounts.notional) * feeRate,10_000_000n);
+  const estimatedMargin = ctx.risk?BigInt(ctx.risk.requiredMargin):ceilDiv(BigInt(amounts.notional) * marginBps,10_000n);
+  invariant(ctx.mode==='offline' || ctx.risk?.autoFundingPrevented,'Verified protocol margin and funding context required');
+  invariant(estimatedFee>=0n && estimatedMargin>=0n,'Invalid protocol margin or fee reserve');
   invariant(estimatedFee + estimatedMargin <= BigInt(ctx.availableCollateral), 'Insufficient available collateral for margin and fees');
   const payload = {schema:1, mode:ctx.mode, owner:ctx.owner, signer:ctx.signer, chainId:ctx.chainId, pool:ctx.pool,
     marginBank:ctx.marginBank, collateral:ctx.collateral, side:input.side, type:'limit', timeInForce:'GTC',

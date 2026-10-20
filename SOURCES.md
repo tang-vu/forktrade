@@ -50,6 +50,12 @@ Optional AI is deferred and can draft intent only. Plan hashes/application versi
 
 ## Future verification log
 
+### M4 public/account reader — 2026-10-20 16:40 UTC
+
+Official developer page re-read; chain 50383 and SDK 0.32.1 still match. `npm.cmd run check:readonly -- evidence/read-only-m4-2026-10-20.json` passed. The snapshot separately records block/hash, raw book, pool parameters, token/pool precision, pool->bank identity, factory->base-token mapping, factory deployment and bank registration. Contracts are matched against the pinned SDK's Hideki bank/factory bootstrap before using the indexed BTC row. No quote token is borrowed from the SDK's unrelated spot collateral constant.
+
+Account code uses source-verified SDK `getMaxPerpOrderSize`, `previewPerpOrderMargin`, `getMarginAccount`, `getPerpPosition` and `getOwnOpenOrdersOnchain`. Minimal ABI fragments (`isolated`, `quoteFundingPayer`, factory mapping/deployment, pool marginBank/getOneBase) are copied from pinned SDK readsAbi.js and public reads exercise the public fragments. Account fragments are mock-tested only. The SDK's lock/reserve/effective-IMF results replace the fixture's simple margin estimate in live contexts; fee rates support fractional bps without float arithmetic. V1 requires bank collateral with zero bank allowance/no linked funding payer to prevent implicit auto-pull. This is an application constraint, not a protocol requirement or an authorization to revoke/change anything.
+
 ### M1 clean-install adjustment — 2026-10-20 16:18 UTC
 
 The initial native SQLite smoke test passed, but `npm.cmd ci` exposed a clean-install failure: better-sqlite3 attempted a C++ rebuild and this host has no supported Visual Studio toolchain. No system tools/settings were changed. Replaced the native npm addon with Node 24's built-in `node:sqlite` and the officially documented Drizzle `node-sqlite` driver, pinned at `drizzle-orm@1.0.0-rc.4`. Removed better-sqlite3 and its types. This is a deliberate RC dependency tradeoff to keep local setup reproducible without a compiler; record updates before changing that pin. A second `npm.cmd ci` passed (229 packages; audit zero findings), and migrations plus all 39 unit/integration tests passed on this driver. SQL storage remains the same format and migration checksums; existing offline records were preserved.

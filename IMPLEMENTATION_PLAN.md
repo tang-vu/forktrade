@@ -54,10 +54,10 @@ These are current implementation gates, not failures already observed in an app:
 | ID | Dependency/gate | Initial state | Independent work possible |
 | --- | --- | --- | --- |
 | D1 | User invocation of GOAL authorizing app implementation | Granted 2026-10-20; commit/push each verified increment requested | Local implementation |
-| D2 | Current SDK/version and browser signing feasibility | Unverified | Domain/UI design and fixture tests in future run |
-| D3 | Live chain/config/contract/market verification | Unverified; only dated docs read | Offline app and read adapter contract |
+| D2 | Current SDK/version and browser signing feasibility | SDK pinned/source-inspected; browser path still to wire/test in M5 | Complete browser signer and observation tests |
+| D3 | Live chain/config/contract/market verification | Public RPC/SDK checks passed; actual owner context not read | M4 adapter tests and M5 preparation |
 | D4 | Bounty accepted environment and current rules | Reverify; live page unavailable/CAPTCHA context | Local implementation and draft checklist |
-| D5 | Suitable local runtime/dependency access | Not checked or installed for this project | Review architecture and sources |
+| D5 | Suitable local runtime/dependency access | Passed clean Windows and GitHub Ubuntu install/build/tests | Continue local implementation |
 | D6 | Wallet connection/auth signature and user permissions | Not requested; no wallet setup done | Mock-wallet tests and read-only public data |
 | D7 | Gas/collateral/account access and each live order approval | Not authorized; no transactions done | Complete M1-M5 and prepare final review |
 | D8 | Private sharing/public/judge access, hosting, posts and submission | Not authorized | Drafts and local evidence package |
@@ -74,12 +74,20 @@ If access to a required service fails, add a specific row with action, target, r
 | M1 | Passed local/CI increment | Clean npm ci, exact pins/lock, Next shell, migration, typecheck/lint/build; GitHub CI 39456931257 passed | Live implementation remains separate |
 | M2 | Passed offline increment | 39 unit/integration tests; domain, versions, owner scoping, request persistence | Live adapter semantics remain separate |
 | M3 | Passed offline increment | Final rebuilt suite: 8 browser tests passed (19.9s), comparison/withdrawal, 1280/360px screenshots inspected | Live wallet behavior is M4/M5/M6, not established by fixtures |
-| M4 | Not started | None | Live read-only adapter |
+| M4 | Public adapter passed; account adapter mock-verified | Public factory/bank/pool/book checks, 64 unit/integration tests, /market read-only UI | Wire owner-derived context into live plan flow in M5; actual account reads await permission |
 | M5 | Not started | None | Prepared signing/reconciliation integration |
 | M6 | Blocked on later authorization and prerequisites | No actual orders or signatures | Obtain permission when reviewable; execute and reconcile honestly |
 | M7 | Not started | Demo/report/post templates are plans only | Evidence, verified run guide and handoff |
 
 ## How to update and resume
+
+### 2026-10-20 16:40 UTC — M4 read-only increment
+
+Branch `feat/forktrade-core`, resumed from clean pushed `d4241f3`; previous goal turn classified as progress (source, evidence and CI changed). The commit containing this entry adds a read-only capability interface, verified BTC factory mapping/registration and bank/collateral/decimals/grid checks, pinned HTTP book/identity reads, and a public /market screen. Re-ran the real public check: `npm.cmd run check:readonly -- evidence/read-only-m4-2026-10-20.json` passed, ~1.8s snapshot duration; no account read or signer. Official developer page re-read; network/SDK bootstrap unchanged.
+
+Owner-context adapter implemented and tested with explicit synthetic transport/account fixtures. It uses protocol lock, fee reserve, effective IMF, adverse gap, surcharge, account equity/locks/position/open-order snapshot, isolation mode and sizing. Fractional bps are exact. V1's intended self-send path requires already funded bank collateral, zero collateral allowance to the bank, and no linked funding payer, so an order cannot silently spend a wallet shortfall; no allowance/funding changes are made. Actual owner authentication/reads remain unrun. Code is not yet wired to a real signing route.
+
+Checks: typecheck/lint/build passed; 64 unit/integration tests passed. First browser invocation failed during JSON fixture loading because Node required an import attribute; fixed the fixture import, then all 9 browser tests passed in 20.1s. Public read mock tests prove reads never invoke injected signer/trader traps, reject wrong chain/bank/factory/code/precision/grid and stale head, and dispose sockets on failure. Source check and public read evidence are distinct from actual account/live acceptance. Next concrete step: M5 exact unsigned call, guarded browser signer, durable request/report/reconciliation routes, wallet-event/crash/rejection tests and live UI; only then request session permissions. No wallet/auth/transaction/publication authority was added by this milestone.
 
 ### 2026-10-20 16:26 UTC — pushed source and clean CI evidence
 

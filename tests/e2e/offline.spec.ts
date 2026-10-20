@@ -1,5 +1,6 @@
 import {test,expect,type Page} from '@playwright/test';
 import {mkdirSync} from 'node:fs';
+import publicSnapshot from '../../evidence/read-only-m4-2026-10-20.json' with {type:'json'};
 async function createPlan(page:Page) {
   await page.goto('/');await page.getByRole('button',{name:'Start offline session'}).click();
   await page.getByRole('button',{name:'Load synthetic example'}).click();
@@ -20,6 +21,23 @@ async function publish(page:Page) {
   await page.getByRole('button',{name:'Publish local demo card'}).click();
   const link=page.getByRole('link',{name:'Open local demo card'});await expect(link).toBeVisible();return (await link.getAttribute('href'))!;
 }
+test('public market check is read-only, labels provenance, and handles unavailable data',async({page})=>{
+  let reads=0;
+  await page.route('**/api/market',async route=>{
+    reads++;
+    if(reads===1)await route.fulfill({json:publicSnapshot});
+    else await route.fulfill({status:503,json:{error:'Synthetic transport unavailable for this browser test'}});
+  });
+  await page.goto('/market');
+  await expect(page.getByText('Public read only.',{exact:true})).toBeVisible();
+  await expect(page.getByRole('button',{name:'Start offline session'})).toHaveCount(0);
+  await page.getByRole('button',{name:'Refresh public market'}).click();
+  await expect(page.getByRole('heading',{name:'BTC / USDso'})).toBeVisible();
+  await expect(page.getByText('8 / 18 decimals')).toBeVisible();
+  await page.getByRole('button',{name:'Refresh public market'}).click();
+  await expect(page.getByRole('alert').filter({hasText:'Synthetic transport unavailable'})).toBeVisible();
+  await expect(page.getByRole('heading',{name:'BTC / USDso'})).toHaveCount(0);
+});
 test('desktop: version → complete review → synthetic receipt → private/public card → independent remix',async({page,browser})=>{
   const pageErrors:string[]=[];page.on('pageerror',e=>pageErrors.push(e.message));
   await createPlan(page);await approve(page);
