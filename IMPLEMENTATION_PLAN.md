@@ -58,7 +58,7 @@ These are current implementation gates, not failures already observed in an app:
 | D3 | Live chain/config/contract/market verification | Public RPC/SDK checks passed; actual owner context not read | M4 adapter tests and M5 preparation |
 | D4 | Bounty accepted environment and current rules | Reverify; live page unavailable/CAPTCHA context | Local implementation and draft checklist |
 | D5 | Suitable local runtime/dependency access | Passed clean Windows and GitHub Ubuntu install/build/tests | Continue local implementation |
-| D6 | Wallet connection/auth signature and user permissions | Not requested; no wallet setup done | Mock-wallet tests and read-only public data |
+| D6 | Wallet connection/auth signature and user permissions | Requested 2026-10-20 17:35 UTC; pending; no wallet connected/signed | Independent source/mock/public work completed |
 | D7 | Gas/collateral/account access and each live order approval | Not authorized; no transactions done | Complete M1-M5 and prepare final review |
 | D8 | Private sharing/public/judge access, hosting, posts and submission | Not authorized | Drafts and local evidence package |
 | D9 | Mainnet activity for a conditional prize tranche | Out of scope; separate authorization/project | None needed for testnet MVP implementation |
@@ -80,6 +80,14 @@ If access to a required service fails, add a specific row with action, target, r
 | M7 | Partial local handoff prepared | README/run guide, offline screenshots, source/read-only evidence, demo manifest and three unposted social drafts | Real live evidence, current rules and separately authorized external actions |
 
 ## How to update and resume
+
+### 2026-10-20 17:35 UTC — local handoff and pending live-session input
+
+Source correction `97d0aee313083daf6c65a24f58d74852602b38f7` pushed; [CI 39467081045](https://github.com/tang-vu/forktrade/actions/runs/39467081045) passed install/migration/typecheck/lint, 99 tests, build and all 17 browser scenarios on that exact commit. This documentation-only update records the final independent result; it does not change source behavior. No known source/local failure remains. Public reads passed; actual account/auth/simulation/receipt compatibility and live root/remix are unrun. No confirmed feedback finding or submitted material exists. Goal is partial, not complete.
+
+Asked the user for a narrowly scoped session: local `http://127.0.0.1:3000`, existing user-selected EOA, Hideki chain 50383, connection plus one user-reviewed domain/nonce/expiry-bound ownership signature and read-only BTC account/risk checks. Status pending, not granted. Asked separately for dated official accepted-environment evidence; current rule page could not be retrieved. All auth/execution/environment flags remain false; no wallet, funding/claim/allowance/operator, send/retry/cancel/close or external action is authorized or performed. The permission request cites AGENTS.md's explicit live-session gate. A later root order and a separately owned remix still each require a fresh exact review and user wallet approval.
+
+Next concrete step: wait for the required permission/environment input; do not infer approval from silence. If granted, resolve local run access (the optional persistent launch was policy-blocked), let the user connect/sign in their own supported wallet, and verify actual account constraints before proposing any order amounts. Never bypass the execution policy or wallet UI. Resume by inspecting branch/tree/latest ledger; preserve current data and unknown attempts. No repeated-block audit threshold has yet been reached: this turn delivered implementation, real public reads and green CI.
 
 ### 2026-10-20 17:33 UTC — pushed M5 CI and final ABI source check
 
