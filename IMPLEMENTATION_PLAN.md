@@ -1,0 +1,105 @@
+# Implementation plan and progress ledger
+
+**Baseline on 2026-10-20: documentation only; app unbuilt.** This is the single implementation progress/blocker ledger. Keep it concise and evidence-based. Do not create parallel TODO/status files.
+
+## Order of work
+
+Finish one end-to-end path before adding breadth. Steps M0-M5 can advance offline/read-only subject to environment permissions. M6 needs explicit authorization and user participation. M7 prepares the handoff; it does not authorize external publication or submission. If a gate is blocked, complete independent work and keep dependent gates open.
+
+| Milestone | Deliverable | Exit evidence | Dependencies |
+| --- | --- | --- | --- |
+| M0 - Verify | Source/SDK/network investigation, stack/version pins, market and order choice, permission map | Dated source notes; read-only chain/config/metadata checks; documented signing feasibility or blocker | Public docs/network; later account reads only when permitted |
+| M1 - Skeleton | Local TypeScript app, DB/migrations, offline mode, route shell, exact run guide | Clean local start; scripts present; no credentials required for offline mode | M0 compatible versions; local dependency access |
+| M2 - Domain | Decimal pipeline, version records, deterministic preview, state reducer and request repository | Numeric/state/concurrency tests; no side effects from preview | M1; fixture metadata clearly synthetic |
+| M3 - Core offline UX | Editor -> preview -> gated simulated execution -> share -> independent remix -> diff/lineage | Desktop/mobile offline E2E; ownership/publication and tampering tests | M2; clear offline banner and evidence boundary |
+| M4 - Read-only integration | Live market/config/account adapter, freshness/context handling, reconnection | Recorded read-only checks; read-only calls proven free of trading side effects | M0 sources; actual transport/access availability |
+| M5 - Execution integration ready | User-controlled signing adapter, durable request claim, reconciliation, unknown path | Mock-wallet/adapter failure tests; payload review; never sent automatically | M3-M4; verified supported wallet path |
+| M6 - Authorized live acceptance | Real root order and independently approved remix, publication choices and honest receipts | Approved session/order evidence, verified protocol identity/outcomes, real screenshots and comparison | User permission, appropriate wallet/access, gas/collateral, accepted environment, actual market conditions |
+| M7 - Handoff | Working README, demo evidence, feedback drafts/reports if real, bounty checklist and post drafts | Acceptance matrix with actual results, commit, remaining gates and reproducible run commands | M1-M6; rule re-verification; external actions remain separately gated |
+
+### M0: resolve before signing work
+
+Read the official perps developer, orders and margin pages and perps-specific bot-kit sources. Record SDK version, relevant exports, supported transports, browser signer API, receipt/order read methods and evidence gaps. Do not apply the kit's generic spot quickstart/network settings to perps. Check current package documentation without installing the kit or running scripts from it.
+
+Verify the RPC's chain ID, current market/system configuration, collateral identity, base/quote decimals, tick/lot/minimum and sizing API. Record a candidate single market and confirm it is available for the user's permitted collateral type. Treat missing mark price, voucher restrictions, isolated-account constraints and unsupported sizing as explicit blockers. Read-only discovery must not claim a voucher, link an operator or send a transaction.
+
+Confirm whether the bounty accepts the live environment described by current perps docs. The snapshot's Hideki/DreamDEX/Tokyo labels do not settle that question. If official rules remain inaccessible, record it and prevent eligibility claims. Local/offline development may continue.
+
+### M1-M3: build the smallest complete product
+
+Create a local app and migrations, then domain modules before the wallet path. Implement precise numeric parsing, version identity, owner scoping, canonical diffs, publication allowlists and durable request records. Build one clearly synthetic fixture scenario plus partial, rejection, interrupted and unknown paths; never seed fake live history.
+
+Implement the full offline interaction with accessible responsive UI. Test unauthenticated access, cross-owner access, concurrent edits, root/child version pinning, maximum remix depth and unpublish behavior. Keep wallet-session challenges and live order requests disabled until authorization is available. Mock wallet tests exercise the integration contract without real signatures.
+
+### M4-M5: integrate reads, then prepare execution
+
+Connect current read APIs behind a small adapter. Validate the selected chain/pools and freshness. Exercise reconnect with a snapshot-only source so history gaps remain visible. Use dependency injection for signer and observations; ensure reads can never call a trader.
+
+Build the exact payload review and one-use approval; persist identity before any signing call. Test repeated click, concurrent tab, stale response, wallet rejection, switch while a request is in flight, response loss and late receipt arrival. Prepare the real user flow with execution disabled by default. Do not test by sending a small order without permission.
+
+### M6: obtain permission only when the flow is reviewable
+
+Prepare the local build, account/network summary, selected market/order, final exact amounts, limits, evidence to disclose and open-order exposure. Ask for the specific missing permissions for connection/authentication and live testnet execution. Do not ask for credentials in chat or import a private key. The user's wallet performs signing; the app's final review binds each order. A remix is a new decision.
+
+Use only the separately authorized actions. An approval to place an order does not authorize cancellation, closing a position, granting an operator or claiming a voucher. If a GTC order remains open, report it clearly and request appropriate cleanup authorization only if needed. Unknown submission remains blocked for retries. Capture actual protocol outcomes without manufacturing a fill.
+
+### M7: finish evidence and handoff
+
+Run relevant checks after final changes; record commands and results. Capture the real root/remix path if authorized, or state precisely that live evidence is blocked. Replace README's future-only commands with tested commands while preserving history of limitations. Fill the demo evidence manifest, acceptance table and bounty readiness table. Prepare social drafts only. Produce feedback reports only from real reproduced observations, with no security details in the repo.
+
+## Explicit dependencies and blockers
+
+These are current implementation gates, not failures already observed in an app:
+
+| ID | Dependency/gate | Initial state | Independent work possible |
+| --- | --- | --- | --- |
+| D1 | Future user invocation of GOAL authorizing app implementation | Not started; current task docs only | Guide preparation |
+| D2 | Current SDK/version and browser signing feasibility | Unverified | Domain/UI design and fixture tests in future run |
+| D3 | Live chain/config/contract/market verification | Unverified; only dated docs read | Offline app and read adapter contract |
+| D4 | Bounty accepted environment and current rules | Reverify; live page unavailable/CAPTCHA context | Local implementation and draft checklist |
+| D5 | Suitable local runtime/dependency access | Not checked or installed for this project | Review architecture and sources |
+| D6 | Wallet connection/auth signature and user permissions | Not requested; no wallet setup done | Mock-wallet tests and read-only public data |
+| D7 | Gas/collateral/account access and each live order approval | Not authorized; no transactions done | Complete M1-M5 and prepare final review |
+| D8 | Private sharing/public/judge access, hosting, posts and submission | Not authorized | Drafts and local evidence package |
+| D9 | Mainnet activity for a conditional prize tranche | Out of scope; separate authorization/project | None needed for testnet MVP implementation |
+
+If access to a required service fails, add a specific row with action, target, reason, completed work, denied/pending/uncertain status, and next possible action. Do not mislabel an unattempted integration as a verified failure.
+
+## Milestone status ledger
+
+| ID | Status | Evidence / commit | Remaining work |
+| --- | --- | --- | --- |
+| DOC | Documentation baseline prepared and locally checked | 13 Markdown files dated 2026-10-20; inventory, internal links, titles, fences and credential-pattern checks passed; see repository commit history | Exact final remote checks reported by documentation task; no app acceptance implied |
+| M0 | Not started | Dated source snapshot in SOURCES.md only | Runtime/source/eligibility verification and exact pins |
+| M1 | Not started | No application files or installed dependencies | Scaffold local app in future run |
+| M2 | Not started | None | Domain, persistence, tests |
+| M3 | Not started | None | Offline end-to-end UX |
+| M4 | Not started | None | Live read-only adapter |
+| M5 | Not started | None | Prepared signing/reconciliation integration |
+| M6 | Blocked on later authorization and prerequisites | No actual orders or signatures | Obtain permission when reviewable; execute and reconcile honestly |
+| M7 | Not started | Demo/report/post templates are plans only | Evidence, verified run guide and handoff |
+
+## How to update and resume
+
+For each milestone increment append a compact entry with:
+
+```text
+Date/time (UTC):
+Milestone and status (in progress / passed / failed / blocked):
+Branch/commit:
+Implemented behavior:
+Commands/checks actually run and outcomes:
+Evidence paths/links and whether synthetic, read-only, or live:
+Exact blocker action/target/reason:
+Permission/outcome state (not requested / pending / denied / uncertain / granted):
+Independent work completed:
+Next concrete step:
+```
+
+Use `not run` when no test was executed. If a process is interrupted, inspect persisted request state and remote/chain outcomes before retrying an operation. Do not discard unknown execution records when resetting fixtures. Resume from the earliest unmet dependency, not from a presumed successful milestone.
+
+## Time and completion discipline
+
+The stated bounty deadline is 2026-11-01 23:59 UTC; verify it before submission. Work backwards from real local/live acceptance, not a feature count. If constrained, defer optional AI, image export, extra markets and analytics. Do not cut numeric safety, explicit approval, ownership, reconciliation or honest evidence.
+
+Implementation is complete only when the core app and all applicable ACCEPTANCE.md gates pass, including authorized live evidence. If permission or service access is missing, deliver the runnable independent work with an explicit partial/blocked status. Submission readiness is separate and may remain blocked on public/judge access or posts even after implementation passes. An accepted report, award or payment is never inferred from source or demo completion.
