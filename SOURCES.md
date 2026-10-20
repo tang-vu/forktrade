@@ -50,6 +50,14 @@ Optional AI is deferred and can draft intent only. Plan hashes/application versi
 
 ## Future verification log
 
+### M5 exact browser call and observation — 2026-10-20 17:25 UTC
+
+No dependency pins changed from the M4 lockfile. The installed official SDK `0.32.1` ABI (`perpPoolWriteAbi`, exported order events and internal `OrderAmendedInPlace` fragment) and viem `2.57.7` wallet action implementation were inspected. Tests compare final placeOrder calldata byte-for-byte with the SDK ABI: limit/GTC, cancel_taker, no builder/value, explicit future uint64-nanosecond expiry and stable persisted userData. The browser makes one raw EIP-1193 `eth_sendTransaction` call with reviewed chain/gas/fee fields. It avoids the wallet action's alternate-method fallback after invalid-input/method errors; transport retry is not an exactly-once guarantee. Ownership signing uses viem SIWE parsing/signMessage with explicit separate UI review and retryCount zero. These are source/mock checks; no real wallet method ran.
+
+Observation source paths: RPC transaction input/receipt/canonical blocks, SDK `getOrderOnchain` pinned to the observed head, and indexed `getOrders(owner,{pool,userData,limit:2})` only as a candidate correlation. All candidates must pass exact tx and event identity checks. Lifecycle event reads are bounded to 3,000 blocks from placement; unavailable/older history is marked snapshot-only and missing orders stay unknown. Correlation/receipt/account cases use synthetic transports only; actual owner compatibility and network event history remain unverified.
+
+Real public check `npm.cmd run check:readonly -- evidence/read-only-m5-2026-10-20.json` passed at 17:24 UTC (~1.75s). Chain 50383, current BTC/system/book/precision and contract code hashes were read with no account or signer. Configuration hashes bind subsequent previews to system/risk/oracle/code data. Accepted bounty environment is still unconfirmed: the official DoraHacks page could not be retrieved, and unrelated search results were not treated as rules. No CAPTCHA/access bypass or eligibility claim.
+
 ### M4 public/account reader — 2026-10-20 16:40 UTC
 
 Official developer page re-read; chain 50383 and SDK 0.32.1 still match. `npm.cmd run check:readonly -- evidence/read-only-m4-2026-10-20.json` passed. The snapshot separately records block/hash, raw book, pool parameters, token/pool precision, pool->bank identity, factory->base-token mapping, factory deployment and bank registration. Contracts are matched against the pinned SDK's Hideki bank/factory bootstrap before using the indexed BTC row. No quote token is borrowed from the SDK's unrelated spot collateral constant.

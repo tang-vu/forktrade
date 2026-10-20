@@ -54,7 +54,7 @@ These are current implementation gates, not failures already observed in an app:
 | ID | Dependency/gate | Initial state | Independent work possible |
 | --- | --- | --- | --- |
 | D1 | User invocation of GOAL authorizing app implementation | Granted 2026-10-20; commit/push each verified increment requested | Local implementation |
-| D2 | Current SDK/version and browser signing feasibility | SDK pinned/source-inspected; browser path still to wire/test in M5 | Complete browser signer and observation tests |
+| D2 | Current SDK/version and browser signing feasibility | SDK ABI/source and mock browser path verified in M5; actual wallet unrun | Authorized real session/account compatibility check |
 | D3 | Live chain/config/contract/market verification | Public RPC/SDK checks passed; actual owner context not read | M4 adapter tests and M5 preparation |
 | D4 | Bounty accepted environment and current rules | Reverify; live page unavailable/CAPTCHA context | Local implementation and draft checklist |
 | D5 | Suitable local runtime/dependency access | Passed clean Windows and GitHub Ubuntu install/build/tests | Continue local implementation |
@@ -74,12 +74,26 @@ If access to a required service fails, add a specific row with action, target, r
 | M1 | Passed local/CI increment | Clean npm ci, exact pins/lock, Next shell, migration, typecheck/lint/build; GitHub CI 39456931257 passed | Live implementation remains separate |
 | M2 | Passed offline increment | 39 unit/integration tests; domain, versions, owner scoping, request persistence | Live adapter semantics remain separate |
 | M3 | Passed offline increment | Final rebuilt suite: 8 browser tests passed (19.9s), comparison/withdrawal, 1280/360px screenshots inspected | Live wallet behavior is M4/M5/M6, not established by fixtures |
-| M4 | Public adapter passed; account adapter mock-verified | Public factory/bank/pool/book checks, 64 unit/integration tests, /market read-only UI | Wire owner-derived context into live plan flow in M5; actual account reads await permission |
-| M5 | Not started | None | Prepared signing/reconciliation integration |
+| M4 | Public adapter passed; account adapter wired/mock-verified | Public factory/bank/pool/book/code hashes, M5 snapshot; actual account still unrun | Authorized actual owner/account/history check |
+| M5 | Passed source/mock readiness increment; actual wallet unrun | 99 unit/integration tests and 17 browser scenarios; exact ABI payload, single wallet send, durable claim and authoritative observation | Real EOA authentication/simulation/receipt compatibility is M6 |
 | M6 | Blocked on later authorization and prerequisites | No actual orders or signatures | Obtain permission when reviewable; execute and reconcile honestly |
-| M7 | Not started | Demo/report/post templates are plans only | Evidence, verified run guide and handoff |
+| M7 | Partial local handoff prepared | README/run guide, offline screenshots, source/read-only evidence, demo manifest and three unposted social drafts | Real live evidence, current rules and separately authorized external actions |
 
 ## How to update and resume
+
+### 2026-10-20 17:25 UTC — M5 guarded execution and observation increment
+
+Branch `feat/forktrade-core`, resumed from pushed `bdf09fdbb03d9dd76b0ddc0d4579e8462026fb7a`. [M4 CI 39459400533](https://github.com/tang-vu/forktrade/actions/runs/39459400533) passed on that exact commit (64 tests / 9 browser scenarios). This entry belongs to the M5 implementation commit. No new dependencies or stack changes.
+
+Implemented owner-derived live plan/preview routes; explicit EOA ownership challenge UI; default-off authentication/execution/accepted-environment gates; immutable market identity and configuration/risk/code binding; exact SDK-ABI limit/GTC call with a persisted uint64 correlation tag, fee/gas/native bounds and exact-call simulation; durable claim before a single browser provider send; event-driven invalidation and original-context reporting; reload/hash recovery without resend; independent tx/receipt/order reconciliation with canonical-block/input identity checks, exact cumulative partial fills, cancellation, amendments, reorg/conflict downgrade and bounded 3,000-block history. A tag is correlation only, never protocol exactly-once delivery. Database mode binding prevents fixture promotion. Publication has a private projection preview, selected-field hash and explicit address/link disclosure; absent evidence stays owner-reported. Mobile saved-plan navigation now survives reload.
+
+Checks: typecheck, lint and production build passed; 99 unit/integration tests passed; 17 Chromium scenarios passed in 31.4s before the final visual-copy correction. Synthetic wallet/receipt/API transports only; all live browser routes are intercepted, no fake live screenshots captured. Failures found and repaired: live CTA initially retained an offline label; one inconsistent synthetic fill fixture; an empty-catch lint finding; and saved-plan navigation hidden on mobile after reload. Re-runs passed. Visual review then changed the offline CTA to explicitly say “Review synthetic order”; final rebuilt browser result is recorded below. `npm.cmd run check:readonly -- evidence/read-only-m5-2026-10-20.json` passed (~1.75s snapshot), including actual public contract code hashes. Existing offline screenshots remain explicitly synthetic.
+
+Actual dev smoke: `npm.cmd run dev -- --port 3001` with process-local readonly mode, `.local/testnet.db`, exact origin and all permission flags false passed rendered Chromium checks. The wallet button stayed disabled; manual /market refresh returned actual public data, and the 360px view had no overflow or page errors. Inspected `evidence/readonly-desktop.png` and `readonly-market-mobile.png`; no account or wallet provider was used. The first smoke selector used an outdated button label and timed out; corrected to the rendered label, then passed. Stopped the dev server. Next dev added a generated rules block to project AGENTS.md; disabled documented `agentRules` in project next.config.ts and removed only that generated block, preserving user instructions. No global settings changed. Build/typegen restores generated route imports after dev.
+
+Final rebuilt checks after the copy/config fixes: typecheck/lint/build passed; all 17 browser scenarios passed in 30.8s. Unit/integration suite: 99/99 passed. Markdown local links/fences and `git diff --check` passed; repository visibility verified private. Screenshots regenerated with the explicit synthetic CTA. No unresolved source/browser failure remains; actual owner/live/eligibility checks are unrun, not passed.
+
+Exact remaining gate: a user-selected existing EOA at local origin `http://127.0.0.1:3000`, Hideki 50383 BTC; permission for connection, one reviewed ownership signature and read-only account/risk checks is not yet granted. No real account, auth signature, order, funding, claim, allowance/delegation, cancellation or cleanup was attempted. Actual root/remix orders each need their own final review and wallet approval, plus confirmed accepted environment; current bounty page retrieval remains unavailable. No hosted/public/judge access, post, email or submission authorized. Goal remains partial; independent source/mock work progressed rather than a repeated blocked turn. Next: finish final local/CI verification and request only the concrete missing session/rules input; dependent live work stays stopped.
 
 ### 2026-10-20 16:40 UTC — M4 read-only increment
 

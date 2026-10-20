@@ -2,6 +2,7 @@ import {z} from 'zod';
 import {createHash} from 'node:crypto';
 import {ceilDiv, formatAmount, parseAmount, scale, UINT256_MAX} from './amounts';
 import {invariant} from './errors';
+import {GTC_EXPIRY_NS,ORDER_GAS_LIMIT} from '../integrations/network';
 
 export const planInput = z.object({
   title: z.string().trim().min(1).max(100), rationale: z.string().trim().min(1).max(2000),
@@ -19,13 +20,19 @@ export type MarketContext = {
   priceable: boolean; placeable: boolean; limitedBy: string; observedAt: number; block: string; source: string;
   risk?: {requiredMargin:string;feeReserve:string;initialMarginPortion:string;adverseGapPortion:string;leverageSurcharge:string;
     equity:string;lockedCollateral:string;accountStateHash:string;walletPull:string;mainWalletPull:string;autoFundingPrevented:boolean};
+  transaction?: {gas:string;maxFeePerGas:string;maxPriorityFeePerGas:string;nativeBalance:string;nativeDecimals:number;nativeSymbol:string};
+  configurationHash?:string;
 };
+export function marketIdentity(ctx:MarketContext) {
+  return {chainId:ctx.chainId,pool:ctx.pool,marginBank:ctx.marginBank,collateral:ctx.collateral,symbol:ctx.symbol,baseDecimals:ctx.baseDecimals,quoteDecimals:ctx.quoteDecimals};
+}
+export type MarketIdentity=ReturnType<typeof marketIdentity>;
 export function hash(value: unknown): string {
   return createHash('sha256').update(JSON.stringify(canonical(value))).digest('hex');
 }
 export function canonical(value: unknown): unknown {
   if(Array.isArray(value)) return value.map(canonical);
-  if(value && typeof value === 'object') return Object.fromEntries(Object.entries(value).sort(([a],[b])=>a.localeCompare(b)).map(([k,v])=>[k,canonical(v)]));
+  if(value && typeof value === 'object') return Object.fromEntries(Object.entries(value).sort(([a],[b])=>a<b?-1:a>b?1:0).map(([k,v])=>[k,canonical(v)]));
   return value;
 }
 export function validatePlan(input: PlanInput, ctx: MarketContext) {
@@ -54,7 +61,7 @@ export function contextBinding(ctx: MarketContext) {
   void _time; void _block; void _source;
   return hash(binding);
 }
-export function makePreview(input: PlanInput, ctx: MarketContext, now = Date.now()) {
+export function makePreview(input: PlanInput, ctx: MarketContext, now = Date.now(), userData='0') {
   invariant(now >= ctx.observedAt && now - ctx.observedAt <= 10_000, 'Market/account context is stale; refresh required');
   invariant(ctx.priceable && ctx.placeable && ctx.permissions && BigInt(ctx.markPrice) > 0n, `Risk or sizing unavailable: ${ctx.limitedBy}`);
   invariant(ctx.mode === 'offline' ? ctx.chainId === 0 : ctx.chainId === 50383, 'Wrong network; no mainnet fallback');
@@ -68,15 +75,21 @@ export function makePreview(input: PlanInput, ctx: MarketContext, now = Date.now
   invariant(ctx.mode==='offline' || ctx.risk?.autoFundingPrevented,'Verified protocol margin and funding context required');
   invariant(estimatedFee>=0n && estimatedMargin>=0n,'Invalid protocol margin or fee reserve');
   invariant(estimatedFee + estimatedMargin <= BigInt(ctx.availableCollateral), 'Insufficient available collateral for margin and fees');
-  const payload = {schema:1, mode:ctx.mode, owner:ctx.owner, signer:ctx.signer, chainId:ctx.chainId, pool:ctx.pool,
+  const live=ctx.mode!=='offline',tx=ctx.transaction;
+  invariant(!live || (tx && tx.gas===ORDER_GAS_LIMIT && BigInt(tx.maxFeePerGas)>0n && BigInt(tx.maxPriorityFeePerGas)>=0n && BigInt(tx.maxPriorityFeePerGas)<=BigInt(tx.maxFeePerGas)), 'Fresh gas/fee context required');
+  invariant(!live || (BigInt(userData)>0n && BigInt(userData)<(1n<<64n)), 'A durable per-preview correlation tag is required');
+  invariant(!live || BigInt(tx!.nativeBalance)>=BigInt(tx!.gas)*BigInt(tx!.maxFeePerGas),'Native balance cannot cover the reviewed gas cap');
+  const payload = {schema:2, mode:ctx.mode, owner:ctx.owner, signer:ctx.signer, chainId:ctx.chainId, pool:ctx.pool,
     marginBank:ctx.marginBank, collateral:ctx.collateral, side:input.side, type:'limit', timeInForce:'GTC',
-    price:amounts.price, quantity:amounts.quantity, reduceOnly:false, expireTimestampNs:'0',
-    selfMatchingOption:'reject', builder:'none', builderFee:'0', transactionValue:'0',
+    price:amounts.price, quantity:amounts.quantity, reduceOnly:false, expireTimestampNs:live?GTC_EXPIRY_NS:'0',userData,
+    selfMatchingOption:'cancel_taker', builder:'none', builderFee:'0', transactionValue:'0',
+    gas:live?tx!.gas:'0',maxFeePerGas:live?tx!.maxFeePerGas:'0',maxPriorityFeePerGas:live?tx!.maxPriorityFeePerGas:'0',
     quantityCap:amounts.quantityCap, notionalCap:amounts.notionalCap};
   return {payload, payloadHash:hash(payload), contextHash:contextBinding(ctx), context:ctx, amounts,
     estimatedFee:estimatedFee.toString(), estimatedMargin:estimatedMargin.toString(), createdAt:now, expiresAt:now+15_000};
 }
 export type Preview = ReturnType<typeof makePreview>;
+export type OrderPayload=Preview['payload'];
 export function verifyPreview(preview: Preview, current: MarketContext, now=Date.now()) {
   invariant(now < preview.expiresAt, 'Preview expired; create a fresh preview',409);
   invariant(now >= current.observedAt && now-current.observedAt <= 10_000, 'Fresh account/market context required',409);

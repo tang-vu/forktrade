@@ -8,7 +8,7 @@ async function createPlan(page:Page) {
   await expect(page.getByText('Version 1 saved privately.',{exact:false})).toBeVisible();
 }
 async function approve(page:Page) {
-  await page.getByRole('button',{name:'Review and approve testnet order'}).click();
+  await page.getByRole('button',{name:'Review synthetic order'}).click();
   const dialog=page.getByRole('dialog');await expect(dialog).toBeVisible();
   await expect(dialog.getByText('Offline synthetic network · 0')).toBeVisible();
   await expect(dialog.getByText('0.0002 BTC / 16.4 USDso')).toBeVisible();
@@ -57,7 +57,7 @@ test('desktop: version → complete review → synthetic receipt → private/pub
   await expect(remix.getByText('81500',{exact:true}).first()).toBeVisible();
   // The independent remix needs its own review. Original plan evidence is not inherited.
   await expect(remix.getByRole('region',{name:'Execution receipt'})).toHaveCount(0);
-  await remix.getByRole('button',{name:'Review and approve testnet order'}).click();
+  await remix.getByRole('button',{name:'Review synthetic order'}).click();
   await remix.getByRole('dialog').getByRole('checkbox').check();
   await remix.getByRole('button',{name:'Approve offline simulation'}).click();
   await expect(remix.getByRole('region',{name:'Execution receipt'})).toBeVisible();
@@ -75,11 +75,11 @@ test('desktop: version → complete review → synthetic receipt → private/pub
 test('mobile: editor, keyboard review, card and comparison fit 360px',async({page})=>{
   await page.setViewportSize({width:360,height:800});await createPlan(page);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(360);
-  await page.getByRole('button',{name:'Review and approve testnet order'}).focus();await page.keyboard.press('Enter');
+  await page.getByRole('button',{name:'Review synthetic order'}).focus();await page.keyboard.press('Enter');
   await expect(page.getByRole('dialog')).toBeVisible();
   await expect(page.getByRole('dialog').locator(':focus')).toHaveCount(1);
   await page.keyboard.press('Escape');await expect(page.getByRole('dialog')).toHaveCount(0);
-  await expect(page.getByRole('button',{name:'Review and approve testnet order'})).toBeFocused();
+  await expect(page.getByRole('button',{name:'Review synthetic order'})).toBeFocused();
   await approve(page);const share=await publish(page);await page.goto(share);
   await expect(page.getByRole('heading',{name:'A patient entry, with a clear invalidation.'})).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(360);
@@ -96,16 +96,16 @@ for(const scenario of ['Wallet rejected','Protocol rejected','Chain reverted','I
   const receipt=page.getByRole('region',{name:'Execution receipt'});
   await receipt.getByRole('button',{name:'Refresh status'}).click();
   await expect(receipt.getByText('Earlier event history unavailable',{exact:false})).toBeVisible();
-  await expect(page.getByRole('button',{name:'Review and approve testnet order'})).toBeDisabled();
+  await expect(page.getByRole('button',{name:'Review synthetic order'})).toBeDisabled();
   if(scenario==='Interrupted / unknown') {
     await expect(receipt.getByText('unknown',{exact:true}).first()).toBeVisible();
     await page.getByLabel('Thesis title').fill('New edit after unknown');await page.getByRole('button',{name:'Save new version'}).click();
-    await page.getByRole('button',{name:'Review and approve testnet order'}).click();
+    await page.getByRole('button',{name:'Review synthetic order'}).click();
     await expect(page.getByRole('alert').filter({hasText:'existing request is unresolved'})).toBeVisible();
   }
 });
 test('preview expiry, edits and disconnect require a fresh review; entered draft survives error',async({page})=>{
-  await createPlan(page);await page.clock.install();await page.getByRole('button',{name:'Review and approve testnet order'}).click();
+  await createPlan(page);await page.clock.install();await page.getByRole('button',{name:'Review synthetic order'}).click();
   await page.clock.fastForward(16000);await expect(page.getByRole('dialog').getByRole('button',{name:'Approve offline simulation'})).toBeDisabled();
   await expect(page.getByRole('dialog').getByRole('status')).toContainText('expired');await page.keyboard.press('Escape');
   await page.getByLabel('Quantity',{exact:true}).fill('1e3');await page.getByRole('button',{name:'Save new version'}).click();

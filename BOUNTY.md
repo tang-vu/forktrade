@@ -44,10 +44,10 @@ If accepted-environment rules remain unavailable, continue local/offline work an
 | Item | Current state | Evidence needed later |
 | --- | --- | --- |
 | Private GitHub docs baseline | Prepared by this task | Verified repository visibility, branch, commit and Markdown inventory |
-| Runnable app/source | Offline implementation, unit/browser/build evidence in ACCEPTANCE.md | Finish live path and test clean local instructions |
+| Runnable app/source | Offline path and guarded live integration pass source/mock/browser checks; ACCEPTANCE.md distinguishes actual reads | Actual wallet/account/root/remix acceptance remains unrun |
 | Actual root and remix perps orders | None | Separate user approvals, real identities and honest reconciled outcomes |
 | Accepted environment and current rules | Pending re-verification | Dated official confirmation and configuration notes |
-| Demo evidence | Not recorded | Real reviewed recording/screenshots/receipts with limitations |
+| Demo evidence | Offline synthetic screenshots inspected; no live demo/recording | Real reviewed recording/screenshots/receipts with limitations |
 | Feedback reports | None; template only | One file per real nonsecurity reproduced issue, duplication check |
 | 2-3 X post links | None; drafts in DEMO.md only | User-approved published posts and actual URLs |
 | Judge access/public source | Not authorized | User-approved least-needed access; recheck program requirements |

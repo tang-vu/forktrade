@@ -6,10 +6,15 @@ export type Execution = {
   tx:TransactionState; order:OrderState; filled:string; remaining:string;
   hash:string|null; orderId:string|null; observedAt:number; block:string|null;
   source:string; coverage:'snapshot_only'|'unavailable'|'complete_for_documented_range'; reason:string;
+  approvedAt?:number;submissionStartedAt?:number;submittedAt?:number;confirmedAt?:number;
+  receiptBlockNumber?:string;receiptBlockHash?:string;observedBlockNumber?:string;
+  eventRange?:{fromBlock:string;toBlock:string};
+  identityVerified?:boolean;
+  baseDecimals?:number;quoteDecimals?:number;
 };
 export type Observation = Execution & {authoritative:boolean};
 export function reconcile(previous:Execution, next:Observation): Execution {
-  invariant(next.authoritative, 'Observation is not authoritative');
+  invariant(next.authoritative || (next.tx==='unknown' && next.order==='unknown' && next.filled===previous.filled && next.remaining===previous.remaining && next.hash===previous.hash && next.orderId===previous.orderId), 'Observation is not authoritative');
   invariant(next.mode === previous.mode && next.owner === previous.owner && next.chainId === previous.chainId && next.pool === previous.pool && next.quantity === previous.quantity, 'Observation identity mismatch');
   invariant(!previous.orderId || next.orderId === previous.orderId, 'Order identity mismatch');
   invariant(!previous.hash || next.hash === previous.hash, 'Transaction identity mismatch; reconcile replacement separately');

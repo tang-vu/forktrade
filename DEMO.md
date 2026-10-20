@@ -4,6 +4,8 @@
 
 Offline walkthrough is automated in `tests/e2e/offline.spec.ts`. It uses two isolated browser contexts for original/remix and covers approval, publication, comparison and withdrawal. Inspected screenshots: [desktop](evidence/offline-desktop.png), [desktop remix](evidence/offline-remix-desktop.png), [360px card](evidence/offline-card-mobile.png), [360px remix](evidence/offline-remix-mobile.png). They are actual app screenshots of an explicitly synthetic scenario, never live protocol evidence. Test databases are isolated and ignored; no fake live history was seeded.
 
+The gated live UI and browser adapter also pass intercepted mock-wallet tests (connection/signature review, rejection, timeout and account switch); those tests provide no live screenshots or protocol evidence. Actual dev/browser smoke screenshots show only the [disabled readonly workspace](evidence/readonly-desktop.png) and [public market at 360px](evidence/readonly-market-mobile.png). The latest actual public market/configuration check is [M5 read-only JSON](evidence/read-only-m5-2026-10-20.json). No real owner's account, authentication, root/remix execution or public disclosure choice has been tested. The live manifest below therefore remains empty.
+
 ## Short walkthrough to prepare
 
 Aim for a focused 2-4 minute recording plus readable stills; verify any actual program media requirements before submission. Use a clean local browser window and redact secrets/private information. A local app is acceptable for preparation; do not imply a deployed share URL exists.
@@ -53,7 +55,7 @@ Fill with observed facts, not proposed values. Do not insert placeholder transac
 | Remaining exposure and cleanup status | No ForkTrade activity performed |
 | Accepted bounty environment/rules recheck | Pending |
 
-Evidence should identify chain, market/pool and order/account context sufficiently for authorized verification. If address evidence is withheld for privacy, disclose the resulting verification limitation. Store only reviewed nonsecret evidence in the repository; keep security vulnerabilities and secrets outside it. Media files may be added in a future implementation run after permission/redaction review; this initial repository contains Markdown only.
+Evidence should identify chain, market/pool and order/account context sufficiently for authorized verification. If address evidence is withheld for privacy, disclose the resulting verification limitation. Store only reviewed nonsecret evidence in the repository; keep security vulnerabilities and secrets outside it. Existing offline media is explicitly synthetic; live media needs the authorized run and redaction review.
 
 ## X post drafts - do not publish automatically
 

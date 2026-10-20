@@ -33,7 +33,9 @@ describe('M4 N04 S02 verified public and owner-derived read context',()=>{
     await expect(readPublicMarket(f.connect)).rejects.toThrow();expect(f.close).toHaveBeenCalledOnce();expect(f.forbidden).not.toHaveBeenCalled();
   });
   it('uses protocol lock/reserve and fractional bps rather than notional times static IMF',async()=>{
-    const f=readFixture(),context=await readAccountContext(SYNTHETIC_OWNER,input,f.connect),preview=makePreview(input,context);
+    const f=readFixture(),context=await readAccountContext(SYNTHETIC_OWNER,input,f.connect);
+    context.transaction={gas:'10000000',maxFeePerGas:'2',maxPriorityFeePerGas:'1',nativeBalance:'1000000000',nativeDecimals:18,nativeSymbol:'STT'};
+    const preview=makePreview(input,context,Date.now(),'1');
     expect(context.marginMode).toBe('cross');expect(context.feeBps).toBe('1.5');
     expect(preview.estimatedMargin).toBe((2n*10n**18n).toString());expect(preview.estimatedFee).toBe((5n*10n**15n).toString());
     expect(f.reader.getMaxPerpOrderSize).toHaveBeenCalledWith(expect.objectContaining({account:SYNTHETIC_OWNER,autoPull:false,builderFeeBpsTimes1k:0n}));
@@ -58,5 +60,10 @@ describe('M4 N04 S02 verified public and owner-derived read context',()=>{
   it('rejects non-wallet owners and never returns an unknown mode as cross',async()=>{
     const f=readFixture();await expect(readAccountContext('offline:fixture',input,f.connect)).rejects.toThrow(/EOA/);
     f.controls.isolated=true;expect((await readAccountContext(SYNTHETIC_OWNER,input,f.connect)).marginMode).toBe('isolated');
+  });
+  it('binds current system/risk/code configuration independently of observation time',async()=>{
+    const f=readFixture(),first=await readAccountContext(SYNTHETIC_OWNER,input,f.connect);
+    f.system.feeRecipient=SYNTHETIC_OWNER;const changed=await readAccountContext(SYNTHETIC_OWNER,input,f.connect);
+    expect(first.configurationHash).not.toBe(changed.configurationHash);
   });
 });

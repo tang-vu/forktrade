@@ -1,5 +1,5 @@
 import {beforeEach,afterEach,describe,it,expect} from 'vitest';
-import {openDatabase} from '../src/server/database';
+import {openDatabase,bindDataMode} from '../src/server/database';
 import {Repository} from '../src/server/repository';
 import type {PlanInput} from '../src/domain/plan';
 const input:PlanInput={title:'Synthetic original',rationale:'Public rationale',invalidation:'Condition',riskNotes:'PRIVATE_RISK_CANARY',side:'buy',price:'82000',quantity:'0.0002',quantityCap:'0.001',notionalCap:'100'};
@@ -7,6 +7,16 @@ let connection:ReturnType<typeof openDatabase>,repo:Repository;
 beforeEach(()=>{connection=openDatabase(':memory:');repo=new Repository(connection);});
 afterEach(()=>connection.sqlite.close());
 describe('V/A/L/P/W durable owner-scoped version and publication path',()=>{
+  it('binds the data mode independently of a database filename',()=>{
+    bindDataMode(connection,'offline');bindDataMode(connection,'offline');
+    expect(()=>bindDataMode(connection,'testnet')).toThrow(/different data mode/);
+    expect(connection.sqlite.prepare('SELECT mode FROM app_data_mode WHERE singleton=1').get()).toEqual({mode:'offline'});
+  });
+  it('public projection hashes exclude unselected private notes',()=>{
+    const a=repo.create('offline:a',input),b=repo.create('offline:a',{...input,riskNotes:'DIFFERENT_PRIVATE_CANARY'});
+    const first=repo.publicationPreview('offline:a',a.id,a.versions[0].id,['title','parameters']),second=repo.publicationPreview('offline:a',b.id,b.versions[0].id,['title','parameters']);
+    expect(first.versionHash).toBe(second.versionHash);expect(repo.get('offline:a',a.id).publications).toEqual([]);
+  });
   it('starts empty, normalizes and saves append-only versions with optimistic concurrency',()=>{
     expect(repo.list('offline:a')).toEqual([]);const root=repo.create('offline:a',input);
     const p=repo.preview('offline:a',root.id,root.versions[0].id);

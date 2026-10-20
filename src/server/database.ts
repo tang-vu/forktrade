@@ -40,11 +40,19 @@ export function mode() {
   return value as 'offline'|'readonly'|'testnet';
 }
 let connection:ReturnType<typeof openDatabase>|undefined;
+export function bindDataMode(opened:ReturnType<typeof openDatabase>,desired:'offline'|'testnet') {
+  const stored=opened.sqlite.prepare('SELECT mode FROM app_data_mode WHERE singleton=1').get() as {mode:string}|undefined;
+  const conflicting=opened.sqlite.prepare('SELECT COUNT(*) AS n FROM plans WHERE mode<>?').get(desired) as {n:number};
+  invariant((!stored||stored.mode===desired)&&conflicting.n===0,'Database contains a different data mode; fixtures cannot cross into live evidence');
+  if(!stored)opened.sqlite.prepare('INSERT INTO app_data_mode(singleton,mode) VALUES(1,?)').run(desired);
+}
 export function database() {
   if(!connection) {
     const file=process.env.FORKTRADE_DB || (mode()==='offline'?'.local/offline.db':'.local/testnet.db');
     invariant(mode()==='offline' || !file.includes('offline'), 'Live mode cannot use an offline database');
-    connection=openDatabase(file);
+    const opened=openDatabase(file);
+    const desired=mode()==='offline'?'offline':'testnet';
+    try {bindDataMode(opened,desired);connection=opened;}catch(error){opened.sqlite.close();throw error;}
   }
   return connection;
 }

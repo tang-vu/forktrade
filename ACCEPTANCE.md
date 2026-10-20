@@ -1,15 +1,15 @@
 # Acceptance and evidence matrix
 
-**Current result: public read-only M0 spike passed; app implementation in progress. Application/browser/live checks are pending.** No actual testnet execution exists.
+**Current result: source/offline and mock-wallet integration checks pass; actual public market reads pass. Actual ownership authentication, account reads and live root/remix acceptance remain unrun.** No actual testnet execution exists.
 
 ## Gates and reporting
 
 | Gate | What it establishes | Initial result |
 | --- | --- | --- |
 | G0 - Documentation | Guide files, links, scope, current-state accuracy, private repository | Passed local structural review on 2026-10-20: 13 Markdown files, internal links, titles, balanced fences and credential-pattern scan; private metadata verified. Final remote commit/inventory checked in task handoff; no app claim |
-| G1 - Source/local checks | Type safety, lint, domain/adapter tests, production build | Passed for current offline implementation; live adapter coverage still pending |
-| G2 - Offline browser | Reproducible UI behavior and failure handling with labelled synthetic fixtures | Passed 8 Chromium scenarios at 1280/360px; screenshots inspected |
-| G3 - Read-only integration | Verified current chain/config/market reads and available observation semantics | Partial: public M0 reads passed; account/history/correlation still pending |
+| G1 - Source/local checks | Type safety, lint, domain/adapter tests, production build | Passed M5: typecheck/lint/build and 99 unit/integration tests; live transports are mocked |
+| G2 - Offline browser | Reproducible UI behavior and failure handling with labelled synthetic fixtures | Passed 17 Chromium scenarios at desktop/360px including intercepted mock-wallet cases; offline screenshots inspected |
+| G3 - Read-only integration | Verified current chain/config/market reads and available observation semantics | Partial: actual public M0/M4/M5 reads passed; actual owner/account/history/correlation unrun |
 | G4 - Live acceptance | Actual separately authorized user orders and honest root/remix evidence | Blocked on future authorization and prerequisites |
 | G5 - Bounty readiness | Current rules/access/demo/post links/submission checklist | Not ready; drafts only and later approvals required |
 
@@ -57,12 +57,12 @@ Fixture decimals are test cases, not a permanent market table. Use synthetic acc
 
 ## Read-only integration checklist
 
-- [ ] Record current SDK/version and exact supported read/sign interfaces with official links.
-- [ ] Verify chain ID from the active RPC, market/system/quote-token identities, metadata and code/config as supported; reject conflicts.
-- [ ] Verify selected market, order type, tick/lot/minimum, limits and available account context without a transaction.
-- [ ] Verify required HTTP/WebSocket/indexer transports and response freshness; document unavailable data.
-- [ ] Prove read-only mode has no trader side effects using mocks/instrumentation and a review of actual calls.
-- [ ] Document receipt/order lookup semantics, supported correlation and history/replay coverage. Mark unavailable history explicitly.
+- [x] Record pinned SDK/version and exact read/sign interfaces with official ABI/source checks (SOURCES.md; actual wallet unrun).
+- [x] Verify public RPC chain ID, market/system/collateral identities, metadata and code/config; M5 actual snapshot and rejection tests.
+- [ ] Verify actual owner's selected market eligibility, order limits and account context without a transaction; public tick/lot/minimum passed, account fixtures only.
+- [x] Verify public HTTP/WebSocket/indexer availability/freshness; actual owner/history checks remain unavailable until authorized.
+- [x] Prove public read-only interface has no trader side effects using mocks/traps and review of actual calls.
+- [x] Document receipt/order correlation and bounded history semantics; synthetic adapter tests passed, actual order history unrun.
 - [ ] Reverify accepted bounty environment separately from chain identity.
 
 ## Live testnet acceptance checklist
@@ -95,12 +95,16 @@ For every check store ID, commit, command/scenario, date/time, mode (`synthetic/
 | Offline browser tests | Production build, Chromium, Windows, synthetic/offline | Final rebuilt full suite: 8 passed in 19.9s; selector/revision/encoding/focus defects fixed and rerun | evidence/offline-desktop.png, offline-remix-desktop.png, offline-card-mobile.png, offline-remix-mobile.png; visually inspected; no live receipt |
 | Read-only integration | M0 increment on feat/forktrade-core, 2026-10-20 | `npm.cmd run check:readonly` passed; SDK WS + HTTP chain/config/BTC metadata reads | evidence/read-only-2026-10-20.json; account sizing/history/eligibility still unverified; G3 partial |
 | M4 public reads and account-contract tests | Increment after d4241f3, 2026-10-20 | Real public check passed with verified bank/factory mapping/registration, book and precision; 64 unit/integration tests passed | evidence/read-only-m4-2026-10-20.json; tests/read-context.test.ts. Account results are synthetic transport fixtures only, never live evidence; G3 remains partial until permitted actual account/history checks |
+| M4 clean-checkout CI | bdf09fdbb03d9dd76b0ddc0d4579e8462026fb7a, Ubuntu/Node 24 | Passed clean install, source checks, 64 tests, build and 9 browser scenarios | [CI 39459400533](https://github.com/tang-vu/forktrade/actions/runs/39459400533); no actual wallet or owner reads |
+| M5 source and adapter composition | M5 implementation commit, Windows/Node 24.21.0, 2026-10-20 | Typecheck/lint/build and 99 tests passed; final rebuilt 17 browser cases passed in 30.8s after visual/config fixes | tests/order-flow.test.ts, observe-order.test.ts, live-api.test.ts, read-context.test.ts and e2e/live-wallet.spec.ts. Mock signatures/receipts are test-only; actual wallet/simulation/receipt compatibility unrun |
+| M5 actual public verification | feat/forktrade-core, 2026-10-20 17:24 UTC | `check:readonly -- evidence/read-only-m5-2026-10-20.json` passed; ~1.75s public snapshot with code hashes | No account, ownership signature, trader or transaction; accepted environment still unverified |
+| Actual dev/browser read-only smoke | M5 implementation commit, local port 3001, 2026-10-20 17:27 UTC | Rendered readonly workspace with disabled wallet control; actual public market refresh; 360px no overflow/page errors | evidence/readonly-desktop.png and readonly-market-mobile.png inspected. First smoke script selector corrected after timeout. Dev server stopped; no account/wallet call |
 | Root live execution | No authorized session | Not run | No order/hash/receipt |
 | Remix live execution | No authorized session | Not run | No order/hash/receipt |
 | Bounty submission | Private planning state | Not submitted | No post links/judge-access approval |
 
 ## Completion definition
 
-Current coverage boundaries: N01–N03/V01–V02, A01–A02, L01–L03 and P01–P03 have unit/server/offline browser evidence. N04/W02/W05–W07/R01–R04/R07/S01–S02 have meaningful offline invariant coverage but still need the actual adapter cases. W01/W03/W04 real wallet events, R05–R06 actual reconnect/reorg/absence handling and G4 remain pending M4–M6. U01–U03 are exercised at 360/1280px, including keyboard dialog open/Escape/focus restore, expiry, error retention, unknown and cancellation with partial fill. Fixture disconnect is not a live WebSocket reconnect test. Session verification uses an injected verifier in tests, not a real ownership signature. Public canary redaction is tested; no claim of an independent security audit.
+Current coverage boundaries: N/V/L/A/P invariants have unit/server/offline browser evidence. M5 adds mocked account/risk/simulation, raw SDK-ABI comparisons and W01–W07 browser/adapter cases for denied connection, separate challenge review, no send while disabled, double click, durable uniqueness, account/network invalidation, lost responses and reload. R01–R07 use synthetic raw logs/receipts and current snapshots for hash-only, revert/no placement, partial/cancelled, missing/ambiguous correlation, history gaps, absence, reorg/conflict, amendments and foreign identity. Source inspection prompted a single explicit EIP-1193 send instead of a wallet action that can fall back after RPC errors; rejection/invalid-parameter cases assert no alternate send. Actual owner's wallet/account/simulation/transport/reconnect remains unrun, so G3/G4 remain partial/blocked. U01–U03 include 360/1280px, dialog keyboard/focus/expiry, mobile saved-plan recovery and honest unknown/error states. Offline/browser interception and injected ownership verification do not establish a real signature, protocol receipt or live WebSocket replay. Synthetic canary redaction is tested; no independent audit claim.
 
 All N/V/W/R/L/A/P/S/U scenarios relevant to the implemented path must pass with recorded evidence, and the remaining cases must have explicit justified coverage rather than unchecked omission. The app must run from a clean checkout using documented commands. G1-G4 must pass to call the implementation goal complete. A missing live permission or inaccessible accepted environment leaves it partial/blocked even if every offline test passes. G5 is a separate external readiness gate; source success is neither submission nor reward eligibility.

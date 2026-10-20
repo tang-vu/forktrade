@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next';
 const config: NextConfig = {
+  agentRules: false,
   serverExternalPackages: ['@somnia-chain/markets-sdk'],
   poweredByHeader: false,
   async headers() {

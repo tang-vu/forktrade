@@ -52,7 +52,7 @@ export async function verifiedMarket(connection:ReadConnection) {
   invariant(same(factoryPool,market.poolAddress) && deployed && factoryCode && factoryCode!=='0x','Market is not deployed by the verified factory');
   return {startedAt,observedAt:Date.now(),chainId:EXPECTED_CHAIN,marketCount:markets.length,market,system,parameters:{tick:parameters[0],minQuantity:parameters[1],lot:parameters[2]},state,risk,campaign,
     block:{number:block.number,hash:block.hash,timestamp:block.timestamp},book,
-    bytecodePresent:{pool:true,marginBank:true,factory:true}};
+    bytecodePresent:{pool:true,marginBank:true,factory:true},contractCodeHashes:{pool:hash(poolCode),marginBank:hash(bankCode),factory:hash(factoryCode)}};
 }
 export type VerifiedMarket=Awaited<ReturnType<typeof verifiedMarket>>;
 export async function readPublicMarket(connect=connectReadOnly) {
@@ -71,7 +71,8 @@ export function authoringContext(snapshot:VerifiedMarket,owner:string):MarketCon
     symbol:'BTC / USDso',baseDecimals:m.baseDecimals,quoteDecimals:m.quoteDecimals,tick:p.tick.toString(),lot:p.lot.toString(),minQuantity:p.minQuantity.toString(),
     markPrice:snapshot.state.markPrice.toString(),maxQuantity:'0',availableCollateral:'0',feeBps:'0',initialMarginBps:'0',maxNotional:'0',
     owner,signer:owner,marginMode:'unavailable',permissions:false,priceable:false,placeable:false,limitedBy:'Account snapshot required',
-    observedAt:snapshot.startedAt,block:snapshot.block.hash,source:'verified Hideki RPC + official SDK read methods'};
+    observedAt:snapshot.startedAt,block:snapshot.block.hash,source:'verified Hideki RPC + official SDK read methods',
+    configurationHash:hash(jsonSafe({system:snapshot.system,risk:snapshot.risk,oracle:snapshot.state.oracle,code:snapshot.contractCodeHashes}))};
 }
 // Callers must derive owner from the authenticated session, never request JSON.
 export async function readAccountContext(owner:string,input:PlanInput,connect=connectReadOnly):Promise<MarketContext> {
