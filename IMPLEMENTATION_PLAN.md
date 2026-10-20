@@ -81,6 +81,12 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-20 17:33 UTC — pushed M5 CI and final ABI source check
+
+Implementation `8614a4c2572f2d2c9556d9452df45924c8c8e80d` pushed and verified equal to `origin/feat/forktrade-core`. [CI 39466554457](https://github.com/tang-vu/forktrade/actions/runs/39466554457) passed a clean Ubuntu install/migration/typecheck/lint, 99 tests, production build and all 17 browser scenarios (18.5s). Final source review found unsupported payable/return annotations in the custom perps ABI; aligned the entire fragment to pinned SDK dist/tradeAbi.js and added a full-function ABI equality assertion alongside unchanged byte-for-byte calldata checks. The perps ABI returns nothing: eth_call can check reverts, not prove placement/fill. This is a local source correction, not an upstream feedback finding. No dependencies changed. Typecheck/lint and all 99 tests passed again after this correction; unchanged browser behavior retains the recorded suite, and CI will rebuild the correction commit.
+
+Optional attempt to leave a new offline production server at `127.0.0.1:3000` was rejected before process creation by automatic execution policy with only “blocked by policy” supplied. Did not retry by another launcher or change system policy. Earlier dev/production test runs passed; no persistent app server is left running. Use the documented run command manually when needed. Live permissions remain not requested/granted and no live action occurred. Goal remains partial; next gate is the concrete connection/authentication/read-only session permission and dated accepted-environment evidence, followed by each separately reviewed order.
+
 ### 2026-10-20 17:25 UTC — M5 guarded execution and observation increment
 
 Branch `feat/forktrade-core`, resumed from pushed `bdf09fdbb03d9dd76b0ddc0d4579e8462026fb7a`. [M4 CI 39459400533](https://github.com/tang-vu/forktrade/actions/runs/39459400533) passed on that exact commit (64 tests / 9 browser scenarios). This entry belongs to the M5 implementation commit. No new dependencies or stack changes.

@@ -5,7 +5,7 @@ import {EXPECTED_CHAIN,ORDER_GAS_LIMIT,GTC_EXPIRY_NS} from './network';
 
 // Exact fragment from pinned markets-sdk perpPoolWriteAbi. Encoding is tested
 // against that SDK ABI. V1 uses self-owned limit/GTC only, with no prerequisites.
-export const placeOrderAbi=parseAbi(['function placeOrder(bool isBid,uint64 userData,uint256 price,uint256 quantity,uint64 expireTimestampNs,uint8 orderType,uint8 selfMatchingOption,address builder,uint96 builderFeeBpsTimes1k) payable returns (bool success,uint128 orderId)']);
+export const placeOrderAbi=parseAbi(['function placeOrder(bool isBid,uint64 userData,uint256 price,uint256 quantity,uint64 expireTimestampNs,uint8 orderType,uint8 selfMatchingOption,address builder,uint96 builderFeeBpsTimes1k)']);
 export function orderCall(payload:OrderPayload) {
   invariant(payload.mode==='testnet' && payload.chainId===EXPECTED_CHAIN,'Only the verified testnet can be signed');
   invariant(isAddress(payload.owner) && isAddress(payload.pool) && payload.signer.toLowerCase()===payload.owner.toLowerCase(),'Unsupported signer/owner or pool');

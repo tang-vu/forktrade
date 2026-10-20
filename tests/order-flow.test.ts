@@ -3,7 +3,7 @@ import {encodeFunctionData,decodeFunctionData,zeroAddress,type EIP1193Provider} 
 import {perpPoolWriteAbi} from '@somnia-chain/markets-sdk';
 import {prepareLiveContext} from '../src/integrations/prepare-order';
 import {makePreview,verifyPreview} from '../src/domain/plan';
-import {orderCall} from '../src/integrations/order-call';
+import {orderCall,placeOrderAbi} from '../src/integrations/order-call';
 import {BrowserOrderSender,connectWallet,watchWallet} from '../src/integrations/browser-wallet';
 import {readFixture,SYNTHETIC_OWNER} from './helpers/read-fixture';
 import {openDatabase} from '../src/server/database';
@@ -25,6 +25,7 @@ function walletFixture() {
 describe('M5 exact payload and gas preparation',()=>{
   it('encodes the exact official SDK ABI with one correlation tag, GTC expiry, no value/builder/approval',async()=>{
     const {preview,f}=await ready(),p=preview.payload,call=orderCall(p);
+    expect(placeOrderAbi[0]).toEqual(perpPoolWriteAbi.find(item=>item.type==='function'&&item.name==='placeOrder'));
     expect(call.data).toBe(encodeFunctionData({abi:perpPoolWriteAbi,functionName:'placeOrder',args:[true,BigInt(p.userData),BigInt(p.price),BigInt(p.quantity),BigInt(p.expireTimestampNs),0,0,zeroAddress,0n]}));
     const decoded=decodeFunctionData({abi:perpPoolWriteAbi,data:call.data});expect(decoded.functionName).toBe('placeOrder');
     expect(call.value).toBe(0n);expect(f.rpc.call).toHaveBeenCalledWith(expect.objectContaining({data:call.data,gas:10_000_000n}));expect(f.forbidden).not.toHaveBeenCalled();
