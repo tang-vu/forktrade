@@ -2,6 +2,8 @@
 
 ## Read and resume
 
+User workflow (2026-10-20): commit and push each coherent, verified update to the focused implementation branch. Keep this repository private; pushing this branch does not authorize deployment, public access, or live actions.
+
 Read README.md, GOAL.md, PRODUCT.md, ARCHITECTURE.md, IMPLEMENTATION_PLAN.md, ACCEPTANCE.md, SECURITY.md, BOUNTY.md, SOURCES.md, and feedback/README.md before implementing. This is initially a Markdown-only planning repository; the app is unbuilt. The present documentation task authorizes documentation and private GitHub storage only. A later user invocation of GOAL.md authorizes local implementation within its boundaries.
 
 At every resumed run, inspect the branch, working tree, latest ledger, and any newer user instructions. Preserve unrelated changes. Work only in this project. Do not modify local memories, other repositories, global credentials, or system settings to make a check pass. Use a focused implementation branch for the future app. Do not overwrite existing work or force-push shared history.

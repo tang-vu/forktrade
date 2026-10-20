@@ -50,6 +50,20 @@ Optional AI is deferred and can draft intent only. Plan hashes/application versi
 
 ## Future verification log
 
+### M0 runtime verification — 2026-10-20 15:55 UTC
+
+User invoked GOAL and authorized local implementation, then requested commit/push after each verified update. Branch: `feat/forktrade-core`. Node `24.21.0`, npm `11.19.0` (`npm.cmd` on this PowerShell host; no execution-policy change).
+
+`npm.cmd run check:readonly` passed. Safe public snapshot: [evidence/read-only-2026-10-20.json](evidence/read-only-2026-10-20.json). HTTP `eth_chainId` and SDK WebSocket reads worked. Chain 50383; 21 perps rows; selected BTC / USDso, limit/GTC. BTC precision 8/18, raw tick `100000000000000000`, lot `1000`, minimum `13000`. Token-decimal and pool-parameter reads match indexer metadata. Pool/bank bytecode exists and system configuration is fully wired; collateral matches the market. Re-read before preview/signing; this is not a permanent signing manifest.
+
+Official developer/orders/margin pages re-read at the URLs above. DoraHacks retrieval returned an internal error; eligibility remains unresolved. Bot-kit reference HEAD: `25798660bbe4674a6f83a960b202852896e2fed4` (not installed/run).
+
+Installed SDK `0.32.1` declarations/implementation confirm `client.listPerpMarkets`, `getPerpSystemConfig`, `getPerpState`, `getPerpRiskParams`, `getMaxPerpOrderSize`, `getOrderOnchain`, `listPerpOrderHistory`, `listPerpOrderRejections`, `createTrader({walletClient})`, `trader.buildPlacePerpOrder` and `trader.placePerpOrder`. Wallet executor sends through `walletClient.sendTransaction` and waits separately for a receipt. Build-only payload/ABI still needs M5 verification. Browser signing is source-inspected, not exercised with a real wallet. UUID uniqueness is not protocol exactly-once delivery; history/correlation coverage remains to verify.
+
+Exact direct pins: `package.json`; full tree/integrities: `package-lock.json`. Next `16.4.2`, React/DOM `19.3.1`, Drizzle `0.45.4`, better-sqlite3 `13.0.3`, Zod `4.6.7`, viem `2.57.7`, SDK `0.32.1`, reactivity `0.2.1`, TypeScript `6.0.3`, Vitest `5.0.5`, Playwright `1.64.1`, Tailwind `4.3.3`. [Next installation](https://nextjs.org/docs/app/getting-started/installation) and [Drizzle SQLite](https://orm.drizzle.team/docs/sqlite/get-started-sqlite) checked. Native SQLite smoke test passed (`3.53.4`). ESLint 10 with typescript-eslint/react-hooks replaces eslint-config-next after the initial tooling audit; final install audit reports zero vulnerabilities. No force fix or app downgrade used. Further app checks pending.
+
+No account reads, wallet connection/authentication, funds, claims, allowances, signatures or orders occurred. Account eligibility, exact sizing and accepted bounty environment remain gates.
+
 Use compact entries and safe values only:
 
 | Date/time UTC | Source/ref/version | What was actually checked | Result/change | Remaining unknown |

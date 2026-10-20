@@ -1,6 +1,6 @@
 # Implementation plan and progress ledger
 
-**Baseline on 2026-10-20: documentation only; app unbuilt.** This is the single implementation progress/blocker ledger. Keep it concise and evidence-based. Do not create parallel TODO/status files.
+**Implementation started on 2026-10-20; live acceptance remains blocked.** This is the single implementation progress/blocker ledger. Keep it concise and evidence-based. Do not create parallel TODO/status files.
 
 ## Order of work
 
@@ -53,7 +53,7 @@ These are current implementation gates, not failures already observed in an app:
 
 | ID | Dependency/gate | Initial state | Independent work possible |
 | --- | --- | --- | --- |
-| D1 | Future user invocation of GOAL authorizing app implementation | Not started; current task docs only | Guide preparation |
+| D1 | User invocation of GOAL authorizing app implementation | Granted 2026-10-20; commit/push each verified increment requested | Local implementation |
 | D2 | Current SDK/version and browser signing feasibility | Unverified | Domain/UI design and fixture tests in future run |
 | D3 | Live chain/config/contract/market verification | Unverified; only dated docs read | Offline app and read adapter contract |
 | D4 | Bounty accepted environment and current rules | Reverify; live page unavailable/CAPTCHA context | Local implementation and draft checklist |
@@ -70,8 +70,8 @@ If access to a required service fails, add a specific row with action, target, r
 | ID | Status | Evidence / commit | Remaining work |
 | --- | --- | --- | --- |
 | DOC | Documentation baseline prepared and locally checked | 13 Markdown files dated 2026-10-20; inventory, internal links, titles, fences and credential-pattern checks passed; see repository commit history | Exact final remote checks reported by documentation task; no app acceptance implied |
-| M0 | Not started | Dated source snapshot in SOURCES.md only | Runtime/source/eligibility verification and exact pins |
-| M1 | Not started | No application files or installed dependencies | Scaffold local app in future run |
+| M0 | Public runtime/source spike passed; account/eligibility partial | `npm.cmd run check:readonly`, SOURCES.md and evidence/read-only-2026-10-20.json | Account-specific eligibility/risk, final signing payload/history semantics, accepted bounty environment |
+| M1 | In progress | Exact package pins/lock, SQLite smoke check | App shell, migrations, documented local start |
 | M2 | Not started | None | Domain, persistence, tests |
 | M3 | Not started | None | Offline end-to-end UX |
 | M4 | Not started | None | Live read-only adapter |
@@ -80,6 +80,10 @@ If access to a required service fails, add a specific row with action, target, r
 | M7 | Not started | Demo/report/post templates are plans only | Evidence, verified run guide and handoff |
 
 ## How to update and resume
+
+### 2026-10-20 15:55 UTC — M0 / bootstrap increment
+
+Branch `feat/forktrade-core`, baseline `71f6009`; implementation commit is the commit containing this entry. Commands: Node/npm version, npm registry metadata/install, upstream `git ls-remote`, direct RPC chain ID, SQLite in-memory query, `npm.cmd run check:readonly` (passed). SDK read interfaces and wallet-client source inspected. Initial lint tooling audit had five transitive high findings; removed that tooling path, final install audit reports zero. Stack deviation: ESLint 10/typescript-eslint/hooks instead of eslint-config-next. No runtime app/typecheck/browser/build pass claimed yet. Public read snapshot is real read-only data, not a trade. Bounty retrieval failed; no access bypass. Wallet/auth/session/order permissions not requested or granted. Next: finish M1/M2 domain, persistence and app shell, then offline browser path. User requires commit and push each verified update; no external app publication authorized.
 
 For each milestone increment append a compact entry with:
 

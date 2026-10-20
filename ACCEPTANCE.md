@@ -1,6 +1,6 @@
 # Acceptance and evidence matrix
 
-**Current result: documentation only. All application tests below are unrun. No actual testnet acceptance exists.** This file defines future required checks; it does not claim a working build.
+**Current result: public read-only M0 spike passed; app implementation in progress. Application/browser/live checks are pending.** No actual testnet execution exists.
 
 ## Gates and reporting
 
@@ -92,7 +92,7 @@ For every check store ID, commit, command/scenario, date/time, mode (`synthetic/
 | Documentation checks | Initial docs baseline, 2026-10-20 | Passed local inventory/link/fence/title/credential-pattern checks; 13 Markdown files | Private repository metadata verified; exact final remote commit/inventory reported in documentation task handoff. No app or live result implied |
 | Typecheck/lint/unit/build | No application | Not run | Scripts do not exist yet |
 | Offline browser tests | No application | Not run | No fixtures/screenshots produced |
-| Read-only integration | No runtime integration | Not run | Official pages read only; not an adapter test |
+| Read-only integration | M0 increment on feat/forktrade-core, 2026-10-20 | `npm.cmd run check:readonly` passed; SDK WS + HTTP chain/config/BTC metadata reads | evidence/read-only-2026-10-20.json; account sizing/history/eligibility still unverified; G3 partial |
 | Root live execution | No authorized session | Not run | No order/hash/receipt |
 | Remix live execution | No authorized session | Not run | No order/hash/receipt |
 | Bounty submission | Private planning state | Not submitted | No post links/judge-access approval |
