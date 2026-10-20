@@ -71,7 +71,7 @@ If access to a required service fails, add a specific row with action, target, r
 | --- | --- | --- | --- |
 | DOC | Documentation baseline prepared and locally checked | 13 Markdown files dated 2026-10-20; inventory, internal links, titles, fences and credential-pattern checks passed; see repository commit history | Exact final remote checks reported by documentation task; no app acceptance implied |
 | M0 | Public runtime/source spike passed; account/eligibility partial | `npm.cmd run check:readonly`, SOURCES.md and evidence/read-only-2026-10-20.json | Account-specific eligibility/risk, final signing payload/history semantics, accepted bounty environment |
-| M1 | Passed local increment | Clean npm ci, exact pins/lock, Next shell, migration, typecheck/lint/build | CI result to observe after push |
+| M1 | Passed local/CI increment | Clean npm ci, exact pins/lock, Next shell, migration, typecheck/lint/build; GitHub CI 39456931257 passed | Live implementation remains separate |
 | M2 | Passed offline increment | 39 unit/integration tests; domain, versions, owner scoping, request persistence | Live adapter semantics remain separate |
 | M3 | Passed offline increment | Final rebuilt suite: 8 browser tests passed (19.9s), comparison/withdrawal, 1280/360px screenshots inspected | Live wallet behavior is M4/M5/M6, not established by fixtures |
 | M4 | Not started | None | Live read-only adapter |
@@ -80,6 +80,14 @@ If access to a required service fails, add a specific row with action, target, r
 | M7 | Not started | Demo/report/post templates are plans only | Evidence, verified run guide and handoff |
 
 ## How to update and resume
+
+### 2026-10-20 16:26 UTC — pushed source and clean CI evidence
+
+Implementation commit `0eff0b32339306c13a8f9224c5d84d547f78c9e2` is pushed to `origin/feat/forktrade-core`. [GitHub offline CI 39456931257](https://github.com/tang-vu/forktrade/actions/runs/39456931257) completed successfully on that exact commit: clean Linux install/migration/typecheck/lint, 39 tests, build, Chromium setup and 8 browser tests. This independently checks the documented clean-checkout commands in addition to Windows local runs. No live checks ran in CI. Local production server started via `npm.cmd run start` at `http://127.0.0.1:3000` (tool session 34924); HTTP smoke check returned 200 with ForkTrade/offline labels. Recheck port/process at resume; do not assume a prior session is still alive.
+
+M4/M5 source investigation continued: SDK exposes `previewPerpOrderMargin` (effective IMF, adverse gap, leverage surcharge and funding gates), on-chain open-order snapshots, and the bank's `isolated`/`isolationAllowsMarket` views. Perps placement can auto-pull a wallet/main-wallet shortfall; account adapter/review must model or explicitly prevent that before enabling a signer. Do not carry the fixture's synthetic expiry 0 into a real order; build and bind a supported future uint64-nanosecond expiry using the verified SDK/ABI. The SDK's build-only perps path emits one unsigned order and no approval, but it is not wired or acceptance-tested in this increment. Do not invent a margin-mode endpoint or treat a missing order as a fill.
+
+Goal remains active and partial. Earliest next concrete action: implement/test the owner-derived live read context and actual order observation adapter, then wire the exact browser payload behind disabled-by-default authorization gates. After all independent M4/M5 work, prepare the concrete session/account/market/size/exposure review and request missing permissions. No wallet, auth signature, funding/claim/allowance/delegation, transaction, cancellation, deployment, external publication, judge access or submission has been authorized or performed. Bounty accepted environment remains inaccessible/unverified. No confirmed feedback findings.
 
 ### 2026-10-20 16:23 UTC — M1–M3 verification result
 

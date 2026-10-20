@@ -56,6 +56,8 @@ The initial native SQLite smoke test passed, but `npm.cmd ci` exposed a clean-in
 
 GitHub Actions checkout/setup-node v6 refs verified with `git ls-remote` and pinned to their full SHAs in `.github/workflows/ci.yml`. CI runs only source/offline checks; no network execution or credentials are supplied.
 
+At 16:26 UTC, CI 39456931257 completed successfully on commit `0eff0b3`, including a clean Ubuntu install, source checks and all offline browser scenarios. Further SDK source inspection confirmed `marginBankReadAbi` contains `isolated(address)` and `isolationAllowsMarket(address,address)`, and `previewPerpOrderMargin` includes effective IMF, adverse-gap reserve, leverage surcharge and funding gates. These are source facts only: no real owner's account was read. `buildPlacePerpOrder` shares calldata construction with the sending verb and returns no approval; real payload/wallet/reconciliation remains to implement and test. The [contract functions page](https://app.dreamdex.io/docs/developers/contracts/functions) was re-read for order expiry and call shape; it includes spot/general behavior, so do not promote it into perps funding proof. Perps funding details were inspected in SDK `dist/perp/margin.js` and `dist/orders.js` at the pinned version. No bot scripts or transactions ran.
+
 ### M0 runtime verification — 2026-10-20 15:55 UTC
 
 User invoked GOAL and authorized local implementation, then requested commit/push after each verified update. Branch: `feat/forktrade-core`. Node `24.21.0`, npm `11.19.0` (`npm.cmd` on this PowerShell host; no execution-policy change).
