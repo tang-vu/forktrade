@@ -7,9 +7,9 @@
 | Gate | What it establishes | Initial result |
 | --- | --- | --- |
 | G0 - Documentation | Guide files, links, scope, current-state accuracy, private repository | Passed local structural review on 2026-10-20: 13 Markdown files, internal links, titles, balanced fences and credential-pattern scan; private metadata verified. Final remote commit/inventory checked in task handoff; no app claim |
-| G1 - Source/local checks | Type safety, lint, domain/adapter tests, production build | Not run; app unbuilt |
-| G2 - Offline browser | Reproducible UI behavior and failure handling with labelled synthetic fixtures | Not run |
-| G3 - Read-only integration | Verified current chain/config/market reads and available observation semantics | Not run |
+| G1 - Source/local checks | Type safety, lint, domain/adapter tests, production build | Passed for current offline implementation; live adapter coverage still pending |
+| G2 - Offline browser | Reproducible UI behavior and failure handling with labelled synthetic fixtures | Passed 8 Chromium scenarios at 1280/360px; screenshots inspected |
+| G3 - Read-only integration | Verified current chain/config/market reads and available observation semantics | Partial: public M0 reads passed; account/history/correlation still pending |
 | G4 - Live acceptance | Actual separately authorized user orders and honest root/remix evidence | Blocked on future authorization and prerequisites |
 | G5 - Bounty readiness | Current rules/access/demo/post links/submission checklist | Not ready; drafts only and later approvals required |
 
@@ -90,13 +90,15 @@ For every check store ID, commit, command/scenario, date/time, mode (`synthetic/
 | Evidence group | Commit/environment | Actual result | Evidence/limitation |
 | --- | --- | --- | --- |
 | Documentation checks | Initial docs baseline, 2026-10-20 | Passed local inventory/link/fence/title/credential-pattern checks; 13 Markdown files | Private repository metadata verified; exact final remote commit/inventory reported in documentation task handoff. No app or live result implied |
-| Typecheck/lint/unit/build | No application | Not run | Scripts do not exist yet |
-| Offline browser tests | No application | Not run | No fixtures/screenshots produced |
+| Typecheck/lint/unit/build | Offline increment after 3421521, Node 24.21.0, Drizzle RC/node:sqlite | Clean npm ci/migration/typecheck/build passed; 39 unit/integration tests passed | tests/domain.test.ts, repository.test.ts, api.test.ts. Lint fixes included; no live adapter claim |
+| Offline browser tests | Production build, Chromium, Windows, synthetic/offline | Final rebuilt full suite: 8 passed in 19.9s; selector/revision/encoding/focus defects fixed and rerun | evidence/offline-desktop.png, offline-remix-desktop.png, offline-card-mobile.png, offline-remix-mobile.png; visually inspected; no live receipt |
 | Read-only integration | M0 increment on feat/forktrade-core, 2026-10-20 | `npm.cmd run check:readonly` passed; SDK WS + HTTP chain/config/BTC metadata reads | evidence/read-only-2026-10-20.json; account sizing/history/eligibility still unverified; G3 partial |
 | Root live execution | No authorized session | Not run | No order/hash/receipt |
 | Remix live execution | No authorized session | Not run | No order/hash/receipt |
 | Bounty submission | Private planning state | Not submitted | No post links/judge-access approval |
 
 ## Completion definition
+
+Current coverage boundaries: N01–N03/V01–V02, A01–A02, L01–L03 and P01–P03 have unit/server/offline browser evidence. N04/W02/W05–W07/R01–R04/R07/S01–S02 have meaningful offline invariant coverage but still need the actual adapter cases. W01/W03/W04 real wallet events, R05–R06 actual reconnect/reorg/absence handling and G4 remain pending M4–M6. U01–U03 are exercised at 360/1280px, including keyboard dialog open/Escape/focus restore, expiry, error retention, unknown and cancellation with partial fill. Fixture disconnect is not a live WebSocket reconnect test. Session verification uses an injected verifier in tests, not a real ownership signature. Public canary redaction is tested; no claim of an independent security audit.
 
 All N/V/W/R/L/A/P/S/U scenarios relevant to the implemented path must pass with recorded evidence, and the remaining cases must have explicit justified coverage rather than unchecked omission. The app must run from a clean checkout using documented commands. G1-G4 must pass to call the implementation goal complete. A missing live permission or inaccessible accepted environment leaves it partial/blocked even if every offline test passes. G5 is a separate external readiness gate; source success is neither submission nor reward eligibility.

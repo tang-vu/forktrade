@@ -50,6 +50,12 @@ Optional AI is deferred and can draft intent only. Plan hashes/application versi
 
 ## Future verification log
 
+### M1 clean-install adjustment — 2026-10-20 16:18 UTC
+
+The initial native SQLite smoke test passed, but `npm.cmd ci` exposed a clean-install failure: better-sqlite3 attempted a C++ rebuild and this host has no supported Visual Studio toolchain. No system tools/settings were changed. Replaced the native npm addon with Node 24's built-in `node:sqlite` and the officially documented Drizzle `node-sqlite` driver, pinned at `drizzle-orm@1.0.0-rc.4`. Removed better-sqlite3 and its types. This is a deliberate RC dependency tradeoff to keep local setup reproducible without a compiler; record updates before changing that pin. A second `npm.cmd ci` passed (229 packages; audit zero findings), and migrations plus all 39 unit/integration tests passed on this driver. SQL storage remains the same format and migration checksums; existing offline records were preserved.
+
+GitHub Actions checkout/setup-node v6 refs verified with `git ls-remote` and pinned to their full SHAs in `.github/workflows/ci.yml`. CI runs only source/offline checks; no network execution or credentials are supplied.
+
 ### M0 runtime verification — 2026-10-20 15:55 UTC
 
 User invoked GOAL and authorized local implementation, then requested commit/push after each verified update. Branch: `feat/forktrade-core`. Node `24.21.0`, npm `11.19.0` (`npm.cmd` on this PowerShell host; no execution-policy change).

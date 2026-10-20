@@ -1,10 +1,10 @@
 # Proposed architecture and integration contract
 
-Status: design only. Names below describe application interfaces to implement, not promises that identically named SDK APIs exist. Verify current supported SDK exports, ABI, transport and browser-wallet signing in M0 before coding the live adapter.
+Status: target architecture with the offline implementation now present. Exact implemented interfaces live in source; M0 verified public reads and inspected SDK browser-wallet support. Live payload, account context and reconciliation still need completion before M5 passes.
 
 ## Baseline and boundaries
 
-Use one Next.js/React TypeScript app with server route handlers, strict domain modules, SQLite/Drizzle storage, Zod validation and Tailwind styling. Use Vitest for domain/adapter tests and Playwright for browser flows. Pin exact compatible versions after verification. A local single-instance SQLite deployment is enough for v1; do not assume it works on a distributed/serverless host.
+Use one Next.js/React TypeScript app with server route handlers, strict domain modules, SQLite/Drizzle storage, Zod validation and Tailwind styling. Current local driver: Node 24 `node:sqlite` with Drizzle `1.0.0-rc.4`, selected after native-addon clean installation failed without a compiler. Vitest covers domain/adapter tests and Playwright covers browser flows. Exact pins are in package.json/lockfile. A local single-instance SQLite deployment is enough for v1; do not assume it works on a distributed/serverless host.
 
 | Component | Responsibility | Must not do |
 | --- | --- | --- |
@@ -30,7 +30,7 @@ db/                     schema and versioned migrations
 tests/                  unit, integration, offline browser fixtures
 ```
 
-This layout is not present yet. Prefer small modules over an elaborate service framework. Keep synthetic adapters separate from live ones and enforce mode checks at every execution boundary.
+This layout now exists for the offline app and public read spike. Synthetic adapters remain separate; live mutation paths fail closed. Keep the same boundaries when finishing the live adapter.
 
 ## Records and invariants
 

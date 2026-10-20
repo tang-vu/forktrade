@@ -1,36 +1,48 @@
 # ForkTrade
 
-**Current state: documentation only. The application is unbuilt.** No packages have been installed for this project, no wallet has been configured, and no orders, demo runs, feedback findings, or bounty submissions have been produced.
+A local thesis-to-remix workspace for dreamDEX Perps testnet. **The complete offline path runs; real wallet/order integration and live acceptance are still incomplete.** No wallet was connected, no signature requested, no order sent, and no deployment or bounty submission made.
 
-ForkTrade is a proposed dreamDEX Perps testnet entry for the MVP and Feedback tracks: write a trade thesis, approve an explicit order, share a card with honest execution evidence, and let another person remix the thesis into an independently approved order. The useful difference is the social remix and its evidence, rather than another maker, funding, guard, or TP/SL bot.
+Write and version a private thesis, review an exact bounded order, approve a labelled synthetic scenario, choose public fields for a local demo card, then create an independently owned one-level remix with a parameter comparison. Fixtures cannot become live evidence.
 
-## Start a future Codex implementation run
+## Run locally (Windows PowerShell)
 
-1. Clone this **private** repository into a dedicated working directory and open it in Codex. Use the `main` branch as the documentation baseline; inspect existing changes before editing.
-2. Read [AGENTS.md](AGENTS.md), then [GOAL.md](GOAL.md). Copy the entire fenced objective in GOAL.md into a new Codex goal in this repository. The objective authorizes the future local implementation, not financial or publication actions.
-3. Have Codex complete the source and environment verification milestone in [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md), then build the narrow offline path. Record exact versions, choices, checks, and blockers in its progress ledger.
-4. When the local app exists, follow the run commands that the implementation adds here. **There is currently no `package.json`, install command, development server, or application test suite to run.** Do not interpret the proposed commands below as already working.
-5. Review the completed preview before authorizing any wallet interaction or actual testnet order. Live acceptance remains blocked until the user separately permits the required actions and approves each final order.
-
-Proposed baseline: a single Next.js/React TypeScript app, Tailwind CSS, a small SQLite database with Drizzle, Zod validation, viem and an EIP-1193 wallet interface, and a narrow adapter around the official markets SDK. Vitest and Playwright cover the eventual code. Nothing in this baseline is installed or version-pinned yet; verify current official compatibility during milestone M0.
-
-Expected **future** local commands after scaffolding and scripts exist:
+Requires Node **24.x** (verified 24.21.0) and npm 11. Exact dependencies/integrities are pinned in package.json/package-lock.json. Use `npm.cmd` when PowerShell blocks npm.ps1; no policy change is needed.
 
 ```powershell
-npm ci
-npm run db:migrate
-npm run dev
-# Separate check session:
-npm run typecheck
-npm run lint
-npm run test
-npm run test:e2e
-npm run build
+npm.cmd ci
+npm.cmd run db:migrate
+npm.cmd run dev
+# Open http://127.0.0.1:3000
 ```
 
-The implementation must supply these scripts, document the Node version, local database location, environment variables, offline fixture mode, and read-only/live-mode controls. Until then the commands are a contract for the future run, not a claim of successful execution. Local operation is the default; deployment requires separate authorization.
+No .env or wallet is required. Defaults: offline mode, loopback-only server, SQLite at `.local/offline.db`. Migrations also run safely when opening the database. `Start offline session` creates a random synthetic identity with a private HttpOnly cookie; it does not create or connect a wallet. Each separate browser context gets its own identity. `End session` revokes it; offline sessions are disposable and cannot recover earlier private drafts after logout/expiry. Use separate contexts for the original and independent remix. Load the explicitly labelled synthetic example or enter your own draft.
 
-## The experience to ship first
+```powershell
+npm.cmd run typecheck
+npm.cmd run lint
+npm.cmd run test
+npm.cmd run build
+npx.cmd playwright install chromium
+npm.cmd run test:e2e
+# Optional harmless public network verification (no account / signer):
+npm.cmd run check:readonly
+```
+
+Browser tests start the production build on port 3000 with a separate, uniquely named `.local/e2e-offline-*.db`. Stop any app already using that port first. They exercise 1280px/360px views and write clearly synthetic screenshots under `evidence/`. For a production-mode local run: `npm.cmd run build`, then `npm.cmd run start`. Every local server binds 127.0.0.1. If changing the port, set `FORKTRADE_ORIGIN` to the exact origin (for example `http://127.0.0.1:3001`) before starting; mutation origins are checked.
+
+## Modes, data and permissions
+
+`.env.example` documents `FORKTRADE_MODE` (`offline`, `readonly`, `testnet`), `FORKTRADE_DB`, and disabled auth/execution flags. Offline mode is the implemented editor/preview/card/remix path. The public read adapter verifies chain 50383 and BTC metadata using current SDK/indexer/contract reads. `GET /api/market` or `check:readonly` performs public reads without constructing a trader. Readonly/testnet modes currently fail closed for private plans and orders; they are **not a ready live-trading flow**. Auth challenge verification exists and is mock-tested, but actual authentication is disabled by default and requires authorization. Order execution stays disabled in all modes in this increment.
+
+Private versions are append-only and owner-scoped. Request claims use durable unique constraints. A request lost during an effect is reconciled as unknown, with no automatic resend. Public cards expose only selected allowlisted fields; unpublish withdraws future app access and public comparisons. Local demo URLs need the local app to be reachable; they are not hosted. Copied content and screenshots cannot be recalled.
+
+SQLite files, WAL files, sessions, environment files and test traces are ignored by Git. No database reset/seed command deletes execution identities. To back up the local database, stop the server and copy the database together with any remaining `-wal`/`-shm` files to a private location. Do not publish backups or reuse an offline database for testnet mode.
+
+Current source/browser evidence lives in [ACCEPTANCE.md](ACCEPTANCE.md) and the single [progress ledger](IMPLEMENTATION_PLAN.md). Public chain/config snapshot: [read-only evidence](evidence/read-only-2026-10-20.json). Offline screenshots are synthetic and prove no live order. README commands describe the current app, while GOAL/PRODUCT/ARCHITECTURE retain the full target contract.
+
+Implementation branch: `feat/forktrade-core`. User workflow: commit and push each coherent verified update. The repository stays private; deployment, wallet actions, external publication, and submission still require their specified approvals.
+
+## Target end-to-end experience
 
 1. Choose one verified, available perps testnet market and one limit order with GTC time in force.
 2. Save a versioned thesis and order plan; preview fresh market and account data, bounds, costs, and risk.
@@ -64,4 +76,4 @@ No autonomous copy-trading, pooled custody, full social feed, profit leaderboard
 
 The repository stays private. Public/judge access, deployment, X posts, bounty submission, wallet setup, funding/claims/approvals, testnet transactions, and mainnet work each require appropriate later authorization. The whitelist/application invitation is access, not an award guarantee. See [BOUNTY.md](BOUNTY.md) for the distinction between app completion and submission readiness.
 
-Documentation checks can establish that the guide is internally consistent and Markdown-only. They cannot establish SDK compatibility, a working app, live order acceptance, fill success, eligibility, or an accepted report. All implementation and live-test gates currently remain open in the progress ledger.
+Source and offline browser checks establish the implemented synthetic path only. Public network reads are recorded separately. No check here establishes a live order, fill, eligibility, accepted report, submission or reward; see the current ledger and acceptance table.

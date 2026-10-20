@@ -1,6 +1,6 @@
 # Product contract
 
-Status: proposed behavior; application unbuilt. The target is a small, complete testnet experience that makes trade intent remixable and evidence understandable.
+Status: target contract; the offline thesis/review/card/remix path is implemented. Real wallet execution and live acceptance are still incomplete. The target remains the complete testnet experience below.
 
 ## User promise and scope
 

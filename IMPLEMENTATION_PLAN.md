@@ -71,15 +71,25 @@ If access to a required service fails, add a specific row with action, target, r
 | --- | --- | --- | --- |
 | DOC | Documentation baseline prepared and locally checked | 13 Markdown files dated 2026-10-20; inventory, internal links, titles, fences and credential-pattern checks passed; see repository commit history | Exact final remote checks reported by documentation task; no app acceptance implied |
 | M0 | Public runtime/source spike passed; account/eligibility partial | `npm.cmd run check:readonly`, SOURCES.md and evidence/read-only-2026-10-20.json | Account-specific eligibility/risk, final signing payload/history semantics, accepted bounty environment |
-| M1 | In progress | Exact package pins/lock, SQLite smoke check | App shell, migrations, documented local start |
-| M2 | Not started | None | Domain, persistence, tests |
-| M3 | Not started | None | Offline end-to-end UX |
+| M1 | Passed local increment | Clean npm ci, exact pins/lock, Next shell, migration, typecheck/lint/build | CI result to observe after push |
+| M2 | Passed offline increment | 39 unit/integration tests; domain, versions, owner scoping, request persistence | Live adapter semantics remain separate |
+| M3 | Passed offline increment | Final rebuilt suite: 8 browser tests passed (19.9s), comparison/withdrawal, 1280/360px screenshots inspected | Live wallet behavior is M4/M5/M6, not established by fixtures |
 | M4 | Not started | None | Live read-only adapter |
 | M5 | Not started | None | Prepared signing/reconciliation integration |
 | M6 | Blocked on later authorization and prerequisites | No actual orders or signatures | Obtain permission when reviewable; execute and reconcile honestly |
 | M7 | Not started | Demo/report/post templates are plans only | Evidence, verified run guide and handoff |
 
 ## How to update and resume
+
+### 2026-10-20 16:23 UTC — M1–M3 verification result
+
+Final clean-driver checks: `npm.cmd ci` passed; `npm.cmd run db:migrate` passed without deleting existing records; `npm.cmd run typecheck` passed; 39 unit/integration tests passed; production build passed; all 8 offline Chromium tests passed in 19.9s, including public comparison withdrawal and keyboard focus return. One lint cleanup warning was addressed by capturing the opener ref; lint/build passed without warnings and the targeted mobile regression passed again (1 test, 7.7s). The app's own error cases now have matching evidence, while all real wallet/live gates remain unrun/blocked. Screenshots contain synthetic data only. This is a coherent offline increment, not GOAL completion. Next: M4/M5 account adapter, exact supported browser payload, pre-sign freshness and authoritative receipt/order reconciliation; then permission request only when the live flow is concrete and reviewable.
+
+### 2026-10-20 16:15 UTC — M1/M2/M3 offline increment
+
+Branch `feat/forktrade-core`, previous pushed commit `3421521`; this entry will be committed with the offline app. Implemented: exact amount pipeline, fixture-only risk preview, immutable SQL versions, domain/nonce/expiry ownership challenge with replay protection (mock verifier only), scoped sessions/CSRF, typed server API, atomic request claim before an effect, orthogonal tx/order observations, explicit local publication and withdrawal, one-level source-pinned remix, private and allowlisted public parameter comparison. Real authentication and all live mutations remain disabled. No wallet calls, trade keys, grants, funding or orders. Repository visibility rechecked with `gh repo view`: private.
+
+Checks actually run: `db:migrate` passed; `typecheck` passed; lint initially caught a render-time Date.now call (fixed); 39 unit/integration tests passed; production build passed. First browser run: 6 passed / 2 test-selector failures (duplicate Next route announcer alert), selectors corrected; second run: all 8 passed in 19s. Added public comparison tests, fixed a test using an outdated publication revision and a heading-encoding defect. Expanded keyboard test exposed missing dialog focus restoration; fixed with an explicit trigger ref. Desktop 1280px and mobile 360px screenshots generated and visually inspected; synthetic-only labels visible and no horizontal overflow assertions passed. A final rebuild/browser suite is running after focus restoration. Clean `npm.cmd ci` initially failed on native SQLite compilation; switched to Node SQLite/Drizzle RC as documented in SOURCES.md, then clean install/migration/39 tests passed. `typecheck` now runs `next typegen` before tsc so generated route imports exist on clean checkout. No failure is erased or counted as live evidence. Bounty/account/live gates unchanged. Next: finalize M3 evidence and push, then finish M4/M5 independent read/signing/reconciliation preparation. Permissions remain not requested.
 
 ### 2026-10-20 15:55 UTC — M0 / bootstrap increment
 

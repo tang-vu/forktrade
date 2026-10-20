@@ -1,6 +1,8 @@
 # Demo plan and evidence manifest
 
-**No demo has been run.** No screenshots, wallets, orders, receipts or post links are supplied by this documentation baseline. Use the script only after the app exists. Keep synthetic/offline demonstrations clearly distinct from live testnet evidence.
+**The offline browser demonstration has run. No live demo has run.** Screenshots below show synthetic fixtures only; no wallet, actual transaction/order, real receipt, recording or post link exists. Keep this separate from live acceptance.
+
+Offline walkthrough is automated in `tests/e2e/offline.spec.ts`. It uses two isolated browser contexts for original/remix and covers approval, publication, comparison and withdrawal. Inspected screenshots: [desktop](evidence/offline-desktop.png), [desktop remix](evidence/offline-remix-desktop.png), [360px card](evidence/offline-card-mobile.png), [360px remix](evidence/offline-remix-mobile.png). They are actual app screenshots of an explicitly synthetic scenario, never live protocol evidence. Test databases are isolated and ignored; no fake live history was seeded.
 
 ## Short walkthrough to prepare
 
@@ -33,12 +35,12 @@ Fill with observed facts, not proposed values. Do not insert placeholder transac
 
 | Field | Actual value |
 | --- | --- |
-| App branch/commit and build command | Not built |
+| App branch/commit and build command | feat/forktrade-core; offline implementation commit recorded in IMPLEMENTATION_PLAN.md; npm.cmd run build |
 | Recording date/time UTC, browser/OS/device | Not recorded |
-| Mode | No run; future evidence must say offline/read-only/live testnet |
-| Chain ID, observed network/app label, RPC/config verification date | Not runtime-verified |
-| SDK/package lock version | Not installed |
-| Market/pool, metadata source/as-of | Not selected/verified |
+| Mode | Offline synthetic browser demo; separate real public read-only snapshot; no live execution |
+| Chain ID, observed network/app label, RPC/config verification date | Public reads: 50383, Hideki / DreamDEX app region, 2026-10-20; fixtures: synthetic chain 0 |
+| SDK/package lock version | SDK 0.32.1, exact resolved dependencies in package-lock.json |
+| Market/pool, metadata source/as-of | BTC / USDso; public pool and source/block recorded in evidence/read-only-2026-10-20.json; offline pool is explicitly synthetic |
 | Root plan ID/version/hash, approval context | None |
 | Root request ID, tx hash, order ID, source/block | None |
 | Root actual tx state, order state, filled/remainder amounts | No order |
@@ -47,7 +49,7 @@ Fill with observed facts, not proposed values. Do not insert placeholder transac
 | Remix request/tx/order identity and actual outcome | No order |
 | Receipt/history coverage and unresolved gaps | No observations |
 | Publication allowlist and user consent | Not requested |
-| Screenshots/video/evidence paths or approved links | None |
+| Screenshots/video/evidence paths or approved links | Four offline screenshot links above; no live screenshots, video or hosted URL |
 | Remaining exposure and cleanup status | No ForkTrade activity performed |
 | Accepted bounty environment/rules recheck | Pending |
 

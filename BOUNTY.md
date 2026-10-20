@@ -1,6 +1,6 @@
 # Bounty fit and submission gates
 
-Status: planning only. ForkTrade targets **both MVP and Feedback tracks** of the dreamDEX Perps bounty. This is not a submitted entry, an eligibility determination or a reward guarantee. The repository is private and stays private until the user separately approves a concrete access/visibility change.
+Status: local implementation in progress; offline app and public read spike exist. ForkTrade targets **both MVP and Feedback tracks** of the dreamDEX Perps bounty. No live acceptance, submission, eligibility or reward is established. The repository stays private until the user separately approves a concrete access/visibility change.
 
 ## Provenance and dates
 
@@ -14,7 +14,7 @@ The existing whitelist/application invitation is access to try the program, not 
 
 | Track/requirement | Supplied rule summary | ForkTrade response |
 | --- | --- | --- |
-| All Builds | GitHub repository required | This private docs baseline; working source and approved reviewer access still needed |
+| All Builds | GitHub repository required | Private source branch contains the offline app; live acceptance and approved reviewer access still needed |
 | Feedback pool | Up to $1,500 total | No guaranteed allocation; budget can exhaust |
 | Critical/major accepted feedback | $40 per accepted report | Severity is proposed with evidence; organizer acceptance determines payment |
 | Other accepted feedback | $15 per accepted report | No payment claim from a draft or local reproduction alone |
@@ -44,7 +44,7 @@ If accepted-environment rules remain unavailable, continue local/offline work an
 | Item | Current state | Evidence needed later |
 | --- | --- | --- |
 | Private GitHub docs baseline | Prepared by this task | Verified repository visibility, branch, commit and Markdown inventory |
-| Runnable app/source | Unbuilt | Tested clean-checkout run guide and exact commit |
+| Runnable app/source | Offline implementation, unit/browser/build evidence in ACCEPTANCE.md | Finish live path and test clean local instructions |
 | Actual root and remix perps orders | None | Separate user approvals, real identities and honest reconciled outcomes |
 | Accepted environment and current rules | Pending re-verification | Dated official confirmation and configuration notes |
 | Demo evidence | Not recorded | Real reviewed recording/screenshots/receipts with limitations |

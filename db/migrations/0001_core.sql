@@ -1,0 +1,14 @@
+CREATE TABLE plans (id TEXT PRIMARY KEY, owner TEXT NOT NULL, mode TEXT NOT NULL CHECK(mode IN ('offline','testnet')), current_version INTEGER NOT NULL, root_id TEXT NOT NULL REFERENCES plans(id), source_version TEXT REFERENCES versions(id), source_publication TEXT REFERENCES publications(id), depth INTEGER NOT NULL CHECK(depth IN (0,1)), created_at INTEGER NOT NULL, CHECK((depth=0 AND source_version IS NULL) OR (depth=1 AND source_version IS NOT NULL)));
+CREATE TABLE versions (id TEXT PRIMARY KEY, plan_id TEXT NOT NULL REFERENCES plans(id), version INTEGER NOT NULL, data TEXT NOT NULL, hash TEXT NOT NULL, created_at INTEGER NOT NULL);
+CREATE UNIQUE INDEX version_number ON versions(plan_id,version);
+CREATE TRIGGER immutable_version_update BEFORE UPDATE ON versions BEGIN SELECT RAISE(ABORT,'Versions are append-only'); END;
+CREATE TRIGGER immutable_version_delete BEFORE DELETE ON versions BEGIN SELECT RAISE(ABORT,'Versions are append-only'); END;
+CREATE TABLE previews (id TEXT PRIMARY KEY, owner TEXT NOT NULL, version_id TEXT NOT NULL REFERENCES versions(id), data TEXT NOT NULL, expires_at INTEGER NOT NULL);
+CREATE TABLE attempts (id TEXT PRIMARY KEY, owner TEXT NOT NULL, plan_id TEXT NOT NULL REFERENCES plans(id), version_id TEXT NOT NULL REFERENCES versions(id), preview_id TEXT NOT NULL REFERENCES previews(id), payload_hash TEXT NOT NULL, context_hash TEXT NOT NULL, data TEXT NOT NULL, created_at INTEGER NOT NULL);
+CREATE UNIQUE INDEX one_request_per_version ON attempts(version_id);
+CREATE UNIQUE INDEX one_request_per_preview ON attempts(preview_id);
+CREATE TABLE observations (id TEXT PRIMARY KEY, attempt_id TEXT NOT NULL REFERENCES attempts(id), data TEXT NOT NULL, created_at INTEGER NOT NULL);
+CREATE TABLE publications (id TEXT PRIMARY KEY, owner TEXT NOT NULL, version_id TEXT NOT NULL REFERENCES versions(id), fields TEXT NOT NULL, revision INTEGER NOT NULL, active INTEGER NOT NULL CHECK(active IN (0,1)), updated_at INTEGER NOT NULL);
+CREATE UNIQUE INDEX one_publication_per_version ON publications(version_id);
+CREATE TABLE sessions (token_hash TEXT PRIMARY KEY, owner TEXT NOT NULL, mode TEXT NOT NULL, csrf TEXT NOT NULL, expires_at INTEGER NOT NULL);
+CREATE TABLE challenges (nonce TEXT PRIMARY KEY, address TEXT NOT NULL, message TEXT NOT NULL, domain TEXT NOT NULL, expires_at INTEGER NOT NULL, used INTEGER NOT NULL CHECK(used IN (0,1)));

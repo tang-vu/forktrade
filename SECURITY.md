@@ -1,6 +1,6 @@
 # Security, permissions and honest evidence
 
-Status: requirements for an unbuilt application. No security assessment, audit, wallet configuration or transaction has been performed for ForkTrade.
+Status: security requirements for the implementation in progress. Offline trust-boundary tests exist; no independent audit, real wallet configuration, authentication signature or transaction has been performed for ForkTrade.
 
 ## Trust boundaries
 
@@ -22,7 +22,7 @@ Use the user's supported wallet for explicitly approved operations. The SDK's pr
 | Funding, claims, allowances, delegation, cancellation or position close | Separate specific authorization; never implicit in an order approval |
 | Deployment, public repo/judge access, posts, submission or disclosure | Separate user authorization for the concrete external action |
 
-The current docs-only task authorizes none of the live actions. A future GOAL invocation authorizes local implementation within AGENTS.md boundaries. Missing permissions must stop the dependent flow without stopping independent offline work or marking the goal complete.
+The user invoked GOAL on 2026-10-20, authorizing local implementation within AGENTS.md boundaries, and requested commit/push after each verified update. No live action is authorized. Missing permissions must stop the dependent flow without stopping independent offline work or marking the goal complete.
 
 ## Ownership and private data
 
