@@ -1,6 +1,6 @@
 # Acceptance and evidence matrix
 
-**Current result: source/offline and mock-wallet integration checks pass; actual public market reads pass. Actual ownership authentication, account reads and live root/remix acceptance remain unrun.** No actual testnet execution exists.
+**Current result: source/offline and mock-wallet integration checks pass; actual public market reads pass. GOAL is blocked on the unanswered live-session permission and accepted-environment evidence after three consecutive goal turns. Actual ownership authentication, account reads and live root/remix acceptance remain unrun.** No actual testnet execution exists.
 
 ## Gates and reporting
 
@@ -101,6 +101,7 @@ For every check store ID, commit, command/scenario, date/time, mode (`synthetic/
 | M5 clean-checkout CI | 8614a4c2572f2d2c9556d9452df45924c8c8e80d, GitHub Ubuntu/Node 24 | Passed clean install/migration/typecheck/lint, 99 tests, build and 17 browser scenarios (18.5s) | [CI 39466554457](https://github.com/tang-vu/forktrade/actions/runs/39466554457); source/mock/offline only, no live evidence |
 | Final perps ABI/source correction CI | 97d0aee313083daf6c65a24f58d74852602b38f7, GitHub Ubuntu/Node 24 | Passed clean install/migration/typecheck/lint, 99 tests, build and 17 browser scenarios | [CI 39467081045](https://github.com/tang-vu/forktrade/actions/runs/39467081045); complete ABI equality and calldata checks. No actual wallet/account/order evidence |
 | Final handoff commit CI | 55b002030947eeae9ba465b8680de7d2c9f28182, GitHub Ubuntu/Node 24, 2026-10-20 17:38 UTC | Inspected terminal success: install/migration/typecheck/lint, 99 tests, build, 17 browser scenarios (25.0s) | [CI 39467438767](https://github.com/tang-vu/forktrade/actions/runs/39467438767); no source changes since prior green ABI commit. Actual account/root/remix remain unrun pending permission |
+| Blocked-audit commit CI | de0ef6d65dd3c899a945a14d43aa293075f4b279, GitHub Ubuntu/Node 24, 2026-10-20 17:40 UTC | Terminal success inspected: install/migration/typecheck/lint, 99 tests, build and 17 browser scenarios | [CI 39467847302](https://github.com/tang-vu/forktrade/actions/runs/39467847302). No new source work; third consecutive pending session/environment gate leaves G3/G4 unmet |
 | Actual dev/browser read-only smoke | M5 implementation commit, local port 3001, 2026-10-20 17:27 UTC | Rendered readonly workspace with disabled wallet control; actual public market refresh; 360px no overflow/page errors | evidence/readonly-desktop.png and readonly-market-mobile.png inspected. First smoke script selector corrected after timeout. Dev server stopped; no account/wallet call |
 | Optional persistent local server | After 8614a4c | Blocked before process creation by execution policy (“blocked by policy”); no alternate launcher attempted | Existing documented dev/production checks passed. No server is left running; not a source/build failure |
 | Ownership/account session | Permission requested 2026-10-20 17:35 UTC; pending | Not run | Existing user-selected EOA, localhost:3000, Hideki 50383; ownership signature plus read-only BTC context only; all flags false |

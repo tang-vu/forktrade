@@ -1,6 +1,6 @@
 # Implementation plan and progress ledger
 
-**Implementation started on 2026-10-20; live acceptance remains blocked.** This is the single implementation progress/blocker ledger. Keep it concise and evidence-based. Do not create parallel TODO/status files.
+**Implementation started on 2026-10-20; GOAL is blocked pending live-session authorization and accepted-environment evidence.** Offline/source/public-read work is delivered; actual account and root/remix execution acceptance remain unrun. This is the single implementation progress/blocker ledger. Keep it concise and evidence-based. Do not create parallel TODO/status files.
 
 ## Order of work
 
@@ -80,6 +80,14 @@ If access to a required service fails, add a specific row with action, target, r
 | M7 | Partial local handoff prepared | README/run guide, offline screenshots, source/read-only evidence, demo manifest and three unposted social drafts | Real live evidence, current rules and separately authorized external actions |
 
 ## How to update and resume
+
+### 2026-10-20 17:40 UTC — third-turn blocked audit
+
+Resumed clean on `feat/forktrade-core`, local/remote `de0ef6d65dd3c899a945a14d43aa293075f4b279`; no newer user authorization. Previous turn classified as a verified wait on CI 39467438767. This turn verified live CI 39467847302/job 118783813530 to terminal success on de0ef6d: install/migration/typecheck/lint, 99 tests, build and all 17 browser scenarios passed. No source changes. All required independent offline/mock/public-read preparation is delivered; there is no unresolved source failure to repair or live process to wait for.
+
+The same D6/D4 gate has now recurred across three consecutive goal turns (initial session request, first continuation, this continuation). The pending request remains unanswered: existing user-selected EOA at `http://127.0.0.1:3000`, Hideki 50383, wallet connection plus one reviewed ownership signature and read-only BTC account/risk checks. Dated official accepted-environment confirmation is also missing. Automatic continuation is not approval. Auth/execution/environment flags remain false; no real account/signature/order/funding/allowance/delegation or external action was attempted. No alternative launcher was used for the earlier policy-blocked server start.
+
+Completion audit fails G3 actual account and G4 actual root/remix evidence; G5 external readiness is also unmet. Mark the existing GOAL blocked after pushing this documentation-only status update; do not mark complete or manufacture work to keep it active. Resume when the pending permission or required external evidence changes. A root and independently owned remix still each require fresh exact order review and user wallet approval; connection/authentication permission alone covers neither. Current status documentation requires no additional source/browser rerun.
 
 ### 2026-10-20 17:38 UTC — verified final handoff CI; permission still pending
 
