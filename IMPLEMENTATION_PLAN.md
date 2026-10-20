@@ -81,6 +81,12 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-20 17:38 UTC — verified final handoff CI; permission still pending
+
+Resume check: `feat/forktrade-core`, clean tree, local/remote `55b002030947eeae9ba465b8680de7d2c9f28182`, repository private. Previous goal turn: progress (M5 source/ABI, tests, public evidence and pushed commits). This continuation: verified wait on live CI run 39467438767/job 118782392460, then inspected its terminal success on that exact commit. Install/migration/typecheck/lint, 99 tests, build and all 17 Chromium scenarios passed (25.0s). No source changes or additional tests were needed.
+
+Same remaining blocker, second consecutive goal turn: no answer to the requested wallet connection/ownership-signature/read-only session or accepted-environment evidence. No new live authorization has arrived; do not re-request it or treat the automatic goal continuation as permission. Independent offline/mock/public work is complete at the current scope. M4 actual account and M6 root/remix evidence remain unrun; GOAL remains partial/active. No live action, alternative server launcher or external publication attempted. Next: proceed only when the pending user input or external evidence changes; apply the three-turn blocked audit if this impasse recurs. This documentation-only evidence update does not require another source/browser rerun.
+
 ### 2026-10-20 17:35 UTC — local handoff and pending live-session input
 
 Source correction `97d0aee313083daf6c65a24f58d74852602b38f7` pushed; [CI 39467081045](https://github.com/tang-vu/forktrade/actions/runs/39467081045) passed install/migration/typecheck/lint, 99 tests, build and all 17 browser scenarios on that exact commit. This documentation-only update records the final independent result; it does not change source behavior. No known source/local failure remains. Public reads passed; actual account/auth/simulation/receipt compatibility and live root/remix are unrun. No confirmed feedback finding or submitted material exists. Goal is partial, not complete.
