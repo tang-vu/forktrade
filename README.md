@@ -8,6 +8,8 @@ A local thesis-to-remix workspace for dreamDEX Perps testnet. **The offline path
 
 Published additions: [003, existing-position startup budget](feedback/003-existing-position-entry-preflight.md) and [005, skipped-quote retry](feedback/005-maker-skipped-quote-retry.md) have bounded offline reproductions and controls. [004, position-cap semantics](feedback/004-maker-position-cap-semantics.md) reproduces behavior but needs clarification of strict-versus-soft cap intent. These do not establish live outcomes, eligibility or rewards. Exact approved submission text and review provenance are in [SUBMISSION.md](feedback/SUBMISSION.md).
 
+Further audit prepared [006, cancel failure loses quote tracking](feedback/006-maker-cancel-failure-loses-tracking.md), with related-prior-report/duplicate risk disclosed, and [007, unified SDK ignores the distinct perp minimum](feedback/007-sdk-create-order-minimum.md), supported by actual public BTC configuration and 12 offline SDK boundary cases. Both are nonsecurity additions for the existing Feedback workflow; neither establishes a live order or loss.
+
 Write and version a private thesis, review an exact bounded order, approve a labelled synthetic scenario, choose public fields for a local demo card, then create an independently owned one-level remix with a parameter comparison. Fixtures cannot become live evidence.
 
 ## Run locally (Windows PowerShell)

@@ -4,7 +4,7 @@ import ts from 'typescript-eslint';
 import hooks from 'eslint-plugin-react-hooks';
 export default defineConfig([js.configs.recommended, ...ts.configs.recommended,
   {files:['feedback/repro/**/*.mjs'],languageOptions:{globals:{
-    URL:'readonly',fetch:'readonly',AbortSignal:'readonly',process:'readonly',
+    URL:'readonly',fetch:'readonly',AbortSignal:'readonly',AbortController:'readonly',process:'readonly',
     TextDecoder:'readonly',setTimeout:'readonly',clearTimeout:'readonly',
   }}},
   {files:['**/*.tsx'],plugins:{'react-hooks':hooks},rules:hooks.configs.recommended.rules},

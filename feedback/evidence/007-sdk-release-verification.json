@@ -1,0 +1,12 @@
+{
+  "version": "0.32.1",
+  "tarball": "https://registry.npmjs.org/@somnia-chain/markets-sdk/-/markets-sdk-0.32.1.tgz",
+  "integrity": "sha512-RfshQP8X6m/wrE6TocmiOPajbw/Vstmkvn+AP/ztK19QgcrPn1lR7A4Pp8xVm6MuOXOpBwTBrFO0W34neQF0Og==",
+  "allInstalledPackageFilesMatched": 632,
+  "selectedSha256": {
+    "dist/unified/exchange.js": "f2fd34c35c40fb251a36bff27fe72e9f2cf6281433bf8534c839d8b8684241c2",
+    "dist/unified/structs.js": "42c40d71e90d8340507b776e2bc09b4855b0e670b00522270c3aadb83f5acaf2",
+    "docs/how-to/handle-errors.md": "5c0f6b78489169fa6b3fae2cbf08b8c4193d68434cf671b8d9bc1b4a025e6b87",
+    "docs/how-to/run-a-quoting-loop.md": "b3295909c6befe107cecd30cc26c241063146e14d4842f5978e51a5900cdc003"
+  }
+}

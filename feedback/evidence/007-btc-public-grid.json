@@ -1,0 +1,28 @@
+{
+  "kind": "ACTUAL PUBLIC READ-ONLY MARKET CONFIGURATION - NOT AN ORDER",
+  "observedAt": "2026-10-21T12:49:55.205Z",
+  "chainId": 50383,
+  "blockNumber": "29350404",
+  "SDK": "0.32.1",
+  "market": {
+    "symbol": "BTC/USDso:USDso",
+    "baseSymbol": "BTC",
+    "poolAddress": "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0",
+    "baseDecimals": 8,
+    "quoteDecimals": 18,
+    "sdkRow": {
+      "tickSize": "100000000000000000",
+      "lotSize": "1000",
+      "minQuantity": "13000"
+    },
+    "onchain": {
+      "tickSize": "100000000000000000",
+      "lotSize": "1000",
+      "minQuantity": "13000"
+    }
+  },
+  "wallet": false,
+  "account": false,
+  "signature": false,
+  "transaction": false
+}

@@ -38,4 +38,30 @@ Re-read the current official bounty in actual Edge on 2026-10-21 12:38 UTC. A fr
 
 Additional review archive: ignored `.local/feedback-003-005-publication-ready-v2.zip`, SHA-256 `90e1887d37a86951301a89be7870fde95ae976f219a94fdf354ce91e329f890a`, preserved unchanged. Exact allowlist: 22 files, 21 payloads plus manifest, based on public `b1ec751c0e9ed8ace96d45b852d16e55decfe276`. Eleven added payloads are three reports, three runners, two shared offline helpers and three explicitly synthetic JSON records. Public README/manifest were updated. Existing 002's unused MARKET fixture was corrected from 1 to SDK 0.32.1's 2; all four existing-position cases are unchanged. This fixture correction is not an upstream finding.
 
-The approved title/description above are byte-for-byte the reviewed proposed replacement, apart from surrounding document headings. Source hashes, runner behavior and evidence were preserved. Existing original extension archive `.local/feedback-002-publication-ready.zip`, SHA-256 `7bd448befb2228882d69887ee889d95efa114194c312518ececb514a41cd875f`, is retained as prior provenance. No further public-data scope extension is implicit.
+The approved title/description above are byte-for-byte the reviewed proposed replacement, apart from surrounding document headings. Source hashes, runner behavior and evidence were preserved. Existing original extension archive `.local/feedback-002-publication-ready.zip`, SHA-256 `7bd448befb2228882d69887ee889d95efa114194c312518ececb514a41cd875f`, is retained as prior provenance. The routine same-destination nonsecurity continuation below follows the user's subsequent careful-review request and existing end-to-end instruction; it shares no additional private user data.
+
+## Routine seven-report continuation
+
+Additional 006/007 source/evidence review is complete. Continue the user's end-to-end Feedback workflow without another per-report permission request. Publish only the explicit report/reproducer/evidence allowlist plus the minimal public reproduction package/lock and ignore file to the existing `tang-vu/dreamdex-perps-feedback` repo. Keep the private app/wallet/accounts/auth/env/DB and all security disclosures excluded. A new destination, private-data sharing, live order, social post or binding term is outside this routine continuation.
+
+Prepared immutable 33-file archive: `.local/feedback-006-007-publication-ready.zip`, SHA-256 `8458c18b9c7442a38e6dd80ba57fd5eb6272b65906730e8c24be0a34f239b633`, baseline public c1f662d. Contains 32 payloads plus manifest; includes 2 reports, 2 runners, 4 evidence records and minimal package/lock/.gitignore additions. No app dependency/pin changed. 007's isolated clean install and 12 cases passed; 006 has 3 failure/control cases and prominently discloses related public issue 38. Use the unchanged current Build title and the exact replacement description below only after remote publication verification. Actual DoraHacks submission still requires user sign-in; no submission/acceptance/payment is established.
+
+### Seven-report replacement Build description
+
+This Feedback-only submission contains seven issue-specific reports/candidates, each proposed severity normal.
+
+001: the documented Perps entry redirected the observed signed-out Edge session to STT/USDso spot. Real browser screenshots, a bounded three-hop HTTP capture and a GET reproducer are included; authenticated behavior/root cause are unknown.
+
+002: perp-starter chooses bracket orientation from the configured side when the existing position has the opposite side. Both mismatching cases and matching controls are included.
+
+003: perp-starter checks a configured new-entry margin budget before discovering an existing smaller position, preventing its management path below that budget. Below/at/above-budget controls keep the sides equal and request no new entry.
+
+004: perp-maker can quote beyond its named maximum position near the threshold. Six controls reproduce the behavior, but hard-cap intent is not established; this is a lower-confidence documentation/intent clarification, not a protocol-cap bypass claim.
+
+005: after both initial quotes are skipped, perp-maker suppresses sizing retries at an unchanged mark. Three bounded failure, healthy and moving-mark cases isolate this path.
+
+006: the official maker's cancellation helper swallows errors, allowing replacement and forgetting old IDs without reconciliation. Three offline failure/control cases use explicitly labelled in-memory helper returns, not real orders. Related public issue 38 describes the same integration mistake in a different binary vault; that overlap and duplicate risk are prominently disclosed.
+
+007: SDK 0.32.1 unified createOrder checks the lot threshold but misses BTC's separate minimum quantity. Public contract/metadata reads confirm lot 1000 and minimum 13000; 12 offline buy/sell boundary cases show below-minimum quantities reaching an intercepted trader seam. The original package's 632 files match its verified npm archive, and an isolated clean install reproduces the result.
+
+Reports 002–006 concern the official bot kit and run hash-checked pinned source with explicit offline dependencies; 007 runs the original SDK method/grid helpers. These tests demonstrate code paths, not live account/order/stop/fill/exposure/loss outcomes or measured gas costs. Each report distinguishes observation, fixtures, controls, environment and limitations. No wallet, key, signature or transaction was needed. Scope, duplicates, intent and severity are organizer decisions; first-report priority is unknown because Builds are private. This is not an MVP execution submission. No acceptance or reward is claimed.

@@ -1,0 +1,178 @@
+{
+  "kind": "OFFLINE SYNTHETIC SDK TEST - NOT LIVE ORDER EVIDENCE",
+  "observedAt": "2026-10-21T12:52:31.983Z",
+  "sdk": "@somnia-chain/markets-sdk@0.32.1",
+  "nodeVersion": "v24.21.0",
+  "sourceFiles": [
+    {
+      "path": "dist/unified/exchange.js",
+      "sha256": "f2fd34c35c40fb251a36bff27fe72e9f2cf6281433bf8534c839d8b8684241c2"
+    },
+    {
+      "path": "dist/unified/structs.js",
+      "sha256": "42c40d71e90d8340507b776e2bc09b4855b0e670b00522270c3aadb83f5acaf2"
+    }
+  ],
+  "execution": {
+    "mode": "offline-synthetic",
+    "network": false,
+    "signer": false,
+    "privateKey": false,
+    "transactions": false
+  },
+  "publicConfiguration": {
+    "file": "007-btc-public-grid.json",
+    "observedAt": "2026-10-21T12:49:55.205Z",
+    "blockNumber": "29350404",
+    "chainId": 50383
+  },
+  "sourceHandling": "Original installed SDK createOrder and grid/generation/collateral helpers; only market lookup and trader resolution are test doubles. No class instance or modified SDK function body.",
+  "cases": [
+    {
+      "inputAmount": "0.000009",
+      "side": "buy",
+      "outcome": "local-InvalidInputError",
+      "calls": []
+    },
+    {
+      "inputAmount": "0.00001",
+      "side": "buy",
+      "outcome": "intercepted-at-mocked-trader-boundary",
+      "calls": [
+        {
+          "quantityRaw": "1000",
+          "priceRaw": "100000000000000000000",
+          "isBid": true,
+          "belowObservedMinQuantity": true
+        }
+      ]
+    },
+    {
+      "inputAmount": "0.00012",
+      "side": "buy",
+      "outcome": "intercepted-at-mocked-trader-boundary",
+      "calls": [
+        {
+          "quantityRaw": "12000",
+          "priceRaw": "100000000000000000000",
+          "isBid": true,
+          "belowObservedMinQuantity": true
+        }
+      ]
+    },
+    {
+      "inputAmount": "0.000129",
+      "side": "buy",
+      "outcome": "intercepted-at-mocked-trader-boundary",
+      "calls": [
+        {
+          "quantityRaw": "12000",
+          "priceRaw": "100000000000000000000",
+          "isBid": true,
+          "belowObservedMinQuantity": true
+        }
+      ]
+    },
+    {
+      "inputAmount": "0.00013",
+      "side": "buy",
+      "outcome": "intercepted-at-mocked-trader-boundary",
+      "calls": [
+        {
+          "quantityRaw": "13000",
+          "priceRaw": "100000000000000000000",
+          "isBid": true,
+          "belowObservedMinQuantity": false
+        }
+      ]
+    },
+    {
+      "inputAmount": "0.00014",
+      "side": "buy",
+      "outcome": "intercepted-at-mocked-trader-boundary",
+      "calls": [
+        {
+          "quantityRaw": "14000",
+          "priceRaw": "100000000000000000000",
+          "isBid": true,
+          "belowObservedMinQuantity": false
+        }
+      ]
+    },
+    {
+      "inputAmount": "0.000009",
+      "side": "sell",
+      "outcome": "local-InvalidInputError",
+      "calls": []
+    },
+    {
+      "inputAmount": "0.00001",
+      "side": "sell",
+      "outcome": "intercepted-at-mocked-trader-boundary",
+      "calls": [
+        {
+          "quantityRaw": "1000",
+          "priceRaw": "100000000000000000000",
+          "isBid": false,
+          "belowObservedMinQuantity": true
+        }
+      ]
+    },
+    {
+      "inputAmount": "0.00012",
+      "side": "sell",
+      "outcome": "intercepted-at-mocked-trader-boundary",
+      "calls": [
+        {
+          "quantityRaw": "12000",
+          "priceRaw": "100000000000000000000",
+          "isBid": false,
+          "belowObservedMinQuantity": true
+        }
+      ]
+    },
+    {
+      "inputAmount": "0.000129",
+      "side": "sell",
+      "outcome": "intercepted-at-mocked-trader-boundary",
+      "calls": [
+        {
+          "quantityRaw": "12000",
+          "priceRaw": "100000000000000000000",
+          "isBid": false,
+          "belowObservedMinQuantity": true
+        }
+      ]
+    },
+    {
+      "inputAmount": "0.00013",
+      "side": "sell",
+      "outcome": "intercepted-at-mocked-trader-boundary",
+      "calls": [
+        {
+          "quantityRaw": "13000",
+          "priceRaw": "100000000000000000000",
+          "isBid": false,
+          "belowObservedMinQuantity": false
+        }
+      ]
+    },
+    {
+      "inputAmount": "0.00014",
+      "side": "sell",
+      "outcome": "intercepted-at-mocked-trader-boundary",
+      "calls": [
+        {
+          "quantityRaw": "14000",
+          "priceRaw": "100000000000000000000",
+          "isBid": false,
+          "belowObservedMinQuantity": false
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Only a local validation / write-boundary observation, not a sent/reverted order or measured gas loss.",
+    "Public configuration was observed separately; offline inputs/account/writer boundary are fixtures."
+  ]
+}

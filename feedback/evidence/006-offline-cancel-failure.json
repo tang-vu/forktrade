@@ -1,0 +1,238 @@
+{
+  "kind": "OFFLINE SYNTHETIC SOURCE TEST - NOT LIVE EVIDENCE",
+  "observedAt": "2026-10-21T12:54:09.166Z",
+  "upstreamRevision": "25798660bbe4674a6f83a960b202852896e2fed4",
+  "nodeVersion": "v24.21.0",
+  "execution": {
+    "mode": "offline-synthetic",
+    "network": false,
+    "signer": false,
+    "privateKey": false,
+    "transactions": false
+  },
+  "sourceHandling": "Public GETs/hash checks before execution; TypeScript stripped and only auto-start footer replaced. Original function bodies unchanged.",
+  "finding": "Cancellation failure is swallowed before replacement and final success-like cleanup log",
+  "sourceFiles": [
+    {
+      "path": "strategies/perp-maker/src/index.ts",
+      "sha256": "ed8ccfafe233796f9764ea6f946c8450fd732754f3abcc853f74dd46a9c62e32"
+    },
+    {
+      "path": "packages/perp-core/src/markets.ts",
+      "sha256": "95dfbbb84d114927f5a5df87f4a0d96114d3904cb98a8c06c42c3823880a0520"
+    },
+    {
+      "path": "packages/perp-core/src/orders.ts",
+      "sha256": "a9ed57032c74315deafaea99a9ce349875b5bcd4b6eb0d09e2c5065c9402c583"
+    }
+  ],
+  "cases": [
+    {
+      "mode": "success-control",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-maker on OFFLINE TEST BTC | 25 USDso per side at 2x | half-spread 15bps skew 10bps | cap 100 USDso | dry-run true",
+        "OFFLINE sufficient-margin fixture",
+        "quotes pulled, exiting"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "placementSeamCalls": [
+        {
+          "cycle": 1,
+          "side": "long",
+          "testSentinelId": "1",
+          "kind": "IN-MEMORY HELPER RETURN FIXTURE ONLY"
+        },
+        {
+          "cycle": 1,
+          "side": "short",
+          "testSentinelId": "2",
+          "kind": "IN-MEMORY HELPER RETURN FIXTURE ONLY"
+        },
+        {
+          "cycle": 2,
+          "side": "long",
+          "testSentinelId": "3",
+          "kind": "IN-MEMORY HELPER RETURN FIXTURE ONLY"
+        },
+        {
+          "cycle": 2,
+          "side": "short",
+          "testSentinelId": "4",
+          "kind": "IN-MEMORY HELPER RETURN FIXTURE ONLY"
+        }
+      ],
+      "cancellationSeamCalls": [
+        {
+          "phase": "cycle-2",
+          "testSentinelId": "1",
+          "injectedFailure": false
+        },
+        {
+          "phase": "cycle-2",
+          "testSentinelId": "2",
+          "injectedFailure": false
+        },
+        {
+          "phase": "shutdown",
+          "testSentinelId": "3",
+          "injectedFailure": false
+        },
+        {
+          "phase": "shutdown",
+          "testSentinelId": "4",
+          "injectedFailure": false
+        }
+      ],
+      "testDoubleUncancelledIdsAtEnd": [],
+      "authoritativeCancellationReconciliationReads": 0
+    },
+    {
+      "mode": "transport-failure",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-maker on OFFLINE TEST BTC | 25 USDso per side at 2x | half-spread 15bps skew 10bps | cap 100 USDso | dry-run true",
+        "OFFLINE sufficient-margin fixture",
+        "cancel 1 skipped: OFFLINE injected transport-failure; cancellation is not established",
+        "cancel 2 skipped: OFFLINE injected transport-failure; cancellation is not established",
+        "quotes pulled, exiting"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "placementSeamCalls": [
+        {
+          "cycle": 1,
+          "side": "long",
+          "testSentinelId": "1",
+          "kind": "IN-MEMORY HELPER RETURN FIXTURE ONLY"
+        },
+        {
+          "cycle": 1,
+          "side": "short",
+          "testSentinelId": "2",
+          "kind": "IN-MEMORY HELPER RETURN FIXTURE ONLY"
+        },
+        {
+          "cycle": 2,
+          "side": "long",
+          "testSentinelId": "3",
+          "kind": "IN-MEMORY HELPER RETURN FIXTURE ONLY"
+        },
+        {
+          "cycle": 2,
+          "side": "short",
+          "testSentinelId": "4",
+          "kind": "IN-MEMORY HELPER RETURN FIXTURE ONLY"
+        }
+      ],
+      "cancellationSeamCalls": [
+        {
+          "phase": "cycle-2",
+          "testSentinelId": "1",
+          "injectedFailure": true
+        },
+        {
+          "phase": "cycle-2",
+          "testSentinelId": "2",
+          "injectedFailure": true
+        },
+        {
+          "phase": "shutdown",
+          "testSentinelId": "3",
+          "injectedFailure": false
+        },
+        {
+          "phase": "shutdown",
+          "testSentinelId": "4",
+          "injectedFailure": false
+        }
+      ],
+      "testDoubleUncancelledIdsAtEnd": [
+        "1",
+        "2"
+      ],
+      "authoritativeCancellationReconciliationReads": 0
+    },
+    {
+      "mode": "unknown-outcome",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-maker on OFFLINE TEST BTC | 25 USDso per side at 2x | half-spread 15bps skew 10bps | cap 100 USDso | dry-run true",
+        "OFFLINE sufficient-margin fixture",
+        "cancel 1 skipped: OFFLINE injected unknown-outcome; cancellation is not established",
+        "cancel 2 skipped: OFFLINE injected unknown-outcome; cancellation is not established",
+        "quotes pulled, exiting"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "placementSeamCalls": [
+        {
+          "cycle": 1,
+          "side": "long",
+          "testSentinelId": "1",
+          "kind": "IN-MEMORY HELPER RETURN FIXTURE ONLY"
+        },
+        {
+          "cycle": 1,
+          "side": "short",
+          "testSentinelId": "2",
+          "kind": "IN-MEMORY HELPER RETURN FIXTURE ONLY"
+        },
+        {
+          "cycle": 2,
+          "side": "long",
+          "testSentinelId": "3",
+          "kind": "IN-MEMORY HELPER RETURN FIXTURE ONLY"
+        },
+        {
+          "cycle": 2,
+          "side": "short",
+          "testSentinelId": "4",
+          "kind": "IN-MEMORY HELPER RETURN FIXTURE ONLY"
+        }
+      ],
+      "cancellationSeamCalls": [
+        {
+          "phase": "cycle-2",
+          "testSentinelId": "1",
+          "injectedFailure": true
+        },
+        {
+          "phase": "cycle-2",
+          "testSentinelId": "2",
+          "injectedFailure": true
+        },
+        {
+          "phase": "shutdown",
+          "testSentinelId": "3",
+          "injectedFailure": false
+        },
+        {
+          "phase": "shutdown",
+          "testSentinelId": "4",
+          "injectedFailure": false
+        }
+      ],
+      "testDoubleUncancelledIdsAtEnd": [
+        "1",
+        "2"
+      ],
+      "authoritativeCancellationReconciliationReads": 0
+    }
+  ],
+  "fixtureHandling": "IDs 1..4 and sent:true are explicit in-memory helper-return fixtures, not orders/receipts. Main requests no signer and stays DRY_RUN=true; only the cancel helper receives a synthetic dryRun:false context to exercise its catch against a local throwing test double.",
+  "limitations": [
+    "No actual cancellation, quote, chain state, failure, duplicate order, exposure or loss was observed.",
+    "Source main and cancel helper bodies are unchanged; placement/sizing/account/mark/dependency seams are mocked."
+  ]
+}
