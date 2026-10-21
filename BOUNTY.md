@@ -4,11 +4,11 @@ Status: local implementation in progress; offline path, actual reads and bounded
 
 **Feedback is the active user priority as of 2026-10-21.** One actual upstream report is [reproduced](feedback/001-perps-entry-opens-spot.md), with normal severity proposed and no submission/acceptance/payment. The current ordinary-Edge rule recheck still supports the listed Feedback amounts/format; the Builds list is private, so first-report priority is unknown. The user approved the reviewed Feedback-only package and Build text; [that separate package is public](https://github.com/tang-vu/dreamdex-perps-feedback), excluding the private application and wallet material. Clicking Submit Build reached DoraHacks login; the approved submission is pending the user's whitelisted session.
 
-A second [private report](feedback/002-existing-position-bracket-side.md) reproduces a bot-kit dry-run side mismatch using explicit offline synthetic fixtures. This is separate code-path evidence, not a live protocol failure. Its scope/duplicate/severity decision remains with the organizer, and publication/submission of this addition is not covered by report 001 approval.
+A second [report](feedback/002-existing-position-bracket-side.md) reproduces a bot-kit dry-run side mismatch using explicit offline synthetic fixtures. The user's continuation after review was taken as approval of the concrete extension and two-report Build text, and both reports are now published at b1ec751. This is separate code-path evidence, not a live protocol failure. Scope/duplicate/severity/acceptance decisions remain with the organizer.
 
 ## Submission organization
 
-Working plan: one Feedback-only Build containing the approved reports, each in its own Markdown file, and a separate ForkTrade MVP Build when the actual product meets its live-evidence requirements. Report 001 is approved; including 002 still awaits the existing additional-package decision. The MVP is not ready or approved for submission.
+Working plan: one Feedback-only Build containing approved reports 001 and 002, each in its own Markdown file, and a separate ForkTrade MVP Build when the actual product meets its live-evidence requirements. The reviewed two-report package/text is approved and public; actual submission still requires the user's DoraHacks session. The MVP is not ready or approved for publication/submission.
 
 On 2026-10-21 the user supplied a conversation where a reply directly to the question about two separate Builds said, "Yeah, you can submit both". We interpret that direct answer as support for separate Feedback and MVP Builds. The speaker's organizer role and message were not independently verified, and no message URL was supplied; this is user-supplied clarification, not a new published rule. If the actual submission form imposes a conflicting limit, resolve that specific conflict before submission. See [source provenance](SOURCES.md#user-supplied-build-organization-reply--2026-10-21).
 
@@ -60,10 +60,10 @@ If accepted-environment rules remain unavailable, continue local/offline work an
 | Actual root and remix perps orders | None | Separate user approvals, real identities and honest reconciled outcomes |
 | Accepted environment and current rules | Official page and linked developer environment reverified 2026-10-21 | Recheck before submission; no claim that pending root/remix outcomes qualify |
 | Demo evidence | Offline synthetic screenshots inspected; no live demo/recording | Real reviewed recording/screenshots/receipts with limitations |
-| Feedback reports | 001 reproduced in real Edge/HTTP and published at 8ae7fa3; 002 reproduced with pinned source and explicit offline synthetic fixtures, private draft | User login and actual 001 submission; separate 002 publication/text approval; organizer scope/duplicate/acceptance decisions pending |
+| Feedback reports | 001 real Edge/HTTP and 002 explicit offline synthetic source reproduction published at b1ec751; eleven remote files/manifest verified | User login and actual two-report Build submission; organizer scope/duplicate/acceptance decisions pending |
 | 2-3 X post links | None; drafts in DEMO.md only | User-approved published posts and actual URLs |
 | Judge access/public source | Not authorized | User-approved least-needed access; recheck program requirements |
-| Submission | Feedback 001 package/text explicitly approved; not submitted, login gate observed | User signs in to the whitelist account, then resume approved Build submission; MVP submission remains unauthorized |
+| Submission | Reviewed Feedback 001+002 package/text approved; public package ready, not submitted; fresh login gate observed | User signs in to the whitelist account, then resume approved two-report Build; MVP publication/submission remains unauthorized |
 | Mainnet conditional tranche | Separate future scope | No actions planned or authorized here |
 
 ## Future submission procedure

@@ -59,6 +59,22 @@ Fill with observed facts, not proposed values. Do not insert placeholder transac
 
 Evidence should identify chain, market/pool and order/account context sufficiently for authorized verification. If address evidence is withheld for privacy, disclose the resulting verification limitation. Store only reviewed nonsecret evidence in the repository; keep security vulnerabilities and secrets outside it. Existing offline media is explicitly synthetic; live media needs the authorized run and redaction review.
 
+## Separate ForkTrade MVP Build draft - not ready to submit
+
+This draft is for the separate MVP Build discussed with the user. The Feedback-only Build has its own approved text in [feedback/SUBMISSION.md](feedback/SUBMISSION.md). No MVP source publication, hosted demo, X post or MVP submission is authorized by this draft.
+
+Proposed title: **ForkTrade - versioned trade theses with independent remixes**
+
+Proposed description:
+
+ForkTrade helps a trader keep a testnet order tied to the reasoning and exact parameters they reviewed. A thesis becomes a versioned plan, then a fresh order preview. After the owner's explicit decision, its card distinguishes transaction submission, confirmation and the actual order outcome. A viewer can independently remix a published version, change its parameters and inspect the root-to-remix lineage without inheriting the original owner's approval.
+
+The initial scope is one BTC/USDso limit/GTC workflow on dreamDEX Perps testnet. The local app implements the offline thesis, review, synthetic execution, card and remix path, with public market/configuration reads and actual funded-account sizing/order simulation checked separately. The source has passed 104 unit/integration tests and 20 offline browser scenarios. These checks do not establish a real perps order or a live root/remix demo. No performance or profit claim is made.
+
+Current evidence limitations for the reviewer: actual wallet ownership authentication and independently approved root/remix orders have not been completed. The GitHub application repository is private; no public app URL, live demo recording or required X post links exist. This description is a preparation draft and is not yet a qualifying MVP entry.
+
+Before converting this draft into a submission, complete the existing live-acceptance checklist in [ACCEPTANCE.md](ACCEPTANCE.md): supported user-controlled wallet ownership, a fresh exact root order and separately owned/approved remix, authoritative outcomes, selected-field publication choices and reviewed live demo evidence. Then replace the evidence limitations above only with verified results and approved links, obtain the concrete MVP source/demo/post/submission permissions and recheck the current program requirements. No additional market or feature is needed before those gates.
+
 ## X post drafts - do not publish automatically
 
 The supplied rule summary requires 2-3 actual X post links tagging @DreamDEXSomnia for an MVP entry. These drafts are not posted links and do not satisfy that requirement. Update them to match demonstrated features and obtain user approval for any publication. Use a real authorized demo URL only when one exists.

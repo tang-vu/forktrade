@@ -50,6 +50,12 @@ Optional AI is deferred and can draft intent only. Plan hashes/application versi
 
 ## Future verification log
 
+### Reviewed extension publication and fresh submission gate — 2026-10-21 07:41 UTC
+
+Rechecked the official bot-kit main revision and targeted public issue search before publishing the approved extension: unchanged at 25798660bbe4674a6f83a960b202852896e2fed4, issue 23 remains the sole returned match, private duplicate priority still unknown. The [public Feedback package](https://github.com/tang-vu/dreamdex-perps-feedback) now contains both reports at b1ec751c0e9ed8ace96d45b852d16e55decfe276. All eleven remote files and ten manifest payload hashes/sizes were verified against local bytes. Real Edge displayed the two-report README; report 002 remains labelled offline/synthetic with no live-impact or eligibility claim.
+
+The [official bounty](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail) was displayed again in normal Edge. Track/reproducibility/first-valid/budget/whitelist requirements remain as recorded. A fresh Submit Build click redirected to login before any form; this proves neither submission nor eligibility. The user's instruction to continue after extension review was interpreted as approval of the concrete package and combined text, and that scope was stated before action. No dependency, private app visibility or execution permission changed.
+
 ### User-supplied Build organization reply — 2026-10-21
 
 The user pasted a dated community conversation asking whether a whitelisted participant may submit two separate Builds: a Feedback-only Build containing multiple reports and an MVP Build. A reply directly to that question at 14:33 UTC+7 said, "Yeah, you can submit both". We interpret the direct reply as supporting two separate Builds and use that as the working organization plan in BOUNTY.md. The earlier response concerned whitelist onboarding and did not answer this organization question.

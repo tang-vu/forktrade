@@ -3,7 +3,7 @@
 Severity: normal (proposed; organizer decides)
 Area: SDK
 Related surface: official dreamDEX bot kit, `perp-starter` integration example; not a claimed markets-sdk library defect
-Status: reproduced offline with explicit synthetic fixtures; private draft, not approved for publication/submission
+Status: reproduced offline with explicit synthetic fixtures; publication/submission authorized, not submitted yet
 
 ## Impact and scope
 
@@ -82,4 +82,4 @@ Choose the managed side once after reading the existing position, then use that 
 
 ## Submission and outcome
 
-Private draft only. Existing authorization covers the published report 001 package, not this additional file and evidence. No report 002 publication/submission, organizer response, acceptance or payment exists. No security exploit or unauthorized-access claim is made.
+Publication and submission of this reviewed extension were authorized on 2026-10-21. Submission remains pending; no organizer response, acceptance or payment exists. No security exploit or unauthorized-access claim is made.
