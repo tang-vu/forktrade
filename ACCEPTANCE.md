@@ -4,6 +4,8 @@
 
 The user changed the active goal to Feedback on 2026-10-21. Feedback report 001 is reproduced from the official app/docs and its reviewed package is published with user approval. DoraHacks submission is approved but pending user login, with separate evidence below; it does not pass MVP G4 or establish acceptance/payment.
 
+Report 002 is a separate private draft, reproduced only in an explicitly synthetic offline harness against hash-verified upstream source. It supplies no live account, trade, stop, receipt or financial-impact evidence and has no publication/submission approval.
+
 ## Gates and reporting
 
 | Gate | What it establishes | Initial result |
@@ -125,6 +127,8 @@ For every check store ID, commit, command/scenario, date/time, mode (`synthetic/
 | Feedback 001 approved publication | 2026-10-21; separate [public repo](https://github.com/tang-vu/dreamdex-perps-feedback), commit 8ae7fa336d777ee6b00e73a8116d32c52ad992f3 | Passed exact eight-file remote inventory, byte equality and all seven manifest SHA-256/size checks; Edge public page inspected; ForkTrade remains PRIVATE | User explicitly approved package/destination. Report status updated factually and manifest refreshed. App/wallet/env/DB/private evidence excluded |
 | Feedback 001 approved Build submission | 2026-10-21; actual official Submit Build click in Edge | Partial: reached DoraHacks login before any form; user authentication required; tab kept for handoff | Exact package and text already approved; no repeat approval needed. No registration/submission/acceptance/payment; user must sign in with whitelist account |
 | Independent Feedback follow-up | 2026-10-21; official bot-kit source 25798660bbe4674a6f83a960b202852896e2fed4 | Read-only source inspection only; no second confirmed issue or code execution | Operator ABI uncertainty remains unconfirmed; final price alignment prevents treating the intermediate conversion alone as a finding. One report total |
+| Feedback 002 offline source reproduction | 2026-10-21 04:51:04 UTC, Node 24.21.0, pinned official bot-kit 25798660bbe4674a6f83a960b202852896e2fed4 | Both mismatched-side fixtures select the opposite bracket; both matching-side controls match. Upstream strategy/helper source hashes checked; no signer requested or write invoked | [Report 002](feedback/002-existing-position-bracket-side.md), [explicitly synthetic output](feedback/evidence/002-offline-existing-position.json). No live account/stop/loss claim; independent issue, private draft, scope/duplicate/acceptance/payment unestablished |
+| Feedback helper lint environment | Correction commit containing this row; prior CI 39545983928 on 4b8d334 failed | Local full lint passed after declaring Node globals readonly for the two .mjs reproducers; no rule disabled | Previous Feedback commits' CI failed on helper 001; syntax-only checks had missed lint configuration. Current correction CI remains pending, not passed. Application runtime/dependencies unchanged |
 | Root live execution | User-directed loopback session is running; ownership and final order decisions pending | Not run | No order/hash/receipt; user must review a fresh exact order in app and wallet; environment mapping is verified |
 | Remix live execution | Independent owner context and its separate final review remain pending | Not run | No order/hash/receipt; root approval cannot cover a remix |
 | Bounty submission | Private planning state | Not submitted | No post links/judge-access approval |

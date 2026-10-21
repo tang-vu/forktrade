@@ -4,6 +4,8 @@ A local thesis-to-remix workspace for dreamDEX Perps testnet. **The offline path
 
 **Active user priority: Feedback bounty (2026-10-21).** [Report 001](feedback/001-perps-entry-opens-spot.md) reproduces an official dreamDEX Perps-entry redirect to STT spot, with actual screenshots and a public GET helper. Its reviewed package is now [published separately with user approval](https://github.com/tang-vu/dreamdex-perps-feedback). The [approved Feedback submission](feedback/SUBMISSION.md) is pending user DoraHacks login. Normal severity is proposed; no submission/acceptance/payment exists. This application repository stays private.
 
+[Report 002](feedback/002-existing-position-bracket-side.md) is a separate private draft: an official bot-kit existing-position/bracket-side mismatch reproduced with unchanged pinned source and explicitly synthetic offline fixtures. No live trade or stop outcome is claimed. Its reviewed publication extension and replacement Build text require approval beyond the existing report 001 grant.
+
 Write and version a private thesis, review an exact bounded order, approve a labelled synthetic scenario, choose public fields for a local demo card, then create an independently owned one-level remix with a parameter comparison. Fixtures cannot become live evidence.
 
 ## Run locally (Windows PowerShell)

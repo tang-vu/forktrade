@@ -1,0 +1,109 @@
+{
+  "kind": "OFFLINE SYNTHETIC CODE-PATH TEST — NOT LIVE EVIDENCE",
+  "observedAt": "2026-10-21T04:51:04.936Z",
+  "upstreamRevision": "25798660bbe4674a6f83a960b202852896e2fed4",
+  "sourceFiles": [
+    {
+      "path": "strategies/perp-starter/src/index.ts",
+      "sha256": "3e0158ab088489fbd63ff4a0e1a38174d6c5be6a3fee1fd85c4ea19065f731b1"
+    },
+    {
+      "path": "packages/perp-core/src/stops.ts",
+      "sha256": "25fad946e4510d135091f8dca24e19e4347814bc8b415b89141dea67be514a25"
+    }
+  ],
+  "nodeVersion": "v24.21.0",
+  "sourceRetrieval": {
+    "authenticated": false,
+    "publicGETs": 2,
+    "origin": "https://raw.githubusercontent.com"
+  },
+  "execution": {
+    "mode": "offline-synthetic",
+    "network": false,
+    "signing": false,
+    "transactions": false,
+    "privateKey": false,
+    "account": "zero-address test sentinel, not a real wallet"
+  },
+  "limitations": [
+    "Synthetic positions and helper responses, not real account/fill/stop evidence",
+    "Unmodified upstream strategy and armBracket bodies; TypeScript types stripped with Node builtin",
+    "Exchange/preflight/position/mark/tick-alignment imports are test doubles",
+    "Actual contract acceptance/rejection and financial impact are untested"
+  ],
+  "cases": [
+    {
+      "configuredSide": "long",
+      "syntheticExistingSide": "long",
+      "requestedBracketSide": "long",
+      "mismatch": false,
+      "exitCode": 0,
+      "logs": [
+        "perp-starter on OFFLINE TEST BTC (OFFLINE-BTC-PERP) | long 50 USDso at 2x | take-profit 2% stop-loss 1% | dry-run true",
+        "OFFLINE TEST: synthetic preflight only",
+        "each pending stop locks 0.15 SOMI, refunded on cancel; a bracket needs two.",
+        "already long 1 OFFLINE-BTC, managing it instead of opening another",
+        "[dry-run] would arm a long bracket on OFFLINE TEST BTC: take-profit 102.00, stop-loss 99.00, whole position, 0.30 SOMI locked"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ]
+    },
+    {
+      "configuredSide": "long",
+      "syntheticExistingSide": "short",
+      "requestedBracketSide": "long",
+      "mismatch": true,
+      "exitCode": 0,
+      "logs": [
+        "perp-starter on OFFLINE TEST BTC (OFFLINE-BTC-PERP) | long 50 USDso at 2x | take-profit 2% stop-loss 1% | dry-run true",
+        "OFFLINE TEST: synthetic preflight only",
+        "each pending stop locks 0.15 SOMI, refunded on cancel; a bracket needs two.",
+        "already short 1 OFFLINE-BTC, managing it instead of opening another",
+        "[dry-run] would arm a long bracket on OFFLINE TEST BTC: take-profit 102.00, stop-loss 99.00, whole position, 0.30 SOMI locked"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ]
+    },
+    {
+      "configuredSide": "short",
+      "syntheticExistingSide": "long",
+      "requestedBracketSide": "short",
+      "mismatch": true,
+      "exitCode": 0,
+      "logs": [
+        "perp-starter on OFFLINE TEST BTC (OFFLINE-BTC-PERP) | short 50 USDso at 2x | take-profit 2% stop-loss 1% | dry-run true",
+        "OFFLINE TEST: synthetic preflight only",
+        "each pending stop locks 0.15 SOMI, refunded on cancel; a bracket needs two.",
+        "already long 1 OFFLINE-BTC, managing it instead of opening another",
+        "[dry-run] would arm a short bracket on OFFLINE TEST BTC: take-profit 99.00, stop-loss 102.00, whole position, 0.30 SOMI locked"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ]
+    },
+    {
+      "configuredSide": "short",
+      "syntheticExistingSide": "short",
+      "requestedBracketSide": "short",
+      "mismatch": false,
+      "exitCode": 0,
+      "logs": [
+        "perp-starter on OFFLINE TEST BTC (OFFLINE-BTC-PERP) | short 50 USDso at 2x | take-profit 2% stop-loss 1% | dry-run true",
+        "OFFLINE TEST: synthetic preflight only",
+        "each pending stop locks 0.15 SOMI, refunded on cancel; a bracket needs two.",
+        "already short 1 OFFLINE-BTC, managing it instead of opening another",
+        "[dry-run] would arm a short bracket on OFFLINE TEST BTC: take-profit 99.00, stop-loss 102.00, whole position, 0.30 SOMI locked"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ]
+    }
+  ]
+}

@@ -50,6 +50,12 @@ Optional AI is deferred and can draft intent only. Plan hashes/application versi
 
 ## Future verification log
 
+### Official bot-kit existing-position path — 2026-10-21 04:51 UTC
+
+Verified unchanged upstream source bytes and current main revision `25798660bbe4674a6f83a960b202852896e2fed4`. The [starter](https://github.com/somnia-chain/dreamdex-bot-kit/blob/25798660bbe4674a6f83a960b202852896e2fed4/strategies/perp-starter/src/index.ts#L121) recognizes an existing position but later chooses trigger ordering and the [bracket argument](https://github.com/somnia-chain/dreamdex-bot-kit/blob/25798660bbe4674a6f83a960b202852896e2fed4/strategies/perp-starter/src/index.ts#L187) using configured `SIDE`. A four-case offline harness reproduced the resulting dry-run mismatch in both opposite-side fixtures; matching-side controls matched. [Report 002](feedback/002-existing-position-bracket-side.md) records exact source hashes, pinned revision, runtime, test doubles and the absence of live/financial evidence. The tracked reproducer uses Node 24 builtins only; no package pin or app dependency changed. This supersedes the earlier source-inspection-only status without retroactively treating that inspection as a reproduction.
+
+Public issue search `repo:somnia-chain/dreamdex-bot-kit is:issue perp-starter` returned only [issue 23](https://github.com/somnia-chain/dreamdex-bot-kit/issues/23), whose body describes adding the strategies and does not describe the side mismatch. Private bounty Builds and community reports remain inaccessible/unsearched, so duplicate priority is unknown. Official-resource inclusion is not proof the organizer will accept a bot-kit report or its proposed normal severity.
+
 ### Feedback publication and submission gate — 2026-10-21 04:44 UTC
 
 Re-read the [official bounty rules](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail) in ordinary Edge immediately before the approved Feedback submission attempt. Reward amounts, first-valid reproducible item rule, budget, one-file-per-issue format and whitelist restriction remain as recorded. Submit Build redirects the signed-out browser to DoraHacks login before the form. The approved report-only [public repository](https://github.com/tang-vu/dreamdex-perps-feedback) exists at `8ae7fa336d777ee6b00e73a8116d32c52ad992f3`; its complete eight-file contents and manifest were verified through GitHub's API, and its public page was inspected in actual Edge. This is publication evidence, not a DoraHacks submission, acceptance or payout. No dependency/stack change.

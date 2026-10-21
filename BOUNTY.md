@@ -4,6 +4,8 @@ Status: local implementation in progress; offline path, actual reads and bounded
 
 **Feedback is the active user priority as of 2026-10-21.** One actual upstream report is [reproduced](feedback/001-perps-entry-opens-spot.md), with normal severity proposed and no submission/acceptance/payment. The current ordinary-Edge rule recheck still supports the listed Feedback amounts/format; the Builds list is private, so first-report priority is unknown. The user approved the reviewed Feedback-only package and Build text; [that separate package is public](https://github.com/tang-vu/dreamdex-perps-feedback), excluding the private application and wallet material. Clicking Submit Build reached DoraHacks login; the approved submission is pending the user's whitelisted session.
 
+A second [private report](feedback/002-existing-position-bracket-side.md) reproduces a bot-kit dry-run side mismatch using explicit offline synthetic fixtures. This is separate code-path evidence, not a live protocol failure. Its scope/duplicate/severity decision remains with the organizer, and publication/submission of this addition is not covered by report 001 approval.
+
 ## Provenance and dates
 
 The rule facts below come from the user's full pasted official program page on **2026-10-20**, as supplied for this project. The live [DoraHacks bounty page](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail) was CAPTCHA-blocked in that review; this documentation run also could not retrieve the live rules. Reverify the current official page and any organizer clarifications before submission. Do not bypass a CAPTCHA or treat an inaccessible page as confirmation of unchanged rules.
@@ -52,7 +54,7 @@ If accepted-environment rules remain unavailable, continue local/offline work an
 | Actual root and remix perps orders | None | Separate user approvals, real identities and honest reconciled outcomes |
 | Accepted environment and current rules | Official page and linked developer environment reverified 2026-10-21 | Recheck before submission; no claim that pending root/remix outcomes qualify |
 | Demo evidence | Offline synthetic screenshots inspected; no live demo/recording | Real reviewed recording/screenshots/receipts with limitations |
-| Feedback reports | One reproduced normal-severity report; approved public package at 8ae7fa3, all eight remote files and hashes verified | User DoraHacks login, actual submission and organizer duplicate/acceptance decision pending |
+| Feedback reports | 001 reproduced in real Edge/HTTP and published at 8ae7fa3; 002 reproduced with pinned source and explicit offline synthetic fixtures, private draft | User login and actual 001 submission; separate 002 publication/text approval; organizer scope/duplicate/acceptance decisions pending |
 | 2-3 X post links | None; drafts in DEMO.md only | User-approved published posts and actual URLs |
 | Judge access/public source | Not authorized | User-approved least-needed access; recheck program requirements |
 | Submission | Feedback 001 package/text explicitly approved; not submitted, login gate observed | User signs in to the whitelist account, then resume approved Build submission; MVP submission remains unauthorized |
