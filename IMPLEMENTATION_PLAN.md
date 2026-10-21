@@ -85,6 +85,14 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-21 09:14 UTC — additional Feedback package pushed; exact source CI passed
+
+Private source commit `59b019eb11ed4e0df6ed366bc6249a60dbeacc1d` is pushed on `feat/forktrade-core`; working tree was clean and ForkTrade visibility was reverified PRIVATE. [CI 39575113501](https://github.com/tang-vu/forktrade/actions/runs/39575113501) completed successfully on that exact commit. Inspected terminal steps and totals: clean install/migration/typecheck/lint, 104 tests, production build and 20 Chromium cases (20.4s). These source/offline checks do not establish live upstream orders or bounty acceptance. New report harnesses were separately executed from the exact staged review package as recorded below.
+
+The 22-file v2 review package is unchanged at SHA-256 `90e1887d37a86951301a89be7870fde95ae976f219a94fdf354ce91e329f890a`; inventory, all 21 payload hashes/sizes, ZIP byte equality, script/JSON/Markdown checks and private-wallet/credential exclusion passed. No known local or CI failure remains. This result update changes documentation only; no repeat local source/browser run is required.
+
+Next required decision is limited to publishing that reviewed 003–005 extension to the existing Feedback repo and replacing the Feedback Build text with the exact proposal in feedback/SUBMISSION.md. Report 004 retains its unresolved-intent qualification; 003/005 have stronger functional evidence. The existing approved 001/002 package can still be submitted independently once the user signs in to DoraHacks. No new public files, Build submission, acceptance or payment occurred during this research. Goal stays partial; no wallet/live/MVP scope expansion. Commit is the documentation commit containing this entry.
+
 ### 2026-10-21 09:07 UTC — reward-focused research; two reproduced additions and one clarification candidate
 
 User asked for further valuable feedback to maximize rewards. Resumed on `feat/forktrade-core` at pushed `fe6e0a4`, preserving the private application and existing public 001/002 grant. Investigated distinct causes rather than splitting long/short cases or raising severity without evidence. Official bot-kit main remains `25798660bbe4674a6f83a960b202852896e2fed4`; npm SDK latest remains 0.32.1. No app behavior, dependency or stack change.
