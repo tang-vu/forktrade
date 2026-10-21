@@ -83,6 +83,12 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-21 04:47 UTC — independent follow-up while submission waits on login
+
+Private publication/status commit `4e51024` is pushed. Inspected the official bot-kit source at revision `25798660bbe4674a6f83a960b202852896e2fed4` through read-only GitHub requests; no install, script execution or wallet access. The operator ABI example agrees with the developer guide, and the final order helper aligns prices to ticks. Neither the ABI uncertainty nor intermediate floating-point conversions qualify as independently confirmed findings. Report count remains one; no reward count is inferred from additional investigation. The original normal report is ready for organizer review with explicit signed-out/same-profile/duplicate-check limits; authenticated behavior and exact browser build would strengthen environment coverage but do not justify fabricating evidence or delaying the existing report indefinitely.
+
+Changed Markdown local links/fences, reporter syntax and `git diff --check` passed for `4e51024`; public remote file/hash verification already passed at `8ae7fa3`. The login request is still pending; no approved Build was submitted and no acceptance/payment exists. Next action remains the already authorized DoraHacks submission after the user signs in. This follow-up changes documentation only; no app/source suite rerun is warranted. Commit is the commit containing this entry.
+
 ### 2026-10-21 04:44 UTC — approved Feedback package published; DoraHacks login handoff
 
 Resumed clean on `feat/forktrade-core` at `341de4d`. The user explicitly approved public publication at `tang-vu/dreamdex-perps-feedback` and the exact Feedback Build text in `feedback/SUBMISSION.md`. Rechecked live rules in ordinary Edge: accepted normal items $15, accepted critical/major $40, first-valid/reproducible only and payouts limited by the $1,500 budget. Explained that more independent accepted issues may increase payment; splitting a single issue, adding prose or unconfirmed hypotheses does not establish more rewards.
