@@ -14,7 +14,9 @@ export function WalletSession({session,enabled,busy,onSession,onProvider,onEnd,o
   async function connect() {
     if(working||busy)return;setWorking(true);
     try {
-      const provider=window.ethereum,context=await connectWallet(provider,enabled);onProvider(provider!,context.owner);
+      const provider=window.ethereum;
+      if(!provider){onError('No supported wallet is available in this browser. Use the wallet-connected ForkTrade window or enable your wallet extension.');return;}
+      const context=await connectWallet(provider,enabled);onProvider(provider,context.owner);
       if(session?.owner.toLowerCase()===context.owner.toLowerCase()){setChallenge(null);return;}
       const result=await api<{nonce:string;message:string;expiresAt:number}>('auth/challenge',{address:context.owner});
       setChallenge({...result,owner:context.owner});

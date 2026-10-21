@@ -32,6 +32,15 @@ test('rejected wallet connection preserves the unsaved draft and does not reques
   await expect(page.getByRole('alert').filter({hasText:'declined/unavailable'})).toBeVisible();await expect(page.getByLabel('Thesis title')).toHaveValue('Unsaved synthetic draft');
   expect(await page.evaluate(()=>(window as unknown as {__syntheticWalletCalls:string[]}).__syntheticWalletCalls)).toEqual(['eth_requestAccounts']);await expect(page.getByText('SYNTHETIC_SECRET_CANARY')).toHaveCount(0);
 });
+
+test('missing injected wallet explains which browser window to use without requesting authentication',async({page})=>{
+  let challenges=0;
+  await page.route('**/api/session',route=>route.fulfill({json:{mode:'testnet',session:null,authEnabled:true,executionEnabled:false}}));
+  await page.route('**/api/auth/challenge',route=>{challenges++;return route.fulfill({status:503,json:{error:'Unexpected synthetic request'}});});
+  await page.goto('/');await page.getByLabel('Thesis title').fill('Unsaved synthetic intent');await page.getByRole('button',{name:'Connect permitted wallet'}).click();
+  await expect(page.getByRole('alert').filter({hasText:'No supported wallet is available in this browser'})).toBeVisible();
+  await expect(page.getByLabel('Thesis title')).toHaveValue('Unsaved synthetic intent');expect(challenges).toBe(0);
+});
 test('mobile synthetic ownership challenge is reviewed separately from trading',async({page})=>{
   await page.setViewportSize({width:360,height:800});await provider(page,'auth');
   const expiresAt=Date.now()+300000,nonce='syntheticnonce1234567890';

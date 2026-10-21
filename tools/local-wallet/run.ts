@@ -9,11 +9,11 @@ import type {StoredPreview} from '../../src/server/repository';
 import {formatAmount} from '../../src/domain/amounts';
 import {invariant} from '../../src/domain/errors';
 import {ApprovalWindow} from './approval';
+import {installLocalWalletProvider} from './provider';
 import {walletLocation,unlockLocalWallet} from './keystore';
 import {WalletJournal} from './journal';
 import {localOrigin,ownershipMessage,requestFingerprint,transactionTag,walletOrder} from './policy';
 
-type Reply={ok:true;value:unknown}|{ok:false;error:{code:number;message:string}};
 const args=process.argv.slice(2),option=(name:string)=>{const index=args.indexOf(name);return index<0?undefined:args[index+1];};
 const walletDirectory=option('--wallet-dir');
 if(!walletDirectory){console.error('Usage: npm run wallet:testnet -- --wallet-dir .local/wallets/<wallet> [--origin http://127.0.0.1:3000] [--prepare-root]');process.exit(1);}
@@ -109,20 +109,7 @@ async function main(){
       return hash;
     })();flights.set(tag,{fingerprint,work});return work;
   }
-  await appPage.exposeBinding('forktradeLocalWalletRpc',async({page,frame},input:unknown):Promise<Reply>=>{
-    try{
-      invariant(page===appPage&&frame===appPage.mainFrame()&&new URL(frame.url()).origin===origin,'Wallet caller origin/frame rejected');
-      const args=z.object({method:z.string(),params:z.unknown().optional()}).strict().parse(input);
-      return {ok:true,value:await request(args.method,args.params)};
-    }catch(error){const code=error&&typeof error==='object'&&'walletCode' in error&&error.walletCode===-32000?-32000:4001;return {ok:false,error:{code,message:'Local wallet declined, expired or failed its safety checks. No automatic retry; inspect the existing request.'}};}
-  });
-  await appPage.addInitScript(()=>{
-    const listeners=new Map<string,Set<(...values:unknown[])=>void>>();
-    Object.defineProperty(window,'ethereum',{value:{isForkTradeLocalTestWallet:true,request:async(args:unknown)=>{
-      const call=(window as unknown as {forktradeLocalWalletRpc:(input:unknown)=>Promise<Reply>}).forktradeLocalWalletRpc;
-      const reply=await call(args);if(!reply.ok)throw Object.assign(new Error(reply.error.message),{code:reply.error.code});return reply.value;
-    },on:(event:string,listener:(...values:unknown[])=>void)=>{if(!listeners.has(event))listeners.set(event,new Set());listeners.get(event)!.add(listener);},removeListener:(event:string,listener:(...values:unknown[])=>void)=>listeners.get(event)?.delete(listener)},writable:false,configurable:false});
-  });
+  await installLocalWalletProvider(appPage,origin,request);
   appPage.on('response',response=>{
     if(!preparing&&response.url()===`${origin}/api/auth/verify`&&response.status()===200){preparing=true;void (async()=>{
       await appPage.getByRole('heading',{name:'Authenticated owner'}).waitFor({timeout:15000});
@@ -133,8 +120,11 @@ async function main(){
     })().catch(()=>console.error('Session recovery/private draft preparation unavailable; existing identities and drafts were preserved.'));}
   });
   await appPage.goto(origin);
+  stage='provider-readiness';
+  const providerReady=await appPage.evaluate("(async()=>typeof window.ethereum==='object'&&window.ethereum.isForkTradeLocalTestWallet===true&&await window.ethereum.request({method:'eth_chainId'})==='0xc4cf')()");
+  invariant(providerReady===true,'Wallet provider/bridge failed to initialize');
   await appPage.bringToFront();
-  console.log('Local testnet wallet ready. Connect/sign in the app, then review each exact request in the separate wallet window. No key is exposed to the app/server.');
+  console.log('Local testnet wallet provider and bridge verified. Connect/sign in the app, then review each exact request in the separate wallet window. No key is exposed to the app/server.');
   await new Promise<void>(resolve=>{browser!.once('disconnected',()=>resolve());walletPage.once('close',()=>{approval.cancel();void browser!.close();});});
 }
 async function preparePrivateRoot(page:Page,context:BrowserContext,origin:string,owner:string){

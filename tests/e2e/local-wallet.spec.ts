@@ -1,5 +1,13 @@
 import {test,expect} from '@playwright/test';
+import {spawnSync} from 'node:child_process';
+import {resolve} from 'node:path';
 import {ApprovalWindow} from '../../tools/local-wallet/approval';
+
+test('local provider survives the actual tsx CLI runtime and enforces caller boundaries without a key',()=>{
+  const result=spawnSync(process.execPath,['--import','tsx',resolve('tests/e2e/fixtures/local-wallet-runtime.ts')],{cwd:process.cwd(),encoding:'utf8',timeout:25000,windowsHide:true,maxBuffer:16384});
+  expect(result.error).toBeUndefined();expect(result.status,result.stderr).toBe(0);
+  expect(result.stdout).toContain('SYNTHETIC tsx wallet runtime passed');
+});
 test('synthetic local wallet UI requires a real click, escapes content, rejects and expires without a signer',async({browser})=>{
   const context=await browser.newContext({viewport:{width:360,height:800}}),page=await context.newPage(),wallet=new ApprovalWindow(page,true);await wallet.initialize();
   const pageErrors:string[]=[];page.on('pageerror',error=>pageErrors.push(error.message));
