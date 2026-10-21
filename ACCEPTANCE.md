@@ -1,6 +1,6 @@
 # Acceptance and evidence matrix
 
-**Current result: source/offline and mock-wallet integration checks pass; actual public market reads pass. GOAL is blocked on the unanswered live-session permission and accepted-environment evidence after three consecutive goal turns. Actual ownership authentication, account reads and live root/remix acceptance remain unrun.** No actual testnet execution exists.
+**Current result: source/offline/mock-wallet checks pass; actual public/funded-account reads and exact order simulation pass. User-authorized 5-USDso approval/deposit are confirmed. Browser ownership flow and actual root/remix orders remain unrun.** Funding receipts establish no order or live root/remix acceptance.
 
 ## Gates and reporting
 
@@ -9,8 +9,8 @@
 | G0 - Documentation | Guide files, links, scope, current-state accuracy, private repository | Passed local structural review on 2026-10-20: 13 Markdown files, internal links, titles, balanced fences and credential-pattern scan; private metadata verified. Final remote commit/inventory checked in task handoff; no app claim |
 | G1 - Source/local checks | Type safety, lint, domain/adapter tests, production build | Passed M5: typecheck/lint/build and 99 unit/integration tests; live transports are mocked |
 | G2 - Offline browser | Reproducible UI behavior and failure handling with labelled synthetic fixtures | Passed 17 Chromium scenarios at desktop/360px including intercepted mock-wallet cases; offline screenshots inspected |
-| G3 - Read-only integration | Verified current chain/config/market reads and available observation semantics | Partial: actual public M0/M4/M5 reads passed; actual owner/account/history/correlation unrun |
-| G4 - Live acceptance | Actual separately authorized user orders and honest root/remix evidence | Blocked on future authorization and prerequisites |
+| G3 - Read-only integration | Verified current chain/config/market reads and available observation semantics | Actual public/funded-owner sizing/margin/eth_call passed; actual order history/correlation/reconnect unrun |
+| G4 - Live acceptance | Actual separately authorized user orders and honest root/remix evidence | Root/remix orders unrun; bounded account funding alone does not pass G4 |
 | G5 - Bounty readiness | Current rules/access/demo/post links/submission checklist | Not ready; drafts only and later approvals required |
 
 G1/CI success is not G3/G4 success. A mock transaction, screenshot of a fixture, public explorer link without identity verification, or a hash alone cannot pass live acceptance.
@@ -59,11 +59,11 @@ Fixture decimals are test cases, not a permanent market table. Use synthetic acc
 
 - [x] Record pinned SDK/version and exact read/sign interfaces with official ABI/source checks (SOURCES.md; actual wallet unrun).
 - [x] Verify public RPC chain ID, market/system/collateral identities, metadata and code/config; M5 actual snapshot and rejection tests.
-- [ ] Verify actual owner's selected market eligibility, order limits and account context without a transaction; public tick/lot/minimum passed, account fixtures only.
+- [x] Verify actual funded owner's BTC eligibility/limits/margin and exact unsigned simulation; private 2026-10-21 diagnostic. No order approval/send.
 - [x] Verify public HTTP/WebSocket/indexer availability/freshness; actual owner/history checks remain unavailable until authorized.
 - [x] Prove public read-only interface has no trader side effects using mocks/traps and review of actual calls.
 - [x] Document receipt/order correlation and bounded history semantics; synthetic adapter tests passed, actual order history unrun.
-- [ ] Reverify accepted bounty environment separately from chain identity.
+- [x] Reverify the official bounty's linked developer environment; 2026-10-21 normal-browser read and evidence/environment-2026-10-21.json. Entry/outcome eligibility remains separate.
 
 ## Live testnet acceptance checklist
 
@@ -107,6 +107,9 @@ For every check store ID, commit, command/scenario, date/time, mode (`synthetic/
 | Ownership/account session | Permission requested 2026-10-20 17:35 UTC; pending | Not run | Existing user-selected EOA, localhost:3000, Hideki 50383; ownership signature plus read-only BTC context only; all flags false |
 | User-authorized wallet creation/storage | 2026-10-21 01:41 UTC, local Windows user | Completed one real random testnet EOA; DPAPI encrypt/decrypt round-trip, persistence, ACL, Git exclusion and no-regeneration checks passed; public chain 50383/native balance 0 observed | Keys/address files remain only in ignored .local/wallets storage; no secret or wallet address added to tracked evidence. Creation permission covers no import/auth/order; user will faucet |
 | User faucet balance verification | 2026-10-21 01:43:25 UTC, actual public reads on chain 50383 | 50 STT native and 100 USDso wallet balance at block 28950812; bank collateral/equity 0 at SDK source block 28950828 | Private local record: .local/wallets/hideki-testnet-2026-10-21/funding-read-latest.json. Public balance observation only; no key access/auth/risk preview/signing/transaction. Bank funding and live acceptance remain unrun |
+| Authorized account funding | 2026-10-21 02:00:50 UTC, actual chain 50383 | Exact 5-USDso approve/deposit confirmed at blocks 28961252/28961268; bank 5, wallet 95, allowance 0; fee 0.004691388 STT | Private local funding journal; independent tx/input/canonical-receipt/postcondition checks. No web/server key and no order. Setup signer is an isolated local wallet command |
+| Actual funded-owner sizing and simulation | 2026-10-21, prepareLiveContext + exact eth_call | Passed actual BTC risk/limit/native fee and call checks for diagnostic 0.00013 BTC; required lock 0.55474431865512426 USDso | Private funded-preview-readonly.json. Historical price 83017.6, expired 15-second preview; not a live thesis/approval/order. Actual browser auth and protocol order history still unrun |
+| Current official environment mapping | 2026-10-21, ordinary Edge + linked official guide | Bounty page displayed; its own resource link specifies current chain 50383 and matching contracts | evidence/environment-2026-10-21.json; no CAPTCHA/login/submission or eligibility guarantee |
 | Root live execution | No authorized execution session | Not run | No order/hash/receipt; each final order needs separate approval and confirmed environment |
 | Remix live execution | No authorized session | Not run | No order/hash/receipt |
 | Bounty submission | Private planning state | Not submitted | No post links/judge-access approval |

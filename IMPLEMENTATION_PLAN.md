@@ -1,6 +1,6 @@
 # Implementation plan and progress ledger
 
-**Implementation started on 2026-10-20; GOAL is blocked pending live-session authorization and accepted-environment evidence.** Offline/source/public-read work is delivered; actual account and root/remix execution acceptance remain unrun. This is the single implementation progress/blocker ledger. Keep it concise and evidence-based. Do not create parallel TODO/status files.
+**Implementation started on 2026-10-20; user-authorized funding and actual funded-account simulation now pass.** The official program-resource environment mapping is verified. Browser ownership flow and actual root/remix execution acceptance remain unrun. This is the single implementation progress/blocker ledger. Keep it concise and evidence-based. Do not create parallel TODO/status files.
 
 ## Order of work
 
@@ -56,10 +56,10 @@ These are current implementation gates, not failures already observed in an app:
 | D1 | User invocation of GOAL authorizing app implementation | Granted 2026-10-20; commit/push each verified increment requested | Local implementation |
 | D2 | Current SDK/version and browser signing feasibility | SDK ABI/source and mock browser path verified in M5; actual wallet unrun | Authorized real session/account compatibility check |
 | D3 | Live chain/config/contract/market verification | Public RPC/SDK checks passed; actual owner context not read | M4 adapter tests and M5 preparation |
-| D4 | Bounty accepted environment and current rules | Reverify; live page unavailable/CAPTCHA context | Local implementation and draft checklist |
+| D4 | Bounty accepted environment and current rules | Official page displayed in normal Edge on 2026-10-21; its developer link identifies chain 50383 and verified contracts | Recheck final outcome/entry eligibility before submission |
 | D5 | Suitable local runtime/dependency access | Passed clean Windows and GitHub Ubuntu install/build/tests | Continue local implementation |
 | D6 | Wallet connection/auth signature and user permissions | One local testnet wallet created/stored with explicit authorization on 2026-10-21; connection/import/auth still pending; no signature | Wallet-creation request completed; user intends to faucet |
-| D7 | Gas/collateral/account access and each live order approval | User-funded wallet verified: 50 STT / 100 USDso on 2026-10-21; bank collateral 0. Funding/allowance/auth/order actions not authorized | Prepare the supported owner-controlled setup and fresh review; no automatic funding |
+| D7 | Gas/collateral/account access and each live order approval | After user continuation: exact 5-USDso approve/deposit confirmed; wallet 95, bank 5, allowance 0. Actual risk/eth_call passed; no order approval | Supported owner-controlled wallet session and exact per-order review |
 | D8 | Private sharing/public/judge access, hosting, posts and submission | Not authorized | Drafts and local evidence package |
 | D9 | Mainnet activity for a conditional prize tranche | Out of scope; separate authorization/project | None needed for testnet MVP implementation |
 
@@ -74,12 +74,22 @@ If access to a required service fails, add a specific row with action, target, r
 | M1 | Passed local/CI increment | Clean npm ci, exact pins/lock, Next shell, migration, typecheck/lint/build; GitHub CI 39456931257 passed | Live implementation remains separate |
 | M2 | Passed offline increment | 39 unit/integration tests; domain, versions, owner scoping, request persistence | Live adapter semantics remain separate |
 | M3 | Passed offline increment | Final rebuilt suite: 8 browser tests passed (19.9s), comparison/withdrawal, 1280/360px screenshots inspected | Live wallet behavior is M4/M5/M6, not established by fixtures |
-| M4 | Public adapter passed; account adapter wired/mock-verified | Public factory/bank/pool/book/code hashes, M5 snapshot; actual account still unrun | Authorized actual owner/account/history check |
+| M4 | Actual public and funded-owner reads/simulation passed; observation history unrun | Verified system/book/precision, actual sizing/margin/native fees and exact eth_call; private safe evidence paths below | Browser owner session and actual order/history/reconnect acceptance |
 | M5 | Passed source/mock readiness increment; actual wallet unrun | 99 unit/integration tests and 17 browser scenarios; exact ABI payload, single wallet send, durable claim and authoritative observation | Real EOA authentication/simulation/receipt compatibility is M6 |
 | M6 | Blocked on later authorization and prerequisites | No actual orders or signatures | Obtain permission when reviewable; execute and reconcile honestly |
 | M7 | Partial local handoff prepared | README/run guide, offline screenshots, source/read-only evidence, demo manifest and three unposted social drafts | Real live evidence, current rules and separately authorized external actions |
 
 ## How to update and resume
+
+### 2026-10-21 02:06 UTC — authorized funding complete; actual account/eth_call passed
+
+User said “Tiếp đi bạn làm hết được mà” after the explained approve/deposit prerequisite. Treated that continuation as authorization for bounded testnet setup using the dedicated user wallet; selected 5 of its 100 USDso, communicated exact bank/chain/allowance and a 0.05-STT fee cap per transaction before execution. This grants no unreviewed root/remix order. Source/branch resumed clean. Normal Edge successfully displayed the official bounty page; its developer-resource link identifies the same chain 50383 and contracts. Environment mapping is supported by that official link, not inferred from a label alone; no CAPTCHA/login/submission. See evidence/environment-2026-10-21.json and SOURCES.md.
+
+Executed only exact ERC20 approve(verifiedBank,5 USDso), then MarginBank deposit(5 USDso), with official pinned SDK ABIs and fresh chain/code/collateral/nonce/fees/simulation checks. A standalone local wallet command opens DPAPI in memory; no private key, signed raw payload or credential is passed to app/server, command args, environment, chat or Git. Stable local request/nonce persisted before signing; signed hash persisted before one raw broadcast; receipt/transaction/canonical block and postconditions verified. Local synthetic executor checks passed for claim-before-sign, hash-before-send, response-loss reconciliation and no duplicate signing/send. Initial unsigned prototype stopped before any signature; corrected gas guards using the real estimate and replaced an unverified getter with the SDK system-config read, then unsigned review passed.
+
+Actual funding completed 02:00:50 UTC: approve confirmed at block 28961252 (260601 gas), deposit confirmed at 28961268 (521297 gas). Wallet 95 USDso, bank unlocked 5 USDso, allowance 0; native 49.995308612 STT, total fee 0.004691388 STT. Private journal: `.local/wallets/hideki-testnet-2026-10-21/funding-5-usdso-v1.json`; public-address/transaction association is not published to tracked evidence. No order, grant/operator, voucher, cancellation or cross-account transfer.
+
+Actual funded-owner diagnostic then passed `prepareLiveContext` and exact eth_call: BTC buy quantity 0.00013, historical limit 83017.6 USDso, account max 0.00117 BTC, protocol lock 0.55474431865512426 USDso, gas ceiling 10000000 and historical native cap 0.072 STT. This was read-only, not an approved/submitted order or saved live thesis version; its 15-second preview is expired and cannot authorize execution. Full record `.local/wallets/hideki-testnet-2026-10-21/funded-preview-readonly.json` remains ignored/private. Package pins/source/browser checks unchanged. Next: prepare the supported user-controlled wallet session and exact app review; final root/remix approval and actual order evidence still remain mandatory.
 
 ### 2026-10-21 01:43 UTC — user faucet confirmed by actual public reads
 

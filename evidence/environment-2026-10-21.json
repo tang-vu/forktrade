@@ -1,0 +1,21 @@
+{
+  "kind": "official-source-environment-verification",
+  "verifiedDateUtc": "2026-10-21",
+  "bountyUrl": "https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail",
+  "bountyRetrieval": "Read in normal Edge browser; no login, CAPTCHA interaction, or submission",
+  "bountyNetworkLabel": "Somnia Tokyo testnet",
+  "bountyLinkedDeveloperGuide": "https://app.testnet.dreamdex.io/docs/developers/perps-testnet",
+  "linkedGuideNetworkLabel": "Hideki testnet / DreamDEX app region",
+  "chainId": 50383,
+  "rpc": "https://api.hideki2.infra.testnet.somnia.network",
+  "explorer": "https://explorer.testnet.somnia.network/tokyo",
+  "sdkVersion": "0.32.1",
+  "marginBank": "0x478769E1177C0773c43A593DCCc4Ad15F15F1394",
+  "collateral": "0xed7993A74dAe1e6656B704A424DcD8711aAf4F72",
+  "conclusion": "The bounty's own developer-resource link identifies this runtime environment; labels are mapped through that link, not treated as separate invented chains.",
+  "limitations": [
+    "Environment mapping is supported by the linked official resource; this is not organizer acceptance of ForkTrade or its outcomes",
+    "Actual root/remix orders and final eligibility remain unverified",
+    "Rules, outcome requirements and access must be rechecked before any submission"
+  ]
+}

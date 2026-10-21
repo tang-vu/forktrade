@@ -1,10 +1,12 @@
 # Bounty fit and submission gates
 
-Status: local implementation in progress; offline app and public read spike exist. ForkTrade targets **both MVP and Feedback tracks** of the dreamDEX Perps bounty. No live acceptance, submission, eligibility or reward is established. The repository stays private until the user separately approves a concrete access/visibility change.
+Status: local implementation in progress; offline path, actual reads and bounded account funding exist. ForkTrade targets **both MVP and Feedback tracks** of the dreamDEX Perps bounty. No root/remix order acceptance, submission, eligibility or reward is established. The repository stays private until the user separately approves a concrete access/visibility change.
 
 ## Provenance and dates
 
 The rule facts below come from the user's full pasted official program page on **2026-10-20**, as supplied for this project. The live [DoraHacks bounty page](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail) was CAPTCHA-blocked in that review; this documentation run also could not retrieve the live rules. Reverify the current official page and any organizer clarifications before submission. Do not bypass a CAPTCHA or treat an inaccessible page as confirmation of unchanged rules.
+
+**Reverified 2026-10-21:** the ordinary Edge browser displayed the official page without login or CAPTCHA interaction. Deadline and track requirements match the baseline. The page links directly to the testnet developer guide describing chain 50383 and the verified bank/collateral, supporting the network-label mapping in [environment evidence](evidence/environment-2026-10-21.json). This establishes the referenced test environment, not entry acceptance or a qualifying execution outcome. Extra bounty funding must not be moved into Arena accounts; no cross-account transfer was made.
 
 Stated deadline: **2026-11-01 23:59 UTC**, equivalent to **2026-11-02 06:59 Asia/Ho_Chi_Minh (UTC+7)**. Results were expected by **November 8, 2026**; the supplied summary gives no exact results time. Recheck both dates. No automation or submission is created by this document.
 
@@ -46,7 +48,7 @@ If accepted-environment rules remain unavailable, continue local/offline work an
 | Private GitHub docs baseline | Prepared by this task | Verified repository visibility, branch, commit and Markdown inventory |
 | Runnable app/source | Offline path and guarded live integration pass source/mock/browser checks; ACCEPTANCE.md distinguishes actual reads | Actual wallet/account/root/remix acceptance remains unrun |
 | Actual root and remix perps orders | None | Separate user approvals, real identities and honest reconciled outcomes |
-| Accepted environment and current rules | Pending re-verification | Dated official confirmation and configuration notes |
+| Accepted environment and current rules | Official page and linked developer environment reverified 2026-10-21 | Recheck before submission; no claim that pending root/remix outcomes qualify |
 | Demo evidence | Offline synthetic screenshots inspected; no live demo/recording | Real reviewed recording/screenshots/receipts with limitations |
 | Feedback reports | None; template only | One file per real nonsecurity reproduced issue, duplication check |
 | 2-3 X post links | None; drafts in DEMO.md only | User-approved published posts and actual URLs |

@@ -50,6 +50,12 @@ Optional AI is deferred and can draft intent only. Plan hashes/application versi
 
 ## Future verification log
 
+### Official bounty environment and funded-owner reads — 2026-10-21
+
+The ordinary Edge browser successfully displayed the current [official bounty page](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail); web-reader retrieval still returned 405. No login, CAPTCHA interaction or submission occurred. Its resource link points to the [testnet developer guide](https://app.testnet.dreamdex.io/docs/developers/perps-testnet), which specifies chain 50383, Hideki/DreamDEX naming, SDK 0.32.1 and the bank/collateral used by our verified runtime. This direct link supports the Tokyo-to-Hideki environment mapping; it is not organizer acceptance of the app or any outcome. Safe source record: [environment verification](evidence/environment-2026-10-21.json). Deadline and MVP evidence requirements still match the supplied baseline. The page also restricts moving extra bounty funds into Arena accounts; no such transfer was made.
+
+After the user's continuation instruction following the approve/deposit explanation, completed bounded local setup: approve exactly 5 USDso, then deposit 5 to the verified bank. SDK tradeAbi.js supplied the approve/deposit ABI. A separate one-shot local wallet command decrypts DPAPI only in memory; no application/server signer was added. Actual postconditions: bank 5, wallet 95 USDso, allowance 0; total native fee 0.004691388 STT. Funded owner sizing/margin and exact order eth_call then passed with real data (no order approval/sign/send). Full private observations remain Git-ignored. New dependencies: none; all pins unchanged.
+
 ### M5 exact browser call and observation — 2026-10-20 17:25 UTC
 
 Final source cross-check: `dist/tradeAbi.js` declares perps `placeOrder` nonpayable with no outputs. Removed unsupported return/payable annotations from the local fragment (calldata is unchanged), and strengthened the existing test to compare the complete function ABI as well as encoded bytes. RPC simulation checks reverts; benign non-placement still requires receipt/event reconciliation and must not become a predicted success. This is a ForkTrade source correction, not an upstream finding.
