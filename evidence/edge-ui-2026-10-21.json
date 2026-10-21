@@ -3,7 +3,9 @@
   "browser": "Microsoft Edge, existing user browser via computer-use extension",
   "interaction": "cua_repl UI navigation, clicks, form entry and screenshots; no intercepted live responses",
   "sourceBaseCommit": "7b78d71903085252df5eb562779c1b274dd1a88e",
-  "sourceChange": "Public-snapshot eligibility wording only; included in the same commit as this record",
+  "sourceCommit": "6ec2ac65d40733ecbc7eaf60f277ebf4aef854cd",
+  "sourceChange": "Public-snapshot eligibility wording only; screenshots and original evidence were committed with the source correction",
+  "ci": {"run": "https://github.com/tang-vu/forktrade/actions/runs/39542698499", "result": "success", "unitIntegrationTests": 104, "chromiumCases": 20, "browserDurationSeconds": "24.8", "limitation": "Automated source/offline result, separate from manual Edge and actual live acceptance"},
   "url": "http://127.0.0.1:3000",
   "mode": "testnet, unauthenticated public/unsaved-draft UI",
   "cases": [

@@ -81,6 +81,10 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-21 04:14 UTC — Edge evidence commit CI verified
+
+Verified pushed source/evidence commit `6ec2ac65d40733ecbc7eaf60f277ebf4aef854cd`. [CI 39542698499](https://github.com/tang-vu/forktrade/actions/runs/39542698499) completed successfully on that exact commit: install/migration/typecheck/lint, 104 tests, build and all 20 Chromium cases (24.8s). Terminal result and browser totals inspected. These automated checks are separate from the actual Edge cases below. This follow-up adds exact commit/CI references only; source is unchanged and does not need another local suite. App session 75707 and the requested Edge tab remain available. Actual Edge wallet/ownership/orders and the additional policy-blocked offline Edge run remain incomplete; no gate is silently passed.
+
 ### 2026-10-21 04:10 UTC — actual Edge computer-use verification
 
 User explicitly requested Edge and computer-use testing. Resumed clean at `7b78d71903085252df5eb562779c1b274dd1a88e`; its CI 39541842034 is successful. Used the existing Microsoft Edge extension browser through `cua_repl` for all UI navigation/clicks/form entry/observations. Opened actual app, clicked connect, entered an explicitly agent-authored unsaved UI-check draft, retried connect and confirmed all text survived. Missing-provider guidance was accurate; private save and actual order review remained disabled. Public market refresh showed real chain 50383, BTC/USDso book/precision/grid/contracts and block. Both workspace/error and public market measured document width 345px in a 360px viewport; restored the default viewport. No captured console error/warn entries when inspected. These are manual real-Edge public/unauthenticated checks, separate from synthetic automated browser tests and actual order acceptance.
