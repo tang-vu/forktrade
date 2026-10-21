@@ -2,7 +2,7 @@
 
 **Implementation started on 2026-10-20; user-authorized funding and actual funded-account simulation now pass.** The official program-resource environment mapping is verified. Browser ownership flow and actual root/remix execution acceptance remain unrun. This is the single implementation progress/blocker ledger. Keep it concise and evidence-based. Do not create parallel TODO/status files.
 
-**Current priority (user changed goal 2026-10-21): Feedback bounty research and submission preparation.** MVP completion is no longer the active goal. No additional Edge-wallet implementation was made after that change. Feedback has one reproduced normal-severity draft so far; acceptance/payment and all external publication/submission remain unestablished.
+**Current priority (user changed goal 2026-10-21): Feedback bounty research and submission.** MVP completion is no longer the active goal. No additional Edge-wallet implementation was made after that change. One reproduced normal-severity report is published in a separate approved repository; DoraHacks submission is authorized but pending user login. Acceptance/payment remain unestablished.
 
 ## Order of work
 
@@ -62,7 +62,7 @@ These are current implementation gates, not failures already observed in an app:
 | D5 | Suitable local runtime/dependency access | Passed clean Windows and GitHub Ubuntu install/build/tests | Continue local implementation |
 | D6 | Wallet connection/auth signature and user permissions | Dedicated funded wallet exists; separate companion startup verified but now closed. Actual Edge UI has no injected wallet | Main app running; obtain a supported Edge provider and user ownership decision without importing a key into the app/server |
 | D7 | Gas/collateral/account access and each live order approval | After user continuation: exact 5-USDso approve/deposit confirmed; wallet 95, bank 5, allowance 0. Actual risk/eth_call passed; no order approval | Supported owner-controlled wallet session and exact per-order review |
-| D8 | Private sharing/public/judge access, hosting, posts and submission | Not authorized | Drafts and local evidence package |
+| D8 | Private sharing/public/judge access, hosting, posts and submission | Reviewed Feedback 001 package/public repo and exact Build text approved; package published, submission pending DoraHacks login. App/public access, hosting and posts remain unauthorized | Continue independent QA and resume approved Feedback submission after user login |
 | D9 | Mainnet activity for a conditional prize tranche | Out of scope; separate authorization/project | None needed for testnet MVP implementation |
 
 If access to a required service fails, add a specific row with action, target, reason, completed work, denied/pending/uncertain status, and next possible action. Do not mislabel an unattempted integration as a verified failure.
@@ -82,6 +82,16 @@ If access to a required service fails, add a specific row with action, target, r
 | M7 | Partial local handoff prepared | README/run guide, offline screenshots, source/read-only evidence, demo manifest and three unposted social drafts | Real live evidence, current rules and separately authorized external actions |
 
 ## How to update and resume
+
+### 2026-10-21 04:44 UTC — approved Feedback package published; DoraHacks login handoff
+
+Resumed clean on `feat/forktrade-core` at `341de4d`. The user explicitly approved public publication at `tang-vu/dreamdex-perps-feedback` and the exact Feedback Build text in `feedback/SUBMISSION.md`. Rechecked live rules in ordinary Edge: accepted normal items $15, accepted critical/major $40, first-valid/reproducible only and payouts limited by the $1,500 budget. Explained that more independent accepted issues may increase payment; splitting a single issue, adding prose or unconfirmed hypotheses does not establish more rewards.
+
+Verified the originally reviewed eight-entry zip SHA-256 `14ce3640a9b89ad8441ee6b588beb1a555059b9a6955a60a7d825bb6ca289fbc`. Refreshed only factual approval status in report 001 before publication and regenerated its manifest; no evidence or issue scope changed. Initialized an isolated repository under ignored `.local/feedback-001-publication-ready-v2`, used the authenticated account's GitHub noreply identity locally, and explicitly staged the seven reviewed files plus manifest. Initial `git diff --cached --check` flagged CRLF in the package README; normalized that file to LF, refreshed the manifest and verified the correction before publication. No credentials/settings outside this isolated repository changed.
+
+`gh repo create ... --public --source . --remote origin --push` succeeded. Public HEAD: [`8ae7fa336d777ee6b00e73a8116d32c52ad992f3`](https://github.com/tang-vu/dreamdex-perps-feedback/commit/8ae7fa336d777ee6b00e73a8116d32c52ad992f3). GitHub API verification passed: exact eight-file inventory, all remote bytes equal the local package and all seven SHA-256/size entries match. Existing ForkTrade visibility verified PRIVATE. Real Edge shows the public repo, report link and evidence/reproducer; local proof screenshot `.local/feedback-public-repository.jpg` is ignored.
+
+Clicked official Submit Build: redirected to `dorahacks.io/login?redirect_uri=%2Fhackathon%2Fdreamdex-perps-bounty%2Fdetail` before any Build form. No registration, account change, submission, organizer acceptance or payment occurred. Kept that Edge tab for user handoff and requested user sign-in with the whitelist account; no password/OTP requested. The computer-use skill's explicit authentication-dialog prohibition requires this handoff. Existing publication/submission approval persists; do not ask again for the same package/text. Next: after user login, complete the approved Feedback Build; inspect any unexpected binding terms separately. Continue only independently reproducible read-only QA while waiting. This documentation/status milestone changes no application source or dependency; reporter syntax, manifest, remote inventory, Markdown and diff checks are the relevant checks. Commit is the private repository commit containing this entry.
 
 ### 2026-10-21 04:35 UTC — Feedback priority; first real upstream report prepared
 

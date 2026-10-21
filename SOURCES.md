@@ -50,6 +50,10 @@ Optional AI is deferred and can draft intent only. Plan hashes/application versi
 
 ## Future verification log
 
+### Feedback publication and submission gate — 2026-10-21 04:44 UTC
+
+Re-read the [official bounty rules](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail) in ordinary Edge immediately before the approved Feedback submission attempt. Reward amounts, first-valid reproducible item rule, budget, one-file-per-issue format and whitelist restriction remain as recorded. Submit Build redirects the signed-out browser to DoraHacks login before the form. The approved report-only [public repository](https://github.com/tang-vu/dreamdex-perps-feedback) exists at `8ae7fa336d777ee6b00e73a8116d32c52ad992f3`; its complete eight-file contents and manifest were verified through GitHub's API, and its public page was inspected in actual Edge. This is publication evidence, not a DoraHacks submission, acceptance or payout. No dependency/stack change.
+
 ### Feedback rules and first official-site reproduction — 2026-10-21 04:35 UTC
 
 Re-read the [official bounty](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail) in normal Edge; no CAPTCHA/login. Feedback includes app/API/SDK/docs issues and missing features, with $40 critical/major and $15 other accepted items, first-valid-report/reproducibility and $1,500 budget limits. The [Builds page](https://dorahacks.io/hackathon/dreamdex-perps-bounty/build) states submissions are private. Neither a draft nor severity guarantees payment.

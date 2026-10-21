@@ -2,7 +2,7 @@
 
 **Current result: source/offline/mock-wallet checks pass; actual public/funded-account reads and exact order simulation pass. User-authorized 5-USDso approval/deposit are confirmed. Browser ownership flow and actual root/remix orders remain unrun.** Funding receipts establish no order or live root/remix acceptance.
 
-The user changed the active goal to Feedback on 2026-10-21. Feedback report 001 is a reproduced nonsecurity draft from the official app/docs, with separate evidence below; it does not pass MVP G4 or establish a bounty outcome.
+The user changed the active goal to Feedback on 2026-10-21. Feedback report 001 is reproduced from the official app/docs and its reviewed package is published with user approval. DoraHacks submission is approved but pending user login, with separate evidence below; it does not pass MVP G4 or establish acceptance/payment.
 
 ## Gates and reporting
 
@@ -122,6 +122,8 @@ For every check store ID, commit, command/scenario, date/time, mode (`synthetic/
 | Additional manual offline Edge server | localhost:3001, 2026-10-21 | Blocked before creation by automatic execution review: `blocked by policy`; no alternate launcher attempted | Full offline path was not manually run in Edge. Previous automated Chromium/offline result is separate; existing testnet app restarted normally on port 3000 |
 | Edge evidence/copy-fix source CI | 6ec2ac65d40733ecbc7eaf60f277ebf4aef854cd, GitHub Ubuntu/Node 24 | Terminal success inspected: install/migration/typecheck/lint, 104 tests, build and 20 Chromium cases (24.8s) | [CI 39542698499](https://github.com/tang-vu/forktrade/actions/runs/39542698499). Does not establish an Edge wallet signature or real root/remix execution |
 | Feedback 001 actual official-site reproduction | Commit containing this row, 2026-10-21; signed-out real Edge + public HTTP GET | Two browser entry paths ended at STT spot; saved three-hop 307 chain; helper syntax/execution passed; actual screenshots reviewed | [Report 001](feedback/001-perps-entry-opens-spot.md). Proposed normal; same Edge profile; root cause/authenticated behavior unknown. Builds private; duplicate priority not established. Not submitted/accepted/paid |
+| Feedback 001 approved publication | 2026-10-21; separate [public repo](https://github.com/tang-vu/dreamdex-perps-feedback), commit 8ae7fa336d777ee6b00e73a8116d32c52ad992f3 | Passed exact eight-file remote inventory, byte equality and all seven manifest SHA-256/size checks; Edge public page inspected; ForkTrade remains PRIVATE | User explicitly approved package/destination. Report status updated factually and manifest refreshed. App/wallet/env/DB/private evidence excluded |
+| Feedback 001 approved Build submission | 2026-10-21; actual official Submit Build click in Edge | Partial: reached DoraHacks login before any form; user authentication required; tab kept for handoff | Exact package and text already approved; no repeat approval needed. No registration/submission/acceptance/payment; user must sign in with whitelist account |
 | Root live execution | User-directed loopback session is running; ownership and final order decisions pending | Not run | No order/hash/receipt; user must review a fresh exact order in app and wallet; environment mapping is verified |
 | Remix live execution | Independent owner context and its separate final review remain pending | Not run | No order/hash/receipt; root approval cannot cover a remix |
 | Bounty submission | Private planning state | Not submitted | No post links/judge-access approval |

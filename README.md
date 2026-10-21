@@ -2,7 +2,7 @@
 
 A local thesis-to-remix workspace for dreamDEX Perps testnet. **The offline path runs; actual funded-owner risk reads and exact order simulation pass. Browser ownership authentication and live root/remix acceptance remain unrun.** User-authorized testnet funding was completed outside the application; no order, deployment or bounty submission was made.
 
-**Active user priority: Feedback bounty (2026-10-21).** [Report 001](feedback/001-perps-entry-opens-spot.md) reproduces an official dreamDEX Perps-entry redirect to STT spot, with actual screenshots and a public GET helper. It is a normal-severity proposal, not submitted/accepted/paid. The [Feedback-only submission draft](feedback/SUBMISSION.md) proposes a separate reviewed public package; this application repository stays private.
+**Active user priority: Feedback bounty (2026-10-21).** [Report 001](feedback/001-perps-entry-opens-spot.md) reproduces an official dreamDEX Perps-entry redirect to STT spot, with actual screenshots and a public GET helper. Its reviewed package is now [published separately with user approval](https://github.com/tang-vu/dreamdex-perps-feedback). The [approved Feedback submission](feedback/SUBMISSION.md) is pending user DoraHacks login. Normal severity is proposed; no submission/acceptance/payment exists. This application repository stays private.
 
 Write and version a private thesis, review an exact bounded order, approve a labelled synthetic scenario, choose public fields for a local demo card, then create an independently owned one-level remix with a parameter comparison. Fixtures cannot become live evidence.
 

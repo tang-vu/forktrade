@@ -74,4 +74,4 @@ Check the legacy `/perps` redirect and the client handling of its region/market 
 
 ## Submission and outcome
 
-No publication/submission approval has been requested yet. Not submitted; no organizer response, acceptance or reward. Proposed normal severity does not imply a payment entitlement.
+The user explicitly approved publication of this Feedback-only package and submission to the dreamDEX DoraHacks program on 2026-10-21. Submission is pending; no organizer response, acceptance or reward. Proposed normal severity does not imply a payment entitlement.

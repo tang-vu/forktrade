@@ -1,8 +1,8 @@
-# Feedback-only submission draft
+# Approved Feedback-only submission
 
 Proposed destination: the Feedback track of [dreamDEX Perps Builder Bounty](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail).
 
-Proposed public repository: `https://github.com/tang-vu/dreamdex-perps-feedback` (not created). The current ForkTrade repository stays private. Only the reviewed Feedback package is proposed for publication: report 001, two public-site screenshots, two redacted JSON records, its dependency-free GET reproducer and a short package README/manifest. No app source, wallet/account material, environment files or databases are included.
+Published public repository: https://github.com/tang-vu/dreamdex-perps-feedback, commit `8ae7fa336d777ee6b00e73a8116d32c52ad992f3`. The current ForkTrade repository stays private. The user explicitly approved this package and the submission text below on 2026-10-21. Published only report 001, two public-site screenshots, two redacted JSON records, its dependency-free GET reproducer and a short package README/manifest. All eight remote files and the seven manifest hashes were verified against the reviewed local package. No app source, wallet/account material, environment files or databases are included.
 
 ## Proposed Build title
 
@@ -18,6 +18,6 @@ Report: `feedback/001-perps-entry-opens-spot.md`. Reproduce the public redirects
 
 This is not an MVP execution submission. No acceptance or reward is claimed.
 
-## Required before sending
+## Submission status and remaining action
 
-The user must approve the exact public package/destination and this submission text. DoraHacks currently shows Log in in the tested Edge browser; the user must sign in with their whitelisted account. Private Builds do not eliminate the separate GitHub visibility decision. Do not publish the existing private ForkTrade repository or send a message as a substitute for submission. No publication, account change, registration or Build submission has occurred.
+Publication and submission are authorized; no repeat approval of the same package is needed. Clicking Submit Build in Edge on 2026-10-21 reached DoraHacks' login page before any Build form or submission was available. The user must sign in with their whitelisted account; the computer-use skill forbids automating user authentication dialogs. The login tab was kept for handoff. No account change, registration or Build submission occurred. No organizer acceptance or payment exists. Resume the approved submission after login, and inspect any new binding terms before accepting them. Do not publish the existing private ForkTrade repository or send a message as a substitute for submission.

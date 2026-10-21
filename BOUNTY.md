@@ -2,7 +2,7 @@
 
 Status: local implementation in progress; offline path, actual reads and bounded account funding exist. ForkTrade targets **both MVP and Feedback tracks** of the dreamDEX Perps bounty. No root/remix order acceptance, submission, eligibility or reward is established. The repository stays private until the user separately approves a concrete access/visibility change.
 
-**Feedback is the active user priority as of 2026-10-21.** One actual upstream report is [prepared as a reproduced draft](feedback/001-perps-entry-opens-spot.md), with normal severity proposed and no submission/acceptance/payment. The current ordinary-Edge rule recheck still supports the listed Feedback amounts/format; the Builds list is private, so first-report priority is unknown. A proposed Feedback-only public package excludes the private application and wallet material and still needs explicit publication/submission approval.
+**Feedback is the active user priority as of 2026-10-21.** One actual upstream report is [reproduced](feedback/001-perps-entry-opens-spot.md), with normal severity proposed and no submission/acceptance/payment. The current ordinary-Edge rule recheck still supports the listed Feedback amounts/format; the Builds list is private, so first-report priority is unknown. The user approved the reviewed Feedback-only package and Build text; [that separate package is public](https://github.com/tang-vu/dreamdex-perps-feedback), excluding the private application and wallet material. Clicking Submit Build reached DoraHacks login; the approved submission is pending the user's whitelisted session.
 
 ## Provenance and dates
 
@@ -52,10 +52,10 @@ If accepted-environment rules remain unavailable, continue local/offline work an
 | Actual root and remix perps orders | None | Separate user approvals, real identities and honest reconciled outcomes |
 | Accepted environment and current rules | Official page and linked developer environment reverified 2026-10-21 | Recheck before submission; no claim that pending root/remix outcomes qualify |
 | Demo evidence | Offline synthetic screenshots inspected; no live demo/recording | Real reviewed recording/screenshots/receipts with limitations |
-| Feedback reports | One reproduced normal-severity draft; actual Edge/HTTP evidence reviewed | Publication/submission approval, reviewer access and organizer duplicate/acceptance decision pending |
+| Feedback reports | One reproduced normal-severity report; approved public package at 8ae7fa3, all eight remote files and hashes verified | User DoraHacks login, actual submission and organizer duplicate/acceptance decision pending |
 | 2-3 X post links | None; drafts in DEMO.md only | User-approved published posts and actual URLs |
 | Judge access/public source | Not authorized | User-approved least-needed access; recheck program requirements |
-| Submission | Not authorized/not submitted | User-reviewed package and explicit submission approval |
+| Submission | Feedback 001 package/text explicitly approved; not submitted, login gate observed | User signs in to the whitelist account, then resume approved Build submission; MVP submission remains unauthorized |
 | Mainnet conditional tranche | Separate future scope | No actions planned or authorized here |
 
 ## Future submission procedure

@@ -1,6 +1,6 @@
 # Feedback track workflow
 
-**Current state: one reproduced nonsecurity report draft; zero submitted/accepted/paid reports.** The user prioritized Feedback on 2026-10-21. Report 001 documents the official Perps entry's three-hop redirect to STT spot with actual Edge screenshots and a dependency-free HTTP reproducer. A reproduced observation is not organizer acceptance. Do not count README.md or REPORT_TEMPLATE.md as reports.
+**Current state: one reproduced nonsecurity report, published with user approval; zero submitted/accepted/paid reports.** The user prioritized Feedback on 2026-10-21 and approved publication/submission of the reviewed report 001 package. It is public in [dreamdex-perps-feedback](https://github.com/tang-vu/dreamdex-perps-feedback) at `8ae7fa336d777ee6b00e73a8116d32c52ad992f3`; DoraHacks submission is pending user login. Report 001 documents the official Perps entry's three-hop redirect to STT spot with actual Edge screenshots and a dependency-free HTTP reproducer. A reproduced observation is not organizer acceptance. Do not count README.md or REPORT_TEMPLATE.md as reports.
 
 ## What belongs here
 
@@ -48,4 +48,4 @@ Add a row only for a real issue file:
 
 | File | Observed/reproduced UTC | Proposed severity | Status | Duplicate check | Authorized submission/result |
 | --- | --- | --- | --- | --- | --- |
-| [001 — Perps entry opens spot](001-perps-entry-opens-spot.md) | 2026-10-21; first precisely captured GET 04:28:48 UTC; Edge captures 04:30 UTC; full HTTP chain 04:34 UTC | normal | Reproduced draft | Official docs/rules checked; public Builds private; targeted public searches found no relevant match; priority unknown | Not approved for publication/submission; not submitted or paid |
+| [001 — Perps entry opens spot](001-perps-entry-opens-spot.md) | 2026-10-21; first precisely captured GET 04:28:48 UTC; Edge captures 04:30 UTC; full HTTP chain 04:34 UTC | normal | Published; submission authorized and pending login | Official docs/rules checked; public Builds private; targeted public searches found no relevant match; priority unknown | User approved the reviewed package and Build text; public commit 8ae7fa3; no submission/acceptance/payment |
