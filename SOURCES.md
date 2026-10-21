@@ -12,7 +12,7 @@ Actual first public capture at 14:56:48 UTC: BTC funding sample second 179259190
 
 Duplicate scope: public bot-kit `fetchFundingRateHistory` query returned 0; broader `funding` returned issues 23/28, whose bodies concern adding strategy workspaces and Reactivity subscription errors. SDK declared repo still HTTP 404; private reports are inaccessible, so no first-report guarantee. Pure margin/close sizing and funding-helper review produced no additional confirmed report: documented conservative sizing, unsupported oracle paths and invalid/fractional helper arguments were not promoted to findings. This is one new normal SDK report, not multiple limit-variant findings.
 
-Prepared exact 38-file/37-payload nonsecurity continuation archive, SHA-256 `33b2eeac056d9f4d90b5ee3f8665e82c483b6f1fcba60ef1bc07b3ce7387a332`, baseline public e81ac63. Existing reports/evidence are preserved. Current public publication is still seven items until the extension is applied and remotely verified; no submission or payment.
+Prepared exact 38-file/37-payload nonsecurity continuation archive, SHA-256 `33b2eeac056d9f4d90b5ee3f8665e82c483b6f1fcba60ef1bc07b3ce7387a332`, baseline public e81ac63. Existing reports/evidence are preserved. Published normally at 1cfb630133aeec45ac482ec7c77d0128ad56548d; all 38 remote blobs and 37 payload hashes/sizes verified, private wallet excluded and app still PRIVATE. Actual Edge shows eight items; original DoraHacks remains login. Private source CI 39622790466 on e8259a7 passed 104 tests/20 browser cases; new SDK reproductions remain separate manual evidence. No submission, acceptance or payment.
 
 ## Official sources
 
