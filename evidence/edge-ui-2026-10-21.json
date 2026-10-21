@@ -1,0 +1,39 @@
+{
+  "dateUtc": "2026-10-21T04:10:32Z",
+  "browser": "Microsoft Edge, existing user browser via computer-use extension",
+  "interaction": "cua_repl UI navigation, clicks, form entry and screenshots; no intercepted live responses",
+  "sourceBaseCommit": "7b78d71903085252df5eb562779c1b274dd1a88e",
+  "sourceChange": "Public-snapshot eligibility wording only; included in the same commit as this record",
+  "url": "http://127.0.0.1:3000",
+  "mode": "testnet, unauthenticated public/unsaved-draft UI",
+  "cases": [
+    {"id": "EDGE01", "result": "passed", "scenario": "Open workspace; private save and real-order review disabled without an owner session"},
+    {"id": "EDGE02", "result": "passed", "scenario": "Click connect with no injected provider; explicit missing-wallet guidance, no challenge/signature"},
+    {"id": "EDGE03", "result": "passed", "scenario": "Agent-entered unsaved UI-check title, reasoning and invalidation survive missing-wallet failure"},
+    {"id": "EDGE04", "result": "passed", "scenario": "Public market UI refresh displays actual chain, book, precision, grid, contracts and block"},
+    {"id": "EDGE05", "result": "passed", "scenario": "Workspace/error and public market at 360px; measured document width 345px, no horizontal overflow; default viewport restored"},
+    {"id": "EDGE06", "result": "passed", "scenario": "Rebuilt/reloaded UI shows corrected eligibility disclaimer; no captured error/warn entries in this tab when inspected"},
+    {"id": "EDGE07", "result": "blocked", "scenario": "Actual ownership signing and root/remix execution", "reason": "Edge has no injected wallet; separate DPAPI companion is not connected to this browser and is now closed"},
+    {"id": "EDGE08", "result": "blocked", "scenario": "Separate full offline walkthrough in Edge on localhost:3001", "reason": "Automatic execution review rejected the additional offline server before creation: blocked by policy; no alternate launcher attempted"}
+  ],
+  "finalPublicSnapshot": {
+    "displayedAsOf": "2026-10-21 11:09:44 UTC+07:00",
+    "chainId": 50383,
+    "market": "BTC / USDso",
+    "blockNumber": "29038556",
+    "blockHash": "0xdf0adff00a02938b86ee23cc7c3224720290f614c972a80666124842b028acc8",
+    "baseDecimals": 8,
+    "quoteDecimals": 18,
+    "tickUsdso": "0.1",
+    "lotBtc": "0.00001",
+    "minimumBtc": "0.00013"
+  },
+  "screenshots": ["edge-market-desktop-2026-10-21.jpg", "edge-wallet-unavailable-mobile-2026-10-21.jpg"],
+  "checks": {"readContextTests": "26 passed", "productionBuild": "passed", "sessions": 0, "plans": 0, "attempts": 0, "publications": 0},
+  "limitations": [
+    "Public market screenshots contain actual public data; UI-check draft is unsaved agent-entered test text, not a user thesis or execution",
+    "No wallet import, key access, signature, transaction, publication, offline synthetic session or deployment performed in this Edge run",
+    "Full-page screenshot capture timed out; actual viewport captures succeeded and were visually inspected",
+    "These manual Edge checks are separate from the previous automated 104-test/20-Chromium-case result and do not pass live root/remix acceptance"
+  ]
+}

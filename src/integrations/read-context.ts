@@ -61,7 +61,7 @@ export async function readPublicMarket(connect=connectReadOnly) {
     const snapshot=await verifiedMarket(connection);
     return {mode:'read-only' as const,sdk:'0.32.1',network:NETWORK_LABEL,rpc:RPC,indexer:INDEXER,...snapshot,
       accountContext:'Not requested; no wallet connected or authenticated',
-      limitations:['Public read snapshot only; no execution or eligibility claim','SDK and HTTP reads are individually sourced, not one atomic cross-transport snapshot','Account risk and permissions must be refreshed for the actual owner','Bounty accepted environment remains unverified']};
+      limitations:['Public read snapshot only; no execution or eligibility claim','SDK and HTTP reads are individually sourced, not one atomic cross-transport snapshot','Account risk and permissions must be refreshed for the actual owner','Bounty environment and entry eligibility require separate official verification']};
   } finally {await connection.close();}
 }
 
