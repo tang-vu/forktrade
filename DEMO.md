@@ -37,7 +37,7 @@ Fill with observed facts, not proposed values. Do not insert placeholder transac
 
 | Field | Actual value |
 | --- | --- |
-| App branch/commit and build command | feat/forktrade-core; source 3f847789c932416ed814d6de6518c118741cf9ec; npm.cmd run build; CI 39534936073 passed 104 tests and 18 browser cases |
+| App branch/commit and build command | feat/forktrade-core; source 01543f0911b23d40cb8b808c6a25b2c4cb56e8f5; npm.cmd run build; CI 39541603896 passed 104 tests and 20 browser cases |
 | Recording date/time UTC, browser/OS/device | Not recorded |
 | Mode | Offline synthetic browser demo; separate actual account funding/read-only simulation; no live root/remix order |
 | Chain ID, observed network/app label, RPC/config verification date | Actual reads/setup: 50383, Hideki / DreamDEX app region, verified 2026-10-21; fixtures: synthetic chain 0 |

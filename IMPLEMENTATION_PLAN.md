@@ -81,6 +81,12 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-21 04:02 UTC — provider fix CI and actual challenge compatibility verified
+
+Fix `01543f0911b23d40cb8b808c6a25b2c4cb56e8f5` is pushed on `feat/forktrade-core`. [CI 39541603896](https://github.com/tang-vu/forktrade/actions/runs/39541603896) completed successfully on that exact commit: install/migration/typecheck/lint, 104 tests, build and all 20 Chromium cases (20.5s). Inspected terminal result and browser totals. This follow-up changes documentation only; no further source suite is required for it.
+
+Actual local POST to `/api/auth/challenge` with the dedicated public address returned HTTP 200; its exact SIWE message passed the companion's ownership policy. The probe created one unused private challenge/initialized the testnet DB, signed nothing and created no authenticated session. No nonce/message/address or session material was printed or committed. A read-only count then confirmed sessions/plans/attempts/publications all zero. Both repaired app/wallet processes remain running; user reconnect/ownership decision and all root/remix orders are still pending. The reported startup defect is fixed and verified; G4/GOAL remain incomplete. No automatic wallet approval or external action.
+
 ### 2026-10-21 03:59 UTC — actual wallet initialization defect reproduced and repaired
 
 User reported the generic connection/challenge error in the companion-opened app. The initial source/browser suite had missed the CLI's transpilation path. Reproduced the exact injected initializer through Node/tsx with synthetic pages and no key/network: browser error `__name is not defined`, `window.ethereum` undefined while the exposed IPC bridge existed. This was a ForkTrade runtime defect, not evidence the user declined. No testnet database or interactive order journal existed, and no ownership signature/order was created by this failed path.
