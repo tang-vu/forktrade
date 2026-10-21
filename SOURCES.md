@@ -50,6 +50,12 @@ Optional AI is deferred and can draft intent only. Plan hashes/application versi
 
 ## Future verification log
 
+### Deeper audit public continuation — 2026-10-21 13:10 UTC
+
+The [public Feedback repo](https://github.com/tang-vu/dreamdex-perps-feedback) now contains 001–007 at e81ac63d91f0b5dfac7ccb2aac10a22822105df3. Exact 33-file remote inventory/bytes and 32 manifest payload hashes/sizes were verified against the reviewed v2 stage; only review-archive provenance was appended to the manifest. Actual Edge displays the seven-item README and explicit 004/006 qualifications. The separate public reproduction package/lock pins SDK 0.32.1 and viem 2.57.7; its independent clean install/cases were verified earlier. No private app dependency or source publication. ForkTrade visibility remains PRIVATE.
+
+Seven-report text in feedback/SUBMISSION.md is the exact prepared replacement from private 4348517. Routine continuation follows the user's end-to-end instruction and new careful-review request; there was no extra per-report approval question. This is verified publication, not submission or organizer acceptance. A read-only look at the retained DoraHacks tab still showed login before a form; no authentication was automated. No new live order, cancellation, receipt, financial loss or reward is claimed by this audit.
+
 ### Deeper cancellation / SDK-minimum audit — 2026-10-21 12:58 UTC
 
 Official bot-kit main remains `25798660bbe4674a6f83a960b202852896e2fed4`; [cancelQuietly](https://github.com/somnia-chain/dreamdex-bot-kit/blob/25798660bbe4674a6f83a960b202852896e2fed4/packages/perp-core/src/orders.ts#L206) catches every error before the maker drops its old quote IDs. The [006 offline reproduction](feedback/006-maker-cancel-failure-loses-tracking.md) executes original maker/cancel bodies with explicit synthetic placement-return IDs, an isolated in-memory error-injection cancel context and no signer. Three success/transport/unknown cases reach replacement and final cleanup; the two failure cases do not revisit old IDs. No actual cancel outcome or live quote is claimed. Related [issue 38](https://github.com/somnia-chain/dreamdex-bot-kit/issues/38) already describes the same swallowing pattern in its author's binary vault; this overlap is prominent in the report. Four returned cancel-search issue bodies (7/33/38/40) were read; do not claim novelty or guaranteed payment.
