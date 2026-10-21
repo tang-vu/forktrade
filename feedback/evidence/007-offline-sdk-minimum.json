@@ -1,6 +1,6 @@
 {
   "kind": "OFFLINE SYNTHETIC SDK TEST - NOT LIVE ORDER EVIDENCE",
-  "observedAt": "2026-10-21T12:52:31.983Z",
+  "observedAt": "2026-10-21T13:04:26.385Z",
   "sdk": "@somnia-chain/markets-sdk@0.32.1",
   "nodeVersion": "v24.21.0",
   "sourceFiles": [
@@ -26,7 +26,7 @@
     "blockNumber": "29350404",
     "chainId": 50383
   },
-  "sourceHandling": "Original installed SDK createOrder and grid/generation/collateral helpers; only market lookup and trader resolution are test doubles. No class instance or modified SDK function body.",
+  "sourceHandling": "Original installed SDK createOrder and grid/generation/collateral helpers; only market lookup and trader resolution are test doubles. No constructor is run; SDK function bodies are unchanged.",
   "cases": [
     {
       "inputAmount": "0.000009",

@@ -1,5 +1,5 @@
 // Real pinned SDK method; offline metadata lookup / writer boundary test doubles.
-// No SomniaMarkets instance, wallet, provider, signer, RPC or receipt is created.
+// No exchange constructor, wallet, provider, signer, RPC or receipt is used.
 import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -38,7 +38,7 @@ for(const side of ['buy','sell'])for(const input of ['0.000009','0.00001','0.000
   const boundary=new Error('OFFLINE WRITE BOUNDARY - NO TRANSACTION');
   seam.market=()=>t;
   // Original placeCollateral runs its normal no-funding branch; these state
-  // holders create no exchange, connection or wallet.
+  // holders create no configured exchange, connection or wallet.
   seam.closeController=new AbortController();seam.engines=new Map();
   seam.traderOf=()=>({placePerpOrder:async params=>{
     calls.push({quantityRaw:params.quantity.toString(),priceRaw:params.price.toString(),isBid:params.isBid,
@@ -61,6 +61,6 @@ const record={kind:'OFFLINE SYNTHETIC SDK TEST - NOT LIVE ORDER EVIDENCE',observ
   sdk:'@somnia-chain/markets-sdk@0.32.1',nodeVersion:process.version,sourceFiles,
   execution:{mode:'offline-synthetic',network:false,signer:false,privateKey:false,transactions:false},
   publicConfiguration:{file:'007-btc-public-grid.json',observedAt:publicConfig.observedAt,blockNumber:publicConfig.blockNumber,chainId:50383},
-  sourceHandling:'Original installed SDK createOrder and grid/generation/collateral helpers; only market lookup and trader resolution are test doubles. No class instance or modified SDK function body.',
+  sourceHandling:'Original installed SDK createOrder and grid/generation/collateral helpers; only market lookup and trader resolution are test doubles. No constructor is run; SDK function bodies are unchanged.',
   cases,limitations:['Only a local validation / write-boundary observation, not a sent/reverted order or measured gas loss.','Public configuration was observed separately; offline inputs/account/writer boundary are fixtures.']};
 const output=JSON.stringify(record,null,2)+'\n';if(target)await writeFile(target,output,{flag:'wx'});process.stdout.write(output);

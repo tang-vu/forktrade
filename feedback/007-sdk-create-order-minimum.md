@@ -17,7 +17,7 @@ The unchanged SDK method reaches a mocked trader boundary for `0.00001`, `0.0001
 3. The runner checks SDK version and hashes of the original published `dist/unified/exchange.js` / `structs.js`, then invokes the actual SDK method on a prototype-backed test context. Only market lookup and trader resolution are test doubles; original grid/generation/collateral helper bodies execute.
 4. Compare all 12 cases, covering buy/sell and below-lot, below-minimum, rounding-below-minimum, exact-minimum and above-minimum controls. The trader test double throws immediately before any writer can be called; no order result, hash, fill or receipt is created.
 
-The test creates no `SomniaMarkets` instance and no provider or account. Metadata is the separately observed public BTC configuration. Price 100 is an explicitly synthetic test input, not a live quote. `funding:'skip'` follows the normal single-chain no-funding path; it grants no allowance or funding authority.
+No `SomniaMarkets` constructor is run and no configured exchange/client, provider or account is created. The context inherits the SDK prototype solely to call its original methods. Metadata is the separately observed public BTC configuration. Price 100 is an explicitly synthetic test input, not a live quote. `funding:'skip'` follows the normal single-chain no-funding path; it grants no allowance or funding authority.
 
 ## Expected
 
