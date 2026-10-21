@@ -6,6 +6,8 @@ Status: local implementation in progress; offline path, actual reads and bounded
 
 A second [report](feedback/002-existing-position-bracket-side.md) reproduces a bot-kit dry-run side mismatch using explicit offline synthetic fixtures. The user's continuation after review was taken as approval of the concrete extension and two-report Build text, and both reports are now published at b1ec751. This is separate code-path evidence, not a live protocol failure. Scope/duplicate/severity/acceptance decisions remain with the organizer.
 
+Verified additional [008](feedback/008-sdk-funding-history-cursor.md) is prepared: actual public funding history and 10 bounded original-SDK cases contradict the documented millisecond pagination cursor. It is a distinct normal SDK report, not a new limit variant or the already documented ordering fix. The same-destination extension and eight-report text follow the standing Feedback instruction; public seven-report state changes only after remote verification.
+
 ## Submission organization
 
 Additional reward-focused research produced [003](feedback/003-existing-position-entry-preflight.md) and [005](feedback/005-maker-skipped-quote-retry.md) with distinct offline reproductions and controls; [004](feedback/004-maker-position-cap-semantics.md) remains a lower-confidence documentation/intent clarification. Following review, the user's end-to-end instruction approved that earlier five-report extension, published at c1f662d with 22-file/21-payload verification. The later continuation below supersedes its Build text. Bot-kit scope, intent, severity and private duplicate priority remain organizer decisions; actual submission still requires the user's whitelist sign-in.

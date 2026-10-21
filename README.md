@@ -10,6 +10,8 @@ Published additions: [003, existing-position startup budget](feedback/003-existi
 
 Further audit published [006, cancel failure loses quote tracking](feedback/006-maker-cancel-failure-loses-tracking.md), with related-prior-report/duplicate risk disclosed, and [007, unified SDK ignores the distinct perp minimum](feedback/007-sdk-create-order-minimum.md), supported by actual public BTC configuration and 12 offline SDK boundary cases. Both are nonsecurity additions for the existing Feedback workflow; neither establishes a live order or loss. The separate public reproduction package/lock is not an app dependency change.
 
+Additional verified SDK finding [008, funding-history cursor](feedback/008-sdk-funding-history-cursor.md) is prepared for the same authorized public package. Actual public BTC history returns a row before a millisecond cursor; 10 bounded original-SDK cases and an isolated reproduction passed. Publication is the next step; seven items remain public until verified.
+
 Write and version a private thesis, review an exact bounded order, approve a labelled synthetic scenario, choose public fields for a local demo card, then create an independently owned one-level remix with a parameter comparison. Fixtures cannot become live evidence.
 
 ## Run locally (Windows PowerShell)

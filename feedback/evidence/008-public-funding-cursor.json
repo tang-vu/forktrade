@@ -1,0 +1,45 @@
+{
+  "kind": "ACTUAL PUBLIC READ-ONLY FUNDING HISTORY - NOT ACCOUNT OR ORDER EVIDENCE",
+  "observedAt": "2026-10-21T14:56:48.956Z",
+  "SDK": "0.32.1",
+  "chainId": 50383,
+  "indexer": "https://hideki-dev.smk.somnia.host/v1/graphql",
+  "pool": "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0",
+  "scope": "One actual public latest-row read followed by one actual public history read through the unchanged SDK facade method. Market lookup uses separately observed public metadata; original requirePerpMarket/engineOf/mapping and the real read-only SDK engine execute.",
+  "sample": {
+    "id": "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0_29399475_1",
+    "pool": "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0",
+    "fundingRate": "1252445929243335",
+    "cumulativeFundingPerUnit": "2387177862027899440884492578538644125000",
+    "indexPrice": "83669337827191266500000",
+    "markPrice": "83626039382186956500000",
+    "intervalsSettled": "1",
+    "intervalsAccrued": "1",
+    "fundingWindowSec": 28800,
+    "fundingIntervalSec": 3600,
+    "spanStart": "1792588303",
+    "spanEnd": "1792591903",
+    "anchorResynced": false,
+    "timestamp": "1792591903",
+    "blockNumber": "29399475",
+    "txHash": "0x3b2b1254bae4bed2155c987dc2bb0eeccb540c045cf7c45ea1983ff0b6f9f5ca"
+  },
+  "request": {
+    "symbol": "BTC/USDso:USDso",
+    "sinceMilliseconds": 1792591903001,
+    "limit": 1
+  },
+  "response": [
+    {
+      "id": "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0_29399475_1",
+      "timestamp": 1792591903000,
+      "fundingTimestamp": 1792591903000,
+      "fundingRate": 0.001252445929243335
+    }
+  ],
+  "returnedRowBeforeSince": true,
+  "account": false,
+  "wallet": false,
+  "signer": false,
+  "transaction": false
+}

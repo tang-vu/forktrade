@@ -1,0 +1,1052 @@
+{
+  "kind": "OFFLINE SYNTHETIC SDK FUNDING CURSOR TEST - NOT LIVE HISTORY",
+  "observedAt": "2026-10-21T14:57:39.679Z",
+  "sdk": "@somnia-chain/markets-sdk@0.32.1",
+  "nodeVersion": "v24.21.0",
+  "sourceFiles": [
+    {
+      "path": "dist/unified/exchange.js",
+      "sha256": "f2fd34c35c40fb251a36bff27fe72e9f2cf6281433bf8534c839d8b8684241c2"
+    },
+    {
+      "path": "dist/perp/history.js",
+      "sha256": "fe6cdc69ebe424596966f757c369a7dd72c12b9cbf75d21a1ed18c20bd5173d4"
+    },
+    {
+      "path": "dist/indexerRead.js",
+      "sha256": "aee5f7ab6b9a6c51f5bc1ae04be1bc813f749fc002d774d3185712651e824b91"
+    },
+    {
+      "path": "dist/graphqlBoundary.js",
+      "sha256": "5777b878190ee2b4c34659007a1b6b199500e1f311da125e20f15df9da78841d"
+    },
+    {
+      "path": "dist/gql/legacyDocuments.js",
+      "sha256": "db9d53334af5e50f0fdedfbcbbfe8c2aa80bae85dc5fb8f1b2542267c7383bb7"
+    }
+  ],
+  "execution": {
+    "mode": "offline-synthetic",
+    "network": false,
+    "account": false,
+    "wallet": false,
+    "signer": false,
+    "transaction": false
+  },
+  "sourceHandling": "Original facade method, requirePerpMarket, engineOf/engineFor, history query builder and GraphQL transport boundary. No constructor runs. Only market lookup, a history-only forwarding engine and fetch response are test doubles; no SDK body is edited.",
+  "fixtures": [
+    {
+      "id": "SYNTHETIC-ROW-0",
+      "pool": "0x0000000000000000000000000000000000000000",
+      "timestamp": "1700000000",
+      "blockNumber": "100",
+      "fundingRate": "100000000000000",
+      "cumulativeFundingPerUnit": "0",
+      "indexPrice": "100000000000000000000",
+      "markPrice": "100000000000000000000",
+      "intervalsSettled": "1",
+      "intervalsAccrued": "1",
+      "fundingWindowSec": 28800,
+      "fundingIntervalSec": 3600,
+      "spanStart": "1699996400",
+      "spanEnd": "1700000000",
+      "anchorResynced": false,
+      "txHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "SYNTHETIC-ROW-1",
+      "pool": "0x0000000000000000000000000000000000000000",
+      "timestamp": "1700003600",
+      "blockNumber": "101",
+      "fundingRate": "100000000000000",
+      "cumulativeFundingPerUnit": "0",
+      "indexPrice": "100000000000000000000",
+      "markPrice": "100000000000000000000",
+      "intervalsSettled": "1",
+      "intervalsAccrued": "1",
+      "fundingWindowSec": 28800,
+      "fundingIntervalSec": 3600,
+      "spanStart": "1700000000",
+      "spanEnd": "1700003600",
+      "anchorResynced": false,
+      "txHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "SYNTHETIC-ROW-2",
+      "pool": "0x0000000000000000000000000000000000000000",
+      "timestamp": "1700007200",
+      "blockNumber": "102",
+      "fundingRate": "100000000000000",
+      "cumulativeFundingPerUnit": "0",
+      "indexPrice": "100000000000000000000",
+      "markPrice": "100000000000000000000",
+      "intervalsSettled": "1",
+      "intervalsAccrued": "1",
+      "fundingWindowSec": 28800,
+      "fundingIntervalSec": 3600,
+      "spanStart": "1700003600",
+      "spanEnd": "1700007200",
+      "anchorResynced": false,
+      "txHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "cases": [
+    {
+      "name": "documented-plus-1-ms-limit-1",
+      "limit": 1,
+      "incrementMs": 1,
+      "pages": [
+        {
+          "sinceMilliseconds": 1700000000000,
+          "ids": [
+            "SYNTHETIC-ROW-0"
+          ],
+          "timestamps": [
+            1700000000000
+          ],
+          "nextSinceMilliseconds": 1700000000001
+        },
+        {
+          "sinceMilliseconds": 1700000000001,
+          "ids": [
+            "SYNTHETIC-ROW-0"
+          ],
+          "timestamps": [
+            1700000000000
+          ],
+          "nextSinceMilliseconds": 1700000000001
+        },
+        {
+          "sinceMilliseconds": 1700000000001,
+          "ids": [
+            "SYNTHETIC-ROW-0"
+          ],
+          "timestamps": [
+            1700000000000
+          ],
+          "nextSinceMilliseconds": 1700000000001
+        },
+        {
+          "sinceMilliseconds": 1700000000001,
+          "ids": [
+            "SYNTHETIC-ROW-0"
+          ],
+          "timestamps": [
+            1700000000000
+          ],
+          "nextSinceMilliseconds": 1700000000001
+        },
+        {
+          "sinceMilliseconds": 1700000000001,
+          "ids": [
+            "SYNTHETIC-ROW-0"
+          ],
+          "timestamps": [
+            1700000000000
+          ],
+          "nextSinceMilliseconds": 1700000000001
+        }
+      ],
+      "exhausted": false,
+      "requests": [
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700000000"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 1,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-0"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700000000"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 1,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-0"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700000000"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 1,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-0"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700000000"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 1,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-0"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700000000"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 1,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-0"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "documented-plus-1-ms-limit-2",
+      "limit": 2,
+      "incrementMs": 1,
+      "pages": [
+        {
+          "sinceMilliseconds": 1700000000000,
+          "ids": [
+            "SYNTHETIC-ROW-0",
+            "SYNTHETIC-ROW-1"
+          ],
+          "timestamps": [
+            1700000000000,
+            1700003600000
+          ],
+          "nextSinceMilliseconds": 1700003600001
+        },
+        {
+          "sinceMilliseconds": 1700003600001,
+          "ids": [
+            "SYNTHETIC-ROW-1",
+            "SYNTHETIC-ROW-2"
+          ],
+          "timestamps": [
+            1700003600000,
+            1700007200000
+          ],
+          "nextSinceMilliseconds": 1700007200001
+        },
+        {
+          "sinceMilliseconds": 1700007200001,
+          "ids": [
+            "SYNTHETIC-ROW-2"
+          ],
+          "timestamps": [
+            1700007200000
+          ],
+          "nextSinceMilliseconds": 1700007200001
+        },
+        {
+          "sinceMilliseconds": 1700007200001,
+          "ids": [
+            "SYNTHETIC-ROW-2"
+          ],
+          "timestamps": [
+            1700007200000
+          ],
+          "nextSinceMilliseconds": 1700007200001
+        },
+        {
+          "sinceMilliseconds": 1700007200001,
+          "ids": [
+            "SYNTHETIC-ROW-2"
+          ],
+          "timestamps": [
+            1700007200000
+          ],
+          "nextSinceMilliseconds": 1700007200001
+        }
+      ],
+      "exhausted": false,
+      "requests": [
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700000000"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 2,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-0",
+            "SYNTHETIC-ROW-1"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700003600"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 2,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-1",
+            "SYNTHETIC-ROW-2"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700007200"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 2,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-2"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700007200"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 2,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-2"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700007200"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 2,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "documented-default-sized-page-plus-1-ms",
+      "limit": 100,
+      "incrementMs": 1,
+      "pages": [
+        {
+          "sinceMilliseconds": 1700000000000,
+          "ids": [
+            "SYNTHETIC-ROW-0",
+            "SYNTHETIC-ROW-1",
+            "SYNTHETIC-ROW-2"
+          ],
+          "timestamps": [
+            1700000000000,
+            1700003600000,
+            1700007200000
+          ],
+          "nextSinceMilliseconds": 1700007200001
+        },
+        {
+          "sinceMilliseconds": 1700007200001,
+          "ids": [
+            "SYNTHETIC-ROW-2"
+          ],
+          "timestamps": [
+            1700007200000
+          ],
+          "nextSinceMilliseconds": 1700007200001
+        },
+        {
+          "sinceMilliseconds": 1700007200001,
+          "ids": [
+            "SYNTHETIC-ROW-2"
+          ],
+          "timestamps": [
+            1700007200000
+          ],
+          "nextSinceMilliseconds": 1700007200001
+        },
+        {
+          "sinceMilliseconds": 1700007200001,
+          "ids": [
+            "SYNTHETIC-ROW-2"
+          ],
+          "timestamps": [
+            1700007200000
+          ],
+          "nextSinceMilliseconds": 1700007200001
+        },
+        {
+          "sinceMilliseconds": 1700007200001,
+          "ids": [
+            "SYNTHETIC-ROW-2"
+          ],
+          "timestamps": [
+            1700007200000
+          ],
+          "nextSinceMilliseconds": 1700007200001
+        }
+      ],
+      "exhausted": false,
+      "requests": [
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700000000"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 100,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-0",
+            "SYNTHETIC-ROW-1",
+            "SYNTHETIC-ROW-2"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700007200"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 100,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-2"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700007200"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 100,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-2"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700007200"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 100,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-2"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700007200"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 100,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "whole-second-advance-control",
+      "limit": 2,
+      "incrementMs": 1000,
+      "pages": [
+        {
+          "sinceMilliseconds": 1700000000000,
+          "ids": [
+            "SYNTHETIC-ROW-0",
+            "SYNTHETIC-ROW-1"
+          ],
+          "timestamps": [
+            1700000000000,
+            1700003600000
+          ],
+          "nextSinceMilliseconds": 1700003601000
+        },
+        {
+          "sinceMilliseconds": 1700003601000,
+          "ids": [
+            "SYNTHETIC-ROW-2"
+          ],
+          "timestamps": [
+            1700007200000
+          ],
+          "nextSinceMilliseconds": 1700007201000
+        },
+        {
+          "sinceMilliseconds": 1700007201000,
+          "ids": [],
+          "timestamps": [],
+          "nextSinceMilliseconds": null
+        }
+      ],
+      "exhausted": true,
+      "requests": [
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700000000"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 2,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-0",
+            "SYNTHETIC-ROW-1"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700003601"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 2,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-2"
+          ]
+        },
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700007201"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 2,
+            "offset": 0
+          },
+          "returnedIds": []
+        }
+      ]
+    },
+    {
+      "name": "empty-history-control",
+      "limit": 100,
+      "incrementMs": 1,
+      "pages": [
+        {
+          "sinceMilliseconds": 1700000000000,
+          "ids": [],
+          "timestamps": [],
+          "nextSinceMilliseconds": null
+        }
+      ],
+      "exhausted": true,
+      "requests": [
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700000000"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 100,
+            "offset": 0
+          },
+          "returnedIds": []
+        }
+      ]
+    },
+    {
+      "name": "one-ms-after-existing-row",
+      "sinceMilliseconds": 1700000000001,
+      "returnedTimestamps": [
+        1700000000000
+      ],
+      "requests": [
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700000000"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 1,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-0"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "exact-inclusive-boundary-control",
+      "returnedIds": [
+        "SYNTHETIC-ROW-0"
+      ],
+      "requests": [
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700000000"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 1,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-0"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "after-tail-whole-second-control",
+      "returnedIds": [],
+      "requests": [
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700007201"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 100,
+            "offset": 0
+          },
+          "returnedIds": []
+        }
+      ]
+    },
+    {
+      "name": "omitted-since-latest-page-control",
+      "returnedIds": [
+        "SYNTHETIC-ROW-1",
+        "SYNTHETIC-ROW-2"
+      ],
+      "requests": [
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "desc"
+              },
+              {
+                "blockNumber": "desc"
+              },
+              {
+                "id": "desc"
+              }
+            ],
+            "limit": 2,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-2",
+            "SYNTHETIC-ROW-1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "raw-seconds-reader-control",
+      "fromSeconds": 1700000001,
+      "returnedIds": [
+        "SYNTHETIC-ROW-1"
+      ],
+      "requests": [
+        {
+          "variables": {
+            "where": {
+              "pool": {
+                "_eq": "0x0000000000000000000000000000000000000000"
+              },
+              "timestamp": {
+                "_gte": "1700000001"
+              }
+            },
+            "orderBy": [
+              {
+                "timestamp": "asc"
+              },
+              {
+                "blockNumber": "asc"
+              },
+              {
+                "id": "asc"
+              }
+            ],
+            "limit": 1,
+            "offset": 0
+          },
+          "returnedIds": [
+            "SYNTHETIC-ROW-1"
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Five iterations per loop are a deliberate safety bound. Continued repetition follows from the unchanged cursor/query, not an unbounded observed run.",
+    "Rows, prices, IDs, block numbers and zero hash are explicitly synthetic and are not chain/order evidence.",
+    "Distinct fixture timestamps isolate millisecond truncation; no separate same-timestamp tie defect is claimed."
+  ]
+}

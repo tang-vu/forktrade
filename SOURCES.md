@@ -2,6 +2,18 @@
 
 Documentation baseline date: **2026-10-20 (UTC)**. This file separates supplied program facts, live page observations, project design decisions and unverified implementation assumptions. It is not a runtime network/contract manifest.
 
+## Funding-history cursor audit — 2026-10-21 15:03 UTC
+
+Current npm latest and archive integrity still identify SDK 0.32.1. The [official release notes](https://prd.smk.somnia.host/docs/typescript/release-notes), freshly read, explicitly say `fetchFundingRateHistory` supports the `last.timestamp + 1` pagination idiom. Original package source instead floors the millisecond bound to seconds, then the low-level reader builds inclusive `_gte` without reapplying the original bound. The earlier newest-first problem described in those notes is already known; [008](feedback/008-sdk-funding-history-cursor.md) isolates the remaining conversion defect with ascending order, rather than claiming the old ordering issue again.
+
+Actual first public capture at 14:56:48 UTC: BTC funding sample second 1792591903, facade since 1792591903001, returned same row at 1792591903000. This uses the actual read-only engine; only facade market lookup uses dated public metadata. A separate signerless exchange supplies the reader. Two funding-history reads plus standard SDK binding metadata, no owner/wallet/signer/transaction. [Public capture](feedback/evidence/008-public-funding-cursor.json). The final public runner independently confirmed the same result at 15:00 UTC; no unbounded live loop.
+
+[Offline output](feedback/evidence/008-offline-funding-cursor.json) records 10 cases using unchanged facade helpers, original low-level query and GraphQL boundary against explicit synthetic transport rows. Three loop cases are bounded at five iterations; direct subsecond violation and six controls separate conversion from query ordering, empty history and exact boundaries. Minimal-dependency isolated reproduction also passed. Five relevant runtime SHA-256 values are enforced; the earlier official archive verification covers all 632 installed package files. No SDK body, app dependency, signer or source app behavior changed.
+
+Duplicate scope: public bot-kit `fetchFundingRateHistory` query returned 0; broader `funding` returned issues 23/28, whose bodies concern adding strategy workspaces and Reactivity subscription errors. SDK declared repo still HTTP 404; private reports are inaccessible, so no first-report guarantee. Pure margin/close sizing and funding-helper review produced no additional confirmed report: documented conservative sizing, unsupported oracle paths and invalid/fractional helper arguments were not promoted to findings. This is one new normal SDK report, not multiple limit-variant findings.
+
+Prepared exact 38-file/37-payload nonsecurity continuation archive, SHA-256 `33b2eeac056d9f4d90b5ee3f8665e82c483b6f1fcba60ef1bc07b3ce7387a332`, baseline public e81ac63. Existing reports/evidence are preserved. Current public publication is still seven items until the extension is applied and remotely verified; no submission or payment.
+
 ## Official sources
 
 | Source | Purpose | Observation and limitation on 2026-10-20 |
