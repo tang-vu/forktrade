@@ -83,6 +83,12 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-21 05:00 UTC — reporter lint correction verified in full CI
+
+Pushed source/report/config commit `d88f6d33af0de9ac9df6223f509e0cd5817927fb`; [CI 39546836539](https://github.com/tang-vu/forktrade/actions/runs/39546836539) completed successfully on that exact commit. Inspected terminal job result and logs: clean install/migration/typecheck/lint, all 104 tests, production build and all 20 Chromium scenarios passed (30.3s). The earlier reporter Node-global lint failure is resolved. These are ForkTrade source/offline checks, separate from report 002's locally executed synthetic upstream reproduction and report 001's actual Edge/HTTP observations.
+
+The reviewed eleven-file report 002 publication candidate still matches its manifest/archive and the three committed new payloads exactly. Actual Edge displays report 002 from the private repository for review; screenshot saved only in ignored `.local/feedback-002-private-review.jpg`. Public Feedback HEAD remains `8ae7fa3`; no 002 publication or Build submission occurred. The existing DoraHacks login and proposed additional-package approval gates remain. Next: retain the login/review tabs, request only approval of the concrete additional report 002 package and replacement Build text; complete the applicable authorized submission after user sign-in. No additional app suite is required for this evidence-only follow-up. Commit is the documentation commit containing this entry.
+
 ### 2026-10-21 04:55 UTC — second independent report reproduced offline and prepared for review
 
 Previous goal turn was progress: approved public report 001 publication and remote-byte verification completed. Resumed clean on `feat/forktrade-core` at pushed `4b8d334`. Actual Edge still shows the DoraHacks login prompt; retained the handoff tab and did not automate authentication or re-request the already approved 001 submission. This turn made independent progress rather than treating the login gate as a reason to stop all work.
