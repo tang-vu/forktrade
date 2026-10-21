@@ -3,7 +3,7 @@
 Severity: normal (proposed; organizer decides)
 Area: SDK
 Related surface: official dreamDEX bot kit, not a markets-sdk library defect
-Status: reproduced offline; private draft, not published/submitted
+Status: reproduced offline; user-approved Feedback report, not submitted
 
 ## Impact and scope
 
@@ -53,4 +53,4 @@ On 2026-10-21, public GitHub search `repo:somnia-chain/dreamdex-bot-kit is:issue
 
 ## Suggested investigation and outcome
 
-Separate existing-position management prerequisites from new-entry budget checks. Add below/exactly/above-budget restart controls with matching existing sides. Preserve valid health and native-fee checks. No upstream patch or live fix is claimed. Private draft only; no publication/submission approval, organizer response, acceptance or payment exists for this addition.
+Separate existing-position management prerequisites from new-entry budget checks. Add below/exactly/above-budget restart controls with matching existing sides. Preserve valid health and native-fee checks. No upstream patch or live fix is claimed. User approved this reviewed addition and its Feedback submission on 2026-10-21. No organizer response, actual submission, acceptance or payment is established.

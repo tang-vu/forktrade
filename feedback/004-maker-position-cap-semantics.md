@@ -3,7 +3,7 @@
 Severity: normal (proposed; organizer decides)
 Area: docs
 Related surface: official bot-kit perp-maker setting/implementation; strict-cap intent needs maintainer confirmation
-Status: behavior reproduced offline; private clarification/report candidate, not published/submitted
+Status: behavior reproduced offline; user-approved clarification/report candidate, not submitted
 
 ## Impact and scope
 
@@ -52,4 +52,4 @@ On 2026-10-21, public search `repo:somnia-chain/dreamdex-bot-kit is:issue perp-m
 
 ## Suggested investigation and outcome
 
-Confirm whether the parameter is a hard cap or a quoting threshold. Clamp projected increasing quantity if hard, or document possible overshoot and avoid implying a strict bound if soft. Keep this as one issue; do not split long/short examples into separate reports. Proposed normal only, organizer scope/intent/severity decision required. Private candidate; no publication/submission approval, acceptance or payment.
+Confirm whether the parameter is a hard cap or a quoting threshold. Clamp projected increasing quantity if hard, or document possible overshoot and avoid implying a strict bound if soft. Keep this as one issue; do not split long/short examples into separate reports. Proposed normal only, organizer scope/intent/severity decision required. User approved publication/submission of this reviewed clarification candidate on 2026-10-21; intent remains unresolved and no actual submission, acceptance or payment is established.

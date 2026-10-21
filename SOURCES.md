@@ -50,6 +50,14 @@ Optional AI is deferred and can draft intent only. Plan hashes/application versi
 
 ## Future verification log
 
+### Five-report publication and live submission gate — 2026-10-21 12:42 UTC
+
+Current official bounty details were re-read in normal Edge at 12:38 UTC. Reproducibility, first-valid-report/budget limits, per-issue Markdown format and whitelist submission restriction remain as recorded; no new eligibility or reward claim. The official bot-kit main still equals `25798660bbe4674a6f83a960b202852896e2fed4`. Fresh public issue searches at 12:42 returned zero for preflight and only issue 23 for perp-maker/perp-starter; private submissions/community reports remain inaccessible/unsearched.
+
+After the user's end-to-end instruction approved the reviewed 003–005 extension and exact five-report Build text, the [public package](https://github.com/tang-vu/dreamdex-perps-feedback) was updated to `c1f662db6c75cb72a4017ae97af60f9dcb831d9e`. All 22 remote files, byte equality and 21 payload SHA-256/size entries were verified; actual Edge shows all five items and evidence limitations. Original review ZIP remains unchanged. Only approval-status prose/manifest were refreshed from the reviewed candidate; no dependency/reproducer/evidence behavior changed. ForkTrade remains private.
+
+A fresh official Submit Build click after publication redirected to DoraHacks login before any form. This establishes the current user-authentication gate, not a submission, rejection, acceptance or payout. The exact five-report text is already authorized in feedback/SUBMISSION.md. No account credentials, alternate account or community/email message were used to bypass sign-in.
+
 ### Additional bot-kit research — 2026-10-21 09:07 UTC
 
 Official bot-kit main remains `25798660bbe4674a6f83a960b202852896e2fed4`; npm's latest markets-sdk remains 0.32.1. No dependency/stack pin changed. Actual immutable source hashes are recorded and enforced by the new [shared infrastructure](feedback/repro/_botkit-offline.mjs) and [maker adapter](feedback/repro/_maker-offline.mjs): starter `3e0158ab088489fbd63ff4a0e1a38174d6c5be6a3fee1fd85c4ea19065f731b1`, margin `041cfbb5a34bc80c6ddb2d71d81b592c979826a950d617aebdbb2533ea58d23a`, maker `ed8ccfafe233796f9764ea6f946c8450fd732754f3abcc853f74dd46a9c62e32`, markets `95dfbbb84d114927f5a5df87f4a0d96114d3904cb98a8c06c42c3823880a0520`, orders `a9ed57032c74315deafaea99a9ce349875b5bcd4b6eb0d09e2c5065c9402c583` (SHA-256).

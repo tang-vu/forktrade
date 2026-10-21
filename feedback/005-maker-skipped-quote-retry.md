@@ -3,7 +3,7 @@
 Severity: normal (proposed; organizer decides)
 Area: SDK
 Related surface: official dreamDEX bot kit, not a markets-sdk library defect
-Status: reproduced offline; private draft, not published/submitted
+Status: reproduced offline; user-approved Feedback report, not submitted
 
 ## Impact and scope
 
@@ -52,4 +52,4 @@ Public GitHub search `repo:somnia-chain/dreamdex-bot-kit is:issue perp-maker` on
 
 ## Suggested investigation and outcome
 
-Track missing/skipped legs and retry those without requiring a price drift. Preserve the movement gate for valid existing quotes and avoid repeatedly sending uncertain transactions. Add both recovered-same-mark and moved-mark controls. No upstream patch or live fix is claimed. Private draft, no publication/submission approval, organizer acceptance or payment.
+Track missing/skipped legs and retry those without requiring a price drift. Preserve the movement gate for valid existing quotes and avoid repeatedly sending uncertain transactions. Add both recovered-same-mark and moved-mark controls. No upstream patch or live fix is claimed. User approved this reviewed addition and its Feedback submission on 2026-10-21. No actual submission, organizer acceptance or payment is established.
