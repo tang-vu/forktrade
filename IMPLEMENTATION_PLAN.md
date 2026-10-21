@@ -58,7 +58,7 @@ These are current implementation gates, not failures already observed in an app:
 | D3 | Live chain/config/contract/market verification | Public RPC/SDK checks passed; actual owner context not read | M4 adapter tests and M5 preparation |
 | D4 | Bounty accepted environment and current rules | Reverify; live page unavailable/CAPTCHA context | Local implementation and draft checklist |
 | D5 | Suitable local runtime/dependency access | Passed clean Windows and GitHub Ubuntu install/build/tests | Continue local implementation |
-| D6 | Wallet connection/auth signature and user permissions | Requested 2026-10-20 17:35 UTC; pending; no wallet connected/signed | Independent source/mock/public work completed |
+| D6 | Wallet connection/auth signature and user permissions | One local testnet wallet created/stored with explicit authorization on 2026-10-21; connection/import/auth still pending; no signature | Wallet-creation request completed; user intends to faucet |
 | D7 | Gas/collateral/account access and each live order approval | Not authorized; no transactions done | Complete M1-M5 and prepare final review |
 | D8 | Private sharing/public/judge access, hosting, posts and submission | Not authorized | Drafts and local evidence package |
 | D9 | Mainnet activity for a conditional prize tranche | Out of scope; separate authorization/project | None needed for testnet MVP implementation |
@@ -80,6 +80,14 @@ If access to a required service fails, add a specific row with action, target, r
 | M7 | Partial local handoff prepared | README/run guide, offline screenshots, source/read-only evidence, demo manifest and three unposted social drafts | Real live evidence, current rules and separately authorized external actions |
 
 ## How to update and resume
+
+### 2026-10-21 01:41 UTC — explicitly authorized local testnet wallet creation
+
+New user instruction authorizes creating one wallet and storing it locally so the user can faucet it. Resumed clean on `feat/forktrade-core`. Created one genuine random EOA using pinned viem generatePrivateKey (installed source uses noble secp256k1 randomPrivateKey); no synthetic identity or signing operation. Private key never entered command arguments, environment, logs, chat or Git. Encrypted with Windows DPAPI CurrentUser; protect/unprotect round-trip passed in memory before persistence. Saved `.local/wallets/hideki-testnet-2026-10-21/wallet.dpapi.json` and separate `address.txt`; folder/files are restricted to the current Windows user and SYSTEM and verified Git-ignored/untracked. Public address is delivered directly to the user and kept out of tracked project evidence.
+
+Checks: persisted encrypted record/address match; rerunning the local helper preserved the existing wallet without generating another key; file ACL and git check-ignore/git ls-files checks passed. Initial Set-Acl attempted to apply security metadata requiring SeSecurityPrivilege and failed before generation; used icacls to change only the newly created folder's DACL, then verified the exact two allowed principals. No privilege/system policy change. A public RPC check confirmed chain 50383 and zero native balance at 01:40:56 UTC; no faucet claim was attempted. User will fund it independently. The app/server has no access path to this key; no server signing key was added.
+
+This grant covers wallet creation/storage only. Import/connection/ownership authentication, funds/claims/allowances/delegation, each root/remix order, cancellation and publication remain separately gated. All app permission flags stay false. Original GOAL remains incomplete; no actual account-risk preview or live execution exists, and accepted bounty environment is still unconfirmed. This documentation-only update requires no repeat source/browser suite; verification above covers the new local artifact. Next concrete step: user faucets the provided address; perform only subsequently authorized wallet/session actions.
 
 ### 2026-10-20 17:40 UTC — third-turn blocked audit
 

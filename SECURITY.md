@@ -1,6 +1,6 @@
 # Security, permissions and honest evidence
 
-Status: security requirements for the implementation in progress. Offline trust-boundary tests exist; no independent audit, real wallet configuration, authentication signature or transaction has been performed for ForkTrade.
+Status: security requirements for the implementation in progress. Offline trust-boundary tests exist; no independent audit. On 2026-10-21 the user explicitly authorized creation and local storage of one dedicated testnet wallet. Its key is encrypted with Windows DPAPI CurrentUser in Git-ignored local storage and is not loaded by the application/server. No wallet import, authentication signature or transaction has been performed for ForkTrade.
 
 ## Trust boundaries
 
