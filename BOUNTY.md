@@ -6,6 +6,12 @@ Status: local implementation in progress; offline path, actual reads and bounded
 
 A second [private report](feedback/002-existing-position-bracket-side.md) reproduces a bot-kit dry-run side mismatch using explicit offline synthetic fixtures. This is separate code-path evidence, not a live protocol failure. Its scope/duplicate/severity decision remains with the organizer, and publication/submission of this addition is not covered by report 001 approval.
 
+## Submission organization
+
+Working plan: one Feedback-only Build containing the approved reports, each in its own Markdown file, and a separate ForkTrade MVP Build when the actual product meets its live-evidence requirements. Report 001 is approved; including 002 still awaits the existing additional-package decision. The MVP is not ready or approved for submission.
+
+On 2026-10-21 the user supplied a conversation where a reply directly to the question about two separate Builds said, "Yeah, you can submit both". We interpret that direct answer as support for separate Feedback and MVP Builds. The speaker's organizer role and message were not independently verified, and no message URL was supplied; this is user-supplied clarification, not a new published rule. If the actual submission form imposes a conflicting limit, resolve that specific conflict before submission. See [source provenance](SOURCES.md#user-supplied-build-organization-reply--2026-10-21).
+
 ## Provenance and dates
 
 The rule facts below come from the user's full pasted official program page on **2026-10-20**, as supplied for this project. The live [DoraHacks bounty page](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail) was CAPTCHA-blocked in that review; this documentation run also could not retrieve the live rules. Reverify the current official page and any organizer clarifications before submission. Do not bypass a CAPTCHA or treat an inaccessible page as confirmation of unchanged rules.

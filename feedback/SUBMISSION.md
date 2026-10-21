@@ -2,6 +2,8 @@
 
 Proposed destination: the Feedback track of [dreamDEX Perps Builder Bounty](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail).
 
+Organization plan: keep approved Feedback reports together in one Feedback-only Build, and prepare ForkTrade as a separate MVP Build only when ready and authorized. A direct community reply supplied by the user supports separate Builds; its provenance and limits are recorded in [SOURCES.md](../SOURCES.md#user-supplied-build-organization-reply--2026-10-21). This clarification does not expand the existing 001 publication/text grant to report 002 or the MVP.
+
 Published public repository: https://github.com/tang-vu/dreamdex-perps-feedback, commit `8ae7fa336d777ee6b00e73a8116d32c52ad992f3`. The current ForkTrade repository stays private. The user explicitly approved this package and the submission text below on 2026-10-21. Published only report 001, two public-site screenshots, two redacted JSON records, its dependency-free GET reproducer and a short package README/manifest. All eight remote files and the seven manifest hashes were verified against the reviewed local package. No app source, wallet/account material, environment files or databases are included.
 
 ## Proposed Build title

@@ -83,6 +83,14 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-21 07:35 UTC — supplied reply supports separate Feedback and MVP Builds
+
+Resumed clean on `feat/forktrade-core` at pushed `6e80e73`. The user supplied a conversation with a direct affirmative reply to the exact question about two separate Builds. Recorded the short reply and provenance without chat handles or the user's chat identity. Working interpretation: organize approved reports within one Feedback Build, and submit ForkTrade through a separate MVP Build once ready. The sender's organizer role/message URL and the actual form's limits remain unverified; no official rule or formal acceptance is invented.
+
+Updated BOUNTY.md, SOURCES.md and the private submission review document. The approved report 001 Build title/description and both report packages are unchanged. This is organization evidence only, not user permission for 002 publication, MVP publication/submission, wallet operations or live orders. No login, form, community message, public package update or external submission was attempted. Goal remains blocked on the previously recorded user-authentication gate; this scope clarification does not itself resolve it. Next: resume the applicable authorized Feedback submission after sign-in, and apply the pending 002 decision when received. The MVP still needs actual separately approved live orders/evidence and its own publication/submission decision.
+
+Documentation-only change; relevant verification is Markdown local targets/fences/anchors and `git diff --check`, with no app/source test rerun required. Commit is the private documentation commit containing this entry; commit/push remains the requested workflow.
+
 ### 2026-10-21 05:04 UTC — final package/CI verification; third-turn submission blocker audit
 
 Previous goal turn was progress: report 002's pinned upstream source reproduction, reviewed extension package and the reporter lint correction were delivered and pushed. This continuation initially verified a specific live CI run, 39547173495 on `cb58cd0a5f92dbdf91bd97123a937f9f5872f2c2`, then inspected its terminal success and logs: install/migration/typecheck/lint, 104 tests, build and all 20 browser cases passed (29.0s). No source changes or failed local checks remain. Revalidated the eleven-file candidate, all ten payload hashes and the zip SHA-256; unchanged. Verified public Feedback HEAD still `8ae7fa3` with eight files, and ForkTrade PRIVATE. Nothing new was published or submitted.

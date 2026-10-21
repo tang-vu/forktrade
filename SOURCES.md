@@ -50,6 +50,12 @@ Optional AI is deferred and can draft intent only. Plan hashes/application versi
 
 ## Future verification log
 
+### User-supplied Build organization reply — 2026-10-21
+
+The user pasted a dated community conversation asking whether a whitelisted participant may submit two separate Builds: a Feedback-only Build containing multiple reports and an MVP Build. A reply directly to that question at 14:33 UTC+7 said, "Yeah, you can submit both". We interpret the direct reply as supporting two separate Builds and use that as the working organization plan in BOUNTY.md. The earlier response concerned whitelist onboarding and did not answer this organization question.
+
+Evidence is the user's supplied transcript only. No original message URL or independently verified organizer role is available; no community account was accessed and no message was sent. Personal handles, the user's chat identity and irrelevant invitation details are omitted from the repository. This does not establish DoraHacks form capabilities, submission/acceptance/payment or permission to publish report 002 or the private MVP. Keep the original report 001 grant and the separate pending 002/live/MVP permissions intact.
+
 ### Official bot-kit existing-position path — 2026-10-21 04:51 UTC
 
 Verified unchanged upstream source bytes and current main revision `25798660bbe4674a6f83a960b202852896e2fed4`. The [starter](https://github.com/somnia-chain/dreamdex-bot-kit/blob/25798660bbe4674a6f83a960b202852896e2fed4/strategies/perp-starter/src/index.ts#L121) recognizes an existing position but later chooses trigger ordering and the [bracket argument](https://github.com/somnia-chain/dreamdex-bot-kit/blob/25798660bbe4674a6f83a960b202852896e2fed4/strategies/perp-starter/src/index.ts#L187) using configured `SIDE`. A four-case offline harness reproduced the resulting dry-run mismatch in both opposite-side fixtures; matching-side controls matched. [Report 002](feedback/002-existing-position-bracket-side.md) records exact source hashes, pinned revision, runtime, test doubles and the absence of live/financial evidence. The tracked reproducer uses Node 24 builtins only; no package pin or app dependency changed. This supersedes the earlier source-inspection-only status without retroactively treating that inspection as a reproduction.
