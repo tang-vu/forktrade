@@ -46,7 +46,7 @@ If accepted-environment rules remain unavailable, continue local/offline work an
 | Item | Current state | Evidence needed later |
 | --- | --- | --- |
 | Private GitHub docs baseline | Prepared by this task | Verified repository visibility, branch, commit and Markdown inventory |
-| Runnable app/source | Offline path and guarded live integration pass source/mock/browser checks; ACCEPTANCE.md distinguishes actual reads | Actual wallet/account/root/remix acceptance remains unrun |
+| Runnable app/source | Offline path and guarded live integration pass source/mock/browser checks; actual funded-owner sizing/simulation pass | Actual user ownership flow and root/remix order acceptance remain unrun |
 | Actual root and remix perps orders | None | Separate user approvals, real identities and honest reconciled outcomes |
 | Accepted environment and current rules | Official page and linked developer environment reverified 2026-10-21 | Recheck before submission; no claim that pending root/remix outcomes qualify |
 | Demo evidence | Offline synthetic screenshots inspected; no live demo/recording | Real reviewed recording/screenshots/receipts with limitations |

@@ -55,7 +55,7 @@ These are current implementation gates, not failures already observed in an app:
 | --- | --- | --- | --- |
 | D1 | User invocation of GOAL authorizing app implementation | Granted 2026-10-20; commit/push each verified increment requested | Local implementation |
 | D2 | Current SDK/version and browser signing feasibility | SDK ABI/source and mock browser path verified in M5; actual wallet unrun | Authorized real session/account compatibility check |
-| D3 | Live chain/config/contract/market verification | Public RPC/SDK checks passed; actual owner context not read | M4 adapter tests and M5 preparation |
+| D3 | Live chain/config/contract/market verification | Public RPC/SDK and actual funded-owner sizing/margin/simulation passed | Actual order/history/reconnect verification after approval |
 | D4 | Bounty accepted environment and current rules | Official page displayed in normal Edge on 2026-10-21; its developer link identifies chain 50383 and verified contracts | Recheck final outcome/entry eligibility before submission |
 | D5 | Suitable local runtime/dependency access | Passed clean Windows and GitHub Ubuntu install/build/tests | Continue local implementation |
 | D6 | Wallet connection/auth signature and user permissions | Dedicated funded wallet and separate interactive EIP-1193 companion ready; real ownership decision pending in its UI | Local authorized session running; no key in the web/server process |
@@ -76,10 +76,16 @@ If access to a required service fails, add a specific row with action, target, r
 | M3 | Passed offline increment | Final rebuilt suite: 8 browser tests passed (19.9s), comparison/withdrawal, 1280/360px screenshots inspected | Live wallet behavior is M4/M5/M6, not established by fixtures |
 | M4 | Actual public and funded-owner reads/simulation passed; observation history unrun | Verified system/book/precision, actual sizing/margin/native fees and exact eth_call; private safe evidence paths below | Browser owner session and actual order/history/reconnect acceptance |
 | M5 | Passed source readiness including local user-controlled acceptance wallet | 104 unit/integration tests, 18 browser cases; owner-scoped wallet-claim validation, separate approval UI and durable local hash recovery | Actual ownership signature and root/remix orders remain M6 |
-| M6 | Blocked on later authorization and prerequisites | No actual orders or signatures | Obtain permission when reviewable; execute and reconcile honestly |
+| M6 | Partial; running wallet session awaits user ownership and exact order decisions | Funding and account simulation passed; no ownership signature or root/remix order observed | User reviews connection/challenge in the open wallet, then each fresh order in app and wallet |
 | M7 | Partial local handoff prepared | README/run guide, offline screenshots, source/read-only evidence, demo manifest and three unposted social drafts | Real live evidence, current rules and separately authorized external actions |
 
 ## How to update and resume
+
+### 2026-10-21 02:50 UTC — companion pushed and exact-commit CI verified
+
+Verified clean branch `feat/forktrade-core`; local and remote both `3f847789c932416ed814d6de6518c118741cf9ec`. [CI 39534936073](https://github.com/tang-vu/forktrade/actions/runs/39534936073), job 119009287695, completed successfully on that exact source commit: clean install/migration/typecheck/lint, 104 tests, production build and 18 Chromium scenarios (21.8s). Inspected terminal job steps and test totals. No source change or new dependency in this evidence update; no repeated local suite needed. This entry belongs to its own documentation commit.
+
+Both production app session 61909 and user-controlled wallet session 6461 remain running. No ownership-authenticated marker or testnet database exists yet; no app root/remix request or order is evidenced. The pending UI handoff is still unanswered. Keep those windows available for the user; do not click connection, challenge or order approvals for them and do not start duplicate processes. Current gate: user interaction with the separate wallet at `http://127.0.0.1:3000`, chain 50383, followed by a fresh exact root order review. Independent remix authority and its separate final approval remain required afterward. Funding is complete, source/CI checks pass, live root/remix are unrun, and external publication/submission remain unauthorized. GOAL is incomplete. Updated DEMO.md to distinguish real setup evidence from the still-empty live-order manifest.
 
 ### 2026-10-21 02:45 UTC — interactive acceptance wallet implemented and opened
 

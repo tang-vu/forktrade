@@ -1,10 +1,10 @@
 # Demo plan and evidence manifest
 
-**The offline browser demonstration has run. No live demo has run.** Screenshots below show synthetic fixtures only; no wallet, actual transaction/order, real receipt, recording or post link exists. Keep this separate from live acceptance.
+**The offline browser demonstration has run. Live root/remix execution and its demo remain unrun.** Screenshots below show synthetic fixtures only. A real dedicated wallet and confirmed 5-USDso account-funding transactions exist in private local storage; these are setup evidence, not perps orders or a recorded live demo. No recording or post link exists.
 
 Offline walkthrough is automated in `tests/e2e/offline.spec.ts`. It uses two isolated browser contexts for original/remix and covers approval, publication, comparison and withdrawal. Inspected screenshots: [desktop](evidence/offline-desktop.png), [desktop remix](evidence/offline-remix-desktop.png), [360px card](evidence/offline-card-mobile.png), [360px remix](evidence/offline-remix-mobile.png). They are actual app screenshots of an explicitly synthetic scenario, never live protocol evidence. Test databases are isolated and ignored; no fake live history was seeded.
 
-The gated live UI and browser adapter also pass intercepted mock-wallet tests (connection/signature review, rejection, timeout and account switch); those tests provide no live screenshots or protocol evidence. Actual dev/browser smoke screenshots show only the [disabled readonly workspace](evidence/readonly-desktop.png) and [public market at 360px](evidence/readonly-market-mobile.png). The latest actual public market/configuration check is [M5 read-only JSON](evidence/read-only-m5-2026-10-20.json). No real owner's account, authentication, root/remix execution or public disclosure choice has been tested. The live manifest below therefore remains empty.
+The gated live UI and browser adapter also pass intercepted mock-wallet tests (connection/signature review, rejection, timeout and account switch); those tests provide no live screenshots or protocol evidence. Actual dev/browser smoke screenshots show only the [disabled readonly workspace](evidence/readonly-desktop.png) and [public market at 360px](evidence/readonly-market-mobile.png). The tracked public market/configuration check is [M5 read-only JSON](evidence/read-only-m5-2026-10-20.json). On 2026-10-21, actual funded-owner sizing/margin and exact unsigned order simulation passed; private records and funding results are described in [the ledger](IMPLEMENTATION_PLAN.md). The user-controlled app/wallet session is running, awaiting the user's ownership decision. Root/remix execution and publication choices remain unrun; no live-order manifest entry can be supplied yet.
 
 ## Short walkthrough to prepare
 
@@ -37,10 +37,10 @@ Fill with observed facts, not proposed values. Do not insert placeholder transac
 
 | Field | Actual value |
 | --- | --- |
-| App branch/commit and build command | feat/forktrade-core; offline implementation commit recorded in IMPLEMENTATION_PLAN.md; npm.cmd run build |
+| App branch/commit and build command | feat/forktrade-core; source 3f847789c932416ed814d6de6518c118741cf9ec; npm.cmd run build; CI 39534936073 passed 104 tests and 18 browser cases |
 | Recording date/time UTC, browser/OS/device | Not recorded |
-| Mode | Offline synthetic browser demo; separate real public read-only snapshot; no live execution |
-| Chain ID, observed network/app label, RPC/config verification date | Public reads: 50383, Hideki / DreamDEX app region, 2026-10-20; fixtures: synthetic chain 0 |
+| Mode | Offline synthetic browser demo; separate actual account funding/read-only simulation; no live root/remix order |
+| Chain ID, observed network/app label, RPC/config verification date | Actual reads/setup: 50383, Hideki / DreamDEX app region, verified 2026-10-21; fixtures: synthetic chain 0 |
 | SDK/package lock version | SDK 0.32.1, exact resolved dependencies in package-lock.json |
 | Market/pool, metadata source/as-of | BTC / USDso; public pool and source/block recorded in evidence/read-only-2026-10-20.json; offline pool is explicitly synthetic |
 | Root plan ID/version/hash, approval context | None |
@@ -52,8 +52,8 @@ Fill with observed facts, not proposed values. Do not insert placeholder transac
 | Receipt/history coverage and unresolved gaps | No observations |
 | Publication allowlist and user consent | Not requested |
 | Screenshots/video/evidence paths or approved links | Four offline screenshot links above; no live screenshots, video or hosted URL |
-| Remaining exposure and cleanup status | No ForkTrade activity performed |
-| Accepted bounty environment/rules recheck | Pending |
+| Remaining exposure and cleanup status | Setup bank balance 5 USDso, wallet 95 USDso, allowance 0 as of 2026-10-21 02:00:50 UTC; no ForkTrade order sent; future cleanup requires separate authorization |
+| Accepted bounty environment/rules recheck | Official program-resource mapping verified 2026-10-21 in evidence/environment-2026-10-21.json; final outcome/entry eligibility and pre-submission recheck remain pending |
 
 Evidence should identify chain, market/pool and order/account context sufficiently for authorized verification. If address evidence is withheld for privacy, disclose the resulting verification limitation. Store only reviewed nonsecret evidence in the repository; keep security vulnerabilities and secrets outside it. Existing offline media is explicitly synthetic; live media needs the authorized run and redaction review.
 
