@@ -59,7 +59,7 @@ These are current implementation gates, not failures already observed in an app:
 | D4 | Bounty accepted environment and current rules | Reverify; live page unavailable/CAPTCHA context | Local implementation and draft checklist |
 | D5 | Suitable local runtime/dependency access | Passed clean Windows and GitHub Ubuntu install/build/tests | Continue local implementation |
 | D6 | Wallet connection/auth signature and user permissions | One local testnet wallet created/stored with explicit authorization on 2026-10-21; connection/import/auth still pending; no signature | Wallet-creation request completed; user intends to faucet |
-| D7 | Gas/collateral/account access and each live order approval | Not authorized; no transactions done | Complete M1-M5 and prepare final review |
+| D7 | Gas/collateral/account access and each live order approval | User-funded wallet verified: 50 STT / 100 USDso on 2026-10-21; bank collateral 0. Funding/allowance/auth/order actions not authorized | Prepare the supported owner-controlled setup and fresh review; no automatic funding |
 | D8 | Private sharing/public/judge access, hosting, posts and submission | Not authorized | Drafts and local evidence package |
 | D9 | Mainnet activity for a conditional prize tranche | Out of scope; separate authorization/project | None needed for testnet MVP implementation |
 
@@ -80,6 +80,12 @@ If access to a required service fails, add a specific row with action, target, r
 | M7 | Partial local handoff prepared | README/run guide, offline screenshots, source/read-only evidence, demo manifest and three unposted social drafts | Real live evidence, current rules and separately authorized external actions |
 
 ## How to update and resume
+
+### 2026-10-21 01:43 UTC — user faucet confirmed by actual public reads
+
+User reported faucet completed. Resumed clean on `feat/forktrade-core`; used only the saved public address, without opening/decrypting the key. Reverified public chain 50383 and current official SDK/system/market identities, then read native and USDso wallet balances at block 28950812 and MarginBank via the SDK at its separately reported block 28950828. Actual result at 01:43:25 UTC: 50 STT native, 100 USDso in wallet, 0 unlocked/locked bank collateral and 0 bank equity. These are actual public account balance reads, not synthetic fixtures, authenticated risk sizing or an execution receipt. Safe full record stays in ignored `.local/wallets/hideki-testnet-2026-10-21/funding-read-latest.json`; no address or private account payload is added to Git.
+
+The unsigned public check completed successfully and closed its SDK connections. No key access, wallet import/connect/authentication, faucet/voucher claim, allowance/deposit, signature, order or external publication occurred. App permission flags remain false. Native gas funding and wallet tokens are now observed; the application's pre-funded-bank requirement remains unmet. Any allowance/deposit is a separate user-authorized transaction, and each root/remix order still requires its own exact approval. GOAL remains incomplete with ownership/signing setup, actual risk preview, bank funding and accepted-environment evidence outstanding. Next: agree the supported user-controlled wallet/setup steps; never silently spend the faucet balance. Documentation-only status change; source/browser checks are unchanged and need no rerun.
 
 ### 2026-10-21 01:41 UTC — explicitly authorized local testnet wallet creation
 
