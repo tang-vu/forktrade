@@ -4,6 +4,8 @@
 
 **Current priority (user changed goal 2026-10-21): Feedback submission first, with ForkTrade as a separate later MVP Build.** No additional Edge-wallet implementation was made after that change. Reviewed reports 001 and 002 are published together at b1ec751 and their combined Build text is approved; actual DoraHacks submission is pending user login. Report 002 remains explicitly offline/synthetic evidence. Both propose normal severity; acceptance/payment remain unestablished. The private MVP Build draft is prepared in DEMO.md, with live/publication gates still open.
 
+Reward-focused follow-up prepared private 003/005 offline reproductions with controls and lower-confidence 004 cap-semantics clarification. Their 22-file extension and replacement text are reviewable; publication approval is pending. Five issue files/candidates are not five accepted reports. No submission, acceptance or payment is evidenced.
+
 ## Order of work
 
 Finish one end-to-end path before adding breadth. Steps M0-M5 can advance offline/read-only subject to environment permissions. M6 needs explicit authorization and user participation. M7 prepares the handoff; it does not authorize external publication or submission. If a gate is blocked, complete independent work and keep dependent gates open.
@@ -82,6 +84,22 @@ If access to a required service fails, add a specific row with action, target, r
 | M7 | Partial local handoff prepared | README/run guide, offline screenshots, source/read-only evidence, demo manifest and three unposted social drafts | Real live evidence, current rules and separately authorized external actions |
 
 ## How to update and resume
+
+### 2026-10-21 09:07 UTC — reward-focused research; two reproduced additions and one clarification candidate
+
+User asked for further valuable feedback to maximize rewards. Resumed on `feat/forktrade-core` at pushed `fe6e0a4`, preserving the private application and existing public 001/002 grant. Investigated distinct causes rather than splitting long/short cases or raising severity without evidence. Official bot-kit main remains `25798660bbe4674a6f83a960b202852896e2fed4`; npm SDK latest remains 0.32.1. No app behavior, dependency or stack change.
+
+Prepared private reports 003/005 with actual pinned-source offline execution and passing controls: 003 checks entry margin before discovering an existing smaller position (3 below/boundary/above cases with matching sides); 005 retains a reference mark after both quotes were skipped, suppressing retries at an unchanged mark (3 bounded failure/healthy/moved-mark cases). Report 004 reproduces near-cap projected quote overshoot in 6 fixtures but explicitly leaves hard-cap intent unresolved; lower-confidence documentation clarification, not a proven protocol-cap bypass. All propose normal, bot-kit eligibility/duplicate/severity decisions remain with the organizer. No wallet, signer, RPC execution, actual account, stop, quote, fill, loss or payout is asserted by fixtures.
+
+Added builtin-only offline helpers: public immutable GETs/hash checks precede execution, only the automatic startup footer is replaced, original strategy/helper bodies run with explicit test doubles, DRY_RUN is forced, virtual process.exit aborts main, loops are bounded and evidence writes reject out-of-folder/overwrite. Corrected 002's unused MARKET fixture 1→2 against SDK 0.32.1; all four existing-position cases retain the same results. This harness correction is not an upstream finding. Checks passed: saved 003/004/005 runs, `npm.cmd run lint`, `node --check` for every reporter, three output-path rejection checks, evidence invariants and 002 regression; ignored infrastructure check verified hash rejection before execution and immediate virtual-exit abort. CI for this new source increment is pending at this entry; prior 104-test/20-browser results remain separate.
+
+Rejected unsupported leads: actual read-only base-token decimals for all 21 markets matched at block 29207515, unavailable/mismatches zero; SDK pending-stop default defeats the historical-stop hypothesis. Operator ABI/open-interest questions remain inconclusive, not report counts. Targeted public issue searches found no preflight match and only feature request 23 for maker; private submissions/community reports remain unavailable/unsearched, so first-report priority is unknown. Safe references/hashes and negative triage are in SOURCES.md.
+
+Prepared an explicit 22-file extension review ZIP, `.local/feedback-003-005-publication-ready-v2.zip`, SHA-256 `90e1887d37a86951301a89be7870fde95ae976f219a94fdf354ce91e329f890a`, based on public b1ec751. Includes 3 reports/runners/evidence, 2 helpers, public README/manifest and the one-line unused 002 fixture correction; excludes app/env/DB/account/wallet/auth material. Original v1 review artifact is retained; v2 only improves 004's standard report section headings. Proposed exact five-report replacement Build text is in feedback/SUBMISSION.md; existing approved two-report text is preserved. New external extension/text approval remains pending; no public 003–005 change or new DoraHacks action occurred. Final local manifest/ZIP/Markdown/private-data checks are recorded in the follow-up result before stopping.
+
+Final local package verification passed: exact 22-file inventory, all 21 manifest hashes/sizes, ZIP byte equality/SHA-256, JSON, reporter syntax, Markdown targets/fences, credential-pattern and private-wallet exclusion. Executed the actual staged 003/004/005 runners again without writing evidence: 3/6/3 cases passed. Original saved evidence and review ZIP were preserved. No known local check remains failed.
+
+Status: five issue files/candidates in the private repo, only 001/002 public; zero submitted/accepted/paid. Goal remains partial. Next: commit/push verified private work, inspect exact source CI, then obtain the scoped approval for the reviewable extension/replacement text. Actual DoraHacks submission still needs the user's whitelisted sign-in; no repeat approval is needed for the existing 001/002 package. MVP/live/signing/publication gates remain separate. Commit is the private commit containing this entry.
 
 ### 2026-10-21 07:46 UTC — continued instruction; report 002 published and two-report Build ready
 

@@ -63,7 +63,7 @@ async function run(configuredSide, existingSide) {
   });
   await stops.evaluate({ timeout: 1000 });
   const core = {
-    ORDER_TYPE: { MARKET: 1 }, loadEnv() {}, envNum: (_name, fallback) => fallback,
+    ORDER_TYPE: { MARKET: 2 }, loadEnv() {}, envNum: (_name, fallback) => fallback,
     createExchange: options => {
       if (options.withSigner !== false) throw new Error('Unexpected signer request');
       boundaries.push('withSigner:false');

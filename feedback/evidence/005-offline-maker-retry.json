@@ -1,0 +1,223 @@
+{
+  "kind": "OFFLINE SYNTHETIC SOURCE TEST - NOT LIVE EVIDENCE",
+  "observedAt": "2026-10-21T08:56:51.703Z",
+  "upstreamRevision": "25798660bbe4674a6f83a960b202852896e2fed4",
+  "nodeVersion": "v24.21.0",
+  "execution": {
+    "mode": "offline-synthetic",
+    "network": false,
+    "signer": false,
+    "privateKey": false,
+    "transactions": false
+  },
+  "sourceHandling": "Public GETs/hash checks before execution; TypeScript stripped and only auto-start footer replaced. Original function bodies unchanged.",
+  "sourceFiles": [
+    {
+      "path": "strategies/perp-maker/src/index.ts",
+      "sha256": "ed8ccfafe233796f9764ea6f946c8450fd732754f3abcc853f74dd46a9c62e32"
+    },
+    {
+      "path": "packages/perp-core/src/markets.ts",
+      "sha256": "95dfbbb84d114927f5a5df87f4a0d96114d3904cb98a8c06c42c3823880a0520"
+    },
+    {
+      "path": "packages/perp-core/src/orders.ts",
+      "sha256": "a9ed57032c74315deafaea99a9ce349875b5bcd4b6eb0d09e2c5065c9402c583"
+    }
+  ],
+  "sourceRetrieval": {
+    "publicGETs": 3,
+    "authenticated": false
+  },
+  "limitations": [
+    "Three synthetic cycles, public-source-only offline execution, no account or live quote",
+    "Original maker/sizeOrder/dry-run placePerp bodies execute; SDK sizing/mark responses are test doubles",
+    "Recovery after the first cycle is a fixture condition; no actual oracle outage or RPC incident is claimed",
+    "Indefinite suppression while inputs stay unchanged is source-derived, not an unbounded live observation"
+  ],
+  "cases": [
+    {
+      "name": "transient sizing failure, unchanged mark",
+      "syntheticInventoryRawBase": "0",
+      "syntheticMarkByCycle": [
+        100,
+        100,
+        100
+      ],
+      "sizingPriceableByCycle": [
+        false,
+        true,
+        true
+      ],
+      "baseDecimals": 8,
+      "quoteDecimals": 18,
+      "configuredMaxPositionUsdso": "100",
+      "configuredQuoteNotionalUsdso": "25",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-maker on OFFLINE TEST BTC | 25 USDso per side at 2x | half-spread 15bps skew 10bps | cap 100 USDso | dry-run true",
+        "OFFLINE TEST: synthetic sufficient account",
+        "long side skipped: market is un-priceable right now (stale mark)",
+        "short side skipped: market is un-priceable right now (stale mark)",
+        "quotes pulled, exiting"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "calls": {
+        "sizingReads": [
+          {
+            "cycle": 1,
+            "isBid": true
+          },
+          {
+            "cycle": 1,
+            "isBid": false
+          }
+        ],
+        "quoteIntents": [],
+        "positionReads": 1
+      }
+    },
+    {
+      "name": "matching stable-mark healthy control",
+      "syntheticInventoryRawBase": "0",
+      "syntheticMarkByCycle": [
+        100,
+        100,
+        100
+      ],
+      "sizingPriceableByCycle": [
+        true,
+        true,
+        true
+      ],
+      "baseDecimals": 8,
+      "quoteDecimals": 18,
+      "configuredMaxPositionUsdso": "100",
+      "configuredQuoteNotionalUsdso": "25",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-maker on OFFLINE TEST BTC | 25 USDso per side at 2x | half-spread 15bps skew 10bps | cap 100 USDso | dry-run true",
+        "OFFLINE TEST: synthetic sufficient account",
+        "[dry-run] would place quote long 0.25 OFFLINE-BTC @ 99.8",
+        "[dry-run] would place quote short 0.25 OFFLINE-BTC @ 100.1",
+        "quotes pulled, exiting"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "calls": {
+        "sizingReads": [
+          {
+            "cycle": 1,
+            "isBid": true
+          },
+          {
+            "cycle": 1,
+            "isBid": false
+          }
+        ],
+        "quoteIntents": [
+          {
+            "cycle": 1,
+            "side": "long",
+            "quantityRaw": "25000000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "25000000000000000000",
+            "exceedsConfigured100Usdso": false
+          },
+          {
+            "cycle": 1,
+            "side": "short",
+            "quantityRaw": "25000000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "25000000000000000000",
+            "exceedsConfigured100Usdso": false
+          }
+        ],
+        "positionReads": 1
+      }
+    },
+    {
+      "name": "transient sizing failure, mark moves control",
+      "syntheticInventoryRawBase": "0",
+      "syntheticMarkByCycle": [
+        100,
+        101,
+        101
+      ],
+      "sizingPriceableByCycle": [
+        false,
+        true,
+        true
+      ],
+      "baseDecimals": 8,
+      "quoteDecimals": 18,
+      "configuredMaxPositionUsdso": "100",
+      "configuredQuoteNotionalUsdso": "25",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-maker on OFFLINE TEST BTC | 25 USDso per side at 2x | half-spread 15bps skew 10bps | cap 100 USDso | dry-run true",
+        "OFFLINE TEST: synthetic sufficient account",
+        "long side skipped: market is un-priceable right now (stale mark)",
+        "short side skipped: market is un-priceable right now (stale mark)",
+        "[dry-run] would place quote long 0.24752 OFFLINE-BTC @ 100.8",
+        "[dry-run] would place quote short 0.24752 OFFLINE-BTC @ 101.1",
+        "quotes pulled, exiting"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "calls": {
+        "sizingReads": [
+          {
+            "cycle": 1,
+            "isBid": true
+          },
+          {
+            "cycle": 1,
+            "isBid": false
+          },
+          {
+            "cycle": 2,
+            "isBid": true
+          },
+          {
+            "cycle": 2,
+            "isBid": false
+          }
+        ],
+        "quoteIntents": [
+          {
+            "cycle": 2,
+            "side": "long",
+            "quantityRaw": "24752000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "24999520000000000000",
+            "exceedsConfigured100Usdso": false
+          },
+          {
+            "cycle": 2,
+            "side": "short",
+            "quantityRaw": "24752000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "24999520000000000000",
+            "exceedsConfigured100Usdso": false
+          }
+        ],
+        "positionReads": 2
+      }
+    }
+  ]
+}

@@ -6,6 +6,8 @@ A local thesis-to-remix workspace for dreamDEX Perps testnet. **The offline path
 
 [Report 001](feedback/001-perps-entry-opens-spot.md) has actual Edge/HTTP evidence of the official Perps entry redirecting to spot. [Report 002](feedback/002-existing-position-bracket-side.md) reproduces an official bot-kit bracket-side mismatch using unchanged pinned source and explicitly synthetic offline fixtures. No live trade, accepted stop or financial-impact outcome is claimed for 002. Publication at b1ec751 was verified against all eleven remote files and its manifest.
 
+Additional private candidates: [003, existing-position startup budget](feedback/003-existing-position-entry-preflight.md) and [005, skipped-quote retry](feedback/005-maker-skipped-quote-retry.md) have bounded offline reproductions and controls. [004, position-cap semantics](feedback/004-maker-position-cap-semantics.md) reproduces behavior but needs clarification of strict-versus-soft cap intent. These additions are not public or submitted; they do not establish live outcomes, eligibility or rewards. The concrete extension review is in [SUBMISSION.md](feedback/SUBMISSION.md#proposed-additional-reports--not-yet-authorized).
+
 Write and version a private thesis, review an exact bounded order, approve a labelled synthetic scenario, choose public fields for a local demo card, then create an independently owned one-level remix with a parameter comparison. Fixtures cannot become live evidence.
 
 ## Run locally (Windows PowerShell)

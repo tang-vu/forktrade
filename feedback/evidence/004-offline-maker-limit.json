@@ -1,0 +1,368 @@
+{
+  "kind": "OFFLINE SYNTHETIC SOURCE TEST - NOT LIVE EVIDENCE",
+  "observedAt": "2026-10-21T08:56:51.054Z",
+  "upstreamRevision": "25798660bbe4674a6f83a960b202852896e2fed4",
+  "nodeVersion": "v24.21.0",
+  "execution": {
+    "mode": "offline-synthetic",
+    "network": false,
+    "signer": false,
+    "privateKey": false,
+    "transactions": false
+  },
+  "sourceHandling": "Public GETs/hash checks before execution; TypeScript stripped and only auto-start footer replaced. Original function bodies unchanged.",
+  "sourceFiles": [
+    {
+      "path": "strategies/perp-maker/src/index.ts",
+      "sha256": "ed8ccfafe233796f9764ea6f946c8450fd732754f3abcc853f74dd46a9c62e32"
+    },
+    {
+      "path": "packages/perp-core/src/markets.ts",
+      "sha256": "95dfbbb84d114927f5a5df87f4a0d96114d3904cb98a8c06c42c3823880a0520"
+    },
+    {
+      "path": "packages/perp-core/src/orders.ts",
+      "sha256": "a9ed57032c74315deafaea99a9ce349875b5bcd4b6eb0d09e2c5065c9402c583"
+    }
+  ],
+  "sourceRetrieval": {
+    "publicGETs": 3,
+    "authenticated": false
+  },
+  "limitations": [
+    "Synthetic positions, marks and SDK sizing responses; projected notional only, never a real fill",
+    "Original maker, sizeForNotional, sizeOrder and dry-run placePerp bodies execute; account and SDK transports are test doubles",
+    "README describes stopping at the cap but does not explicitly promise headroom clamping; strict-limit intent needs maintainer confirmation",
+    "No live accepted quote, exposure, contract-cap bypass or financial loss is claimed"
+  ],
+  "cases": [
+    {
+      "syntheticInventoryRawBase": "0",
+      "syntheticMarkByCycle": [
+        100
+      ],
+      "sizingPriceableByCycle": [
+        true
+      ],
+      "baseDecimals": 8,
+      "quoteDecimals": 18,
+      "configuredMaxPositionUsdso": "100",
+      "configuredQuoteNotionalUsdso": "25",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-maker on OFFLINE TEST BTC | 25 USDso per side at 2x | half-spread 15bps skew 10bps | cap 100 USDso | dry-run true",
+        "OFFLINE TEST: synthetic sufficient account",
+        "[dry-run] would place quote long 0.25 OFFLINE-BTC @ 99.8",
+        "[dry-run] would place quote short 0.25 OFFLINE-BTC @ 100.1",
+        "quotes pulled, exiting"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "calls": {
+        "sizingReads": [
+          {
+            "cycle": 1,
+            "isBid": true
+          },
+          {
+            "cycle": 1,
+            "isBid": false
+          }
+        ],
+        "quoteIntents": [
+          {
+            "cycle": 1,
+            "side": "long",
+            "quantityRaw": "25000000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "25000000000000000000",
+            "exceedsConfigured100Usdso": false
+          },
+          {
+            "cycle": 1,
+            "side": "short",
+            "quantityRaw": "25000000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "25000000000000000000",
+            "exceedsConfigured100Usdso": false
+          }
+        ],
+        "positionReads": 1
+      }
+    },
+    {
+      "syntheticInventoryRawBase": "75000000",
+      "syntheticMarkByCycle": [
+        100
+      ],
+      "sizingPriceableByCycle": [
+        true
+      ],
+      "baseDecimals": 8,
+      "quoteDecimals": 18,
+      "configuredMaxPositionUsdso": "100",
+      "configuredQuoteNotionalUsdso": "25",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-maker on OFFLINE TEST BTC | 25 USDso per side at 2x | half-spread 15bps skew 10bps | cap 100 USDso | dry-run true",
+        "OFFLINE TEST: synthetic sufficient account",
+        "[dry-run] would place quote long 0.25 OFFLINE-BTC @ 99.7",
+        "[dry-run] would place quote short 0.25 OFFLINE-BTC @ 100",
+        "quotes pulled, exiting"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "calls": {
+        "sizingReads": [
+          {
+            "cycle": 1,
+            "isBid": true
+          },
+          {
+            "cycle": 1,
+            "isBid": false
+          }
+        ],
+        "quoteIntents": [
+          {
+            "cycle": 1,
+            "side": "long",
+            "quantityRaw": "25000000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "100000000000000000000",
+            "exceedsConfigured100Usdso": false
+          },
+          {
+            "cycle": 1,
+            "side": "short",
+            "quantityRaw": "25000000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "50000000000000000000",
+            "exceedsConfigured100Usdso": false
+          }
+        ],
+        "positionReads": 1
+      }
+    },
+    {
+      "syntheticInventoryRawBase": "90000000",
+      "syntheticMarkByCycle": [
+        100
+      ],
+      "sizingPriceableByCycle": [
+        true
+      ],
+      "baseDecimals": 8,
+      "quoteDecimals": 18,
+      "configuredMaxPositionUsdso": "100",
+      "configuredQuoteNotionalUsdso": "25",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-maker on OFFLINE TEST BTC | 25 USDso per side at 2x | half-spread 15bps skew 10bps | cap 100 USDso | dry-run true",
+        "OFFLINE TEST: synthetic sufficient account",
+        "[dry-run] would place quote long 0.25 OFFLINE-BTC @ 99.7",
+        "[dry-run] would place quote short 0.25 OFFLINE-BTC @ 100",
+        "quotes pulled, exiting"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "calls": {
+        "sizingReads": [
+          {
+            "cycle": 1,
+            "isBid": true
+          },
+          {
+            "cycle": 1,
+            "isBid": false
+          }
+        ],
+        "quoteIntents": [
+          {
+            "cycle": 1,
+            "side": "long",
+            "quantityRaw": "25000000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "115000000000000000000",
+            "exceedsConfigured100Usdso": true
+          },
+          {
+            "cycle": 1,
+            "side": "short",
+            "quantityRaw": "25000000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "65000000000000000000",
+            "exceedsConfigured100Usdso": false
+          }
+        ],
+        "positionReads": 1
+      }
+    },
+    {
+      "syntheticInventoryRawBase": "-90000000",
+      "syntheticMarkByCycle": [
+        100
+      ],
+      "sizingPriceableByCycle": [
+        true
+      ],
+      "baseDecimals": 8,
+      "quoteDecimals": 18,
+      "configuredMaxPositionUsdso": "100",
+      "configuredQuoteNotionalUsdso": "25",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-maker on OFFLINE TEST BTC | 25 USDso per side at 2x | half-spread 15bps skew 10bps | cap 100 USDso | dry-run true",
+        "OFFLINE TEST: synthetic sufficient account",
+        "[dry-run] would place quote long 0.25 OFFLINE-BTC @ 99.9",
+        "[dry-run] would place quote short 0.25 OFFLINE-BTC @ 100.2",
+        "quotes pulled, exiting"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "calls": {
+        "sizingReads": [
+          {
+            "cycle": 1,
+            "isBid": true
+          },
+          {
+            "cycle": 1,
+            "isBid": false
+          }
+        ],
+        "quoteIntents": [
+          {
+            "cycle": 1,
+            "side": "long",
+            "quantityRaw": "25000000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "65000000000000000000",
+            "exceedsConfigured100Usdso": false
+          },
+          {
+            "cycle": 1,
+            "side": "short",
+            "quantityRaw": "25000000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "115000000000000000000",
+            "exceedsConfigured100Usdso": true
+          }
+        ],
+        "positionReads": 1
+      }
+    },
+    {
+      "syntheticInventoryRawBase": "100000000",
+      "syntheticMarkByCycle": [
+        100
+      ],
+      "sizingPriceableByCycle": [
+        true
+      ],
+      "baseDecimals": 8,
+      "quoteDecimals": 18,
+      "configuredMaxPositionUsdso": "100",
+      "configuredQuoteNotionalUsdso": "25",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-maker on OFFLINE TEST BTC | 25 USDso per side at 2x | half-spread 15bps skew 10bps | cap 100 USDso | dry-run true",
+        "OFFLINE TEST: synthetic sufficient account",
+        "long side held back: inventory 100.00 USDso is at the cap",
+        "[dry-run] would place quote short 0.25 OFFLINE-BTC @ 100",
+        "quotes pulled, exiting"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "calls": {
+        "sizingReads": [
+          {
+            "cycle": 1,
+            "isBid": false
+          }
+        ],
+        "quoteIntents": [
+          {
+            "cycle": 1,
+            "side": "short",
+            "quantityRaw": "25000000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "75000000000000000000",
+            "exceedsConfigured100Usdso": false
+          }
+        ],
+        "positionReads": 1
+      }
+    },
+    {
+      "syntheticInventoryRawBase": "-100000000",
+      "syntheticMarkByCycle": [
+        100
+      ],
+      "sizingPriceableByCycle": [
+        true
+      ],
+      "baseDecimals": 8,
+      "quoteDecimals": 18,
+      "configuredMaxPositionUsdso": "100",
+      "configuredQuoteNotionalUsdso": "25",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-maker on OFFLINE TEST BTC | 25 USDso per side at 2x | half-spread 15bps skew 10bps | cap 100 USDso | dry-run true",
+        "OFFLINE TEST: synthetic sufficient account",
+        "[dry-run] would place quote long 0.25 OFFLINE-BTC @ 99.9",
+        "short side held back: inventory -100.00 USDso is at the cap",
+        "quotes pulled, exiting"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "calls": {
+        "sizingReads": [
+          {
+            "cycle": 1,
+            "isBid": true
+          }
+        ],
+        "quoteIntents": [
+          {
+            "cycle": 1,
+            "side": "long",
+            "quantityRaw": "25000000",
+            "orderType": 3,
+            "submitted": false,
+            "projectedAbsolutePositionAtFixtureMarkRawUsdso": "75000000000000000000",
+            "exceedsConfigured100Usdso": false
+          }
+        ],
+        "positionReads": 1
+      }
+    }
+  ]
+}

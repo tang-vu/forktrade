@@ -8,6 +8,8 @@ A second [report](feedback/002-existing-position-bracket-side.md) reproduces a b
 
 ## Submission organization
 
+Additional reward-focused research prepared three private candidates: [003](feedback/003-existing-position-entry-preflight.md) and [005](feedback/005-maker-skipped-quote-retry.md) have distinct offline reproductions with controls; [004](feedback/004-maker-position-cap-semantics.md) is a lower-confidence documentation/intent clarification. Five issue files do not mean five accepted reports. Prioritize reproducibility and useful independent causes rather than splitting cases or overstating severity. Bot-kit scope and private duplicate priority remain unconfirmed. The [22-file extension and proposed five-report text](feedback/SUBMISSION.md#proposed-additional-reports--not-yet-authorized) are prepared for a new scoped approval; the existing 001/002 grant remains valid.
+
 Working plan: one Feedback-only Build containing approved reports 001 and 002, each in its own Markdown file, and a separate ForkTrade MVP Build when the actual product meets its live-evidence requirements. The reviewed two-report package/text is approved and public; actual submission still requires the user's DoraHacks session. The MVP is not ready or approved for publication/submission.
 
 On 2026-10-21 the user supplied a conversation where a reply directly to the question about two separate Builds said, "Yeah, you can submit both". We interpret that direct answer as support for separate Feedback and MVP Builds. The speaker's organizer role and message were not independently verified, and no message URL was supplied; this is user-supplied clarification, not a new published rule. If the actual submission form imposes a conflicting limit, resolve that specific conflict before submission. See [source provenance](SOURCES.md#user-supplied-build-organization-reply--2026-10-21).
@@ -31,7 +33,7 @@ The existing whitelist/application invitation is access to try the program, not 
 | Critical/major accepted feedback | $40 per accepted report | Severity is proposed with evidence; organizer acceptance determines payment |
 | Other accepted feedback | $15 per accepted report | No payment claim from a draft or local reproduction alone |
 | Feedback priority | First reproducible report only; duplicates not paid | Check duplication and report only real independently reproduced issues |
-| Feedback format | One Markdown per issue in `feedback/` with severity, area, steps, expected, actual, evidence and environment | Report 001 has actual app/docs reproduction, evidence and limits; normal severity proposed; no submission/acceptance |
+| Feedback format | One Markdown per issue in `feedback/` with severity, area, steps, expected, actual, evidence and environment | 001 has actual app/docs evidence; 002/003/005 have explicit offline source reproductions; 004 has reproduced behavior with unresolved intent. All propose normal; only 001/002 are public and approved for submission |
 | Security vulnerabilities | Private disclosure to security@dreamdex.io | Keep details out of Git/public reports; send only after user approves |
 | MVP awards | Three prizes of $500 | Competition, not a guaranteed win |
 | MVP payout split | $300 at result; $200 only if mainnet orders occur within 30 days of perps mainnet launch | Mainnet work is separate and not authorized by this project goal |
@@ -60,7 +62,7 @@ If accepted-environment rules remain unavailable, continue local/offline work an
 | Actual root and remix perps orders | None | Separate user approvals, real identities and honest reconciled outcomes |
 | Accepted environment and current rules | Official page and linked developer environment reverified 2026-10-21 | Recheck before submission; no claim that pending root/remix outcomes qualify |
 | Demo evidence | Offline synthetic screenshots inspected; no live demo/recording | Real reviewed recording/screenshots/receipts with limitations |
-| Feedback reports | 001 real Edge/HTTP and 002 explicit offline synthetic source reproduction published at b1ec751; eleven remote files/manifest verified | User login and actual two-report Build submission; organizer scope/duplicate/acceptance decisions pending |
+| Feedback reports | 001/002 published at b1ec751; 003/005 private offline reproductions; 004 private lower-confidence clarification | Additional package/text approval, user login and actual Build submission; organizer scope/intent/duplicate/acceptance decisions pending; zero accepted/paid |
 | 2-3 X post links | None; drafts in DEMO.md only | User-approved published posts and actual URLs |
 | Judge access/public source | Not authorized | User-approved least-needed access; recheck program requirements |
 | Submission | Reviewed Feedback 001+002 package/text approved; public package ready, not submitted; fresh login gate observed | User signs in to the whitelist account, then resume approved two-report Build; MVP publication/submission remains unauthorized |

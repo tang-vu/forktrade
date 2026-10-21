@@ -1,0 +1,107 @@
+{
+  "kind": "OFFLINE SYNTHETIC SOURCE TEST - NOT LIVE EVIDENCE",
+  "observedAt": "2026-10-21T08:54:12.229Z",
+  "upstreamRevision": "25798660bbe4674a6f83a960b202852896e2fed4",
+  "nodeVersion": "v24.21.0",
+  "execution": {
+    "mode": "offline-synthetic",
+    "network": false,
+    "signer": false,
+    "privateKey": false,
+    "transactions": false
+  },
+  "sourceHandling": "Public GETs/hash checks before execution; TypeScript stripped and only auto-start footer replaced. Original function bodies unchanged.",
+  "sourceFiles": [
+    {
+      "path": "strategies/perp-starter/src/index.ts",
+      "sha256": "3e0158ab088489fbd63ff4a0e1a38174d6c5be6a3fee1fd85c4ea19065f731b1"
+    },
+    {
+      "path": "packages/perp-core/src/margin.ts",
+      "sha256": "041cfbb5a34bc80c6ddb2d71d81b592c979826a950d617aebdbb2533ea58d23a"
+    }
+  ],
+  "sourceRetrieval": {
+    "publicGETs": 2,
+    "authenticated": false
+  },
+  "limitations": [
+    "Synthetic healthy account/position/mark/native-fee responses; no real wallet or open position",
+    "Actual preflight and marginSnapshot bodies execute; other exchange helpers are test doubles",
+    "No claim that a live position lost protection, a stop failed or funds were lost"
+  ],
+  "cases": [
+    {
+      "syntheticUnlockedUsdso": "20",
+      "existingPosition": "synthetic long 0.01 base at mark 100 (notional 1); sides match",
+      "configuredEntryNotionalUsdso": "50",
+      "configuredLeverage": "2",
+      "newEntryBudgetUsdso": "25",
+      "termination": "process.exit",
+      "exitCode": 1,
+      "logs": [
+        "perp-starter on OFFLINE TEST BTC (OFFLINE-BTC-PERP) | long 50 USDso at 2x | take-profit 2% stop-loss 1% | dry-run true",
+        "MarginBank has 20.00 unlocked, and this configuration needs about 25.00 to open its first position. Deposit more, or lower the notional."
+      ],
+      "boundaries": [
+        "withSigner:false"
+      ],
+      "calls": {
+        "accountReads": 1,
+        "positionReads": 0,
+        "bracketRequests": 0,
+        "entryRequests": 0
+      }
+    },
+    {
+      "syntheticUnlockedUsdso": "25",
+      "existingPosition": "synthetic long 0.01 base at mark 100 (notional 1); sides match",
+      "configuredEntryNotionalUsdso": "50",
+      "configuredLeverage": "2",
+      "newEntryBudgetUsdso": "25",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-starter on OFFLINE TEST BTC (OFFLINE-BTC-PERP) | long 50 USDso at 2x | take-profit 2% stop-loss 1% | dry-run true",
+        "MarginBank ready: 25.00 unlocked, 0.00 locked, equity 25.00, status Healthy.",
+        "each pending stop locks 0.15 SOMI, refunded on cancel; a bracket needs two.",
+        "already long 0.01 OFFLINE-BTC, managing it instead of opening another"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "calls": {
+        "accountReads": 1,
+        "positionReads": 1,
+        "bracketRequests": 1,
+        "entryRequests": 0
+      }
+    },
+    {
+      "syntheticUnlockedUsdso": "30",
+      "existingPosition": "synthetic long 0.01 base at mark 100 (notional 1); sides match",
+      "configuredEntryNotionalUsdso": "50",
+      "configuredLeverage": "2",
+      "newEntryBudgetUsdso": "25",
+      "termination": "returned",
+      "exitCode": 0,
+      "logs": [
+        "perp-starter on OFFLINE TEST BTC (OFFLINE-BTC-PERP) | long 50 USDso at 2x | take-profit 2% stop-loss 1% | dry-run true",
+        "MarginBank ready: 30.00 unlocked, 0.00 locked, equity 30.00, status Healthy.",
+        "each pending stop locks 0.15 SOMI, refunded on cancel; a bracket needs two.",
+        "already long 0.01 OFFLINE-BTC, managing it instead of opening another"
+      ],
+      "boundaries": [
+        "withSigner:false",
+        "shutdown"
+      ],
+      "calls": {
+        "accountReads": 1,
+        "positionReads": 1,
+        "bracketRequests": 1,
+        "entryRequests": 0
+      }
+    }
+  ]
+}
