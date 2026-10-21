@@ -150,6 +150,17 @@ export class Repository {
     invariant(row,'Request unavailable',404);this.owned(owner,row.planId);
     return {attempt:readAttempt(row),preview:this.getPreview(owner,row.planId,row.previewId)};
   }
+  walletRequest(owner:string,tag:string) {
+    invariant(this.dataMode==='testnet' && /^[1-9][0-9]{0,19}$/.test(tag) && BigInt(tag)<(1n<<64n),'Unsupported wallet request',404);
+    const row=this.db.select().from(t.previews).where(and(eq(t.previews.clientTag,tag),eq(t.previews.owner,owner))).get();
+    invariant(row,'Wallet request unavailable',404);
+    const request=this.db.select().from(t.attempts).where(and(eq(t.attempts.previewId,row.id),eq(t.attempts.owner,owner))).get();
+    invariant(request,'No durable approval exists for this wallet request',409);
+    const plan=this.owned(owner,request.planId),version=this.version(owner,plan.id,row.versionId),result=this.getAttempt(owner,request.id);
+    invariant(plan.currentVersion===version.version && Date.now()<result.preview.expiresAt,'Wallet review expired or plan changed; fresh review required',409);
+    invariant(result.attempt.execution.tx==='submitting' && !result.attempt.execution.hash && !result.attempt.candidateHash,'Wallet request already observed; reconcile instead of resending',409);
+    return {...result,input:version.input};
+  }
   recordObservation(owner:string,id:string,observation:Observation) {
     return this.transaction(()=>{
       const {attempt}=this.getAttempt(owner,id),execution=reconcile(attempt.execution,observation);

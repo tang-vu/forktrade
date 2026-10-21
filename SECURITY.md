@@ -8,6 +8,8 @@ User-entered theses, public cards, client request bodies, wallet events, RPC/ind
 
 Use the user's supported wallet for explicitly approved operations. The SDK's private-key bot example is not the web app's signing design. Do not commit a key, put one in a `NEXT_PUBLIC_*` variable, ask the user to paste one into chat, or create a server hot wallet to avoid a browser integration blocker. Session/operator-key delegation is outside v1 unless separately designed, reviewed and authorized.
 
+The local acceptance companion in `tools/local-wallet` is a separate user-controlled wallet process. Its Windows DPAPI key never enters the web/server process, browser renderer, environment or logs. A distinct network-blocked wallet browser context requires an explicit decision for each challenge/order; no agent auto-approval path exists. Only exact ForkTrade SIWE and claimed BTC limit/GTC orders from an exact loopback origin are allowed. Mainnet, arbitrary messages/typed data, allowances, funding and delegation methods are unsupported. Signed raw transactions remain only in wallet memory; only request identity/nonce/hash metadata persists in ignored local files. Closing or reloading cannot trigger a retry. This utility is not an independent wallet security audit or a general production wallet.
+
 ## Permission model
 
 | Action | Required authority |
@@ -22,7 +24,7 @@ Use the user's supported wallet for explicitly approved operations. The SDK's pr
 | Funding, claims, allowances, delegation, cancellation or position close | Separate specific authorization; never implicit in an order approval |
 | Deployment, public repo/judge access, posts, submission or disclosure | Separate user authorization for the concrete external action |
 
-The user invoked GOAL on 2026-10-20, authorizing local implementation within AGENTS.md boundaries, and requested commit/push after each verified update. No live action is authorized. Missing permissions must stop the dependent flow without stopping independent offline work or marking the goal complete.
+The user invoked GOAL on 2026-10-20 and requested commit/push after each verified update. On 2026-10-21 they authorized the dedicated wallet and continuation of testnet setup; exact 5-USDso approve/deposit completed. That setup consent does not approve a future root/remix order. Each final order still requires app and wallet decisions, and external publication/submission/access remain separately gated. Missing permissions stop dependent work without marking the goal complete.
 
 ## Ownership and private data
 

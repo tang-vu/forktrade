@@ -104,6 +104,14 @@ Do not trust client-supplied status, parent depth, owner, filled amount, source 
 
 ## Privacy, persistence and local operation
 
+### Implemented local acceptance wallet
+
+`tools/local-wallet` is a separate interactive wallet process for the user-created Windows DPAPI testnet keystore. It uses Playwright IPC to provide EIP-1193 to one loopback app page, with a distinct browser context for wallet confirmations. The wallet has no HTTP listener and the Next process never receives a key. It is an acceptance utility, not a server signing adapter or a private-key bot path in the web app. No new package dependency was added.
+
+Connection, exact SIWE ownership and exact BTC limit/GTC transaction requests have separate decisions. The companion validates origin/frame, owner/chain, verified market precision, full approved calldata/flags and local caps. A private owner-scoped wallet-request lookup requires an existing durable application claim. After the wallet decision, a CSRF-protected read-only validation refreshes account/configuration/simulation and rejects expiry, edits or changed context before local signing. The wallet independently persists its request/nonce before key use and signed hash before one raw broadcast. Late UI errors preserve a known hash; response loss never enables a second send. Reauthentication can report retained hashes for independent server reconciliation. No raw signing material or auth/session content is persisted by this utility.
+
+`--prepare-root` may create a private diagnostic plan only after actual ownership authentication and only in an empty workspace; it does not replace entered work or copy order authority. The user still approves every final order in the app and the isolated wallet window. Existing standard EIP-1193 browser wallets continue to use the same app flow.
+
 Use secure, HttpOnly, SameSite session cookies where applicable, CSRF protections and a verified ownership challenge. Account connection alone is not authentication. Keep endpoint secrets and sessions out of client bundles, telemetry and repository history. Runtime configuration separates offline, read-only and testnet-execution modes; an allowlisted chain ID and verified configuration gate signing. There is no mainnet fallback.
 
 Use migrations and transactional writes for version creation, request claims and publication changes. Document local DB path and backups. Do not erase or reseed a database containing real execution identities when resetting offline fixtures. SQLite uniqueness prevents concurrent local requests; do not promise multi-instance guarantees without a deployment design.

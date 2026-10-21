@@ -44,6 +44,31 @@ The browser awaits a durable server claim before one explicit `eth_sendTransacti
 
 Private versions are append-only and owner-scoped. Public cards expose only fields selected in a private publication preview; unpublish withdraws future app access and comparisons. Address/link disclosure is optional, and transaction links reveal the full account and public activity. Without sufficient disclosed links, execution is labelled owner-reported. The public version hash covers the selected public projection, excludes private notes and is no proof of pre-trade existence. Local demo URLs need the local app to be reachable; they are not hosted. Copied content and screenshots cannot be recalled.
 
+## Local testnet wallet for acceptance (Windows)
+
+For the dedicated DPAPI wallet created at the user's request, `wallet:testnet` supplies a user-controlled EIP-1193 wallet without importing its key into the app. This is a local acceptance companion, separate from the Next server. It opens isolated app and wallet windows, has no HTTP signing listener, and unlocks the key only in the wallet process after an explicit wallet-window decision. Standard injected browser wallets remain supported by the app.
+
+For an authorized session, put these nonsecret settings in an ignored `.env.local` (keep the default `.env.example` disabled):
+
+```dotenv
+FORKTRADE_MODE=testnet
+FORKTRADE_DB=.local/testnet.db
+FORKTRADE_ORIGIN=http://127.0.0.1:3000
+FORKTRADE_AUTH_ENABLED=true
+FORKTRADE_EXECUTION_ENABLED=true
+FORKTRADE_ENVIRONMENT_CONFIRMED=true
+```
+
+Use the last flag only with current official environment evidence. Start the app with `npm.cmd run build` then `npm.cmd run start`. In another terminal run:
+
+```powershell
+npm.cmd run wallet:testnet -- --wallet-dir .local/wallets/hideki-testnet-2026-10-21 --prepare-root
+```
+
+In the app, connect the wallet and review/sign ownership; approve the corresponding requests in the separate wallet window. `--prepare-root` saves an agent-prepared private diagnostic thesis after real ownership authentication, only when the workspace has no saved plan or entered draft. It never approves, sends or publishes an order. Review the saved parameters, open a fresh order review, and approve that exact order in both app and wallet. The 15-second expiry and fresh server validation still apply; a declined/expired attempt needs a new version/review. The companion accepts only chain 50383 BTC limit/GTC, exact approved calldata, no builder/value, at most 0.001 BTC / 20 USDso notional / 0.1 STT maximum native cost. It cannot send funding, allowances, arbitrary messages, operators or mainnet calls.
+
+The encrypted key needs the original Windows user profile. The app receives only address/signature/hash responses, never the key. Wallet request identities and known hashes persist privately beside the keystore; after reauthentication, known hashes are reported for authoritative reconciliation without resending. Closing the wallet stops its session; a crash lock must be inspected with existing request state before removal. This companion has synthetic unit/UI evidence; actual root/remix execution remains separately unrun until the user approves it.
+
 SQLite files, WAL files, sessions, environment files and test traces are ignored by Git. No database reset/seed command deletes execution identities. To back up the local database, stop the server and copy the database together with any remaining `-wal`/`-shm` files to a private location. Do not publish backups or reuse an offline database for testnet mode.
 
 Current source/browser evidence lives in [ACCEPTANCE.md](ACCEPTANCE.md) and the single [progress ledger](IMPLEMENTATION_PLAN.md). Latest public chain/config snapshot: [read-only evidence](evidence/read-only-m5-2026-10-20.json). Offline screenshots are synthetic and prove no live order. Mock-wallet browser routes intercept all live APIs and never reach a real signer or account. README commands describe the current app, while GOAL/PRODUCT/ARCHITECTURE retain the full target contract.

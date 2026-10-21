@@ -6,7 +6,7 @@ import {sessions} from '../../db/schema';
 import {database,mode} from './database';
 import {Repository,publicFields,correlationTag} from './repository';
 import {DomainError,invariant} from '../domain/errors';
-import {planInput} from '../domain/plan';
+import {planInput,verifyPreview} from '../domain/plan';
 import type {Observation} from '../domain/execution';
 import * as auth from './auth';
 import {capabilities} from './capabilities';
@@ -73,6 +73,20 @@ export async function handle(request:Request) {
     }
     const s=auth.session(request,method==='POST');
     if(method==='POST'&&route==='session/logout'){database().db.delete(sessions).where(eq(sessions.tokenHash,s.tokenHash)).run();headers.set('Set-Cookie',auth.cookie('',0));return reply({loggedOut:true});}
+    if(path[0]==='wallet-requests' && (path.length===2||path.length===3&&path[2]==='validate')) {
+      invariant(caps.executionEnabled,caps.disabledReason||'Live execution disabled',403);
+      const tag=z.string().regex(/^[1-9][0-9]{0,19}$/).parse(path[1]);
+      const current=repo.walletRequest(s.owner,tag);
+      if(method==='GET'&&path.length===2)return reply({attemptId:current.attempt.id,preview:current.preview});
+      if(method==='POST'&&path.length===3) {
+        const b=z.object({payloadHash:z.string().regex(/^[a-f0-9]{64}$/)}).strict().parse(body);
+        invariant(b.payloadHash===current.preview.payloadHash,'Wallet payload differs from approval',409);
+        const context=await prepareLiveContext(s.owner,current.input,tag,current.preview.context.transaction);
+        verifyPreview(current.preview,context);
+        repo.walletRequest(s.owner,tag); // Recheck edits/expiry after the asynchronous reads.
+        return reply({ready:true,attemptId:current.attempt.id,expiresAt:current.preview.expiresAt});
+      }
+    }
     if(method==='GET'&&route==='plans')return reply(repo.list(s.owner));
     if(method==='POST'&&route==='plans') {
       const b=z.object({input:planInput,source:z.object({publicationId:id,revision:z.number().int().positive()}).strict().optional()}).strict().parse(body);

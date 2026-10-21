@@ -12,6 +12,7 @@
     "build": "next build",
     "db:migrate": "tsx scripts/migrate.ts",
     "check:readonly": "tsx scripts/check-readonly.ts",
+    "wallet:testnet": "tsx tools/local-wallet/run.ts",
     "typecheck": "next typegen && tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",

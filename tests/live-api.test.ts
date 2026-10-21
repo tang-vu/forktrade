@@ -29,6 +29,17 @@ async function call(path:string,body:unknown|undefined,s?:Login){return handle(n
 async function plan(s:Login){return (await call('plans',{input},s)).json();}
 async function preview(s:Login,p:{id:string;versions:{id:string}[]}){return (await call(`plans/${p.id}/preview`,{versionId:p.versions[0].id},s)).json();}
 describe('live route composition under synthetic-only transports',()=>{
+  it('wallet companion can read/revalidate only its own durably claimed, current, unused request',async()=>{
+    const s=login(),other=login('0x0000000000000000000000000000000000000002'),p=await plan(s),v=await preview(s,p),tag=v.payload.userData;
+    expect((await call(`wallet-requests/${tag}`,undefined,s)).status).toBe(409);
+    await call(`plans/${p.id}/approve`,{previewId:v.id,payloadHash:v.payloadHash,confirmed:true},s);
+    expect((await call(`wallet-requests/${tag}`,undefined,other)).status).toBe(404);
+    const detail=await (await call(`wallet-requests/${tag}`,undefined,s)).json();expect(detail.preview.payloadHash).toBe(v.payloadHash);
+    expect((await call(`wallet-requests/${tag}/validate`,{payloadHash:'0'.repeat(64)},s)).status).toBe(409);
+    expect((await (await call(`wallet-requests/${tag}/validate`,{payloadHash:v.payloadHash},s)).json()).ready).toBe(true);
+    await call(`plans/${p.id}/versions`,{expectedVersion:1,input:{...input,title:'SYNTHETIC changed version'}},s);
+    expect((await call(`wallet-requests/${tag}`,undefined,s)).status).toBe(409);
+  });
   it('keeps private operations owner-scoped and derives the read owner from the session',async()=>{
     const a=login(),b=login('0x0000000000000000000000000000000000000002'),p=await plan(a);
     expect((await call(`plans/${p.id}`,undefined,b)).status).toBe(404);
