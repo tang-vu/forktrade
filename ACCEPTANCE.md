@@ -2,6 +2,8 @@
 
 **Current result: source/offline/mock-wallet checks pass; actual public/funded-account reads and exact order simulation pass. User-authorized 5-USDso approval/deposit are confirmed. Browser ownership flow and actual root/remix orders remain unrun.** Funding receipts establish no order or live root/remix acceptance.
 
+The user changed the active goal to Feedback on 2026-10-21. Feedback report 001 is a reproduced nonsecurity draft from the official app/docs, with separate evidence below; it does not pass MVP G4 or establish a bounty outcome.
+
 ## Gates and reporting
 
 | Gate | What it establishes | Initial result |
@@ -119,6 +121,7 @@ For every check store ID, commit, command/scenario, date/time, mode (`synthetic/
 | Actual Microsoft Edge computer-use UI | Edge/public testnet/unauthenticated, 2026-10-21 04:10 UTC; commit containing this row | Workspace/missing provider/draft preservation/disabled private save and order review passed; actual public market refreshed; 360px workspace/market had document width 345px; default viewport restored | [Manual evidence](evidence/edge-ui-2026-10-21.json), [public desktop](evidence/edge-market-desktop-2026-10-21.jpg), [missing-wallet mobile](evidence/edge-wallet-unavailable-mobile-2026-10-21.jpg). Fixed stale public disclaimer, 26 read-context tests and build passed; actual Edge reload verified. No real signing/order; Edge provider absent |
 | Additional manual offline Edge server | localhost:3001, 2026-10-21 | Blocked before creation by automatic execution review: `blocked by policy`; no alternate launcher attempted | Full offline path was not manually run in Edge. Previous automated Chromium/offline result is separate; existing testnet app restarted normally on port 3000 |
 | Edge evidence/copy-fix source CI | 6ec2ac65d40733ecbc7eaf60f277ebf4aef854cd, GitHub Ubuntu/Node 24 | Terminal success inspected: install/migration/typecheck/lint, 104 tests, build and 20 Chromium cases (24.8s) | [CI 39542698499](https://github.com/tang-vu/forktrade/actions/runs/39542698499). Does not establish an Edge wallet signature or real root/remix execution |
+| Feedback 001 actual official-site reproduction | Commit containing this row, 2026-10-21; signed-out real Edge + public HTTP GET | Two browser entry paths ended at STT spot; saved three-hop 307 chain; helper syntax/execution passed; actual screenshots reviewed | [Report 001](feedback/001-perps-entry-opens-spot.md). Proposed normal; same Edge profile; root cause/authenticated behavior unknown. Builds private; duplicate priority not established. Not submitted/accepted/paid |
 | Root live execution | User-directed loopback session is running; ownership and final order decisions pending | Not run | No order/hash/receipt; user must review a fresh exact order in app and wallet; environment mapping is verified |
 | Remix live execution | Independent owner context and its separate final review remain pending | Not run | No order/hash/receipt; root approval cannot cover a remix |
 | Bounty submission | Private planning state | Not submitted | No post links/judge-access approval |

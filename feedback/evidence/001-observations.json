@@ -1,0 +1,22 @@
+{
+  "kind": "reproduced-nonsecurity-feedback-draft",
+  "dateUtc": "2026-10-21",
+  "target": "official dreamDEX testnet site, not ForkTrade",
+  "accountState": "signed out; no wallet connected",
+  "docs": "https://app.testnet.dreamdex.io/docs/trading/perps-testnet",
+  "visibleLinkHref": "https://app.testnet.dreamdex.io/perps",
+  "browserReproductions": [
+    {"action": "Direct fresh-tab navigation to the documented entry", "finalUrl": "https://app.testnet.dreamdex.io/trade/spot/tokyo/STT:USDso", "market": "STT / USDso spot"},
+    {"action": "Click the actual trader-guide entry and inspect its new tab", "finalUrl": "https://app.testnet.dreamdex.io/trade/spot/tokyo/STT:USDso", "market": "STT / USDso spot"}
+  ],
+  "firstCapturedHttpReproductions": [
+    {"observedAt": "2026-10-21T04:28:48.219Z", "status": 307, "location": "/trade/perps/tokyo/BTC-PERP"},
+    {"observedAt": "2026-10-21T04:28:48.655Z", "status": 307, "location": "/trade/perps/tokyo/BTC-PERP"}
+  ],
+  "captures": [
+    {"path": "001-perps-docs-entry.jpg", "capturedUtc": "2026-10-21T04:30:03.634Z"},
+    {"path": "001-perps-entry-lands-on-spot.jpg", "capturedUtc": "2026-10-21T04:30:43.375Z"}
+  ],
+  "duplicateCheck": {"programBuilds": "private; not inspectable", "publicSearch": "two targeted queries, no relevant match", "limitations": "Not exhaustive; no first-report claim; no private/community submissions inspected"},
+  "limits": ["Same Edge profile for both UI repetitions", "No authenticated behavior tested", "Root cause not proven", "No transaction, signature or account involved", "Not submitted or accepted; no reward claimed"]
+}

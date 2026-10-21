@@ -2,6 +2,8 @@
 
 Status: local implementation in progress; offline path, actual reads and bounded account funding exist. ForkTrade targets **both MVP and Feedback tracks** of the dreamDEX Perps bounty. No root/remix order acceptance, submission, eligibility or reward is established. The repository stays private until the user separately approves a concrete access/visibility change.
 
+**Feedback is the active user priority as of 2026-10-21.** One actual upstream report is [prepared as a reproduced draft](feedback/001-perps-entry-opens-spot.md), with normal severity proposed and no submission/acceptance/payment. The current ordinary-Edge rule recheck still supports the listed Feedback amounts/format; the Builds list is private, so first-report priority is unknown. A proposed Feedback-only public package excludes the private application and wallet material and still needs explicit publication/submission approval.
+
 ## Provenance and dates
 
 The rule facts below come from the user's full pasted official program page on **2026-10-20**, as supplied for this project. The live [DoraHacks bounty page](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail) was CAPTCHA-blocked in that review; this documentation run also could not retrieve the live rules. Reverify the current official page and any organizer clarifications before submission. Do not bypass a CAPTCHA or treat an inaccessible page as confirmation of unchanged rules.
@@ -21,7 +23,7 @@ The existing whitelist/application invitation is access to try the program, not 
 | Critical/major accepted feedback | $40 per accepted report | Severity is proposed with evidence; organizer acceptance determines payment |
 | Other accepted feedback | $15 per accepted report | No payment claim from a draft or local reproduction alone |
 | Feedback priority | First reproducible report only; duplicates not paid | Check duplication and report only real independently reproduced issues |
-| Feedback format | One Markdown per issue in `feedback/` with severity, area, steps, expected, actual, evidence and environment | Use the template; no findings currently exist |
+| Feedback format | One Markdown per issue in `feedback/` with severity, area, steps, expected, actual, evidence and environment | Report 001 has actual app/docs reproduction, evidence and limits; normal severity proposed; no submission/acceptance |
 | Security vulnerabilities | Private disclosure to security@dreamdex.io | Keep details out of Git/public reports; send only after user approves |
 | MVP awards | Three prizes of $500 | Competition, not a guaranteed win |
 | MVP payout split | $300 at result; $200 only if mainnet orders occur within 30 days of perps mainnet launch | Mainnet work is separate and not authorized by this project goal |
@@ -33,7 +35,7 @@ Do not combine the bounty with similarly named trading competitions or other pri
 
 The intended MVP demonstrates a real perps integration inside a clear human workflow: thesis version, fresh review, explicit order, reconciled evidence, share card, independent remix and visible changes/lineage. Existing official bot-kit maker/funding/guard strategies and app TP/SL mean a thin wrapper around those features is weak differentiation. ForkTrade's proposed contribution is social remix plus honest execution evidence.
 
-Feedback is a parallel output from real testing of that narrow path, not a reason to manufacture issues or pad the feature scope. Bugs in ForkTrade itself should be fixed as app defects; do not submit them as protocol findings. A test idea is not a confirmed bounty issue, and a confirmed observation is not automatically accepted/paid.
+Feedback is now the active user priority and may test the official perps app/API/SDK/docs directly within authorized read-only scope. It is not a reason to manufacture issues or pad the feature scope. Bugs in ForkTrade itself should be fixed as app defects; do not submit them as protocol findings. A test idea is not a confirmed bounty issue, and a confirmed observation is not automatically accepted/paid.
 
 ## Environment and eligibility verification gate
 
@@ -50,7 +52,7 @@ If accepted-environment rules remain unavailable, continue local/offline work an
 | Actual root and remix perps orders | None | Separate user approvals, real identities and honest reconciled outcomes |
 | Accepted environment and current rules | Official page and linked developer environment reverified 2026-10-21 | Recheck before submission; no claim that pending root/remix outcomes qualify |
 | Demo evidence | Offline synthetic screenshots inspected; no live demo/recording | Real reviewed recording/screenshots/receipts with limitations |
-| Feedback reports | None; template only | One file per real nonsecurity reproduced issue, duplication check |
+| Feedback reports | One reproduced normal-severity draft; actual Edge/HTTP evidence reviewed | Publication/submission approval, reviewer access and organizer duplicate/acceptance decision pending |
 | 2-3 X post links | None; drafts in DEMO.md only | User-approved published posts and actual URLs |
 | Judge access/public source | Not authorized | User-approved least-needed access; recheck program requirements |
 | Submission | Not authorized/not submitted | User-reviewed package and explicit submission approval |

@@ -2,6 +2,8 @@
 
 **Implementation started on 2026-10-20; user-authorized funding and actual funded-account simulation now pass.** The official program-resource environment mapping is verified. Browser ownership flow and actual root/remix execution acceptance remain unrun. This is the single implementation progress/blocker ledger. Keep it concise and evidence-based. Do not create parallel TODO/status files.
 
+**Current priority (user changed goal 2026-10-21): Feedback bounty research and submission preparation.** MVP completion is no longer the active goal. No additional Edge-wallet implementation was made after that change. Feedback has one reproduced normal-severity draft so far; acceptance/payment and all external publication/submission remain unestablished.
+
 ## Order of work
 
 Finish one end-to-end path before adding breadth. Steps M0-M5 can advance offline/read-only subject to environment permissions. M6 needs explicit authorization and user participation. M7 prepares the handoff; it does not authorize external publication or submission. If a gate is blocked, complete independent work and keep dependent gates open.
@@ -80,6 +82,16 @@ If access to a required service fails, add a specific row with action, target, r
 | M7 | Partial local handoff prepared | README/run guide, offline screenshots, source/read-only evidence, demo manifest and three unposted social drafts | Real live evidence, current rules and separately authorized external actions |
 
 ## How to update and resume
+
+### 2026-10-21 04:35 UTC — Feedback priority; first real upstream report prepared
+
+User cleared the MVP goal and set the active goal to focus on Feedback earnings. Resumed clean at `6a6fef0`; stopped the proposed Edge companion change before any source edit. Re-read Feedback rules/template/security gates. Normal Edge displayed current official bounty details: API/SDK/docs/app feedback is eligible for consideration; reproducibility/first-valid-report and budget limits remain; $40 critical/major, $15 other accepted items. The public Builds page explicitly says submissions are private, so duplicate priority cannot be verified. No signup, message, registration or submission was performed.
+
+Prepared report `feedback/001-perps-entry-opens-spot.md` for an actual official-site routing/onboarding observation, proposed severity normal. Both a direct fresh tab to the documented `/perps` entry and clicking the guide's real link (which opens a new tab) ended at STT/USDso spot while signed out. Two public GET checks captured the first redirect at 04:28:48 UTC; the bounded standalone helper then recorded the complete server chain at 04:34:31–32: `/perps` → `/trade/perps/tokyo/BTC-PERP` → `/trade` → `/trade/spot/tokyo/STT:USDso`, all 307. Screenshots of the real guide/destination were reviewed for private content. No mocked responses, account, signature or transaction. Expectation is explicitly inferred from the perps link purpose; authenticated behavior and root cause are not claimed. Same Edge profile, two entry paths; no second-human/clean-profile claim.
+
+Other triage remains unconfirmed: operator ABI simulation reverted at both 0/1-wei eth_call values without a useful reason; no key/sign/broadcast/operator grant occurred. Self-order SDK ABI differences do not establish a `placeOrderFor` defect. Current npm version is still 0.32.1; its listed GitHub repo is inaccessible. No ABI finding or reward is invented. Public market reads also captured current BTC risk parameters for comparison; that is not yet a second report.
+
+Commands: `node --check feedback/repro/001-perps-entry-redirect.mjs` passed; actual `node ... --out feedback/evidence/001-http-redirect.json` passed and saved public-only responses, without overwriting prior observations. No app source/dependency changes, so no repeated app suite is required for this reporting milestone. Prepared an allowlisted Feedback-only publication bundle: seven reviewed files plus a SHA-256 manifest; actual public-site screenshots, two redacted JSON files, report and GET helper, with a package README. Excludes application source, wallet/address/private records, env and databases. Exact proposed public repo and DoraHacks Build text are in `feedback/SUBMISSION.md`. The zip/stage remains ignored/private. Next: finish structural/redaction checks, commit/push, then request exact publication/submission approval. Continue independent QA while that approval is pending. Do not expose ForkTrade's private app/keys or claim payment. Source/evidence commit is the commit containing this entry.
 
 ### 2026-10-21 04:14 UTC — Edge evidence commit CI verified
 

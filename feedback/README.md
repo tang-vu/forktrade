@@ -1,6 +1,6 @@
 # Feedback track workflow
 
-**Current state: zero confirmed findings and zero submitted reports.** This folder contains instructions and a blank report template only. Test ideas below are hypotheses, not bounty findings. Do not count README.md or REPORT_TEMPLATE.md as issue reports.
+**Current state: one reproduced nonsecurity report draft; zero submitted/accepted/paid reports.** The user prioritized Feedback on 2026-10-21. Report 001 documents the official Perps entry's three-hop redirect to STT spot with actual Edge screenshots and a dependency-free HTTP reproducer. A reproduced observation is not organizer acceptance. Do not count README.md or REPORT_TEMPLATE.md as reports.
 
 ## What belongs here
 
@@ -19,7 +19,9 @@ Use [REPORT_TEMPLATE.md](REPORT_TEMPLATE.md). Each report needs severity and rat
 7. Write one report with redacted evidence, expected/actual, impact and severity rationale. Distinguish observed fact, hypothesis and requested clarification. Mark it `draft - reproduced, not submitted` until an actual authorized submission occurs.
 8. Have the user review the final package and destination before submission. A private Git commit is not submission or acceptance. Record actual response/acceptance/payment only if received and verified.
 
-The supplied rules pay only the first reproducible report, do not pay duplicates, and may exhaust the pool. Stated amounts are $40 for accepted critical/major issues and $15 for other accepted issues, up to a $1,500 pool; organizers determine acceptance. Neither a severity label nor a local reproduction guarantees payment. Reverify current rules in BOUNTY.md before submitting.
+The official page was re-read in ordinary Edge on 2026-10-21: $40 for accepted critical/major items and $15 for other accepted items, up to a $1,500 pool, with reproducibility and first-valid-report requirements. Builds are private, so submitted-report duplicate checking is unavailable. Organizers determine acceptance; no severity label or local reproduction guarantees payment. See [BOUNTY.md](../BOUNTY.md) and recheck before submission.
+
+Run the first report's public HTTP check with `node feedback/repro/001-perps-entry-redirect.mjs`. It performs at most three same-origin GETs and uses no wallet or credentials. The optional `--out feedback/evidence/<new-file>.json` preserves a new observation without overwriting existing evidence.
 
 ## Security exception
 
@@ -27,7 +29,7 @@ Do **not** put vulnerabilities, exploit details, secrets or security evidence in
 
 ## Unconfirmed test hypotheses
 
-All items below are **not tested and not findings**. They guide future authorized QA and may turn out to be expected behavior or local mistakes.
+The original items below remain **unconfirmed hypotheses**, not report counts. They may turn out to be expected behavior or local mistakes. Current triage: the developer-guide operator ABI question is unconfirmed; read-only `placeOrderFor` probes reverted without a usable reason and no operator authorization was granted. SDK 0.32.1 remains the current npm version. A mismatch with the self-order ABI alone does not prove the operator ABI is wrong. No report was created for that hypothesis.
 
 | Hypothesis / question | Safe first investigation | Evidence needed before a report |
 | --- | --- | --- |
@@ -42,8 +44,8 @@ Avoid dangerous or disruptive testing, broad scans, abusive load, real-fund expe
 
 ## Report index
 
-No reports yet. Add a row only for a real issue file:
+Add a row only for a real issue file:
 
 | File | Observed/reproduced UTC | Proposed severity | Status | Duplicate check | Authorized submission/result |
 | --- | --- | --- | --- | --- | --- |
-| None | Not tested | Not assigned | No finding | Not checked | Not submitted |
+| [001 — Perps entry opens spot](001-perps-entry-opens-spot.md) | 2026-10-21; first precisely captured GET 04:28:48 UTC; Edge captures 04:30 UTC; full HTTP chain 04:34 UTC | normal | Reproduced draft | Official docs/rules checked; public Builds private; targeted public searches found no relevant match; priority unknown | Not approved for publication/submission; not submitted or paid |

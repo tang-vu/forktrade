@@ -50,6 +50,12 @@ Optional AI is deferred and can draft intent only. Plan hashes/application versi
 
 ## Future verification log
 
+### Feedback rules and first official-site reproduction — 2026-10-21 04:35 UTC
+
+Re-read the [official bounty](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail) in normal Edge; no CAPTCHA/login. Feedback includes app/API/SDK/docs issues and missing features, with $40 critical/major and $15 other accepted items, first-valid-report/reproducibility and $1,500 budget limits. The [Builds page](https://dorahacks.io/hackathon/dreamdex-perps-bounty/build) states submissions are private. Neither a draft nor severity guarantees payment.
+
+The official [trader guide](https://app.testnet.dreamdex.io/docs/trading/perps-testnet) links perps entry to `/perps`. Actual Edge and bounded unauthenticated HTTP reads reproduced its redirect to STT spot; full evidence and limitations are in [report 001](feedback/001-perps-entry-opens-spot.md). The developer-guide operator ABI remains an unconfirmed question after inconclusive read-only simulations. npm still reports SDK 0.32.1; no pins changed and no bot-kit/private-key example was executed.
+
 ### Official bounty environment and funded-owner reads — 2026-10-21
 
 The ordinary Edge browser successfully displayed the current [official bounty page](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail); web-reader retrieval still returned 405. No login, CAPTCHA interaction or submission occurred. Its resource link points to the [testnet developer guide](https://app.testnet.dreamdex.io/docs/developers/perps-testnet), which specifies chain 50383, Hideki/DreamDEX naming, SDK 0.32.1 and the bank/collateral used by our verified runtime. This direct link supports the Tokyo-to-Hideki environment mapping; it is not organizer acceptance of the app or any outcome. Safe source record: [environment verification](evidence/environment-2026-10-21.json). Deadline and MVP evidence requirements still match the supplied baseline. The page also restricts moving extra bounty funds into Arena accounts; no such transfer was made.

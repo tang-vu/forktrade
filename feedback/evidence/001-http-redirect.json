@@ -1,0 +1,29 @@
+{
+  "kind": "actual-public-http-redirect",
+  "authenticated": false,
+  "method": "GET",
+  "hops": [
+    {
+      "observedAt": "2026-10-21T04:34:31.720Z",
+      "requested": "https://app.testnet.dreamdex.io/perps",
+      "status": 307,
+      "location": "/trade/perps/tokyo/BTC-PERP"
+    },
+    {
+      "observedAt": "2026-10-21T04:34:32.470Z",
+      "requested": "https://app.testnet.dreamdex.io/trade/perps/tokyo/BTC-PERP",
+      "status": 307,
+      "location": "/trade"
+    },
+    {
+      "observedAt": "2026-10-21T04:34:32.807Z",
+      "requested": "https://app.testnet.dreamdex.io/trade",
+      "status": 307,
+      "location": "/trade/spot/tokyo/STT:USDso"
+    }
+  ],
+  "limitations": [
+    "HTTP-only capture; it does not execute client JavaScript or establish the final browser market",
+    "No account, signature, transaction or order involved"
+  ]
+}
