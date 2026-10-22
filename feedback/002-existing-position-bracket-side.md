@@ -3,7 +3,7 @@
 Severity: normal (proposed; organizer decides)
 Area: SDK
 Related surface: official dreamDEX bot kit, `perp-starter` integration example; not a claimed markets-sdk library defect
-Status: reproduced offline with explicit synthetic fixtures; publication/submission authorized, not submitted yet
+Status: user reports submitted in [DoraHacks Build 50119](https://dorahacks.io/build/50119), 2026-10-22; public Build/repo verified, track registration not independently verified; organizer decision/payment unverified
 
 ## Impact and scope
 

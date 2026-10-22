@@ -1,0 +1,18 @@
+{
+  "recordedAt": "2026-10-22T01:57:30.846882+00:00",
+  "buildUrl": "https://dorahacks.io/build/50119",
+  "userStatement": "submitted",
+  "publicBuildVerified": true,
+  "title": "dreamDEX Perps Feedback \u2014 app, bot-kit and SDK reliability",
+  "repoUrl": "https://github.com/tang-vu/dreamdex-perps-feedback",
+  "visibleReportSummaries": 8,
+  "verification": "Actual signed-out Edge DOM; web reader unavailable",
+  "hackathonTrackRegistrationIndependentlyVerified": false,
+  "organizerAcceptanceObserved": false,
+  "paymentObserved": false,
+  "detailsContainOldInternalSubmissionFile": true,
+  "cleanDescriptionFile": "feedback/DORAHACKS_DESCRIPTION.txt",
+  "externalBuildEdited": false,
+  "newBuildCreated": false,
+  "accountAuthenticatedByAgent": false
+}

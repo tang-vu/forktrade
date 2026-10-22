@@ -3,7 +3,7 @@
 Severity: normal (proposed; organizer decides)
 Area: docs
 Related surface: official bot-kit perp-maker setting/implementation; strict-cap intent needs maintainer confirmation
-Status: behavior reproduced offline; user-approved clarification/report candidate, not submitted
+Status: user reports submitted in [DoraHacks Build 50119](https://dorahacks.io/build/50119), 2026-10-22; public Build/repo verified, track registration not independently verified; organizer decision/payment unverified
 
 ## Impact and scope
 

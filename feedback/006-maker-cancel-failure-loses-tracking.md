@@ -3,7 +3,7 @@
 Severity: normal (proposed; organizer decides)
 Area: SDK
 Related surface: official bot-kit control flow; not a claimed markets-sdk library defect
-Status: reproduced offline; reviewed additional Feedback report, not submitted
+Status: user reports submitted in [DoraHacks Build 50119](https://dorahacks.io/build/50119), 2026-10-22; public Build/repo verified, track registration not independently verified; organizer decision/payment unverified
 
 ## Impact and scope
 
@@ -53,4 +53,4 @@ The catch is in [orders.ts](https://github.com/somnia-chain/dreamdex-bot-kit/blo
 
 ## Duplicate search and outcome
 
-Public search `repo:somnia-chain/dreamdex-bot-kit is:issue cancel` on 2026-10-21 returned issues 7, 33, 38 and 40; all bodies were reviewed. The overlap with 38 is explicitly disclosed above. Other results cover operator-owned reads and binary cancellation/expiry behavior, not this exact official perps caller. Private bounty Builds/community reports remain unavailable/unsearched. Proposed normal only; bot-kit scope, relation to existing reports, severity and acceptance are organizer decisions. No submission, acceptance or reward is claimed.
+Public search `repo:somnia-chain/dreamdex-bot-kit is:issue cancel` on 2026-10-21 returned issues 7, 33, 38 and 40; all bodies were reviewed. The overlap with 38 is explicitly disclosed above. Other results cover operator-owned reads and binary cancellation/expiry behavior, not this exact official perps caller. Private bounty Builds/community reports remain unavailable/unsearched. Proposed normal only; bot-kit scope, relation to existing reports, severity and acceptance are organizer decisions. No organizer acceptance or reward is claimed.

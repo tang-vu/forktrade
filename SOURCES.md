@@ -14,6 +14,12 @@ Duplicate scope: public bot-kit `fetchFundingRateHistory` query returned 0; broa
 
 Prepared exact 38-file/37-payload nonsecurity continuation archive, SHA-256 `33b2eeac056d9f4d90b5ee3f8665e82c483b6f1fcba60ef1bc07b3ce7387a332`, baseline public e81ac63. Existing reports/evidence are preserved. Published normally at 1cfb630133aeec45ac482ec7c77d0128ad56548d; all 38 remote blobs and 37 payload hashes/sizes verified, private wallet excluded and app still PRIVATE. Actual Edge shows eight items; original DoraHacks remains login. Private source CI 39622790466 on e8259a7 passed 104 tests/20 browser cases; new SDK reproductions remain separate manual evidence. No submission, acceptance or payment.
 
+## User-reported submission and verified public Build — 2026-10-22
+
+User supplied [DoraHacks Build 50119](https://dorahacks.io/build/50119) and stated it was submitted. Ordinary signed-out Edge independently displayed the exact Feedback title/brief, public repo link and all eight report summaries. Web reader could not retrieve this page. No hackathon-track registration receipt, organizer decision or payment status was visible; those remain unverified rather than inferred from Build creation. The user report supersedes the earlier login blocker in current status only; older dated records remain history.
+
+The Details body contains all of the previous private submission-preparation file, including internal process notes, relative links and stale not-submitted wording. No credentials or wallet identifiers were observed. [DORAHACKS_DESCRIPTION.txt](feedback/DORAHACKS_DESCRIPTION.txt) contains only the intended public description and limitations. Signed-out Edge offered no edit control; no Build edit, authentication or duplicate creation was attempted. This is a submission-copy cleanup, not another bounty finding or security disclosure. Same-destination status/copy publication at 7e1aade0b87fd9ff5a1bd8d909c1adefb9d97b29 was verified across all 39 remote blobs/38 payload hashes; report changes are status text only, original evidence/reproducers and prior archives unchanged. ForkTrade remains private.
+
 ## Official sources
 
 | Source | Purpose | Observation and limitation on 2026-10-20 |

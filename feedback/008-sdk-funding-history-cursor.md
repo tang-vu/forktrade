@@ -2,7 +2,7 @@
 
 Severity: normal
 Area: SDK
-Status: reproduced with actual public history and original-SDK offline controls; additional report for the authorized Feedback workflow, not submitted
+Status: user reports submitted in [DoraHacks Build 50119](https://dorahacks.io/build/50119), 2026-10-22; public Build/repo verified, track registration not independently verified; organizer decision/payment unverified
 
 ## Impact and scope
 
@@ -77,4 +77,4 @@ Five iterations are the observed bound. Continued repetition at a fixed history 
 
 On 2026-10-21 the public bot-kit issue query for `fetchFundingRateHistory` returned zero. The broader `funding` query returned issues 23 and 28, whose bodies concern adding perps strategies and Reactivity subscription errors, respectively; neither describes this cursor conversion. The SDK's declared repository returned HTTP 404 with available access, and private bounty/community reports were unavailable. First-valid-report priority remains unknown.
 
-The release notes describe an earlier newest-first pagination problem and say ascending order resolves it. This report isolates the remaining millisecond-to-second boundary defect even with ascending order; it does not resubmit the old ordering problem as a newly discovered issue. Limit variations and the direct `since` violation are one root cause, counted once. No submission, acceptance or reward is established.
+The release notes describe an earlier newest-first pagination problem and say ascending order resolves it. This report isolates the remaining millisecond-to-second boundary defect even with ascending order; it does not resubmit the old ordering problem as a newly discovered issue. Limit variations and the direct `since` violation are one root cause, counted once. No organizer acceptance or reward is established.

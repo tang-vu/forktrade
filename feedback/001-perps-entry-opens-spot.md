@@ -3,7 +3,7 @@
 Severity: normal (proposed; organizer decides)
 Area: app
 Related surface: docs onboarding link
-Status: reproduced draft — not submitted
+Status: user reports submitted in [DoraHacks Build 50119](https://dorahacks.io/build/50119), 2026-10-22; public Build/repo verified, track registration not independently verified; organizer decision/payment unverified
 
 ## Impact and scope
 

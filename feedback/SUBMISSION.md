@@ -1,10 +1,18 @@
-# Authorized Feedback-only submission
+# Feedback submission record and form content
 
 Destination: the Feedback track of [dreamDEX Perps Builder Bounty](https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail).
 
 Organization: one Feedback-only Build containing reports/candidates 001–008, one Markdown per distinct issue. ForkTrade's later MVP stays separate and requires its own live evidence/publication gates. User-supplied organization provenance is in [SOURCES.md](../SOURCES.md#user-supplied-build-organization-reply--2026-10-21).
 
-Published repository: https://github.com/tang-vu/dreamdex-perps-feedback, commit `1cfb630133aeec45ac482ec7c77d0128ad56548d`. Exact 38-file remote inventory, all bytes and 37 payload SHA-256/size entries were verified. Actual Edge shows eight items, 004's intent caveat and 006's related-report/duplicate risk. The package contains only nonsecurity reports/evidence/reproducers, README/manifest and a minimal standalone reproduction package/lock/ignore file. ForkTrade remains PRIVATE; app source, wallet/accounts/auth/env/DB and security disclosures are excluded.
+Published repository: https://github.com/tang-vu/dreamdex-perps-feedback, commit `7e1aade0b87fd9ff5a1bd8d909c1adefb9d97b29`. Exact 39-file remote inventory, all bytes and 38 payload SHA-256/size entries were verified. Actual Edge shows eight items, 004's intent caveat and 006's related-report/duplicate risk. The package contains only nonsecurity reports/evidence/reproducers, README/manifest and a minimal standalone reproduction package/lock/ignore file. ForkTrade remains PRIVATE; app source, wallet/accounts/auth/env/DB and security disclosures are excluded.
+
+## Current submission record — 2026-10-22
+
+The user reports Feedback submission as [DoraHacks Build 50119](https://dorahacks.io/build/50119) on 2026-10-22. The public Build title and GitHub repository link were independently verified in signed-out Edge; the hackathon/track registration status was not exposed on that page. Organizer acceptance, first-report priority and payment remain unverified.
+
+The public Details field currently contains the complete old internal SUBMISSION.md, including relative links, archive paths and the outdated statement that no Build had been submitted. That content is visible on the Build; it is not evidence of a failed submission. No secrets or wallet credentials were observed. Use only [DORAHACKS_DESCRIPTION.txt](DORAHACKS_DESCRIPTION.txt) when replacing the Details body. The file contains the eight-report description and its limitations, without internal workflow notes. The signed-out agent browser exposes no edit control, so no Build edit was attempted or claimed. The user must apply this copy in their existing authenticated session, or provide the same form in a supported authenticated browser session; no repeat publication approval is needed.
+
+The earlier login gate below is historical, superseded by this user-reported submission and verified public Build. The agent did not submit the Build on the user's behalf, did not verify a hackathon success receipt and did not create a second Build.
 
 ## Build title
 
@@ -30,9 +38,9 @@ This Feedback-only submission contains eight issue-specific reports/candidates, 
 
 008: SDK 0.32.1 funding-history pagination floors a millisecond cursor into an inclusive second bound. Actual public BTC history returns the previous row for `last.timestamp + 1`; 10 bounded original-SDK cases show repeated rows and a stalled tail, with passing controls and an isolated reproduction. The official release notes explicitly promise this cursor idiom terminates. This is distinct from the earlier known newest-first ordering issue.
 
-Reports 002–006 concern the official bot kit and run hash-checked pinned source with explicit offline dependencies; 007–008 run original SDK methods/helpers, and 008 also executes the actual query/transport boundary against synthetic responses. These tests demonstrate code paths, not live account/order/stop/fill/exposure/loss outcomes or measured gas costs. Each report distinguishes observation, fixtures, controls, environment and limitations. 008 also includes a separately labelled public history capture and bounded two-read verification, with no owner or transaction. No wallet, key, signature or transaction was needed. Scope, duplicates, intent and severity are organizer decisions; first-report priority is unknown because Builds are private. This is not an MVP execution submission. No acceptance or reward is claimed.
+Reports 002–006 concern the official bot kit and run hash-checked pinned source with explicit offline dependencies; 007–008 run original SDK methods/helpers, and 008 also executes the actual query/transport boundary against synthetic responses. These tests demonstrate code paths, not live account/order/stop/fill/exposure/loss outcomes or measured gas costs. Each report distinguishes observation, fixtures, controls, environment and limitations. 008 also includes a separately labelled public history capture and bounded two-read verification, with no owner or transaction. No wallet, key, signature or transaction was needed. Scope, duplicates, intent and severity are organizer decisions; first-report priority is unknown because other bounty submissions were unavailable for duplicate review. This is not an MVP execution submission. No acceptance or reward is claimed.
 
-## Authorization and actual submission status
+## Historical authorization and pre-submission status
 
 The user requested end-to-end Feedback completion without repeated questions after review of the concrete five-report package, then explicitly asked for further careful research. This continuation publishes verified nonsecurity findings to the same named public repo/program with no new private data or recipient. Scope was stated before action. No repeat per-report approval request is needed. This grants no wallet/order, private-app/MVP publication, new destination, email/community message or social post.
 
@@ -42,7 +50,7 @@ The final actual Edge check on 2026-10-21 still displayed the original DoraHacks
 
 Report 008 publication is verified at 1cfb630133aeec45ac482ec7c77d0128ad56548d. Exact 38-file/37-payload archive `.local/feedback-008-publication-ready.zip`, SHA-256 `33b2eeac056d9f4d90b5ee3f8665e82c483b6f1fcba60ef1bc07b3ce7387a332`, adds five report/runner/evidence files and updates public README/package scripts/manifest from e81ac63. No dependency or existing report/evidence change. All 38 remote files exactly match that immutable review archive, including the manifest; 37 payload hashes/sizes and private-data exclusions passed. This eight-report text supersedes the prior seven-report text, while actual Build submission remains unperformed.
 
-## Review and publication provenance
+## Historical review and publication provenance
 
 Prior seven-report extension: immutable ignored `.local/feedback-006-007-publication-ready-v2.zip`, SHA-256 `6e6f59ee6cfa5a2986153e699180699869f0545493626981168f2c13ab4e9a9b`, based on public c1f662d. Exact 33 files / 32 payloads. Eight report/runner/evidence additions plus minimal public package/lock/.gitignore; README/manifest updated. Published by normal commit/push at e81ac63, with only manifest review-archive provenance appended. Original review data/reproducer/evidence bytes are preserved. The initial v1 archive remains in ignored scratch; v2 clarifies that the SDK context inherits the prototype without running a constructor, with unchanged test/SDK function bodies and a final recapture of the same 12 cases.
 

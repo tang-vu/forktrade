@@ -1,0 +1,19 @@
+This Feedback-only submission contains eight issue-specific reports/candidates, each proposed severity normal.
+
+001: the documented Perps entry redirected the observed signed-out Edge session to STT/USDso spot. Real browser screenshots, a bounded three-hop HTTP capture and a GET reproducer are included; authenticated behavior/root cause are unknown.
+
+002: perp-starter chooses bracket orientation from the configured side when the existing position has the opposite side. Both mismatching cases and matching controls are included.
+
+003: perp-starter checks a configured new-entry margin budget before discovering an existing smaller position, preventing its management path below that budget. Below/at/above-budget controls keep the sides equal and request no new entry.
+
+004: perp-maker can quote beyond its named maximum position near the threshold. Six controls reproduce the behavior, but hard-cap intent is not established; this is a lower-confidence documentation/intent clarification, not a protocol-cap bypass claim.
+
+005: after both initial quotes are skipped, perp-maker suppresses sizing retries at an unchanged mark. Three bounded failure, healthy and moving-mark cases isolate this path.
+
+006: the official maker's cancellation helper swallows errors, allowing replacement and forgetting old IDs without reconciliation. Three offline failure/control cases use explicitly labelled in-memory helper returns, not real orders. Related public issue 38 describes the same integration mistake in a different binary vault; that overlap and duplicate risk are prominently disclosed.
+
+007: SDK 0.32.1 unified createOrder checks the lot threshold but misses BTC's separate minimum quantity. Public contract/metadata reads confirm lot 1000 and minimum 13000; 12 offline buy/sell boundary cases show below-minimum quantities reaching an intercepted trader seam. The original package's 632 files match its verified npm archive, and an isolated clean install reproduces the result.
+
+008: SDK 0.32.1 funding-history pagination floors a millisecond cursor into an inclusive second bound. Actual public BTC history returns the previous row for `last.timestamp + 1`; 10 bounded original-SDK cases show repeated rows and a stalled tail, with passing controls and an isolated reproduction. The official release notes explicitly promise this cursor idiom terminates. This is distinct from the earlier known newest-first ordering issue.
+
+Reports 002–006 concern the official bot kit and run hash-checked pinned source with explicit offline dependencies; 007–008 run original SDK methods/helpers, and 008 also executes the actual query/transport boundary against synthetic responses. These tests demonstrate code paths, not live account/order/stop/fill/exposure/loss outcomes or measured gas costs. Each report distinguishes observation, fixtures, controls, environment and limitations. 008 also includes a separately labelled public history capture and bounded two-read verification, with no owner or transaction. No wallet, key, signature or transaction was needed. Scope, duplicates, intent and severity are organizer decisions; first-report priority is unknown because other bounty submissions were unavailable for duplicate review. This is not an MVP execution submission. No acceptance or reward is claimed.

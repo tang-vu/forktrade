@@ -2,7 +2,7 @@
 
 Severity: normal (proposed; organizer decides)
 Area: SDK
-Status: actual public configuration plus offline SDK reproduction; reviewed additional Feedback report, not submitted
+Status: user reports submitted in [DoraHacks Build 50119](https://dorahacks.io/build/50119), 2026-10-22; public Build/repo verified, track registration not independently verified; organizer decision/payment unverified
 
 ## Impact and scope
 
@@ -55,4 +55,4 @@ In package source `src/unified/exchange.ts`, `createOrder` lines 5087–5102 ali
 
 ## Duplicate and independence check
 
-On 2026-10-21 public bot-kit issue searches for `minQuantity` and `createOrder` returned zero. The SDK repository declared by the npm package returned HTTP 404 with available access, so its issue history could not be reviewed. Private bounty/community submissions were unavailable/unsearched; first-report priority is unknown. This affects the SDK unified entry point, distinct from 004's bot-local inventory setting and from our earlier test-harness enum correction. Buy/sell and boundary cases are one issue, not separate reports. Proposed normal; organizer determines acceptance and reward. No submission, acceptance or payment is claimed.
+On 2026-10-21 public bot-kit issue searches for `minQuantity` and `createOrder` returned zero. The SDK repository declared by the npm package returned HTTP 404 with available access, so its issue history could not be reviewed. Private bounty/community submissions were unavailable/unsearched; first-report priority is unknown. This affects the SDK unified entry point, distinct from 004's bot-local inventory setting and from our earlier test-harness enum correction. Buy/sell and boundary cases are one issue, not separate reports. Proposed normal; organizer determines acceptance and reward. No organizer acceptance or payment is claimed.
