@@ -85,6 +85,13 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-22 02:05 UTC — user-corrected Build Details independently verified
+
+Resumed clean at pushed 2f1d9e438c0c6b40280e0521ae9a6af2e65121bd. User said the description was corrected. Reloaded https://dorahacks.io/build/50119 in actual Edge and read the rendered Details. Full body equals feedback/DORAHACKS_DESCRIPTION.txt after whitespace normalization, all eight report summaries are present, and internal authorization/archive/stale not-submitted notes are absent. No additional wording fix is needed. User performed the edit; agent did only public read-only verification, no authentication, edit, duplicate Build, order or account action.
+
+Saved a new correction observation separately from the initial full-file-paste evidence; prior evidence/reproducers/public archive remain unchanged. Updated the current copy-cleanup state in SUBMISSION, Feedback index, BOUNTY and SOURCES; added ACCEPTANCE evidence. Only private documentation/evidence changed, no public GitHub update or app/dependency change is needed. Relevant 22-file Markdown link/fence/anchor, clean-description/eight-summary/no-internal-notes, JSON and git diff checks pass before this commit/push; no app/source/browser suite rerun is needed. Commit is the private commit containing this entry. Actual hackathon registration remains user-reported; organizer acceptance, duplicate priority and reward remain unverified. MVP live root/remix is still separate and incomplete. Next: await actual organizer review/result or handle a concrete follow-up, rather than repeat the resolved edit/login request.
+
+
 ### 2026-10-22 01:59 UTC — user-reported submission; Build 50119 independently visible
 
 Resumed clean on feat/forktrade-core at f8d09d410f53dcacc1dcbc310526335744187cf5. User explicitly supplied https://dorahacks.io/build/50119 and stated it was submitted. Read the current ledger/status and public page. Web reader could not fetch the page; ordinary Edge succeeded. Verified exact title, brief, public GitHub repo and all eight item summaries. No hackathon/track registration receipt or organizer acceptance/payment was visible on this signed-out page, so retain the user's submission claim as user-reported, not independently confirmed registration. Do not create a second Build or operate login.

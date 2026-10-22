@@ -69,7 +69,7 @@ If accepted-environment rules remain unavailable, continue local/offline work an
 | Feedback reports | 001–008 published at 1cfb630; 38 remote files/37 payload hashes verified; 004 intent and 006 related-report risk qualified | User reports Build 50119 submitted; public Build/repo verified, track registration and organizer scope/intent/duplicate/acceptance/payment decisions unverified |
 | 2-3 X post links | None; drafts in DEMO.md only | User-approved published posts and actual URLs |
 | Judge access/public source | Not authorized | User-approved least-needed access; recheck program requirements |
-| Submission | User reports Feedback submitted as [Build 50119](https://dorahacks.io/build/50119), 2026-10-22; public title/repo verified | Track registration not independently visible; clean Details copy prepared. No organizer acceptance/payment observed. MVP submission remains separate |
+| Submission | User reports Feedback submitted as [Build 50119](https://dorahacks.io/build/50119), 2026-10-22; public title/repo verified | Track registration not independently visible; user-corrected Details matches the prepared eight-report description on a fresh Edge reload. No organizer acceptance/payment observed. MVP submission remains separate |
 | Mainnet conditional tranche | Separate future scope | No actions planned or authorized here |
 
 ## Future submission procedure
@@ -81,4 +81,4 @@ If accepted-environment rules remain unavailable, continue local/offline work an
 5. Ask the user for the specific external actions still needed: source/judge access or visibility, demo hosting if desired, final post publication, submission, and any private disclosure. None is implicitly authorized by creating this repository or invoking GOAL.md.
 6. After an authorized action, verify the actual result and save only safe links/evidence. A draft, queued request or timeout is not a posted/submitted result. If blocked, record the exact action/target/reason and denied/pending/uncertain status.
 
-The private application remains private; no mail, X post, deployment or mainnet action is authorized. Use the existing Build 50119; do not create a duplicate Build or infer organizer acceptance. The current Details cleanup is prepared in feedback/DORAHACKS_DESCRIPTION.txt. No award, acceptance or payment can be claimed until independently confirmed by the program.
+The private application remains private; no mail, X post, deployment or mainnet action is authorized. Use the existing Build 50119; do not create a duplicate Build or infer organizer acceptance. The user applied the clean Details copy; a fresh actual Edge comparison passed. The description-only source remains feedback/DORAHACKS_DESCRIPTION.txt. No award, acceptance or payment can be claimed until independently confirmed by the program.

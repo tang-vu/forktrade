@@ -1,0 +1,14 @@
+{
+  "buildUrl": "https://dorahacks.io/build/50119",
+  "descriptionMatchesAfterWhitespaceNormalization": true,
+  "reportSummaries": 8,
+  "internalNotesPresent": false,
+  "agentEditedBuild": false,
+  "recordedAt": "2026-10-22T02:05:44.168732+00:00",
+  "verification": "Reloaded actual signed-out Edge Build page; compared complete rendered Details with feedback/DORAHACKS_DESCRIPTION.txt after whitespace normalization",
+  "userStatement": "corrected",
+  "hackathonTrackRegistrationIndependentlyVerified": false,
+  "organizerAcceptanceObserved": false,
+  "paymentObserved": false,
+  "priorObservation": "submission-50119-2026-10-22.json"
+}
