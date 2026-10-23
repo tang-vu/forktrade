@@ -1,6 +1,6 @@
 # Demo plan and evidence manifest
 
-**The offline browser demonstration passed again on 2026-10-23. Actual root ownership authentication and both funded-account exact simulations passed. Live root/remix execution and its demo remain unrun.** Two distinct user-controlled EOAs each have bank collateral after explicitly approved setup. These are two owner contexts operated by the same human, not a claim of two users. Setup receipts and signatures are not perps orders. No recording or post link exists.
+**The offline browser demonstration passed again on 2026-10-23. Actual root ownership authentication and both funded-account exact simulations passed. The actual user-approved root is confirmed/filled 0.00013 BTC. Independent remix execution and the complete live demo remain pending.** Two distinct user-controlled EOAs each have bank collateral after explicitly approved setup. These are two owner contexts operated by the same human, not a claim of two users. [Root order evidence](evidence/live-root-2026-10-23.json) is separate from setup receipts/signatures. A testnet long position of 0.00013 BTC and no open order were observed later; no cleanup was sent. No recording or post link exists.
 
 Offline walkthrough is automated in `tests/e2e/offline.spec.ts`. It uses two isolated browser contexts for original/remix and covers approval, publication, comparison and withdrawal. Inspected screenshots: [desktop](evidence/offline-desktop.png), [desktop remix](evidence/offline-remix-desktop.png), [360px card](evidence/offline-card-mobile.png), [360px remix](evidence/offline-remix-mobile.png). They are actual app screenshots of an explicitly synthetic scenario, never live protocol evidence. Test databases are isolated and ignored; no fake live history was seeded.
 
@@ -13,6 +13,10 @@ User-requested [actual Edge computer-use checks](evidence/edge-ui-2026-10-21.jso
 Fresh inspected offline captures: [desktop](evidence/mvp-offline-desktop-2026-10-23.png), [desktop remix](evidence/mvp-offline-remix-desktop-2026-10-23.png), [360px card](evidence/mvp-offline-card-mobile-2026-10-23.png), [360px remix](evidence/mvp-offline-remix-mobile-2026-10-23.png). All four are explicitly synthetic; prior captures remain unchanged. [Verification summary](evidence/mvp-resume-2026-10-23.json) separates 104 tests/20 browser cases, actual public reads, both funded-account simulations, four confirmed setup transactions and root ownership authentication.
 
 The local testnet app and original companion were restarted for the user. After accidental wallet-window closure, the private root remained saved and zero attempts/no wallet request journal were verified before reopening. Authentication was repeated; select the saved **BTC testnet integration check** from the left sidebar before opening a fresh review. A future `--prepare-root` launch now selects this single matching saved root automatically when the editor is blank, without replacing entered work or creating another root. Each final app/wallet order decision remains the user's. The second companion must use `.local/wallets/hideki-remix-testnet-2026-10-23` and the exact published source once available; never create an unrelated root and call it a remix. No cleanup order is authorized.
+
+## Actual root card — 2026-10-23
+
+The user explicitly selected all eight public fields and confirmed local publication. Actual Edge displays the verified confirmed/filled root, 0.00013 BTC filled / 0 unfilled, complete disclosed owner/evidence link, as-of time and history-gap label. Captures: [desktop](evidence/live-root-card-desktop-2026-10-23.jpg), [360px top](evidence/live-root-card-mobile-top-2026-10-23.jpg), [360px receipt](evidence/live-root-card-mobile-status-2026-10-23.jpg). CSS viewport 1280/360, mobile content width/scroll width both 345px. Full-page capture timed out; normal viewport captures succeeded, unmodified. These are actual published-card screenshots, separate from the synthetic captures above. [Allowlisted public projection](evidence/live-root-public-card-2026-10-23.json). Local only, no internet URL or video implied.
 
 ## Short walkthrough to prepare
 
@@ -52,12 +56,12 @@ Fill with observed facts, not proposed values. Do not insert placeholder transac
 | SDK/package lock version | SDK 0.32.1, exact resolved dependencies in package-lock.json |
 | Market/pool, metadata source/as-of | BTC / USDso; public pool and source/block recorded in evidence/read-only-2026-10-20.json; offline pool is explicitly synthetic |
 | Root plan ID/version/hash, approval context | One actual private root v1 saved after real ownership on 2026-10-23; IDs/hash stay private pending selected disclosure. No order approval or receipt |
-| Root request ID, tx hash, order ID, source/block | None |
-| Root actual tx state, order state, filled/remainder amounts | No order |
+| Root request ID, tx hash, order ID, source/block | Actual private identities persisted; canonical receipt block 31131276. Full identifiers remain ignored pending owner-selected disclosure |
+| Root actual tx state, order state, filled/remainder amounts | Confirmed / filled / 13000 raw (0.00013 BTC) / 0 remaining; later independent snapshot verification passed |
 | Remix source/root/depth and changed parameters | None |
 | Remix owner context and separate approval | None |
 | Remix request/tx/order identity and actual outcome | No order |
-| Receipt/history coverage and unresolved gaps | No observations |
+| Receipt/history coverage and unresolved gaps | Root initial event range 31131276–31131280; later reconnect used authoritative snapshots with earlier history gap disclosed. No fabricated replay |
 | Publication allowlist and user consent | Not requested |
 | Screenshots/video/evidence paths or approved links | Four offline screenshot links above; no live screenshots, video or hosted URL |
 | Remaining exposure and cleanup status | Setup bank balance 5 USDso, wallet 95 USDso, allowance 0 as of 2026-10-21 02:00:50 UTC; no ForkTrade order sent; future cleanup requires separate authorization |
@@ -75,9 +79,9 @@ Proposed description:
 
 ForkTrade helps a trader keep a testnet order tied to the reasoning and exact parameters they reviewed. A thesis becomes a versioned plan, then a fresh order preview. After the owner's explicit decision, its card distinguishes transaction submission, confirmation and the actual order outcome. A viewer can independently remix a published version, change its parameters and inspect the root-to-remix lineage without inheriting the original owner's approval.
 
-The initial scope is one BTC/USDso limit/GTC workflow on dreamDEX Perps testnet. The local app implements the offline thesis, review, synthetic execution, card and remix path, with public market/configuration reads and actual funded-account sizing/order simulation checked separately. The source has passed 104 unit/integration tests and 20 offline browser scenarios. These checks do not establish a real perps order or a live root/remix demo. No performance or profit claim is made.
+The initial scope is one BTC/USDso limit/GTC workflow on dreamDEX Perps testnet. The local app implements the offline thesis, review, synthetic execution, card and remix path, with public market/configuration reads and actual funded-account sizing/order simulation checked separately. The source now passes 106 unit/integration tests and 21 offline browser scenarios locally. Separately, the user approved a real root order that was verified confirmed/filled for 0.00013 BTC. Independent remix acceptance and a complete live demo remain pending. No performance or profit claim is made.
 
-Current evidence limitations for the reviewer: root wallet ownership authentication has completed, but independent remix authentication and separately approved root/remix orders have not been completed. The GitHub application repository is private; no public app URL, live demo recording or required X post links exist. This description is a preparation draft and is not yet a qualifying MVP entry.
+Current evidence limitations for the reviewer: root wallet ownership authentication has completed, but independent remix authentication and its separately approved order have not been completed. The original root is confirmed/filled. The GitHub application repository is private; no public app URL, live demo recording or required X post links exist. This description is a preparation draft and is not yet a qualifying MVP entry.
 
 Before converting this draft into a submission, complete the existing live-acceptance checklist in [ACCEPTANCE.md](ACCEPTANCE.md): the second owner context, a fresh exact root order and separately owned/approved remix, authoritative outcomes, selected-field publication choices and reviewed live demo evidence. Then replace the evidence limitations above only with verified results and approved links, obtain the concrete MVP source/demo/post/submission permissions and recheck the current program requirements. No additional market or feature is needed before those gates.
 

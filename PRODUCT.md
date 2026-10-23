@@ -1,6 +1,6 @@
 # Product contract
 
-Status: target contract; the offline thesis/review/card/remix path and guarded live integration are implemented. Real root ownership authentication and both funded-account simulations passed on 2026-10-23; actual root/remix orders and live acceptance remain incomplete. The target remains the complete testnet experience below.
+Status: target contract; the offline thesis/review/card/remix path and guarded live integration are implemented. Real root ownership authentication and both funded-account simulations passed on 2026-10-23; the user-approved root order is now confirmed/filled. The independent remix and full live acceptance remain incomplete. The target remains the complete testnet experience below.
 
 ## User promise and scope
 
@@ -28,7 +28,7 @@ Saving a new version shows which fields changed. A published or executed version
 
 ### 2. Fresh preview and review
 
-Fetch current chain, market metadata, order-book/mark data, account balances/positions/orders, margin mode, relevant limits and fee inputs. Show source age and a visible expiry. Set an initial product TTL such as 15 seconds only as a testable proposed default; M0 must verify whether a shorter value is needed. Always revalidate before signing even within TTL.
+Fetch current chain, market metadata, order-book/mark data, account balances/positions/orders, margin mode, relevant limits and fee inputs. Show source age and a visible expiry. Set an initial product TTL such as 15 seconds only as a testable proposed default; M0 must verify whether a shorter value is needed. Always revalidate before signing even within TTL. Owner/network/metadata/rules/account-state changes invalidate consent; indicative mark/capacity movement cannot enlarge the fixed order or exceed the reviewed margin/fee estimates. Higher estimates require another review. These checks are not on-chain margin caps.
 
 Show a review sheet with the complete owner account, wallet signer or delegated role if any, chain ID/label, market/pool, side, limit price, quantity, notional, time in force, any reduce-only setting, fee/builder fields, estimated gas and margin implications. Show maximum permitted size and the user-selected size cap. Estimates must be labelled and must not promise execution price, fill, liquidation safety or fee certainty.
 

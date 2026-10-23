@@ -59,7 +59,7 @@ If accepted-environment rules remain unavailable, continue local/offline work an
 
 ## MVP resumption — 2026-10-23
 
-The user requested completing the separate MVP after Feedback submission. Re-read the official page in actual Edge: real testnet orders, GitHub purpose/audience/run instructions, demo evidence and 2 or 3 X links tagging @DreamDEXSomnia remain required; the deadline remains November 1, 23:59 UTC. Both dedicated user-controlled EOAs now have bank collateral after exactly approved setup, and the root wallet completed real ownership authentication. Root/remix orders, selected-field sharing, live demo, actual X links and final MVP submission remain incomplete. The private source stays private; this progress is not entry acceptance. See [current evidence](evidence/mvp-resume-2026-10-23.json).
+The user requested completing the separate MVP after Feedback submission. Re-read the official page in actual Edge: real testnet orders, GitHub purpose/audience/run instructions, demo evidence and 2 or 3 X links tagging @DreamDEXSomnia remain required; the deadline remains November 1, 23:59 UTC. Both dedicated user-controlled EOAs now have bank collateral after exactly approved setup, and the root wallet completed real ownership authentication. A real separately approved root is now confirmed/filled 0.00013 BTC, with private identity evidence. The owner-published root card has actual desktop/mobile evidence; the independently owned private remix v2 is prepared. Its execution, complete live demo, actual X links and final MVP submission remain incomplete. The private source stays private; this progress is not entry acceptance. See [current evidence](evidence/mvp-resume-2026-10-23.json).
 
 ## Readiness table
 

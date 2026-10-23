@@ -1,0 +1,69 @@
+{
+  "kind": "actual-owner-published-local-card",
+  "capturedAt": "2026-10-23T14:52:58.745071+00:00",
+  "sourceUrl": "http://127.0.0.1:3000/api/cards/59e87ff8-ebab-4d59-a908-4452ea1ae903",
+  "consent": "Owner selected all eight public fields in the app, including full address and transaction/order evidence links, and confirmed local publication on 2026-10-23",
+  "card": {
+    "id": "59e87ff8-ebab-4d59-a908-4452ea1ae903",
+    "revision": 1,
+    "mode": "testnet",
+    "label": "Testnet / paper funds",
+    "version": 1,
+    "versionHash": "e3b7544f7a8a9b593f561ecca6c34926434c64909d46bc51a3baa5b1d7cdb570",
+    "fields": [
+      "title",
+      "parameters",
+      "lineage",
+      "evidence",
+      "links",
+      "address",
+      "rationale",
+      "invalidation"
+    ],
+    "title": "BTC testnet integration check",
+    "rationale": "Agent-prepared testnet intent: verify the thesis, review, separately approved order and truthful receipt workflow. This is not a market recommendation or performance claim.",
+    "invalidation": "Stop if account/network/market context changes, risk data becomes unavailable or the preview expires.",
+    "parameters": {
+      "side": "buy",
+      "price": "82027.6",
+      "quantity": "0.00013",
+      "quantityCap": "0.00013",
+      "notionalCap": "20",
+      "market": "BTC / USDso",
+      "chainId": 50383,
+      "pool": "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0",
+      "type": "limit",
+      "timeInForce": "GTC",
+      "reduceOnly": false
+    },
+    "lineage": {
+      "depth": 0,
+      "sourceAvailable": null
+    },
+    "evidence": {
+      "tx": "confirmed",
+      "order": "filled",
+      "filled": "13000",
+      "remaining": "0",
+      "baseDecimals": 8,
+      "observedAt": 1792767177782,
+      "coverage": "snapshot_only",
+      "reason": "Authoritative current/receipt snapshot; earlier event history unavailable.",
+      "level": "verified_order"
+    },
+    "address": "0xa25b2245af36d99cf0c3663afad682a505b8d3e4",
+    "links": {
+      "transaction": "https://explorer.testnet.somnia.network/tokyo/tx/0x2ead0dab28f170a315661bf86ef564cd9968641551579ac1166be1f9f12c08a8",
+      "hash": "0x2ead0dab28f170a315661bf86ef564cd9968641551579ac1166be1f9f12c08a8",
+      "orderId": "17118578500402471110423"
+    },
+    "comparison": null,
+    "canRemix": true,
+    "updatedAt": 1792765959350
+  },
+  "limitations": [
+    "Local loopback URL, not internet hosting",
+    "This is the published allowlisted projection, not a private account/session export",
+    "No private risk note, signing key, signature, auth challenge or cookie is included"
+  ]
+}

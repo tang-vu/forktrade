@@ -33,6 +33,10 @@ test('local provider survives the actual tsx CLI runtime and enforces caller bou
   const result=spawnSync(process.execPath,['--import','tsx',resolve('tests/e2e/fixtures/local-wallet-runtime.ts')],{cwd:process.cwd(),encoding:'utf8',timeout:25000,windowsHide:true,maxBuffer:16384});
   expect(result.error).toBeUndefined();expect(result.status,result.stderr).toBe(0);
   expect(result.stdout).toContain('SYNTHETIC tsx wallet runtime passed');
+  for(const flags of [['--remix'],['--remix','not-a-uuid'],['--prepare-root','--remix','10000000-0000-4000-8000-000000000001']]){
+    const rejected=spawnSync(process.execPath,['--import','tsx',resolve('tools/local-wallet/run.ts'),'--wallet-dir','.local/nonexistent-synthetic-wallet',...flags],{cwd:process.cwd(),encoding:'utf8',timeout:25000,windowsHide:true,maxBuffer:4096});
+    expect(rejected.status).toBe(1);expect(rejected.stderr).toContain('Use --remix with one visible publication UUID');
+  }
 });
 test('synthetic local wallet UI requires a real click, escapes content, rejects and expires without a signer',async({browser})=>{
   const context=await browser.newContext({viewport:{width:360,height:800}}),page=await context.newPage(),wallet=new ApprovalWindow(page,true);await wallet.initialize();

@@ -1,6 +1,6 @@
 # Proposed architecture and integration contract
 
-Status: the offline path and guarded live adapters are implemented. Exact interfaces live in source. Source/mock-wallet checks, public reads and both funded-account simulations pass; actual root ownership authentication completed on 2026-10-23. Root/remix order acceptance and reconciliation still need actual order evidence before M6 passes.
+Status: the offline path and guarded live adapters are implemented. Exact interfaces live in source. Source/mock-wallet checks, public reads and both funded-account simulations pass; actual root ownership authentication completed on 2026-10-23. The actual root was confirmed/filled and independently reconciled on 2026-10-23. Source-linked sharing, separate remix acceptance and full demo evidence still need completion before M6 passes.
 
 ## Baseline and boundaries
 
@@ -57,7 +57,7 @@ Saved versions are append-only at the application layer; protect updates with ow
 3. Check price modulo tick equals zero, quantity modulo lot equals zero, and quantity meets the minimum. Validate units and positive divisors.
 4. Calculate notional with exact scaling and deliberate conservative rounding where a bound requires it. Test numerator/denominator and overflow limits. Display any estimate rounding separately from executable values.
 5. Refresh current account collateral/equity, positions, open orders, margin mode, permissions and protocol size constraints. Apply a user-reviewed application cap as well as protocol maximums. Do not default to the maximum allowed size. Missing/stale risk inputs block execution.
-6. Bind the validated payload and metadata to a short-lived preview. Immediately before invoking the signer, read the current context again and compare; changed values or stale data require a new preview and approval. Rejection/reverts can still occur after a valid preview.
+6. Bind the validated payload, metadata/rules, account state and reviewed cost bounds to a short-lived preview. Immediately before invoking the signer, read current context again: authority/rule/account changes, insufficient size/notional capacity or any higher margin/fee estimate require fresh approval. Indicative mark/capacity movement is permitted only when the exact order stays valid and fresh costs are no greater than reviewed. Original expiry is never extended. Cost checks are client preflight, not contract-enforced ceilings. Rejection/reverts can still occur after a valid preview.
 
 The 2026-10-20 developer snapshot is recorded in SOURCES.md. It illustrates why per-market precision and live sizing matter; it is not a permanent deployment manifest. Do not copy contract addresses, leverage limits or gas constants out of prose as fixed truth.
 

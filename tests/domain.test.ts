@@ -39,6 +39,20 @@ describe('N01–N04 exact amounts and fresh bounded context',()=>{
     expect(()=>verifyPreview(p,ctx,p.expiresAt)).toThrow(/expired/);
     for(const patch of [{owner:'offline:other'},{signer:'offline:other'},{chainId:1},{baseDecimals:9},{availableCollateral:'1'},{feeBps:'1'},{maxQuantity:'10'}])expect(()=>verifyPreview(p,{...ctx,...patch})).toThrow(/changed/);
   });
+  it('rechecks moving mark/capacity for the fixed order without enlarging reviewed amounts',()=>{
+    const ctx=offlineContext('offline:test'),p=makePreview(input,ctx);
+    expect(()=>verifyPreview(p,{...ctx,markPrice:(BigInt(ctx.markPrice)+1n).toString(),maxQuantity:p.payload.quantity,maxNotional:p.amounts.notional,limitedBy:'current capacity'})).not.toThrow();
+    expect(p.payload.quantity).toBe('20000');expect(p.payload.price).toBe('82000000000000000000000');
+    for(const patch of [{markPrice:'0'},{priceable:false},{placeable:false},{permissions:false},{maxQuantity:'19999'},{maxNotional:(BigInt(p.amounts.notional)-1n).toString()}])expect(()=>verifyPreview(p,{...ctx,...patch})).toThrow(/changed/);
+  });
+  it('permits only no-higher refreshed margin/fee estimates with identical account/rules/funding context',()=>{
+    const risk={requiredMargin:'100',feeReserve:'10',initialMarginPortion:'100',adverseGapPortion:'0',leverageSurcharge:'0',equity:'10000',lockedCollateral:'0',accountStateHash:'SYNTHETIC-state',walletPull:'0',mainWalletPull:'0',autoFundingPrevented:true};
+    const ctx={...offlineContext('offline:test'),risk,configurationHash:'SYNTHETIC-config'},p=makePreview(input,ctx);
+    expect(()=>verifyPreview(p,{...ctx,markPrice:(BigInt(ctx.markPrice)+1n).toString(),risk:{...risk,requiredMargin:'99',initialMarginPortion:'99',feeReserve:'9'}})).not.toThrow();
+    for(const change of [{requiredMargin:'101'},{feeReserve:'11'},{accountStateHash:'changed'},{equity:'9999'},{lockedCollateral:'1'},{walletPull:'1'},{mainWalletPull:'1'},{autoFundingPrevented:false}])expect(()=>verifyPreview(p,{...ctx,risk:{...risk,...change}})).toThrow();
+    expect(()=>verifyPreview(p,{...ctx,configurationHash:'changed'})).toThrow(/changed/);
+    expect(()=>verifyPreview(p,{...ctx,transaction:{gas:'10000000',maxFeePerGas:'2',maxPriorityFeePerGas:'0',nativeBalance:'1000000000',nativeDecimals:18,nativeSymbol:'STT'}})).toThrow(/changed/);
+  });
 });
 describe('R01–R07 conservative independent transaction/order evidence',()=>{
   const base=()=>initialExecution('offline:test',0,'synthetic:pool','20000','offline');

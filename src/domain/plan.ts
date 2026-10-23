@@ -56,10 +56,21 @@ export function normalizePlan(input: PlanInput, ctx: MarketContext): PlanInput {
   return {...input, price:formatAmount(p.price,ctx.quoteDecimals), quantity:formatAmount(p.quantity,ctx.baseDecimals), quantityCap:formatAmount(p.quantityCap,ctx.baseDecimals), notionalCap:formatAmount(p.notionalCap,ctx.quoteDecimals)};
 }
 export function contextBinding(ctx: MarketContext) {
-  // Observation time/block are provenance; all economic and identity fields are binding.
-  const {observedAt: _time, block: _block, source: _source, ...binding} = ctx;
-  void _time; void _block; void _source;
-  return hash(binding);
+  // Bind authority, rules, account state and executable bounds. Indicative mark
+  // and protocol capacity are revalidated below against the exact fixed order;
+  // margin/fee movement may never exceed the amounts the owner reviewed.
+  const {observedAt,block,source,markPrice,maxQuantity,maxNotional,limitedBy,risk,...binding}=ctx;
+  void observedAt;void block;void source;void markPrice;void maxQuantity;void maxNotional;void limitedBy;
+  return hash({...binding,risk:risk?{equity:risk.equity,lockedCollateral:risk.lockedCollateral,accountStateHash:risk.accountStateHash,
+    walletPull:risk.walletPull,mainWalletPull:risk.mainWalletPull,autoFundingPrevented:risk.autoFundingPrevented}:undefined});
+}
+function costs(ctx:MarketContext,notional:string) {
+  const feeRate=parseAmount(ctx.feeBps,3,false),marginBps=BigInt(ctx.initialMarginBps);
+  invariant(feeRate<=10_000_000n&&marginBps>0n&&marginBps<=10_000n,'Fee/margin rules unavailable');
+  const fee=ctx.risk?BigInt(ctx.risk.feeReserve):ceilDiv(BigInt(notional)*feeRate,10_000_000n);
+  const margin=ctx.risk?BigInt(ctx.risk.requiredMargin):ceilDiv(BigInt(notional)*marginBps,10_000n);
+  invariant(fee>=0n&&margin>=0n,'Invalid protocol margin or fee reserve');
+  return {fee,margin};
 }
 export function makePreview(input: PlanInput, ctx: MarketContext, now = Date.now(), userData='0') {
   invariant(now >= ctx.observedAt && now - ctx.observedAt <= 10_000, 'Market/account context is stale; refresh required');
@@ -68,12 +79,8 @@ export function makePreview(input: PlanInput, ctx: MarketContext, now = Date.now
   const amounts = validatePlan(input,ctx);
   invariant(BigInt(amounts.quantity) <= BigInt(ctx.maxQuantity), `Account sizing limit: ${ctx.limitedBy}`);
   invariant(BigInt(amounts.notional) <= BigInt(ctx.maxNotional), 'Protocol notional limit exceeded');
-  const feeRate = parseAmount(ctx.feeBps,3,false), marginBps = BigInt(ctx.initialMarginBps);
-  invariant(feeRate <= 10_000_000n && marginBps > 0n && marginBps <= 10_000n, 'Fee/margin rules unavailable');
-  const estimatedFee = ctx.risk?BigInt(ctx.risk.feeReserve):ceilDiv(BigInt(amounts.notional) * feeRate,10_000_000n);
-  const estimatedMargin = ctx.risk?BigInt(ctx.risk.requiredMargin):ceilDiv(BigInt(amounts.notional) * marginBps,10_000n);
+  const {fee:estimatedFee,margin:estimatedMargin}=costs(ctx,amounts.notional);
   invariant(ctx.mode==='offline' || ctx.risk?.autoFundingPrevented,'Verified protocol margin and funding context required');
-  invariant(estimatedFee>=0n && estimatedMargin>=0n,'Invalid protocol margin or fee reserve');
   invariant(estimatedFee + estimatedMargin <= BigInt(ctx.availableCollateral), 'Insufficient available collateral for margin and fees');
   const live=ctx.mode!=='offline',tx=ctx.transaction;
   invariant(!live || (tx && tx.gas===ORDER_GAS_LIMIT && BigInt(tx.maxFeePerGas)>0n && BigInt(tx.maxPriorityFeePerGas)>=0n && BigInt(tx.maxPriorityFeePerGas)<=BigInt(tx.maxFeePerGas)), 'Fresh gas/fee context required');
@@ -94,6 +101,12 @@ export function verifyPreview(preview: Preview, current: MarketContext, now=Date
   invariant(now < preview.expiresAt, 'Preview expired; create a fresh preview',409);
   invariant(now >= current.observedAt && now-current.observedAt <= 10_000, 'Fresh account/market context required',409);
   invariant(contextBinding(current) === preview.contextHash, 'Account, network, metadata or risk context changed; review again',409);
+  invariant(current.priceable&&current.placeable&&current.permissions&&BigInt(current.markPrice)>0n,'Risk or price context changed; review again',409);
+  invariant(BigInt(preview.payload.quantity)<=BigInt(current.maxQuantity)&&BigInt(preview.amounts.notional)<=BigInt(current.maxNotional),'Sizing bounds changed; review again',409);
+  invariant(current.mode==='offline'||current.risk?.autoFundingPrevented,'Funding context changed; review again',409);
+  const currentCosts=costs(current,preview.amounts.notional);
+  invariant(currentCosts.margin<=BigInt(preview.estimatedMargin)&&currentCosts.fee<=BigInt(preview.estimatedFee),'Margin or fee estimate increased; review again',409);
+  invariant(currentCosts.margin+currentCosts.fee<=BigInt(current.availableCollateral),'Collateral bounds changed; review again',409);
 }
 export function diffPlans(original: Partial<PlanInput>, remix: PlanInput) {
   return Object.entries(original).filter(([key,value])=>key !== 'riskNotes' && value !== remix[key as keyof PlanInput]).map(([field,before])=>({field,before,after:remix[field as keyof PlanInput]}));

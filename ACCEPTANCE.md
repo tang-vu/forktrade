@@ -1,6 +1,6 @@
 # Acceptance and evidence matrix
 
-**Current result (2026-10-23): typecheck/lint/build, 104 tests and 20 offline browser scenarios pass. Actual root ownership authentication and both funded-account sizing/exact simulations pass. Both user-controlled EOAs have bank collateral after explicitly approved setup; actual root/remix orders remain unrun.** Funding receipts and ownership signatures establish no order or live root/remix acceptance. [Resume evidence](evidence/mvp-resume-2026-10-23.json).
+**Current result (2026-10-23): typecheck/lint/build, 106 tests and 21 offline browser scenarios pass locally. Actual root ownership and both funded-account simulations pass. The user separately approved the real root order: transaction confirmed, order filled 13000 raw / 0.00013 BTC, remaining 0. Root card publication and separate remix ownership/source-linked v2 are verified. Independent remix execution and full acceptance remain pending.** Funding receipts and ownership signatures establish no order or live root/remix acceptance. [Resume evidence](evidence/mvp-resume-2026-10-23.json).
 
 The user changed the active goal to Feedback on 2026-10-21. Feedback reports are published with user approval. On 2026-10-22 the user reported submission as [Build 50119](https://dorahacks.io/build/50119); its public title/repo were independently verified. Hackathon-track registration, organizer acceptance and payment are unverified; this does not pass MVP G4.
 
@@ -14,7 +14,7 @@ Report 002 is reproduced only in an explicitly synthetic offline harness against
 | G1 - Source/local checks | Type safety, lint, domain/adapter tests, production build | Passed M5/companion: typecheck/lint/build and 104 unit/integration tests; source test transports are synthetic |
 | G2 - Offline browser | Reproducible UI behavior and failure handling with labelled synthetic fixtures | Passed 20 Chromium scenarios at desktop/360px, including separate confirmation-window and actual tsx provider-runtime tests |
 | G3 - Read-only integration | Verified current chain/config/market reads and available observation semantics | Actual public/funded-owner sizing/margin/eth_call passed; actual order history/correlation/reconnect unrun |
-| G4 - Live acceptance | Actual separately authorized user orders and honest root/remix evidence | Root/remix orders unrun; bounded account funding alone does not pass G4 |
+| G4 - Live acceptance | Actual separately authorized user orders and honest root/remix evidence | Root confirmed/filled, independently verified; root publication and separate remix remain pending. G4 partial |
 | G5 - Bounty readiness | Current rules/access/demo/post links/submission checklist | Feedback submission user-reported as Build 50119; registration/decision/payment unverified. MVP remains not ready |
 
 G1/CI success is not G3/G4 success. A mock transaction, screenshot of a fixture, public explorer link without identity verification, or a hash alone cannot pass live acceptance.
@@ -74,11 +74,11 @@ Fixture decimals are test cases, not a permanent market table. Use synthetic acc
 Only perform these after the user authorizes the session and the relevant actions. This list does not authorize any transaction or signature.
 
 - [x] Root owner completed real wallet connection/authentication through the intended companion flow on 2026-10-23; no key enters the app/server. The separate remix owner context still requires its own authentication. Closing the companion requires reconnecting to resume.
-- [ ] Live chain/config/market and account limits verified; exact bounded root plan previewed with full final fields.
-- [ ] User explicitly approved the root order, then approved signing in their wallet; persist request/hash/order identity and actual status.
-- [ ] Reconcile authoritative protocol evidence. Record accepted/open/partial/filled/cancelled/rejected/unknown exactly; a hash is insufficient.
-- [ ] Owner explicitly approved selected public fields and disclosure links; card shows evidence level, testnet label and as-of time.
-- [ ] Independent viewer/owner context created a one-level remix with visible differences and no inherited authority.
+- [x] Live chain/config/market and account limits verified; exact bounded root plan previewed with full final fields before actual user app/wallet decisions (2026-10-23).
+- [x] User explicitly approved the root order and wallet signing; durable request/hash/order identity persisted. Actual root confirmed/filled 13000 raw, remainder 0; private full identities and redacted evidence/live-root-2026-10-23.json.
+- [x] Root reconciled from exact transaction input, canonical receipt, matching order snapshot and initial lifecycle logs. Later independent reconnect/read is snapshot-only with a disclosed history gap. This establishes a filled root, not child acceptance.
+- [x] Root owner selected all eight public fields in-app, including address/evidence links, and confirmed local publication. Actual Edge desktop/360px card checks show confirmed/filled, testnet/as-of/history-gap labels. Child publication remains separate.
+- [x] Second real EOA authenticated and saved a source-linked child. User-directed owner-checked local draft edit produced v2 with title/rationale/price diffs (82027.6 → 82027.5), no inherited request/approval/execution; final child order remains unrun.
 - [ ] Remix owner received a fresh preview and separately approved the exact order and wallet operation; record its own execution identity and outcome.
 - [ ] Compare parameter differences and lineage; do not treat different fill times/prices as a controlled experiment or real profit.
 - [ ] Capture actual desktop/mobile evidence, including reconnect/unknown handling where feasible without creating extra unapproved orders.
@@ -162,6 +162,9 @@ For every check store ID, commit, command/scenario, date/time, mode (`synthetic/
 | MVP resumed checks / two funded EOAs | Increment after d607a32, Windows Node 24, 2026-10-23 | Typecheck/lint/build, 104 tests and 20 browser scenarios passed; new offline captures visually inspected at desktop/360px. Public configuration and both funded-owner exact simulations passed | [Dated summary](evidence/mvp-resume-2026-10-23.json), [public snapshot](evidence/read-only-mvp-2026-10-23.json); synthetic screenshots in DEMO.md are separate from live evidence |
 | Actual remix-wallet setup | Same user-authorized session, chain 50383 | Created DPAPI-protected second EOA, verified round-trip/ACL/ignore/preservation; exactly four approved setup transactions confirmed, total actual fee 0.00879441 STT. Remix bank 5 USDso, allowance 0, native 0.495308612 STT | Full addresses/hashes/intents remain ignored at .local/mvp/funding-2026-10-23.json; three separate synthetic executor invariants passed. No order, voucher, Arena, delegation or mainnet action |
 | Actual root ownership / window-close recovery | Real app/companion, 2026-10-23 | User completed real ownership; companion reported verified auth and DB held one owner session/one private root, zero attempts. After accidental closure, zero attempts/no wallet request journal were checked before reopening; user authenticated again | No automatic approval or send. Saved root preserved; later CLI launch now selects the unambiguous saved diagnostic root in a blank editor. Current order gate remains open; new recovery source passed 3 targeted synthetic browser cases, including zero-mutation/draft-preservation coverage |
+
+| Preview binding and actual root execution | Increment after fb4fd2d, 2026-10-23 | Two bounded real unsigned reads reproduced overbinding at 1780ms. The revised check blocks increased costs (1632ms) and accepts a valid no-higher-cost refresh (2051ms). Type/lint/build, 106 tests and 21 browser scenarios passed; user then approved one real root that confirmed/filled | [Binding diagnostic](evidence/preview-binding-2026-10-23.json), [root evidence](evidence/live-root-2026-10-23.json). Full account/hash data stays private pending publication choice. Root position +13000 raw, 0 open orders as of later observation; no cleanup sent |
+| Prior source CI | fb4fd2d811e231b35ba5a4fc4baa3acd1be6e94b, GitHub Ubuntu | [CI 39965956437](https://github.com/tang-vu/forktrade/actions/runs/39965956437) passed install/migration/type/lint/104 tests/build/21 browser cases (20.7s) | This CI predates the subsequent preview fix; that increment has its separate 106-test/21-case local evidence and next CI |
 
 ## Completion definition
 

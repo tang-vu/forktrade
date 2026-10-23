@@ -10,15 +10,15 @@
     "lint": "passed",
     "unitIntegration": {
       "status": "passed",
-      "tests": 104,
+      "tests": 106,
       "files": 8,
-      "durationSeconds": "20.85"
+      "durationSeconds": "19.55"
     },
     "productionBuild": "passed",
     "offlineBrowser": {
       "status": "passed",
-      "tests": 20,
-      "durationSeconds": "39.3"
+      "tests": 21,
+      "durationSeconds": "38.5"
     },
     "publicReadOnly": {
       "status": "passed",
@@ -58,6 +58,15 @@
         "zero mutations and no execution receipt",
         "tsx provider runtime and separate wallet decision UI"
       ]
+    },
+    "priorSourceCI": {
+      "commit": "fb4fd2d811e231b35ba5a4fc4baa3acd1be6e94b",
+      "url": "https://github.com/tang-vu/forktrade/actions/runs/39965956437",
+      "status": "passed",
+      "tests": 104,
+      "browserCases": 21,
+      "browserSeconds": "20.7",
+      "limitation": "Completed before the subsequent margin/fee-ceiling preview fix; new increment has separate local checks and CI pending"
     }
   },
   "officialSources": {
@@ -144,10 +153,11 @@
   "liveAcceptance": {
     "status": "partial",
     "ownershipSignature": "passed for root owner; real user decisions, companion auth confirmation and one saved private root. Reauthenticated after accidental window close.",
-    "rootOrder": "unrun",
+    "rootOrder": "passed; actual confirmed/filled 13000 raw (0.00013 BTC), 0 unfilled; evidence/live-root-2026-10-23.json",
     "remixOrder": "unrun",
-    "publication": "unrun",
-    "remaining": "Fresh exact root app/wallet decision and receipt, selected-field publication, second EOA ownership, exact remix approval/order, real demo and final external gates"
+    "publication": "passed for root: owner selected all eight fields in-app and confirmed local publication; actual Edge desktop/mobile screenshots and allowlisted projection saved",
+    "remaining": "Supported agent-driven Edge signing transport and actual exact child order/reconciliation, local child card/comparison/demo, final external gates",
+    "remixOwnership": "passed: actual second EOA ownership and depth-1 source-linked private child; owner-directed local edit prepared v2 at 82027.5 with no signature/order"
   },
   "external": {
     "hostedDemo": "none",

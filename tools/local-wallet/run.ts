@@ -17,8 +17,12 @@ import {recoverDiagnosticRoot,type SavedPlan} from './resume';
 
 const args=process.argv.slice(2),option=(name:string)=>{const index=args.indexOf(name);return index<0?undefined:args[index+1];};
 const walletDirectory=option('--wallet-dir');
-if(!walletDirectory){console.error('Usage: npm run wallet:testnet -- --wallet-dir .local/wallets/<wallet> [--origin http://127.0.0.1:3000] [--prepare-root]');process.exit(1);}
+if(!walletDirectory){console.error('Usage: npm run wallet:testnet -- --wallet-dir .local/wallets/<wallet> [--origin http://127.0.0.1:3000] [--prepare-root | --remix <publication-UUID>]');process.exit(1);}
 const prepareRoot=args.includes('--prepare-root');
+const remixPublication=option('--remix');
+if(args.includes('--remix')&&(!z.string().uuid().safeParse(remixPublication).success||prepareRoot)){
+  console.error('Use --remix with one visible publication UUID, separately from --prepare-root.');process.exit(1);
+}
 let origin:string,location:ReturnType<typeof walletLocation>,journal:WalletJournal,lockFile:string|undefined;
 let lockOwned=false,stopping=false,browser:Browser|undefined,connection:ReturnType<typeof connectReadOnly>|undefined,rpc:ReturnType<typeof connectReadOnly>['rpc'];
 let stage='application-readiness';
@@ -38,7 +42,7 @@ async function main(){
   browser=await chromium.launch({headless:false});
   if(stopping){await browser.close();return;}
   const appContext=await browser.newContext({viewport:{width:1280,height:900}}),walletContext=await browser.newContext({viewport:{width:740,height:850}});
-  const walletPage=await walletContext.newPage(),approval=new ApprovalWindow(walletPage);
+  const walletPage=await walletContext.newPage(),approval=new ApprovalWindow(walletPage,false,remixPublication?'remix':'original');
   await approval.initialize();
   const appPage=await appContext.newPage();
   let connected=false,preparing=false;
@@ -120,7 +124,7 @@ async function main(){
       console.log('Ownership session authenticated. Known requests reconciled; the app is ready for user review. No order was automatically approved.');
     })().catch(()=>console.error('Session recovery/private draft preparation unavailable; existing identities and drafts were preserved.'));}
   });
-  await appPage.goto(origin);
+  await appPage.goto(remixPublication?`${origin}/?remix=${encodeURIComponent(remixPublication)}`:origin);
   stage='provider-readiness';
   const providerReady=await appPage.evaluate("(async()=>typeof window.ethereum==='object'&&window.ethereum.isForkTradeLocalTestWallet===true&&await window.ethereum.request({method:'eth_chainId'})==='0xc4cf')()");
   invariant(providerReady===true,'Wallet provider/bridge failed to initialize');

@@ -38,7 +38,7 @@ Treat thesis text as plain text or sanitized safe Markdown. Prevent script/HTML 
 
 ## Order safety and uncertainty
 
-Require exact decimal parsing, metadata checks, tick/lot/minimum validation and user-reviewed caps. Show owner, signer role, chain, pool/market and all economic payload fields. Confirm active wallet context immediately before signing; a network/account/parameter change invalidates approval. Do not silently correct price/quantity, use maximum leverage or perform automatic network changes.
+Require exact decimal parsing, metadata checks, tick/lot/minimum validation and user-reviewed caps. Show owner, signer role, chain, pool/market and all economic payload fields. Confirm active wallet context immediately before signing; a network/account/parameter/configuration or account-state change invalidates approval. Refresh mark, capacity and margin/fees as well: the fixed order must still fit current capacity, and margin/fee estimates cannot exceed their reviewed amounts. No TTL extension, silent order resize or changed calldata is allowed. These checks do not impose an on-chain margin ceiling. Do not silently correct price/quantity, use maximum leverage or perform automatic network changes.
 
 Persist a durable one-use approval/request before the wallet call. UI locks alone do not prevent cross-tab or retry duplication. Timeouts and lost responses may hide an already broadcast call. Reconcile its original identity; do not send again merely because a button re-enabled. If protocol correlation is unavailable, state the limitation and keep the request unknown. A retry or cleanup action needs appropriate new review/authorization; it is not a routine read.
 

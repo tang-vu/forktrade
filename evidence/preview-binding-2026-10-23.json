@@ -1,0 +1,49 @@
+{
+  "kind": "actual-read-only-preview-binding-diagnostic",
+  "dateUtc": "2026-10-23",
+  "sourceBaseCommit": "fb4fd2d",
+  "checks": [
+    {
+      "case": "before",
+      "bindingFieldsThatMoved": [
+        "markPrice",
+        "maxQuantity",
+        "maxNotional",
+        "risk"
+      ],
+      "validation": "Account, network, metadata or risk context changed; review again",
+      "elapsedMs": 1780,
+      "privateEvidence": ".local/mvp/preview-binding-before-2026-10-23.json"
+    },
+    {
+      "case": "after-no-higher-cost-guard",
+      "bindingFieldsThatMoved": [
+        "markPrice",
+        "maxQuantity",
+        "maxNotional",
+        "risk"
+      ],
+      "validation": "Margin or fee estimate increased; review again",
+      "elapsedMs": 1632,
+      "privateEvidence": ".local/mvp/preview-binding-after-increase-blocked-2026-10-23.json"
+    },
+    {
+      "case": "after-valid-refresh",
+      "bindingFieldsThatMoved": [
+        "markPrice",
+        "maxQuantity",
+        "maxNotional",
+        "risk"
+      ],
+      "validation": "passed",
+      "elapsedMs": 2051,
+      "privateEvidence": ".local/mvp/preview-binding-after-pass-2026-10-23.json"
+    }
+  ],
+  "policy": "Same exact executable payload, owner/network/market metadata/configuration, account state and funding context. Refresh mark/capacity and enforce exact size/notional. A higher margin or fee estimate always requires fresh review; the original 15-second expiry remains. All signatures/transactions require their own user decisions.",
+  "limitations": [
+    "These bounded eth_call diagnostics themselves sign/send nothing",
+    "Margin/fee checks are pre-sign checks, not contract-enforced ceilings or liquidation protection",
+    "Full account context remains private; actual root execution has separate evidence"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "kind": "actual-testnet-root-acceptance",
+  "recordedAt": "2026-10-23T14:27:57.221090+00:00",
+  "sourceBaseCommit": "fb4fd2d811e231b35ba5a4fc4baa3acd1be6e94b",
+  "implementation": "Increment containing this record, after the bounded preview-binding fix",
+  "chainId": 50383,
+  "market": "BTC / USDso",
+  "mode": "actual live testnet; user approved exact order in app and companion wallet",
+  "root": {
+    "tx": "confirmed",
+    "order": "filled",
+    "quantityRaw": "13000",
+    "filledRaw": "13000",
+    "remainingRaw": "0",
+    "baseDecimals": 8,
+    "identityVerified": true,
+    "receiptBlockNumber": "31131276",
+    "initialEventRange": {
+      "fromBlock": "31131276",
+      "toBlock": "31131280"
+    },
+    "initialCoverage": "complete_for_documented_range",
+    "laterCoverage": "snapshot_only",
+    "laterOpenOrderCount": 0,
+    "remainingPositionSizeRaw": "13000",
+    "cleanup": "Not authorized; no close or cancellation sent"
+  },
+  "evidencePrivacy": "Full approved payload, request/hash/order IDs, account, position and canonical receipts remain in ignored private evidence until owner-selected publication",
+  "privateEvidence": ".local/mvp/orders-observed-1792765401860.json",
+  "limitations": [
+    "One root order only; remix acceptance remains unrun",
+    "Later read reconnected using authoritative snapshots with a disclosed history gap; no fabricated replay",
+    "A real position remains; no profit/performance or controlled-comparison claim",
+    "No video, internet deployment, X posts or MVP submission is established by this record"
+  ]
+}
