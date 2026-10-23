@@ -13,6 +13,7 @@ import {installLocalWalletProvider} from './provider';
 import {walletLocation,unlockLocalWallet} from './keystore';
 import {WalletJournal} from './journal';
 import {localOrigin,ownershipMessage,requestFingerprint,transactionTag,walletOrder} from './policy';
+import {recoverDiagnosticRoot,type SavedPlan} from './resume';
 
 const args=process.argv.slice(2),option=(name:string)=>{const index=args.indexOf(name);return index<0?undefined:args[index+1];};
 const walletDirectory=option('--wallet-dir');
@@ -132,7 +133,14 @@ async function preparePrivateRoot(page:Page,context:BrowserContext,origin:string
   if(await page.getByLabel('Thesis title').inputValue())return;
   const session=await (await context.request.get(`${origin}/api/session`)).json() as {session:{owner:string;csrf:string}|null};
   invariant(session.session&&getAddress(session.session.owner)===owner,'Owner session unavailable');
-  const plans=await (await context.request.get(`${origin}/api/plans`)).json() as unknown[];if(plans.length)return;
+  const plans=await (await context.request.get(`${origin}/api/plans`)).json() as SavedPlan[];
+  if(plans.length){
+    // Reopening the companion must not leave a returning owner on a blank draft.
+    // Recover only the unambiguous diagnostic root; never create another plan,
+    // replace entered text or choose among the owner's unrelated plans.
+    await recoverDiagnosticRoot(page,plans);
+    return;
+  }
   const snapshot=await readPublicMarket(),m=snapshot.market,bid=snapshot.book.tops[m.id]?.bestBid;
   invariant(bid,'Current BTC book unavailable');
   const quantity=formatAmount(m.minQuantity,m.baseDecimals),price=formatAmount(BigInt(bid)-100n*BigInt(m.tickSize),m.quoteDecimals);

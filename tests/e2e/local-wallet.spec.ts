@@ -2,6 +2,32 @@ import {test,expect} from '@playwright/test';
 import {spawnSync} from 'node:child_process';
 import {resolve} from 'node:path';
 import {ApprovalWindow} from '../../tools/local-wallet/approval';
+import {recoverDiagnosticRoot} from '../../tools/local-wallet/resume';
+
+test('synthetic companion recovery selects an existing root without writes and preserves drafts/ambiguous owners plans',async({page})=>{
+  const id='10000000-0000-4000-8000-000000000001',owner='0x0000000000000000000000000000000000000001';
+  const saved={id,title:'BTC testnet integration check',depth:0,currentVersion:1};
+  const input={title:saved.title,rationale:'SYNTHETIC recovery fixture; no wallet or order',invalidation:'Synthetic condition',riskNotes:'',side:'buy',price:'82000',quantity:'0.00013',quantityCap:'0.00013',notionalCap:'20'};
+  let writes=0,reads=0;
+  await page.route('**/api/**',route=>{
+    if(route.request().method()!=='GET'){writes++;return route.fulfill({status:503,json:{error:'No synthetic mutation permitted'}});}
+    const path=new URL(route.request().url()).pathname;
+    if(path==='/api/session')return route.fulfill({json:{mode:'readonly',session:{owner,csrf:'synthetic-csrf',expiresAt:Date.now()+600000},authEnabled:false,executionEnabled:false}});
+    if(path==='/api/plans')return route.fulfill({json:[saved]});
+    if(path===`/api/plans/${id}`){reads++;return route.fulfill({json:{...saved,rootId:id,mode:'testnet',source:null,versions:[{id:'20000000-0000-4000-8000-000000000001',planId:id,version:1,input,hash:'synthetic',createdAt:Date.now()}],attempts:[],publications:[]}});}
+    return route.fulfill({status:503,json:{error:'No actual API access in recovery test'}});
+  });
+  await page.goto('/');await expect(page.getByRole('heading',{name:'Authenticated owner'})).toBeVisible();
+  await page.getByLabel('Thesis title').fill('Unsaved synthetic intent');
+  expect(await recoverDiagnosticRoot(page,[saved])).toBe(false);await expect(page.getByLabel('Thesis title')).toHaveValue('Unsaved synthetic intent');expect(reads).toBe(0);
+  await page.getByLabel('Thesis title').fill('');
+  expect(await recoverDiagnosticRoot(page,[saved,{...saved,id:'ambiguous-synthetic-root'}])).toBe(false);
+  expect(await recoverDiagnosticRoot(page,[{...saved,depth:1}])).toBe(false);
+  expect(await recoverDiagnosticRoot(page,[{...saved,title:'Other private thesis'}])).toBe(false);expect(reads).toBe(0);
+  expect(await recoverDiagnosticRoot(page,[saved])).toBe(true);await expect(page.getByLabel('Thesis title')).toHaveValue(saved.title);
+  await expect(page.getByLabel('Limit price',{exact:true})).toHaveValue('82000');expect(reads).toBe(1);expect(writes).toBe(0);
+  await expect(page.getByRole('region',{name:'Execution receipt'})).toHaveCount(0);
+});
 
 test('local provider survives the actual tsx CLI runtime and enforces caller boundaries without a key',()=>{
   const result=spawnSync(process.execPath,['--import','tsx',resolve('tests/e2e/fixtures/local-wallet-runtime.ts')],{cwd:process.cwd(),encoding:'utf8',timeout:25000,windowsHide:true,maxBuffer:16384});

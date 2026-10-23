@@ -57,12 +57,16 @@ The current developer snapshot describes Hideki chain ID 50383, an explorer path
 
 If accepted-environment rules remain unavailable, continue local/offline work and record the eligibility blocker. Do not change a network silently, claim a mainnet/testnet success from another chain or hardcode stale prose addresses.
 
+## MVP resumption — 2026-10-23
+
+The user requested completing the separate MVP after Feedback submission. Re-read the official page in actual Edge: real testnet orders, GitHub purpose/audience/run instructions, demo evidence and 2 or 3 X links tagging @DreamDEXSomnia remain required; the deadline remains November 1, 23:59 UTC. Both dedicated user-controlled EOAs now have bank collateral after exactly approved setup, and the root wallet completed real ownership authentication. Root/remix orders, selected-field sharing, live demo, actual X links and final MVP submission remain incomplete. The private source stays private; this progress is not entry acceptance. See [current evidence](evidence/mvp-resume-2026-10-23.json).
+
 ## Readiness table
 
 | Item | Current state | Evidence needed later |
 | --- | --- | --- |
 | Private GitHub docs baseline | Prepared by this task | Verified repository visibility, branch, commit and Markdown inventory |
-| Runnable app/source | Offline path and guarded live integration pass source/mock/browser checks; actual funded-owner sizing/simulation pass | Actual user ownership flow and root/remix order acceptance remain unrun |
+| Runnable app/source | Offline path and guarded live integration pass source/mock/browser checks; actual funded-owner sizing/simulation pass | Actual root ownership passed; separate remix ownership and root/remix order acceptance remain unrun |
 | Actual root and remix perps orders | None | Separate user approvals, real identities and honest reconciled outcomes |
 | Accepted environment and current rules | Official page and linked developer environment reverified 2026-10-21 | Recheck before submission; no claim that pending root/remix outcomes qualify |
 | Demo evidence | Offline synthetic screenshots inspected; no live demo/recording | Real reviewed recording/screenshots/receipts with limitations |

@@ -1,6 +1,6 @@
 # Proposed architecture and integration contract
 
-Status: target architecture with the offline implementation now present. Exact implemented interfaces live in source; M0 verified public reads and inspected SDK browser-wallet support. Live payload, account context and reconciliation still need completion before M5 passes.
+Status: the offline path and guarded live adapters are implemented. Exact interfaces live in source. Source/mock-wallet checks, public reads and both funded-account simulations pass; actual root ownership authentication completed on 2026-10-23. Root/remix order acceptance and reconciliation still need actual order evidence before M6 passes.
 
 ## Baseline and boundaries
 

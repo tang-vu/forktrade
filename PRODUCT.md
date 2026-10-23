@@ -1,6 +1,6 @@
 # Product contract
 
-Status: target contract; the offline thesis/review/card/remix path is implemented. Real wallet execution and live acceptance are still incomplete. The target remains the complete testnet experience below.
+Status: target contract; the offline thesis/review/card/remix path and guarded live integration are implemented. Real root ownership authentication and both funded-account simulations passed on 2026-10-23; actual root/remix orders and live acceptance remain incomplete. The target remains the complete testnet experience below.
 
 ## User promise and scope
 

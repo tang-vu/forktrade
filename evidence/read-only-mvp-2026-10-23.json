@@ -1,0 +1,131 @@
+{
+  "mode": "read-only",
+  "sdk": "0.32.1",
+  "network": "Hideki testnet / DreamDEX app region",
+  "rpc": "https://api.hideki2.infra.testnet.somnia.network",
+  "indexer": "https://hideki-dev.smk.somnia.host/v1/graphql",
+  "startedAt": 1792762319507,
+  "observedAt": 1792762321416,
+  "chainId": 50383,
+  "marketCount": 21,
+  "market": {
+    "id": "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0",
+    "poolAddress": "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0",
+    "lastPrice": "81855600000000000000000",
+    "lastTradeAt": "1792762318",
+    "cumulativeBaseVolume": "854309558000",
+    "cumulativeQuoteVolume": "703317344481990000000000000",
+    "tradeCount": "505905",
+    "baseDecimals": 8,
+    "quoteDecimals": 18,
+    "createdAtTimestamp": "1789666700",
+    "createdAtBlock": "202512",
+    "marketType": "PERP",
+    "baseToken": "0xa77fa353dac50de5c15676ac910c221a4d2bd6b5",
+    "quoteToken": "0xed7993a74dae1e6656b704a424dcd8711aaf4f72",
+    "baseSymbol": "BTC",
+    "quoteSymbol": "USDso",
+    "baseIsNative": false,
+    "tickSize": "100000000000000000",
+    "lotSize": "1000",
+    "minQuantity": "13000",
+    "marginBank": "0x478769e1177c0773c43a593dccc4ad15f15f1394",
+    "initialMarginBps": 500,
+    "stopRegistry": "0x52e2ccebaec9332672c247e9a90aa3d61fb615ef",
+    "markPrice": "81561936356035967500000",
+    "markPriceUpdatedAt": "1792761103",
+    "fundingRate": "1505869689758955",
+    "cumulativeFundingPerUnit": "2986495947308051495397297107101865406250",
+    "indexPrice": "81591390320873632000000",
+    "fundingUpdatedAt": "1792761103",
+    "fundingWindowSec": 28800,
+    "fundingIntervalSec": 3600,
+    "openInterest": "33751178000",
+    "openInterestUpdatedAt": "1792762318",
+    "chainId": 50383
+  },
+  "system": {
+    "marginBank": "0x478769E1177C0773c43A593DCCc4Ad15F15F1394",
+    "collateralToken": "0xed7993A74dAe1e6656B704A424DcD8711aAf4F72",
+    "perpPoolFactory": "0xE631fAEE547baeE07353E290f0562ea67d856560",
+    "liquidationEngine": "0xA66d3C24Ad4a389d863846905D8173e1017e9F4D",
+    "insuranceFund": "0x50826894D47C6D4f3BeA38BFDC7Dc5c5be171b80",
+    "feeRecipient": "0xd58596620Ee6951B2958a931949e4ff7ce6222be",
+    "maxLeverageLimit": 20,
+    "fullyWired": true
+  },
+  "parameters": {
+    "tick": "100000000000000000",
+    "minQuantity": "13000",
+    "lot": "1000"
+  },
+  "state": {
+    "markPrice": "81633675094263139000000",
+    "markPriceOk": true,
+    "indexPrice": "81657208449670051000000",
+    "indexUpdatedAt": "1792762320",
+    "fundingRate": "1505869689758955",
+    "cumulativeFundingPerUnit": "2986495947308051495397297107101865406250",
+    "projectedCumulativeFundingPerUnit": "2986495947308051495397297107101865406250",
+    "openInterest": "33751178000",
+    "fundingWindowSec": 28800,
+    "fundingIntervalSec": 3600,
+    "lastFundingUpdateAt": "1792761103",
+    "nextFundingAt": "1792764703",
+    "emaPremium": "2005869689758955",
+    "oracle": "0x20C790C53BFF771C2E93425EA24C11577CD9c8A0"
+  },
+  "risk": {
+    "initialMarginBps": "500",
+    "maintenanceMarginBps": "250",
+    "closeOutMarginBps": "125",
+    "maxOpenInterest": "49363090000",
+    "maxPositionSize": "10000000000",
+    "takerFeeBpsTimes1k": "0",
+    "makerFeeBpsTimes1k": "0",
+    "insuranceFundShareBps": "0"
+  },
+  "campaign": {
+    "distributor": "0x2ACD9EFdA721450906bfE1bef3edE269636E42C4",
+    "collateralToken": "0xed7993A74dAe1e6656B704A424DcD8711aAf4F72",
+    "grantAmount": "1000000000000000000000",
+    "expiryDurationSec": "1209600",
+    "startsAt": "1790553600",
+    "endsAt": "1798477478",
+    "budgetRemaining": "388069000000000000000000000",
+    "claimsRemaining": "388069",
+    "leverageCapX": 20
+  },
+  "block": {
+    "number": "31102585",
+    "hash": "0x43c9ba5b011ca477394029d6272d0226799f629aa65a92981bee33285070ba3a",
+    "timestamp": "1792762320"
+  },
+  "book": {
+    "blockNumber": "31102585",
+    "tops": {
+      "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0": {
+        "bestBid": "81847000000000000000000",
+        "bestAsk": "81874700000000000000000",
+        "mid": "81860850000000000000000"
+      }
+    }
+  },
+  "bytecodePresent": {
+    "pool": true,
+    "marginBank": true,
+    "factory": true
+  },
+  "contractCodeHashes": {
+    "pool": "530c668da31d7713834c648f2bf2b4d86052d60f12cb8f1f11d1d117a49634e1",
+    "marginBank": "fd9e016c6c40c62744d41c1755595ea6ee85755fd007eb824118b911081366e7",
+    "factory": "fd9e016c6c40c62744d41c1755595ea6ee85755fd007eb824118b911081366e7"
+  },
+  "accountContext": "Not requested; no wallet connected or authenticated",
+  "limitations": [
+    "Public read snapshot only; no execution or eligibility claim",
+    "SDK and HTTP reads are individually sourced, not one atomic cross-transport snapshot",
+    "Account risk and permissions must be refreshed for the actual owner",
+    "Bounty environment and entry eligibility require separate official verification"
+  ]
+}

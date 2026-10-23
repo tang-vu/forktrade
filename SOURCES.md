@@ -2,6 +2,12 @@
 
 Documentation baseline date: **2026-10-20 (UTC)**. This file separates supplied program facts, live page observations, project design decisions and unverified implementation assumptions. It is not a runtime network/contract manifest.
 
+## MVP source/runtime recheck — 2026-10-23
+
+The official DoraHacks program page was read in actual signed-out Edge. It still requires real perps orders on its named testnet, a GitHub repo explaining purpose/audience/run steps, an X posts README section with 2 or 3 links tagging @DreamDEXSomnia, and repo/demo execution evidence. Its developer resource points to the [current perps developer guide](https://app.testnet.dreamdex.io/docs/developers/perps-testnet), freshly read with the official orders page. Chain 50383, RPC/indexer, MarginBank/collateral and SDK example 0.32.1 match the earlier mapping. Deadline remains November 1, 23:59 UTC. No login, CAPTCHA, post or submission occurred. Current npm metadata still returns SDK 0.32.1 and the previously pinned integrity; no dependency/stack change.
+
+[Actual public snapshot](evidence/read-only-mvp-2026-10-23.json) passed with live configuration/code/precision/book; both actual funded-owner sizing/margin and exact unsigned simulations passed separately, with full owner context kept in ignored local evidence. Explicitly approved second-wallet funding and real root ownership authentication are summarized in [resume evidence](evidence/mvp-resume-2026-10-23.json). Neither supplies an actual perps order. Full source/local and 20-scenario offline checks passed again.
+
 ## Funding-history cursor audit — 2026-10-21 15:03 UTC
 
 Current npm latest and archive integrity still identify SDK 0.32.1. The [official release notes](https://prd.smk.somnia.host/docs/typescript/release-notes), freshly read, explicitly say `fetchFundingRateHistory` supports the `last.timestamp + 1` pagination idiom. Original package source instead floors the millisecond bound to seconds, then the low-level reader builds inclusive `_gte` without reapplying the original bound. The earlier newest-first problem described in those notes is already known; [008](feedback/008-sdk-funding-history-cursor.md) isolates the remaining conversion defect with ascending order, rather than claiming the old ordering issue again.

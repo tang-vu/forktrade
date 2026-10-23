@@ -26,6 +26,8 @@ The local acceptance companion in `tools/local-wallet` is a separate user-contro
 
 The user invoked GOAL on 2026-10-20 and requested commit/push after each verified update. On 2026-10-21 they authorized the dedicated wallet and continuation of testnet setup; exact 5-USDso approve/deposit completed. That setup consent does not approve a future root/remix order. Each final order still requires app and wallet decisions, and external publication/submission/access remain separately gated. Missing permissions stop dependent work without marking the goal complete.
 
+On 2026-10-23 the user resumed MVP completion, explicitly requested a second locally protected wallet, and approved the exact four-step testnet setup: transfer 0.5 STT and 5 USDso from the original wallet to the new remix EOA, then approve/deposit exactly 5 USDso to the verified bank, with a 0.05-STT maximum fee per transaction. All four confirmed, remix bank collateral is 5 USDso and allowance is zero. Both EOAs have the same human operator; no second-person claim. The root owner separately completed the real app ownership flow. Setup and ownership still grant no root/remix order approval, extra transfer, cancellation, closure, operator or mainnet authority.
+
 ## Ownership and private data
 
 Wallet connection only identifies a currently selected address; it is not proof of ownership for server access. Verify a structured challenge with domain, URI/audience, chain, one-time cryptographic nonce, issued/expiration times and replay protection. Validate the actual signer and session binding. Use an established, verified signature-validation approach and handle supported contract wallets explicitly or declare them unsupported; do not pretend arbitrary signature recovery proves every wallet type.

@@ -1,0 +1,168 @@
+{
+  "kind": "mvp-resume-verification",
+  "sourceBaseCommit": "d607a32",
+  "dateUtc": "2026-10-23",
+  "checkedAt": "2026-10-23T13:43:27.837Z",
+  "branch": "feat/forktrade-core",
+  "repositoryVisibility": "PRIVATE; verified with gh repo view",
+  "checks": {
+    "typecheck": "passed",
+    "lint": "passed",
+    "unitIntegration": {
+      "status": "passed",
+      "tests": 104,
+      "files": 8,
+      "durationSeconds": "20.85"
+    },
+    "productionBuild": "passed",
+    "offlineBrowser": {
+      "status": "passed",
+      "tests": 20,
+      "durationSeconds": "39.3"
+    },
+    "publicReadOnly": {
+      "status": "passed",
+      "chainId": 50383,
+      "evidence": "read-only-mvp-2026-10-23.json"
+    },
+    "fundingExecutorSynthetic": {
+      "status": "passed",
+      "tests": 3,
+      "limitations": "Separate ignored test harness, no key/network; not app CI tests"
+    },
+    "fundedAccountSimulation": {
+      "status": "passed",
+      "accounts": [
+        {
+          "role": "root",
+          "result": "passed"
+        },
+        {
+          "role": "remix",
+          "result": "passed"
+        }
+      ],
+      "privateEvidence": ".local/mvp/funded-readiness-2026-10-23.json",
+      "limitations": "Unsigned CLI diagnostics only. No application ownership session, approval or order."
+    },
+    "walletRecoveryBrowser": {
+      "status": "passed",
+      "tests": 3,
+      "durationSeconds": "5.6",
+      "command": "npx.cmd playwright test --config .local/wallet-ui-only.config.ts",
+      "mode": "synthetic; isolated API interception, no wallet/key/actual account access",
+      "coverage": [
+        "actual saved-plan selection in the app UI",
+        "entered draft preserved",
+        "ambiguous roots/child/unrelated plans not selected",
+        "zero mutations and no execution receipt",
+        "tsx provider runtime and separate wallet decision UI"
+      ]
+    }
+  },
+  "officialSources": {
+    "bounty": {
+      "url": "https://dorahacks.io/hackathon/dreamdex-perps-bounty/detail",
+      "retrieval": "Actual signed-out Edge rendered page",
+      "required": [
+        "real testnet perps orders",
+        "GitHub repo with purpose/audience/run guide",
+        "README X posts section linking 2 or 3 posts tagging @DreamDEXSomnia",
+        "repo and demo evidence"
+      ],
+      "deadlineUtc": "2026-11-01T23:59:00Z"
+    },
+    "developer": {
+      "url": "https://app.testnet.dreamdex.io/docs/developers/perps-testnet",
+      "retrieval": "Public official page via web reader",
+      "chainId": 50383,
+      "sdkExample": "0.32.1"
+    },
+    "npm": {
+      "sdkLatest": "0.32.1",
+      "integrity": "sha512-RfshQP8X6m/wrE6TocmiOPajbw/Vstmkvn+AP/ztK19QgcrPn1lR7A4Pp8xVm6MuOXOpBwTBrFO0W34neQF0Og=="
+    }
+  },
+  "walletSetup": {
+    "mode": "actual user-authorized testnet setup; not order acceptance",
+    "secondWallet": {
+      "created": true,
+      "protection": "DPAPI CurrentUser, protect/unprotect round-trip passed",
+      "folderAcl": "Only current Windows user and SYSTEM; no inherited entries",
+      "gitIgnored": true,
+      "repeatedCreation": "Existing wallet preserved",
+      "operator": "Both distinct EOAs controlled by the same human; no second-user claim"
+    },
+    "authorization": "User explicitly approved 0.5 STT and 5 USDso transfers to the new remix EOA, followed by exact approve/deposit of 5 USDso, max 0.05 STT fee per step",
+    "transactions": [
+      {
+        "action": "native-transfer",
+        "status": "success",
+        "block": "31107951",
+        "gasUsed": "421000",
+        "actualNativeFeeSTT": "0.002526",
+        "feeWithinApprovedCap": true
+      },
+      {
+        "action": "token-transfer",
+        "status": "success",
+        "block": "31107968",
+        "gasUsed": "262837",
+        "actualNativeFeeSTT": "0.001577022",
+        "feeWithinApprovedCap": true
+      },
+      {
+        "action": "approve",
+        "status": "success",
+        "block": "31107983",
+        "gasUsed": "260601",
+        "actualNativeFeeSTT": "0.001563606",
+        "feeWithinApprovedCap": true
+      },
+      {
+        "action": "deposit",
+        "status": "success",
+        "block": "31107996",
+        "gasUsed": "521297",
+        "actualNativeFeeSTT": "0.003127782",
+        "feeWithinApprovedCap": true
+      }
+    ],
+    "totalActualNativeFeeSTT": "0.00879441",
+    "remixPostconditions": {
+      "bankUnlockedUSDso": "5",
+      "walletUSDso": "0",
+      "bankAllowanceRaw": "0",
+      "nativeSTT": "0.495308612"
+    },
+    "rootPostconditions": {
+      "walletUSDso": "90",
+      "bankCollateral": "Untouched by this four-step setup"
+    },
+    "privateEvidence": ".local/mvp/funding-2026-10-23.json; full addresses, hashes, intents and wallet files remain ignored/private"
+  },
+  "liveAcceptance": {
+    "status": "partial",
+    "ownershipSignature": "passed for root owner; real user decisions, companion auth confirmation and one saved private root. Reauthenticated after accidental window close.",
+    "rootOrder": "unrun",
+    "remixOrder": "unrun",
+    "publication": "unrun",
+    "remaining": "Fresh exact root app/wallet decision and receipt, selected-field publication, second EOA ownership, exact remix approval/order, real demo and final external gates"
+  },
+  "external": {
+    "hostedDemo": "none",
+    "xPostLinks": [],
+    "mvpSubmission": "not submitted",
+    "feedbackBuild": "50119; separate prior submission"
+  },
+  "limitations": [
+    "Funding receipts establish no perps order or fill",
+    "Synthetic tests and offline screenshots cannot pass live acceptance",
+    "App and wallet companion run on loopback; no deployment or public source access",
+    "No key, auth challenge/signature/session material, wallet address or setup transaction hash is included in this tracked summary"
+  ],
+  "recovery": {
+    "accidentalWindowClose": "Zero attempts and no wallet request journal checked before reopening; root preserved. No send/retry.",
+    "returningEditor": "Bounded --prepare-root change selects the one matching diagnostic root only when blank; no overwrite, duplicate save or execution."
+  }
+}
