@@ -1,0 +1,30 @@
+{
+  "kind": "Actual Edge public-card walkthrough recorded after both executions",
+  "dateUtc": "2026-10-23",
+  "video": "evidence/forktrade-live-walkthrough-2026-10-23.mp4",
+  "sha256": "3740ad679cd1d8f618ab0de815d8821fb7b8dca8be2c1955a4ca915b95f7258b",
+  "metadata": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 900
+      }
+    ],
+    "format": {
+      "duration": "27.100000",
+      "size": "616925"
+    }
+  },
+  "originalFrameCount": 10,
+  "originalRecordedSeconds": 81.17205691337585,
+  "editing": "Original browser screencast frames retained unmodified. Static pauses capped at 4 seconds and a provenance caption added; no receipt/order content recreated.",
+  "limitations": [
+    "Wallet ownership and order approval occurred before this recording and are not shown",
+    "Real published local cards and comparison only; no recreated fill lifecycle",
+    "Different execution times/prices are not a controlled performance comparison"
+  ],
+  "privateRawFrames": ".local/mvp/demo-frames-1792769836852"
+}

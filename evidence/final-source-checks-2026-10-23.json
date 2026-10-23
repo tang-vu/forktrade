@@ -1,0 +1,42 @@
+{
+  "kind": "source-and-offline-checks-only",
+  "sourceBaseCommit": "be3cc56899b47f50750f18b3d393189ca67aaf1d",
+  "implementation": "Commit containing scoped Edge transport and this record",
+  "commands": [
+    {
+      "command": "npm.cmd run typecheck",
+      "exitCode": 0,
+      "finishedAt": "2026-10-23T15:49:35.6134094Z"
+    },
+    {
+      "command": "npm.cmd run lint",
+      "exitCode": 0,
+      "finishedAt": "2026-10-23T15:49:43.0195782Z"
+    },
+    {
+      "command": "npm.cmd run test",
+      "exitCode": 0,
+      "finishedAt": "2026-10-23T15:50:06.5553733Z"
+    },
+    {
+      "command": "npm.cmd run build",
+      "exitCode": 0,
+      "finishedAt": "2026-10-23T15:50:22.1424416Z"
+    },
+    {
+      "command": "npm.cmd run test:e2e",
+      "exitCode": 0,
+      "finishedAt": "2026-10-23T15:55:01.1563729Z"
+    }
+  ],
+  "unitIntegration": {
+    "tests": 109,
+    "files": 9,
+    "durationSeconds": "21.92"
+  },
+  "offlineBrowser": {
+    "tests": 23,
+    "duration": "55.0s"
+  },
+  "limitations": "Synthetic fixtures/test transports; these checks do not establish real executions. Actual live evidence is separate."
+}

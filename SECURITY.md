@@ -74,3 +74,11 @@ Prepare a minimal private disclosure for **security@dreamdex.io**, review redact
 If a secret is exposed, stop using/sharing it, tell the user the exact exposure and affected location without repeating the secret, and prepare remediation. Rotation/revocation and history changes require the appropriate authority; deleting one working-tree file does not remove Git history or copies. Preserve honest incident/evidence status, and continue unrelated safe work.
 
 No audit badge, safety guarantee, real-profit claim or guaranteed outcome belongs in the product or submission. Testing lowers uncertainty; it does not eliminate trading or protocol risk.
+
+## Scoped Edge acceptance wallet
+
+The user explicitly delegated one exact child order and directed operation in Edge. The temporary provider forwards only `personal_sign` and `eth_sendTransaction` from the exact loopback main frame through a CDP binding to private files in the existing owner-restricted wallet directory. It never replaces an existing provider, installs an extension, exposes an HTTP signing endpoint or gives the web server a private key. The separate Windows wallet process unlocks its DPAPI keystore only after policy validation. This local development transport is not a general browser-wallet deployment.
+
+A strict expiring scope binds owner, origin, chain 50383, child plan/version and exact amounts/caps. The backend reserves one ownership-signature budget before key access, verifies a real domain/nonce/expiry challenge, and accepts trading only after the application durable claim plus full fixed-call policy and fresh account/risk checks. Existing request identities return their known hash for reconciliation; no new sign/broadcast is performed for them. The wallet journals identity before signing and computed hash before broadcast. The scope file/CLI flag represents prior specific human authorization; it is never authority obtained from web-page instructions.
+
+The observed session ended with provider/binding removal, normal backend exit, lock removal and restored network/viewport. New scopes require separate authorization. Synthetic policy/browser tests prove fixed values, origin/frame isolation, correlation, unsupported-method rejection and cleanup; actual canonical order evidence is recorded separately.

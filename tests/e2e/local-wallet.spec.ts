@@ -3,6 +3,32 @@ import {spawnSync} from 'node:child_process';
 import {resolve} from 'node:path';
 import {ApprovalWindow} from '../../tools/local-wallet/approval';
 import {recoverDiagnosticRoot} from '../../tools/local-wallet/resume';
+import {edgeProviderScript} from '../../tools/local-wallet/edge-provider';
+
+test('SYNTHETIC temporary Edge provider correlates replies, blocks unsupported methods and cleans up without a key',async({page})=>{
+  const owner='0x0000000000000000000000000000000000000001',scope='10000000-0000-4000-8000-000000000001',origin='http://127.0.0.1:3000';
+  const requests:{id:string;scopeId:string;method:string}[]=[];
+  await page.route('**/*',route=>route.fulfill({contentType:'text/html',body:'<h1>SYNTHETIC transport only; no key or network</h1>'}));
+  await page.exposeBinding('forktradeEdgeDispatch',({frame},raw:string)=>{expect(frame).toBe(page.mainFrame());requests.push(JSON.parse(raw));});
+  await page.addInitScript({content:edgeProviderScript(owner,origin,scope,Date.now()+60000)});await page.goto(origin);
+  const initial=await page.evaluate(async()=>{const w=window as unknown as {ethereum:{request:(p:unknown)=>Promise<unknown>}};return {before:await w.ethereum.request({method:'eth_accounts'}),connected:await w.ethereum.request({method:'eth_requestAccounts'}),chain:await w.ethereum.request({method:'eth_chainId'})};});
+  expect(initial).toEqual({before:[],connected:[owner],chain:'0xc4cf'});
+  const pending=page.evaluate(async()=>{const w=window as unknown as {ethereum:{request:(p:unknown)=>Promise<unknown>}};return w.ethereum.request({method:'personal_sign',params:['SYNTHETIC message only','SYNTHETIC owner only']});});
+  await expect.poll(()=>requests.length).toBe(1);
+  await page.evaluate(({id,scope})=>{const w=window as unknown as {forktradeEdgeDeliver:(p:unknown)=>void};w.forktradeEdgeDeliver({id,scopeId:'wrong-synthetic-scope',ok:true,value:'SYNTHETIC-WRONG'});w.forktradeEdgeDeliver({id,scopeId:scope,ok:true,value:'SYNTHETIC-NOT-A-SIGNATURE'});},{id:requests[0].id,scope});
+  expect(await pending).toBe('SYNTHETIC-NOT-A-SIGNATURE');
+  const rejected=await page.evaluate(async()=>{const w=window as unknown as {ethereum:{request:(p:unknown)=>Promise<unknown>}};try{await w.ethereum.request({method:'eth_sign'});}catch(error){return (error as {code:number}).code;}});expect(rejected).toBe(4200);expect(requests).toHaveLength(1);
+  expect(await page.evaluate(()=>{const w=window as unknown as {forktradeEdgeStop:()=>void;ethereum?:unknown};w.forktradeEdgeStop();return w.ethereum===undefined;})).toBe(true);
+});
+test('SYNTHETIC Edge provider preserves existing wallets and never installs in a child frame or wrong origin',async({browser})=>{
+  const context=await browser.newContext(),page=await context.newPage(),origin='http://127.0.0.1:3000',script=edgeProviderScript('0x0000000000000000000000000000000000000001',origin,'10000000-0000-4000-8000-000000000001',Date.now()+60000);
+  await page.route('**/*',route=>route.fulfill({contentType:'text/html',body:'<h1>SYNTHETIC boundary test</h1><iframe srcdoc="SYNTHETIC child frame"></iframe>'}));
+  await page.addInitScript({content:script});await page.goto(origin);
+  const child=page.frames().find(f=>f!==page.mainFrame())!;expect(await child.evaluate(()=>window.ethereum===undefined)).toBe(true);
+  await page.goto('http://unapproved-synthetic.invalid');expect(await page.evaluate(()=>window.ethereum===undefined)).toBe(true);
+  const protectedPage=await context.newPage();await protectedPage.addInitScript({content:`Object.defineProperty(window,'ethereum',{value:{syntheticExisting:true},configurable:true});${script}`});await protectedPage.route('**/*',route=>route.fulfill({contentType:'text/html',body:'SYNTHETIC existing provider'}));await protectedPage.goto(origin);
+  expect(await protectedPage.evaluate(()=>(window.ethereum as unknown as {syntheticExisting:boolean}).syntheticExisting)).toBe(true);await context.close();
+});
 
 test('synthetic companion recovery selects an existing root without writes and preserves drafts/ambiguous owners plans',async({page})=>{
   const id='10000000-0000-4000-8000-000000000001',owner='0x0000000000000000000000000000000000000001';

@@ -1,0 +1,124 @@
+{
+  "kind": "actual-authorized-testnet-root-and-independent-remix",
+  "recordedAt": "2026-10-23T15:55:53.575202+00:00",
+  "observedAt": "2026-10-23T15:25:52.222Z",
+  "sourceBaseCommit": "be3cc56899b47f50750f18b3d393189ca67aaf1d",
+  "implementation": "Private implementation commit containing this record and tools/local-wallet/edge.ts",
+  "chainId": 50383,
+  "market": "BTC / USDso",
+  "operators": "Two distinct real EOAs controlled by the same human; not two users",
+  "authorization": {
+    "root": "Human approved exact root in app and separate companion wallet",
+    "remix": "User explicitly delegated the exact v2 child order to the agent and directed it into Edge; agent reviewed and approved through actual app UI and scoped local wallet transport",
+    "publication": "Root human-selected eight fields; child agent-selected same eight fields under end-to-end instruction; both local only"
+  },
+  "executions": [
+    {
+      "role": "root",
+      "attemptId": "21e99623-5b7f-40d8-99b3-0f28ecd9065d",
+      "publicationId": "59e87ff8-ebab-4d59-a908-4452ea1ae903",
+      "version": 1,
+      "parameters": {
+        "side": "buy",
+        "price": "82027.6",
+        "quantity": "0.00013",
+        "quantityCap": "0.00013",
+        "notionalCap": "20",
+        "market": "BTC / USDso",
+        "chainId": 50383,
+        "pool": "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0",
+        "type": "limit",
+        "timeInForce": "GTC",
+        "reduceOnly": false
+      },
+      "transactionHash": "0x2ead0dab28f170a315661bf86ef564cd9968641551579ac1166be1f9f12c08a8",
+      "orderId": "17118578500402471110423",
+      "receiptBlockNumber": "31131276",
+      "receiptBlockHash": "0x1a8ca1cc2a17c804cccbdbc83e67bd4a3ecf46b2e8b39ed47e14e8f770076806",
+      "tx": "confirmed",
+      "order": "filled",
+      "filledRaw": "13000",
+      "remainingRaw": "0",
+      "baseDecimals": 8,
+      "identityVerified": true,
+      "laterCoverage": "snapshot_only",
+      "openOrders": 0,
+      "positionSizeRaw": "13000"
+    },
+    {
+      "role": "remix",
+      "attemptId": "b45a6a3c-cadd-4e7a-869a-36d168b059c3",
+      "publicationId": "0a769425-6af1-491e-be7b-54eb708ccf06",
+      "version": 2,
+      "parameters": {
+        "side": "buy",
+        "price": "82027.5",
+        "quantity": "0.00013",
+        "quantityCap": "0.00013",
+        "notionalCap": "20",
+        "market": "BTC / USDso",
+        "chainId": 50383,
+        "pool": "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0",
+        "type": "limit",
+        "timeInForce": "GTC",
+        "reduceOnly": false
+      },
+      "transactionHash": "0xdf3f86f63f8b0592eeed15f4f3fd6cad9aa8d8ce92bc6f3b5f2475606c651c4b",
+      "orderId": "7655398790589471144199",
+      "receiptBlockNumber": "31167081",
+      "receiptBlockHash": "0xd11be090376d4b964aa05c7a42eb348d5eaf97d6ea7750c451d8a4c00c5e92c9",
+      "tx": "confirmed",
+      "order": "filled",
+      "filledRaw": "13000",
+      "remainingRaw": "0",
+      "baseDecimals": 8,
+      "identityVerified": true,
+      "laterCoverage": "snapshot_only",
+      "openOrders": 0,
+      "positionSizeRaw": "13000"
+    }
+  ],
+  "remix": {
+    "depth": 1,
+    "sourceVersion": 1,
+    "childVersion": 2,
+    "changedFields": [
+      "title",
+      "rationale",
+      "price"
+    ],
+    "priceFrom": "82027.6",
+    "priceTo": "82027.5",
+    "canRemixAgain": false
+  },
+  "initialRemixEventRange": {
+    "fromBlock": "31167081",
+    "toBlock": "31167086",
+    "coverage": "complete_for_documented_range"
+  },
+  "edgeRecovery": {
+    "mode": "Actual saved child/receipt with browser network disconnection emulated after confirmation",
+    "result": "Preview invalidated, saved draft and known receipt retained; after restoring network, read-only refresh reconciled same request and filled state; earlier history gap disclosed",
+    "newOrders": 0
+  },
+  "temporaryWallet": {
+    "transport": "Main-frame exact-origin CDP binding to owner-restricted file inbox; separate DPAPI wallet process, no HTTP listener or key in Next server",
+    "scope": "Exact child plan/version/amounts/flags; chain 50383; max 0.1 STT native fee; 15-minute lifetime; one ownership signature budget",
+    "actualSignerOrderRequests": 1,
+    "preclaimDeclines": "Expired preview and later higher-margin review stopped before durable claim/signing; fresh final review succeeded",
+    "cleanup": "Provider removed, Runtime binding removed, network restored, viewport overrides cleared, wallet daemon exited normally and lock absent"
+  },
+  "remainingExposure": "Each account still held +0.00013 BTC long and zero open orders at observedAt; no cancellation or position-close permission/action",
+  "limitations": [
+    "Snapshot-only coverage on later reads; no fabricated complete event replay",
+    "Different execution times and prices are not a controlled performance comparison",
+    "Video records public cards after execution; ownership and approvals are not shown",
+    "No deployment, public source access, X posts or separate MVP submission established"
+  ],
+  "evidence": {
+    "publicProjections": "evidence/live-root-remix-public-2026-10-23.json",
+    "video": "evidence/forktrade-live-walkthrough-2026-10-23.mp4",
+    "videoProvenance": "evidence/live-demo-video-2026-10-23.json",
+    "privateObservation": ".local/mvp/orders-observed-1792769152222.json"
+  }
+}

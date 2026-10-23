@@ -13,6 +13,7 @@
     "db:migrate": "tsx scripts/migrate.ts",
     "check:readonly": "tsx scripts/check-readonly.ts",
     "wallet:testnet": "tsx tools/local-wallet/run.ts",
+    "wallet:edge": "tsx tools/local-wallet/edge.ts",
     "typecheck": "next typegen && tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",

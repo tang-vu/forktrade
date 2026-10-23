@@ -1,6 +1,6 @@
 # Proposed architecture and integration contract
 
-Status: the offline path and guarded live adapters are implemented. Exact interfaces live in source. Source/mock-wallet checks, public reads and both funded-account simulations pass; actual root ownership authentication completed on 2026-10-23. The actual root was confirmed/filled and independently reconciled on 2026-10-23. Source-linked sharing, separate remix acceptance and full demo evidence still need completion before M6 passes.
+Status: the offline path and guarded live adapters are implemented. On 2026-10-23 both actual owners authenticated and the root plus separately authorized one-level remix were confirmed/filled and independently reconciled. Both local cards, server-derived comparison, desktop/360px checks and an after-execution video are verified. Actual execution evidence is separate from 109 source tests/23 synthetic browser scenarios; external publication/submission remains pending.
 
 ## Baseline and boundaries
 

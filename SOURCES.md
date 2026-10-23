@@ -2,6 +2,12 @@
 
 Documentation baseline date: **2026-10-20 (UTC)**. This file separates supplied program facts, live page observations, project design decisions and unverified implementation assumptions. It is not a runtime network/contract manifest.
 
+## Actual Edge child and paired acceptance — 2026-10-23
+
+Current official [CDP Runtime](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/) and [Page](https://chromedevtools.github.io/devtools-protocol/tot/Page/) documentation were consulted for a temporary main-frame binding and actual screencast. Runtime requests went to a private filesystem inbox handled by the separate DPAPI wallet; no browser extension, HTTP signer or Next server trading key. The user specifically delegated the fixed child order in Edge. Actual ownership, one durable child request, canonical receipt block 31167081 and matching FILLED order were verified separately from synthetic tests. Provider/binding removed and daemon stopped afterward. [Paired evidence](evidence/live-root-remix-2026-10-23.json).
+
+Root and child published projections disclose only the selected eight fields. Root was human-published; child publication was agent-operated under the completion instruction. Actual desktop/360px screenshots and after-execution 27.1-second video were inspected. Recording uses original browser frames with shortened static pauses and a provenance caption, never recreated fills/approvals. Later snapshots for both actual orders disclose event-history gaps. Final local checks passed 109 tests/23 browser cases, type/lint/build. SDK/dependency pins are unchanged. External source/demo access, posts and separate MVP submission remain pending.
+
 ## MVP source/runtime recheck — 2026-10-23
 
 The official DoraHacks program page was read in actual signed-out Edge. It still requires real perps orders on its named testnet, a GitHub repo explaining purpose/audience/run steps, an X posts README section with 2 or 3 links tagging @DreamDEXSomnia, and repo/demo execution evidence. Its developer resource points to the [current perps developer guide](https://app.testnet.dreamdex.io/docs/developers/perps-testnet), freshly read with the official orders page. Chain 50383, RPC/indexer, MarginBank/collateral and SDK example 0.32.1 match the earlier mapping. Deadline remains November 1, 23:59 UTC. No login, CAPTCHA, post or submission occurred. Current npm metadata still returns SDK 0.32.1 and the previously pinned integrity; no dependency/stack change.

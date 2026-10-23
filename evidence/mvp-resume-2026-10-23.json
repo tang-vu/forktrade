@@ -1,8 +1,8 @@
 {
   "kind": "mvp-resume-verification",
-  "sourceBaseCommit": "d607a32",
+  "sourceBaseCommit": "be3cc56899b47f50750f18b3d393189ca67aaf1d",
   "dateUtc": "2026-10-23",
-  "checkedAt": "2026-10-23T13:43:27.837Z",
+  "checkedAt": "2026-10-23T15:55:53.575202+00:00",
   "branch": "feat/forktrade-core",
   "repositoryVisibility": "PRIVATE; verified with gh repo view",
   "checks": {
@@ -10,15 +10,15 @@
     "lint": "passed",
     "unitIntegration": {
       "status": "passed",
-      "tests": 106,
-      "files": 8,
-      "durationSeconds": "19.55"
+      "tests": 109,
+      "files": 9,
+      "durationSeconds": "21.92"
     },
     "productionBuild": "passed",
     "offlineBrowser": {
       "status": "passed",
-      "tests": 21,
-      "durationSeconds": "38.5"
+      "tests": 23,
+      "duration": "55.0s"
     },
     "publicReadOnly": {
       "status": "passed",
@@ -60,14 +60,40 @@
       ]
     },
     "priorSourceCI": {
-      "commit": "fb4fd2d811e231b35ba5a4fc4baa3acd1be6e94b",
-      "url": "https://github.com/tang-vu/forktrade/actions/runs/39965956437",
+      "commit": "be3cc56899b47f50750f18b3d393189ca67aaf1d",
+      "url": "https://github.com/tang-vu/forktrade/actions/runs/39973483249",
       "status": "passed",
-      "tests": 104,
+      "tests": 106,
       "browserCases": 21,
-      "browserSeconds": "20.7",
-      "limitation": "Completed before the subsequent margin/fee-ceiling preview fix; new increment has separate local checks and CI pending"
-    }
+      "limitation": "Predates scoped Edge transport; final increment CI recorded separately after push"
+    },
+    "finalLocalCommands": [
+      {
+        "command": "npm.cmd run typecheck",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T15:49:35.6134094Z"
+      },
+      {
+        "command": "npm.cmd run lint",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T15:49:43.0195782Z"
+      },
+      {
+        "command": "npm.cmd run test",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T15:50:06.5553733Z"
+      },
+      {
+        "command": "npm.cmd run build",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T15:50:22.1424416Z"
+      },
+      {
+        "command": "npm.cmd run test:e2e",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T15:55:01.1563729Z"
+      }
+    ]
   },
   "officialSources": {
     "bounty": {
@@ -151,13 +177,15 @@
     "privateEvidence": ".local/mvp/funding-2026-10-23.json; full addresses, hashes, intents and wallet files remain ignored/private"
   },
   "liveAcceptance": {
-    "status": "partial",
-    "ownershipSignature": "passed for root owner; real user decisions, companion auth confirmation and one saved private root. Reauthenticated after accidental window close.",
-    "rootOrder": "passed; actual confirmed/filled 13000 raw (0.00013 BTC), 0 unfilled; evidence/live-root-2026-10-23.json",
-    "remixOrder": "unrun",
-    "publication": "passed for root: owner selected all eight fields in-app and confirmed local publication; actual Edge desktop/mobile screenshots and allowlisted projection saved",
-    "remaining": "Supported agent-driven Edge signing transport and actual exact child order/reconciliation, local child card/comparison/demo, final external gates",
-    "remixOwnership": "passed: actual second EOA ownership and depth-1 source-linked private child; owner-directed local edit prepared v2 at 82027.5 with no signature/order"
+    "status": "passed for narrow local/live core; external readiness separate",
+    "ownershipSignature": "Both actual EOAs authenticated; root manually, child Edge ownership under explicit delegation",
+    "rootOrder": "confirmed/filled 0.00013 BTC, remainder 0",
+    "remixOrder": "separately authorized exact v2 child confirmed/filled 0.00013 BTC, remainder 0",
+    "publication": "Both actual local allowlisted cards verified; server-derived root v1 to child v2 lineage and title/rationale/price diff",
+    "edgeRecovery": "Preview invalidated, saved draft and known receipt retained; after restoring network, read-only refresh reconciled same request and filled state; earlier history gap disclosed",
+    "demo": "Actual desktop/360px stills and 27.1-second public-card walkthrough recorded after execution; no wallet approvals shown",
+    "evidence": "evidence/live-root-remix-2026-10-23.json",
+    "remainingExposure": "Each account still held +0.00013 BTC long and zero open orders at observedAt; no cancellation or position-close permission/action"
   },
   "external": {
     "hostedDemo": "none",
@@ -166,10 +194,11 @@
     "feedbackBuild": "50119; separate prior submission"
   },
   "limitations": [
-    "Funding receipts establish no perps order or fill",
-    "Synthetic tests and offline screenshots cannot pass live acceptance",
-    "App and wallet companion run on loopback; no deployment or public source access",
-    "No key, auth challenge/signature/session material, wallet address or setup transaction hash is included in this tracked summary"
+    "Funding and synthetic test evidence remain distinct from actual order evidence",
+    "Two distinct EOAs belong to the same human, not two users",
+    "App/cards are loopback-only; no public deployment, source access, posts or MVP submission",
+    "This summary excludes full addresses/setup hashes/auth material; selected public address/transaction fields are confined to reviewed public projections",
+    "Each testnet account retains a long position; no cleanup action authorized or sent"
   ],
   "recovery": {
     "accidentalWindowClose": "Zero attempts and no wallet request journal checked before reopening; root preserved. No send/retry.",

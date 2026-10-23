@@ -1,6 +1,6 @@
 # Copy-paste implementation goal
 
-Open this repository in Codex and paste the entire fenced objective below as one goal. It intentionally supports a long run with resumable milestones. It states the target contract. The local app now exists; current implementation, actual setup/authentication evidence and remaining live gates are recorded in IMPLEMENTATION_PLAN.md and ACCEPTANCE.md.
+Open this repository in Codex and paste the entire fenced objective below as one goal. It intentionally supports a long run with resumable milestones and states the target contract. The narrow local/testnet implementation completed G1–G4 on 2026-10-23, including the actual root and separately authorized remix. External source/demo publication, X links and separate MVP submission remain pending G5. Current evidence, limitations and remaining positions are recorded in IMPLEMENTATION_PLAN.md and ACCEPTANCE.md.
 
 ```text
 Implement ForkTrade in this repository as a polished, narrow dreamDEX Perps TESTNET web app. Read AGENTS.md and the linked guide before changing code. Respect newer user instructions and inspect the working tree first. Work only in this project; preserve unrelated work. Use a focused implementation branch. Continue through incremental milestones, repairing issues and updating evidence until the authorized goal is complete or a concrete external permission/access blocker remains.

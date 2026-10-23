@@ -1,6 +1,6 @@
 # Product contract
 
-Status: target contract; the offline thesis/review/card/remix path and guarded live integration are implemented. Real root ownership authentication and both funded-account simulations passed on 2026-10-23; the user-approved root order is now confirmed/filled. The independent remix and full live acceptance remain incomplete. The target remains the complete testnet experience below.
+Status: the complete narrow local/testnet path passed on 2026-10-23: versioned root, fresh exact approval, actual fill/reconciliation, selected-field local card, separately owned one-level remix, its own exact approval/fill and lineage/parameter comparison. Both distinct EOAs are controlled by the same human. External source/demo access, posts and submission remain separate pending gates; no performance comparison is claimed.
 
 ## User promise and scope
 

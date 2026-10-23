@@ -1,0 +1,146 @@
+{
+  "kind": "actual-local-published-root-remix-projections",
+  "capturedAt": "2026-10-23T15:50:51.327Z",
+  "source": "Repository.publicCard allowlisted projection of persisted actual testnet records; no private record spread",
+  "consent": {
+    "root": "Human selected all eight public fields and confirmed in-app publication",
+    "remix": "Agent selected the same eight public fields and confirmed local publication under the explicit end-to-end instruction; not a human click"
+  },
+  "operator": "Two distinct EOAs controlled by the same human; not two users",
+  "root": {
+    "id": "59e87ff8-ebab-4d59-a908-4452ea1ae903",
+    "revision": 1,
+    "mode": "testnet",
+    "label": "Testnet / paper funds",
+    "version": 1,
+    "versionHash": "e3b7544f7a8a9b593f561ecca6c34926434c64909d46bc51a3baa5b1d7cdb570",
+    "fields": [
+      "title",
+      "parameters",
+      "lineage",
+      "evidence",
+      "links",
+      "address",
+      "rationale",
+      "invalidation"
+    ],
+    "title": "BTC testnet integration check",
+    "rationale": "Agent-prepared testnet intent: verify the thesis, review, separately approved order and truthful receipt workflow. This is not a market recommendation or performance claim.",
+    "invalidation": "Stop if account/network/market context changes, risk data becomes unavailable or the preview expires.",
+    "parameters": {
+      "side": "buy",
+      "price": "82027.6",
+      "quantity": "0.00013",
+      "quantityCap": "0.00013",
+      "notionalCap": "20",
+      "market": "BTC / USDso",
+      "chainId": 50383,
+      "pool": "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0",
+      "type": "limit",
+      "timeInForce": "GTC",
+      "reduceOnly": false
+    },
+    "lineage": {
+      "depth": 0,
+      "sourceAvailable": null
+    },
+    "evidence": {
+      "tx": "confirmed",
+      "order": "filled",
+      "filled": "13000",
+      "remaining": "0",
+      "baseDecimals": 8,
+      "observedAt": 1792769837897,
+      "coverage": "snapshot_only",
+      "reason": "Authoritative current/receipt snapshot; earlier event history unavailable.",
+      "level": "verified_order"
+    },
+    "address": "0xa25b2245af36d99cf0c3663afad682a505b8d3e4",
+    "links": {
+      "transaction": "https://explorer.testnet.somnia.network/tokyo/tx/0x2ead0dab28f170a315661bf86ef564cd9968641551579ac1166be1f9f12c08a8",
+      "hash": "0x2ead0dab28f170a315661bf86ef564cd9968641551579ac1166be1f9f12c08a8",
+      "orderId": "17118578500402471110423"
+    },
+    "comparison": null,
+    "canRemix": true,
+    "updatedAt": 1792765959350
+  },
+  "remix": {
+    "id": "0a769425-6af1-491e-be7b-54eb708ccf06",
+    "revision": 1,
+    "mode": "testnet",
+    "label": "Testnet / paper funds",
+    "version": 2,
+    "versionHash": "dd52bee087dec119cd205843d5af0745fa8ad565a3bdc41c98459007883cfa21",
+    "fields": [
+      "title",
+      "parameters",
+      "lineage",
+      "evidence",
+      "rationale",
+      "invalidation",
+      "address",
+      "links"
+    ],
+    "title": "Remix: BTC testnet integration check",
+    "rationale": "Independent testnet remix: one-tick lower limit, separate owner and approval; no performance claim.",
+    "invalidation": "Stop if account/network/market context changes, risk data becomes unavailable or the preview expires.",
+    "parameters": {
+      "side": "buy",
+      "price": "82027.5",
+      "quantity": "0.00013",
+      "quantityCap": "0.00013",
+      "notionalCap": "20",
+      "market": "BTC / USDso",
+      "chainId": 50383,
+      "pool": "0x4181dd08e73bbcdd1ba3e615a18f6abd941b94c0",
+      "type": "limit",
+      "timeInForce": "GTC",
+      "reduceOnly": false
+    },
+    "lineage": {
+      "depth": 1,
+      "sourceAvailable": true
+    },
+    "evidence": {
+      "tx": "confirmed",
+      "order": "filled",
+      "filled": "13000",
+      "remaining": "0",
+      "baseDecimals": 8,
+      "observedAt": 1792769863661,
+      "coverage": "snapshot_only",
+      "reason": "Authoritative current/receipt snapshot; earlier event history unavailable.",
+      "level": "verified_order"
+    },
+    "address": "0xb00340db8b0496b146fbd02f5245cd577c3a2c04",
+    "links": {
+      "transaction": "https://explorer.testnet.somnia.network/tokyo/tx/0xdf3f86f63f8b0592eeed15f4f3fd6cad9aa8d8ce92bc6f3b5f2475606c651c4b",
+      "hash": "0xdf3f86f63f8b0592eeed15f4f3fd6cad9aa8d8ce92bc6f3b5f2475606c651c4b",
+      "orderId": "7655398790589471144199"
+    },
+    "comparison": {
+      "sourcePublicationId": "59e87ff8-ebab-4d59-a908-4452ea1ae903",
+      "sourceVersion": 1,
+      "changes": [
+        {
+          "field": "title",
+          "before": "BTC testnet integration check",
+          "after": "Remix: BTC testnet integration check"
+        },
+        {
+          "field": "rationale",
+          "before": "Agent-prepared testnet intent: verify the thesis, review, separately approved order and truthful receipt workflow. This is not a market recommendation or performance claim.",
+          "after": "Independent testnet remix: one-tick lower limit, separate owner and approval; no performance claim."
+        },
+        {
+          "field": "price",
+          "before": "82027.6",
+          "after": "82027.5"
+        }
+      ]
+    },
+    "canRemix": false,
+    "updatedAt": 1792769056168
+  }
+}

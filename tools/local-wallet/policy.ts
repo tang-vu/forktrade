@@ -3,7 +3,7 @@ import {getAddress,hexToString,keccak256,toHex,type Address,type Hex} from 'viem
 import {parseSiweMessage} from 'viem/siwe';
 import {invariant} from '../../src/domain/errors';
 import {ceilDiv,parseAmount,scale} from '../../src/domain/amounts';
-import type {StoredPreview} from '../../src/server/repository';
+import type {Preview} from '../../src/domain/plan';
 import type {VerifiedMarket} from '../../src/integrations/read-context';
 import {orderCall} from '../../src/integrations/order-call';
 import {EXPECTED_CHAIN} from '../../src/integrations/network';
@@ -25,7 +25,7 @@ export function transactionTag(raw:unknown) {
   invariant(tx.data.length===10+9*64,'Only one fixed limit/GTC placeOrder call is supported');
   return BigInt(`0x${tx.data.slice(10+64,10+128)}`).toString();
 }
-export function walletOrder(raw:unknown,preview:StoredPreview,market:VerifiedMarket,owner:Address,now=Date.now()) {
+export function walletOrder(raw:unknown,preview:Preview,market:VerifiedMarket,owner:Address,now=Date.now()) {
   const tx=transaction.parse(raw),p=preview.payload,c=preview.context,m=market.market,expected=orderCall(p);
   invariant(now<preview.expiresAt,'Review expired; the companion will not sign');
   invariant(p.mode==='testnet'&&p.chainId===EXPECTED_CHAIN&&getAddress(p.owner)===owner&&getAddress(tx.from)===owner,'Wrong owner/network');
