@@ -84,7 +84,19 @@ test('mobile: editor, keyboard review, card and comparison fit 360px',async({pag
   await expect(page.getByRole('heading',{name:'A patient entry, with a clear invalidation.'})).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(360);
   await page.screenshot({path:'evidence/offline-card-mobile.png',fullPage:true});
+  // Hold the source read so a fast editor cannot save an unrelated root or
+  // have entered values overwritten by a late source response.
+  let releaseSource!:()=>void;
+  const sourceGate=new Promise<void>(resolve=>{releaseSource=resolve;});
+  await page.route('**/api/cards/*',async route=>{await sourceGate;await route.continue();});
   await page.getByRole('link',{name:'Create independent remix'}).click();
+  await expect(page.getByRole('status').filter({hasText:'Waiting for the exact published source'})).toBeVisible();
+  await expect(page.getByLabel('The reasoning')).toBeDisabled();
+  await expect(page.getByLabel('Saved private plans')).toBeDisabled();
+  await expect(page.getByRole('button',{name:'Save private thesis'})).toBeDisabled();
+  releaseSource();
+  await expect(page.getByText('Remixing published version 1.',{exact:false})).toBeVisible();
+  await expect(page.getByLabel('Thesis title')).toHaveValue('Remix: A patient entry, with a clear invalidation.');
   await page.getByLabel('The reasoning').fill('Mobile independent synthetic remix');await page.getByLabel('What would change your mind?').fill('Synthetic invalidation');
   await page.getByLabel('Limit price',{exact:true}).fill('81500');await page.getByRole('button',{name:'Save private thesis'}).click();
   await expect(page.getByRole('heading',{name:'What changed in the remix?'})).toBeVisible();

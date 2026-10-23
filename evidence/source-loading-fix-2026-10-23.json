@@ -1,0 +1,25 @@
+{
+  "kind": "source-load race repair; synthetic reproduction boundary, no protocol transaction",
+  "recordedAt": "2026-10-23T16:07:48.577118+00:00",
+  "baselineCommit": "fd133611c1d77162e4d46610e788c35a009015dd",
+  "initialCI": {
+    "url": "https://github.com/tang-vu/forktrade/actions/runs/39982864304",
+    "result": "failed: 22/23 browser cases; mobile remix comparison not found. Install/migration/type/lint/109 tests/build passed"
+  },
+  "cause": "Remix source read was asynchronous while the blank form accepted input/save; source response could overwrite edits or source was absent at save time",
+  "fix": "Keep editor and saved-plan controls disabled until the exact published source loads; save guard rejects unresolved source. Explicit New thesis clears remix URL. A failed source cannot silently become a root.",
+  "regression": "Mobile test holds source response, asserts editor/save/saved-plan picker disabled, then releases response and verifies source title before editing and saving the depth-1 comparison. No automatic retries added.",
+  "localChecks": {
+    "typecheck": "passed",
+    "lint": "passed",
+    "unitIntegration": "109 passed / 9 files / 22.67s",
+    "build": "passed",
+    "browser": {
+      "tests": 23,
+      "duration": "51.5s",
+      "result": "passed"
+    }
+  },
+  "liveImpact": "No additional auth, signing, order, cleanup or publication; prior actual paired evidence unchanged",
+  "newCI": "Recorded after private push; do not represent initial failed run as successful"
+}

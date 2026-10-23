@@ -85,6 +85,12 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-23 — CI mobile source-load race repaired
+
+Pushed actual Edge milestone fd133611c1d77162e4d46610e788c35a009015dd privately. CI 39982864304 passed install/migration/type/lint/109 tests/build but failed the mobile remix comparison, 22/23 browser cases; preserve this failed result. Inspection found the source GET raced an enabled blank editor/save. The source could arrive after edits or be absent at save. Editor, private save and saved-plan controls now wait for the exact source; the save handler independently rejects unresolved source. Explicit New thesis clears the remix query. A failed source cannot silently become a root.
+
+Strengthened the existing mobile case with a deliberately held source response, disabled editor/save/picker assertions, then source-title verification before editing/save/comparison. No fixed sleep, retry or weakened assertion. Post-fix typecheck/lint/build, 109 tests/9 files (22.67s) and full 23 browser cases (51.5s) passed. Last picker assertion/change was covered by the final type/lint/build/full-browser pass. Evidence/source-loading-fix-2026-10-23.json. No new signature/order or actual evidence alteration. This commit is the focused repair; next verify its exact clean CI, refresh/reverify the sanitized source package and obtain only the final external scope/access approval. Original repo remains PRIVATE. The earlier review archive from fd13361 is superseded and must not be published.
+
 ### 2026-10-23 — actual independent remix completed in Edge; local core acceptance passes
 
 Baseline be3cc56899b47f50750f18b3d393189ca67aaf1d is pushed privately; CI 39973483249 passed the prior 106-test/21-browser source increment. User explicitly delegated the exact prepared v2 child order and directed operation in Edge. Implemented a bounded temporary main-frame CDP/file-inbox EIP-1193 transport to the separate DPAPI wallet process; no HTTP signer, extension installation, app/server key, new dependency or system setting. Scope fixes owner/origin/chain/child version/amounts and a 15-minute lifetime, one ownership signature budget and 0.1-STT maximum native fee. Existing wallet policy, fresh risk/simulation checks, application durable claim and wallet hash-before-broadcast journal remain enforced. Synthetic tests verify exact scope, method/frame/origin/correlation boundaries and removal.

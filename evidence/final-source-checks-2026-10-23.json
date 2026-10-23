@@ -38,5 +38,12 @@
     "tests": 23,
     "duration": "55.0s"
   },
-  "limitations": "Synthetic fixtures/test transports; these checks do not establish real executions. Actual live evidence is separate."
+  "limitations": "Synthetic fixtures/test transports; these checks do not establish real executions. Actual live evidence is separate.",
+  "sourceLoadRepair": {
+    "evidence": "evidence/source-loading-fix-2026-10-23.json",
+    "browserTests": 23,
+    "browserDuration": "51.5s",
+    "unitTests": 109,
+    "initialCIFailurePreserved": true
+  }
 }
