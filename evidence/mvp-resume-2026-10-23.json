@@ -93,7 +93,25 @@
         "exitCode": 0,
         "finishedAt": "2026-10-23T15:55:01.1563729Z"
       }
-    ]
+    ],
+    "finalSourceCI": {
+      "commit": "f80e1945c64bfe1637ded34df506748255ef3252",
+      "url": "https://github.com/tang-vu/forktrade/actions/runs/39984188780",
+      "status": "passed",
+      "tests": 109,
+      "browserCases": 23,
+      "browserDuration": "34.4s",
+      "checks": [
+        "clean install",
+        "migration",
+        "typecheck",
+        "lint",
+        "unit/integration",
+        "build",
+        "Chromium dependency install",
+        "browser suite"
+      ]
+    }
   },
   "officialSources": {
     "bounty": {
@@ -191,7 +209,9 @@
     "hostedDemo": "none",
     "xPostLinks": [],
     "mvpSubmission": "not submitted",
-    "feedbackBuild": "50119; separate prior submission"
+    "feedbackBuild": "50119; separate prior submission",
+    "preparedPackage": "evidence/core-completion-2026-10-23.json",
+    "approval": "Concrete source/media/X/Build package requested; pending"
   },
   "limitations": [
     "Funding and synthetic test evidence remain distinct from actual order evidence",

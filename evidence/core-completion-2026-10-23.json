@@ -1,0 +1,125 @@
+{
+  "kind": "local-core-completion and prepared external handoff; NOT SUBMITTED",
+  "recordedAt": "2026-10-23T16:13:05.281836+00:00",
+  "branch": "feat/forktrade-core",
+  "sourceCI": {
+    "commit": "f80e1945c64bfe1637ded34df506748255ef3252",
+    "url": "https://github.com/tang-vu/forktrade/actions/runs/39984188780",
+    "status": "passed",
+    "tests": 109,
+    "browserCases": 23,
+    "browserDuration": "34.4s",
+    "checks": [
+      "clean install",
+      "migration",
+      "typecheck",
+      "lint",
+      "unit/integration",
+      "build",
+      "Chromium dependency install",
+      "browser suite"
+    ]
+  },
+  "initialFailedCI": "39982864304: mobile remix race, 22/23. Preserved and fixed; no blind rerun",
+  "actualCore": "Root and separately approved independent child each confirmed/filled 0.00013 BTC, remainder 0; actual local cards, comparison, desktop/mobile, read-only recovery and after-execution video",
+  "actualEvidence": "evidence/live-root-remix-2026-10-23.json",
+  "sourcePackage": {
+    "kind": "prepared-public-copy-verification; NOT PUBLISHED",
+    "sourceCommit": "f80e1945c64bfe1637ded34df506748255ef3252",
+    "files": 101,
+    "archive": ".local\\mvp\\forktrade-mvp-review-f80e194.zip",
+    "sha256": "1b7d5cdfc524c3d80b3c813d74173367fa792c0e9c4a5f1a90483de722253d3e",
+    "bytes": 1761559,
+    "checks": {
+      "allArchiveBytesAndManifestHashes": "passed",
+      "allowlistedSourceAndMedia": "passed",
+      "privatePathsKeysEnvDatabaseSessionExclusion": "passed",
+      "walletAddressesOnlySelectedProjection": "passed",
+      "readmeLocalLinks": "passed"
+    },
+    "proposedDestinations": {
+      "source": "https://github.com/tang-vu/forktrade-mvp",
+      "xAccount": "@keryxpays",
+      "xPosts": "Exact two drafts in DEMO.md; not posted",
+      "submission": "Separate ForkTrade MVP Build in dreamDEX Perps Builder Bounty; not Feedback 50119"
+    },
+    "published": false
+  },
+  "isolatedPackageVerification": {
+    "initialCommands": [
+      {
+        "command": "npm.cmd ci",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T16:02:15.3008968Z"
+      },
+      {
+        "command": "npm.cmd run db:migrate",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T16:02:18.0330134Z"
+      },
+      {
+        "command": "npm.cmd run typecheck",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T16:02:32.4268789Z"
+      },
+      {
+        "command": "npm.cmd run lint",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T16:02:43.2695109Z"
+      },
+      {
+        "command": "npm.cmd test",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T16:03:10.8808779Z"
+      },
+      {
+        "command": "npm.cmd run build",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T16:04:03.2381446Z"
+      }
+    ],
+    "finalSourceCommands": [
+      {
+        "command": "npm.cmd run typecheck",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T16:08:43.5823770Z"
+      },
+      {
+        "command": "npm.cmd run lint",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T16:08:53.2749436Z"
+      },
+      {
+        "command": "npm.cmd test",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T16:09:21.4678413Z"
+      },
+      {
+        "command": "npm.cmd run build",
+        "exitCode": 0,
+        "finishedAt": "2026-10-23T16:10:07.9513861Z"
+      }
+    ],
+    "note": "Dependency lock unchanged. Clean npm ci/migration passed in the isolated copy; final repaired source then type/lint/109 tests/build passed. No environment/wallet/database copied; generated offline verification data stays ignored and outside ZIP."
+  },
+  "externalAuthorization": {
+    "status": "pending explicit review of the concrete package",
+    "source": "Public sanitized tang-vu/forktrade-mvp; original tang-vu/forktrade stays private",
+    "data": "101 allowlisted files, source plus owner-selected testnet addresses/transaction links and actual screenshots/video; no private Git history, wallet, session, database or environment",
+    "social": "Exact two DEMO.md posts on current signed-in X @keryxpays, tagging @DreamDEXSomnia, with selected comparison image/after-execution video",
+    "build": "Separate ForkTrade MVP Build in dreamDEX Perps Builder Bounty; Feedback 50119 unchanged",
+    "requiredAccess": "Whitelisted DoraHacks account currently not authenticated in the agent Edge tab; do not fabricate a submission",
+    "proposalHash": "1b7d5cdfc524c3d80b3c813d74173367fa792c0e9c4a5f1a90483de722253d3e"
+  },
+  "exposure": "Each testnet EOA retains +0.00013 BTC long, zero open orders at last independent read; no further order/cancel/close authorized",
+  "app": "Loopback production app restarted on 127.0.0.1:3000; actual root/remix card tabs retained in Edge; temporary signing provider/backend removed/stopped",
+  "notDone": [
+    "Internet app deployment",
+    "public source/media copy",
+    "X posts",
+    "judge invitation",
+    "separate MVP submission",
+    "mainnet",
+    "position cleanup"
+  ]
+}

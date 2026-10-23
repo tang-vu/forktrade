@@ -60,7 +60,7 @@ Before submission, insert only verified approved source/video/post URLs, recheck
 
 ## X posts — exact proposed copy, not posted
 
-Proposed destination: the user's X account, two posts tagging `@DreamDEXSomnia`. The source URL is a **proposed** destination, not claimed to exist yet. Attach the actual comparison image to post 1 and the after-execution video to post 2. No further trades for media.
+Proposed destination: X @keryxpays (current signed-in Edge account), two posts tagging `@DreamDEXSomnia`. The source URL is a **proposed** destination, not claimed to exist yet. Attach the actual comparison image to post 1 and the after-execution video to post 2. No further trades for media.
 
 1. Built ForkTrade for @DreamDEXSomnia: version a thesis, review an exact testnet order, then share a card others can remix independently. BTC/USDso limit/GTC; paper funds only. Source + run guide: https://github.com/tang-vu/forktrade-mvp
 2. ForkTrade testnet check for @DreamDEXSomnia: root + independently approved remix each filled 0.00013 BTC. Two wallets, same human. Video shows receipts after execution; no performance claim. Evidence: https://github.com/tang-vu/forktrade-mvp

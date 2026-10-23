@@ -85,6 +85,16 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-23 — exact repaired CI green; sanitized external package verified
+
+Source f80e1945c64bfe1637ded34df506748255ef3252 pushed and remote-equal. CI 39984188780 terminal SUCCESS independently inspected: clean install/migration/type/lint, 109 tests, production build and all 23 browser cases (34.4s). Earlier failed CI 39982864304 is retained in the source-load repair evidence. Current core G1–G4 is complete for the narrow tested path; do not confuse source checks with actual paired execution evidence. No new live transaction.
+
+Prepared immutable 101-file sanitized source/media snapshot from f80e194 at .local/mvp/forktrade-mvp-review-f80e194.zip, SHA-256 1b7d5cdfc524c3d80b3c813d74173367fa792c0e9c4a5f1a90483de722253d3e, 1,761,559 bytes. Every archived byte and payload SHA/size matched the manifest. No private history, environment, database, wallet, scope, session, Feedback package or internal ledger. Full wallet addresses appear only in the selected public projection. README links passed. Isolated clean npm ci/migration passed with unchanged lock; after final-source refresh, isolated type/lint/109 tests/build passed. No actual account/secret material copied. Earlier fd13361 archive is superseded, never published.
+
+Concrete README/run guide, two exact X posts and separate MVP Build copy are reviewable. Read-only X session check in Edge identified @keryxpays; no posting/composer action. Asked one final batched approval for the sanitized PUBLIC tang-vu/forktrade-mvp copy, selected actual addresses/transaction links/screens/video, exact two posts from that account and separate DoraHacks MVP Build. Original tang-vu/forktrade stays PRIVATE; Feedback 50119 unchanged. Approval is pending, not inferred from elapsed time. DoraHacks whitelisted-account authentication remains unavailable in the agent tab. Source/media/posts/submission are not published or submitted. Evidence/core-completion-2026-10-23.json records exact package/destination/access state.
+
+Loopback production app restarted, actual root/child Edge tabs retained; scoped wallet provider/backend remain removed/stopped. Each account still has a testnet long at last read; no cleanup authority/action. No deployment, mainnet, invitation, payment or award claim. Next dependent step: apply the one concrete external approval if granted, verify actual public URLs/posts, then use authorized whitelisted-account access for the separate MVP Build; preserve any login/terms barrier precisely. Independent implementation/packaging is complete; external G5 remains pending.
+
 ### 2026-10-23 — CI mobile source-load race repaired
 
 Pushed actual Edge milestone fd133611c1d77162e4d46610e788c35a009015dd privately. CI 39982864304 passed install/migration/type/lint/109 tests/build but failed the mobile remix comparison, 22/23 browser cases; preserve this failed result. Inspection found the source GET raced an enabled blank editor/save. The source could arrive after edits or be absent at save. Editor, private save and saved-plan controls now wait for the exact source; the save handler independently rejects unresolved source. Explicit New thesis clears the remix query. A failed source cannot silently become a root.
