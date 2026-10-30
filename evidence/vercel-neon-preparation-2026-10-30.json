@@ -117,8 +117,25 @@
     "dateUtc": "2026-10-30",
     "sourceStorage": "Intentional public source confirmed by user; push authorized; no visibility change by agent.",
     "vercelCli": "65.8.0, process-local npm exec cache under ignored .local, whoami returned Logged out (exit 1).",
-    "cloud": "No login, project linking, cloud resource or deployment attempted.",
+    "cloud": "Vercel CLI login completed with user authorization; no project linking, cloud resource or deployment attempted.",
     "sourceCommit": "68eaf6256311134ace4b825a19d55509305a2004",
-    "validation": "Documentation-only follow-up; source checks remain separately recorded above."
+    "validation": "Documentation-only follow-up; source checks remain separately recorded above.",
+    "sourcePush": "Verified push and exact local/remote equality at f47c0896612e651ea8fe250506e91d6aa0443857 on origin/feat/forktrade-core; clean working tree before login follow-up.",
+    "ci": {
+      "commit": "f47c0896612e651ea8fe250506e91d6aa0443857",
+      "url": "https://github.com/tang-vu/forktrade/actions/runs/41082719562",
+      "conclusion": "success",
+      "checks": "Install, migration, typecheck, lint, complete tests, build, actual PostgreSQL production HTTP and browser tests all passed on Ubuntu.",
+      "testsPassed": 120,
+      "browserPassed": 24
+    },
+    "vercelLogin": {
+      "authorization": "User explicitly requested login and confirmed the browser step.",
+      "cli": "65.8.0, existing ignored local cache",
+      "loginExitCode": 0,
+      "whoamiExitCode": 0,
+      "result": "Authenticated account verified; no account identifier or token recorded in repository.",
+      "cloud": "No project linking/creation, data transfer or deployment."
+    }
   }
 }
