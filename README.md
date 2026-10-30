@@ -124,7 +124,7 @@ Legacy SQLite/WAL files, local PostgreSQL directories, sessions, environment fil
 
 Current source/browser evidence lives in [ACCEPTANCE.md](ACCEPTANCE.md) and the single [progress ledger](IMPLEMENTATION_PLAN.md). Latest public chain/config snapshot: [read-only evidence](evidence/read-only-m5-2026-10-20.json). Offline screenshots are synthetic and prove no live order. Mock-wallet browser routes intercept all live APIs and never reach a real signer or account. README commands describe the current app, while GOAL/PRODUCT/ARCHITECTURE retain the full target contract.
 
-Implementation branch: `feat/forktrade-core`. User workflow: commit and push each coherent verified update. The repository stays private; deployment, wallet actions, external publication, and submission still require their specified approvals.
+Implementation source: [feat/forktrade-core](https://github.com/tang-vu/forktrade/tree/feat/forktrade-core). GitHub still defaults to `main`, which contains planning documentation only; use the implementation branch link for review/run instructions. User workflow: commit and push each coherent verified update. Public source and the synthetic Vercel deployment/testing are authorized; a new hosted wallet/order session and submission remain separately scoped.
 
 ## X posts
 

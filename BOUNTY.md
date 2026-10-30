@@ -2,7 +2,7 @@
 
 **Latest hosting/post status (2026-10-30):** the [public synthetic app](https://forktrade.vercel.app) is deployed on Vercel with a new Free Neon database; actual HTTPS and desktop/mobile browser checks pass. New hosted live acceptance is unrun. Prior 2026-10-23 root/remix evidence remains historical. The user supplied [X post 1](https://x.com/vovivothien/status/2116149013636640970); web retrieval returned 403, so the link/content/tagging are not independently verified. A second post URL, new hosted live acceptance and separate MVP submission remain pending. The user confirmed intentional public source visibility and authorized pushes on 2026-10-30; the previous storage hold is resolved. These facts supersede older future-only/status statements below.
 
-Status: local implementation in progress; offline path, actual reads and bounded account funding exist. ForkTrade targets **both MVP and Feedback tracks** of the dreamDEX Perps bounty. No root/remix order acceptance, MVP submission, eligibility or reward is established. Feedback has a user-reported submission as Build 50119; details below. The user intentionally made the source repository public and explicitly approved further pushes on 2026-10-30; deployment and submission still need their own authorized scope.
+**MVP readiness assessment, 2026-10-30:** deployment acceptance covers the synthetic profile only. The actual local root/remix orders from 2026-10-23 remain genuine evidence, but the hosted wallet/order path is disabled and unrun. The official page was re-read in ordinary Edge today: real testnet perps orders, README purpose/audience/run instructions, demo/transaction evidence and 2 or 3 X links tagging @DreamDEXSomnia are still required. No rule observed specifically requires repeating historical orders from a hosted URL; that distinction does not establish that the new hosted trading path works. Only one X URL has been supplied, and separate MVP submission is still pending. This source/hosting milestone must not be described as a fully accepted competition MVP.
 
 **Feedback is the active user priority as of 2026-10-21.** One actual upstream report is [reproduced](feedback/001-perps-entry-opens-spot.md), with normal severity proposed and no submission/acceptance/payment. The current ordinary-Edge rule recheck still supports the listed Feedback amounts/format; the Builds list is private, so first-report priority is unknown. The user approved the reviewed Feedback-only package and Build text; [that separate package is public](https://github.com/tang-vu/dreamdex-perps-feedback), excluding the private application and wallet material. The user reports Feedback submission as [DoraHacks Build 50119](https://dorahacks.io/build/50119) on 2026-10-22. The public Build title and GitHub repository link were independently verified in signed-out Edge; the hackathon/track registration status was not exposed on that page. Organizer acceptance, first-report priority and payment remain unverified.
 
@@ -16,7 +16,7 @@ Additional reward-focused research produced [003](feedback/003-existing-position
 
 Current continuation: [006](feedback/006-maker-cancel-failure-loses-tracking.md) and [007](feedback/007-sdk-create-order-minimum.md) are also published under the same end-to-end workflow at e81ac63, with exact 33-file/32-payload verification. 007 is the stronger new SDK validation report; 006 discloses related public issue 38 and duplicate risk. The later [eight-report text](feedback/SUBMISSION.md) supersedes that seven-report package for the same Feedback Build; no repeat per-report permission. The user reports these reports submitted via Build 50119; issue-file count is not an accepted or payable-item count.
 
-Working plan: one Feedback-only Build containing reports/candidates 001–008, each in its own Markdown file, and a separate ForkTrade MVP Build when the actual product meets its live-evidence requirements. The routine eight-report package/text continues the user's end-to-end Feedback instruction; submission is user-reported at Build 50119 and its public title/repo were verified. The MVP is not ready or approved for publication/submission.
+Working plan: one Feedback-only Build containing reports/candidates 001–008, each in its own Markdown file, and a separate ForkTrade MVP Build when the actual product meets its live-evidence requirements. The routine eight-report package/text continues the user's end-to-end Feedback instruction; submission is user-reported at Build 50119 and its public title/repo were verified. The separate MVP submission is not complete; source and the synthetic hosted demo are already public with user authorization.
 
 On 2026-10-21 the user supplied a conversation where a reply directly to the question about two separate Builds said, "Yeah, you can submit both". We interpret that direct answer as support for separate Feedback and MVP Builds. The speaker's organizer role and message were not independently verified, and no message URL was supplied; this is user-supplied clarification, not a new published rule. If the actual submission form imposes a conflicting limit, resolve that specific conflict before submission. See [source provenance](SOURCES.md#user-supplied-build-organization-reply--2026-10-21).
 
@@ -32,9 +32,11 @@ The existing whitelist/application invitation is access to try the program, not 
 
 ## Program requirements and reward conditions
 
+Current source access: [implementation branch feat/forktrade-core](https://github.com/tang-vu/forktrade/tree/feat/forktrade-core) is public. The default `main` branch was verified to contain planning documents only on 2026-10-30. Link the implementation branch in the submission; no default-branch change or merge was made.
+
 | Track/requirement | Supplied rule summary | ForkTrade response |
 | --- | --- | --- |
-| All Builds | GitHub repository required | Private source branch contains the offline app; live acceptance and approved reviewer access still needed |
+| All Builds | GitHub repository required | Public implementation branch contains the runnable app, historical real evidence and hosted-demo guide; default main is documentation only |
 | Feedback pool | Up to $1,500 total | No guaranteed allocation; budget can exhaust |
 | Critical/major accepted feedback | $40 per accepted report | Severity is proposed with evidence; organizer acceptance determines payment |
 | Other accepted feedback | $15 per accepted report | No payment claim from a draft or local reproduction alone |
@@ -43,7 +45,7 @@ The existing whitelist/application invitation is access to try the program, not 
 | Security vulnerabilities | Private disclosure to security@dreamdex.io | Keep details out of Git/public reports; send only after user approves |
 | MVP awards | Three prizes of $500 | Competition, not a guaranteed win |
 | MVP payout split | $300 at result; $200 only if mainnet orders occur within 30 days of perps mainnet launch | Mainnet work is separate and not authorized by this project goal |
-| MVP evidence | Actual perps testnet orders, README/run guide, demo evidence, and 2-3 X post links tagging @DreamDEXSomnia | Build/test first; prepare drafts only; actual posts need approval |
+| MVP evidence | Actual perps testnet orders, README/run guide, demo evidence, and 2-3 X post links tagging @DreamDEXSomnia | Two actual local root/remix fills and demo exist; hosted execution is disabled/unrun, and only one actual X URL is recorded |
 
 Do not combine the bounty with similarly named trading competitions or other prize pools. Testnet paper balances/returns are not real profit, and a conditional future mainnet tranche is not earned by this testnet documentation or build.
 
@@ -68,13 +70,13 @@ The user requested completing the separate MVP after Feedback submission. Re-rea
 | Item | Current state | Evidence needed later |
 | --- | --- | --- |
 | Private GitHub docs baseline | Prepared by this task | Verified repository visibility, branch, commit and Markdown inventory |
-| Runnable app/source | Complete local core and actual root/remix acceptance pass; 109 tests/23 browser cases | Original source private; prepare reviewed public copy or judge access |
+| Runnable app/source | Local core/actual root-remix evidence, 120 CI tests and 24 browser cases; synthetic hosted checks pass | Public implementation branch; hosted wallet/order acceptance remains unrun |
 | Actual root and remix perps orders | Both canonical receipts/matching FILLED orders verified, 0.00013 BTC each | [Paired evidence](evidence/live-root-remix-2026-10-23.json); both testnet positions remain |
 | Accepted environment and current rules | Official page and linked developer environment reverified 2026-10-21 | Recheck before submission; no claim that pending root/remix outcomes qualify |
 | Demo evidence | Actual Edge local cards/comparison at desktop/360px and 27.1-second after-execution video | [Demo manifest](DEMO.md); [public synthetic app](https://forktrade.vercel.app) and actual hosted checks pass; historical real execution remains separately dated |
 | Feedback reports | 001–008 published at 1cfb630; 38 remote files/37 payload hashes verified; 004 intent and 006 related-report risk qualified | User reports Build 50119 submitted; public Build/repo verified, track registration and organizer scope/intent/duplicate/acceptance/payment decisions unverified |
 | 2-3 X post links | First URL supplied by user: [post 1](https://x.com/vovivothien/status/2116149013636640970); retrieval 403, content/tag unverified | Record the second actual URL and verify both against the current requirements |
-| Judge access/public source | Not authorized | User-approved least-needed access; recheck program requirements |
+| Judge access/public source | User intentionally made source public; source pushes authorized | Use the implementation branch URL; no collaborator invitation or main-branch change needed for that link |
 | Submission | User reports Feedback submitted as [Build 50119](https://dorahacks.io/build/50119), 2026-10-22; public title/repo verified | Track registration not independently visible; user-corrected Details matches the prepared eight-report description on a fresh Edge reload. No organizer acceptance/payment observed. MVP submission remains separate |
 | Mainnet conditional tranche | Separate future scope | No actions planned or authorized here |
 
@@ -87,4 +89,4 @@ The user requested completing the separate MVP after Feedback submission. Re-rea
 5. Ask the user for the specific external actions still needed: source/judge access or visibility, demo hosting if desired, final post publication, submission, and any private disclosure. None is implicitly authorized by creating this repository or invoking GOAL.md.
 6. After an authorized action, verify the actual result and save only safe links/evidence. A draft, queued request or timeout is not a posted/submitted result. If blocked, record the exact action/target/reason and denied/pending/uncertain status.
 
-The private application remains private; no mail, X post, deployment or mainnet action is authorized. For Feedback use the existing Build 50119; do not create a duplicate Feedback Build or infer organizer acceptance. The separate ForkTrade MVP package is prepared in DEMO.md and still needs final external approval/access. The user applied Feedback's clean Details copy; a fresh actual Edge comparison passed. Its description-only source remains feedback/DORAHACKS_DESCRIPTION.txt. No award, acceptance or payment can be claimed until independently confirmed by the program.
+Source publication and the synthetic Vercel deployment were explicitly authorized and completed. Mail, new X posts, submission, new hosted wallet/order actions and mainnet work retain their separate scopes. For Feedback use the existing Build 50119; do not create a duplicate Feedback Build or infer organizer acceptance. The separate ForkTrade MVP package is prepared in DEMO.md and still needs final external approval/access. The user applied Feedback's clean Details copy; a fresh actual Edge comparison passed. Its description-only source remains feedback/DORAHACKS_DESCRIPTION.txt. No award, acceptance or payment can be claimed until independently confirmed by the program.
