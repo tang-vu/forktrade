@@ -1,5 +1,7 @@
 # ForkTrade demo and separate MVP submission preparation
 
+Post-push storage check, 2026-10-30: the original source repository currently returns PUBLIC, conflicting with the standing private-storage instruction. User clarification is pending; this agent made no visibility change. The narrated video is complete at `55466a5`, but further remote publication/synchronization is stopped. This status note is local until that constraint is resolved.
+
 The narrow local/testnet path completed on 2026-10-23. Two distinct real EOAs controlled by the same human each executed one independently approved BTC/USDso BUY limit/GTC order. Both transactions are confirmed and matching orders filled 0.00013 BTC, remainder 0. These are two owner contexts, not two users. Different execution times/prices do not establish a controlled strategy comparison or profit.
 
 Root approval was performed manually by the user in app and companion wallet. The user explicitly delegated the exact prepared child order and directed the agent into Edge. The agent operated the child app approval and scoped local-wallet transport. Root publication was human-selected; child local publication was agent-operated under the completion instruction. Do not describe child clicks as manual human actions.
