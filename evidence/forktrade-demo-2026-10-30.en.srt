@@ -1,0 +1,95 @@
+1
+00:00:00,200 --> 00:00:02,192
+Every trade has a point of view.
+
+2
+00:00:02,192 --> 00:00:06,051
+Connect the thesis, the exact order, and an independent remix.
+
+3
+00:00:06,051 --> 00:00:07,234
+Keep the reasoning.
+
+4
+00:00:07,234 --> 00:00:08,914
+Make the decision your own.
+
+5
+00:00:09,733 --> 00:00:14,505
+A saved thesis captures the reasoning and invalidation conditions.
+
+6
+00:00:14,505 --> 00:00:19,350
+Fresh previews bind one exact testnet order to a separate approval.
+
+7
+00:00:19,350 --> 00:00:23,037
+This published card preserves the original version.
+
+8
+00:00:23,867 --> 00:00:31,224
+The original Bitcoin order was confirmed and filled for zero point zero zero zero one three B T C.
+
+9
+00:00:31,224 --> 00:00:34,527
+Its receipt records zero remaining quantity.
+
+10
+00:00:34,527 --> 00:00:38,581
+Confirmation and order outcome are tracked separately.
+
+11
+00:00:39,400 --> 00:00:44,756
+The remix has a different owner, its own version, and a separate approval.
+
+12
+00:00:44,756 --> 00:00:50,257
+It changes the limit price by one tick and keeps its own execution identity.
+
+13
+00:00:51,067 --> 00:00:55,898
+The comparison shows title, rationale, and limit price side by side.
+
+14
+00:00:55,898 --> 00:00:59,806
+The source version and one-level lineage stay explicit.
+
+15
+00:00:59,806 --> 00:01:04,638
+Different execution times do not establish a performance comparison.
+
+16
+00:01:05,467 --> 00:01:09,766
+The receipt and parameter differences remain readable on mobile.
+
+17
+00:01:09,766 --> 00:01:15,610
+Reconciliation preserves the original request, and missing event history stays visible.
+
+18
+00:01:16,433 --> 00:01:18,877
+Both receipts show zero remaining quantity.
+
+19
+00:01:18,877 --> 00:01:21,264
+The two wallets belong to the same person.
+
+20
+00:01:21,264 --> 00:01:26,719
+The user approved the original order manually, and delegated the exact remix order to the agent.
+
+21
+00:01:27,533 --> 00:01:29,176
+Borrow the perspective.
+
+22
+00:01:29,176 --> 00:01:30,819
+Keep your own judgment.
+
+23
+00:01:30,819 --> 00:01:36,033
+These real screens were recorded after execution on October twenty-third.
+
+24
+00:01:36,033 --> 00:01:39,533
+Wallet signing and order approvals are not shown.

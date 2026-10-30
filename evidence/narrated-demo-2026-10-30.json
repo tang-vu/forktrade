@@ -1,0 +1,226 @@
+{
+  "kind": "Narrated editorial walkthrough using actual 2026-10-23 captures; not a new live execution",
+  "createdAt": "2026-10-30T07:49:38.440996+00:00",
+  "video": "evidence/forktrade-demo-narrated-2026-10-30.mp4",
+  "sha256": "2e63df25abe8cde28b6f1ab958c728cd539454a6c0239f2c667e33fa8616b7dc",
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30/1"
+      },
+      {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0"
+      }
+    ],
+    "format": {
+      "duration": "100.166666",
+      "size": "4281771"
+    }
+  },
+  "voice": {
+    "provider": "Xiaomi MiMo",
+    "model": "mimo-v2.5-tts",
+    "voice": "Chloe",
+    "speed": 1.12,
+    "transmitted": "Reviewed narration and generic voice instructions for TTS; generated narration audio only for ASR QA. No screenshots, repository source, addresses, wallet/session data uploaded.",
+    "credentialStorage": "None; hidden terminal input, in-memory requests only"
+  },
+  "toolVersions": {
+    "Pillow": "12.3.0",
+    "FFmpeg": "9.0.2"
+  },
+  "captionTiming": "Paragraph clips measured from generated WAVs; sentence cues estimated proportionally, not word-aligned ASR",
+  "scenes": [
+    {
+      "id": "01-intro",
+      "start": 0.0,
+      "duration": 9.533333333333333,
+      "narrationSha256": "c94b15f2164092fd56d835cc65b32b9a80d428531d80f24fb844f9b18bfc29e0",
+      "voiceTrimEndSeconds": 9.76,
+      "sources": [],
+      "editing": "Editorial layout and labelled summary; evidence crops only in original-receipt and comparison scenes. No screenshot text replaced."
+    },
+    {
+      "id": "02-thesis",
+      "start": 9.533,
+      "duration": 14.133333333333333,
+      "narrationSha256": "87742c6d0149c53b715b913c388379293971fad428c08204d1899ac80e067ca7",
+      "voiceTrimEndSeconds": 14.9,
+      "sources": [
+        "evidence/live-root-card-desktop-2026-10-23.jpg"
+      ],
+      "editing": "Editorial layout and labelled summary; evidence crops only in original-receipt and comparison scenes. No screenshot text replaced."
+    },
+    {
+      "id": "03-root",
+      "start": 23.667,
+      "duration": 15.533333333333333,
+      "narrationSha256": "54f702d7bea39a3d1da235cf4578b969f99a626755d8808d44a67d7d606a7690",
+      "voiceTrimEndSeconds": 16.48,
+      "sources": [
+        "evidence/live-root-card-desktop-2026-10-23.jpg"
+      ],
+      "editing": "Editorial layout and labelled summary; evidence crops only in original-receipt and comparison scenes. No screenshot text replaced."
+    },
+    {
+      "id": "04-remix",
+      "start": 39.2,
+      "duration": 11.666666666666666,
+      "narrationSha256": "5455a2d64868f41660a6509bb3796778a9a898e31dd599009baaa1ea21e15eb6",
+      "voiceTrimEndSeconds": 12.16,
+      "sources": [
+        "evidence/live-remix-card-desktop-2026-10-23.jpg"
+      ],
+      "editing": "Editorial layout and labelled summary; evidence crops only in original-receipt and comparison scenes. No screenshot text replaced."
+    },
+    {
+      "id": "05-comparison",
+      "start": 50.867,
+      "duration": 14.4,
+      "narrationSha256": "4d3d5dd3ffa3e1602751055595be9ed4be8c53fe5043d8fd60478e3bd62286b6",
+      "voiceTrimEndSeconds": 15.2,
+      "sources": [
+        "evidence/live-comparison-desktop-2026-10-23.jpg"
+      ],
+      "editing": "Editorial layout and labelled summary; evidence crops only in original-receipt and comparison scenes. No screenshot text replaced."
+    },
+    {
+      "id": "06-mobile",
+      "start": 65.267,
+      "duration": 10.966666666666667,
+      "narrationSha256": "e0e6d34820c6e002c3ef640a17c24fab55f646c52b36aef25dec82fbfbc92062",
+      "voiceTrimEndSeconds": 11.36,
+      "sources": [
+        "evidence/live-remix-card-mobile-status-2026-10-23.jpg",
+        "evidence/live-comparison-mobile-values-2026-10-23.jpg"
+      ],
+      "editing": "Editorial layout and labelled summary; evidence crops only in original-receipt and comparison scenes. No screenshot text replaced."
+    },
+    {
+      "id": "07-provenance",
+      "start": 76.233,
+      "duration": 11.1,
+      "narrationSha256": "8376b148332a3da7b46a894dab8f7ccb7e496c80e6923270d606507ef487e84e",
+      "voiceTrimEndSeconds": 11.52,
+      "sources": [],
+      "editing": "Editorial layout and labelled summary; evidence crops only in original-receipt and comparison scenes. No screenshot text replaced."
+    },
+    {
+      "id": "08-outro",
+      "start": 87.333,
+      "duration": 12.8,
+      "narrationSha256": "0c387f0926b2f2a12fd4513ada6a2b281583b2ab9f72472c56f21025b90cc863",
+      "voiceTrimEndSeconds": 13.44,
+      "sources": [],
+      "editing": "Editorial layout and labelled summary; evidence crops only in original-receipt and comparison scenes. No screenshot text replaced."
+    }
+  ],
+  "sourceHashes": {
+    "evidence/live-comparison-desktop-2026-10-23.jpg": "3ccb0269fcb64dc677391084db771a28d7ee6294cf7067707de7fd8d9dfbeab0",
+    "evidence/live-comparison-mobile-values-2026-10-23.jpg": "868310c9a91251e4ba7f31a800897c948ed4dd89aebfcf2fb7ce1289d944ca41",
+    "evidence/live-remix-card-desktop-2026-10-23.jpg": "6a1eb3099645fb01fe4fd00d3caf7fceaef3a7daf13e7459d56df1038cb4dd0f",
+    "evidence/live-remix-card-mobile-status-2026-10-23.jpg": "4af7c30927521b3158bf7f644f1c072675339ae71cc27d715330a8577f5bf2ad",
+    "evidence/live-root-card-desktop-2026-10-23.jpg": "fee1cce0a4b30b15b8c474f36899924071c0564c4e3427a28fc2423040d342e3"
+  },
+  "limitations": [
+    "Original recordings are from 2026-10-23 after the executions, not a fresh 2026-10-30 account read",
+    "Wallet signing and order approvals are not shown",
+    "Two distinct EOAs belong to the same human; root manual, exact remix agent-operated under explicit delegation",
+    "Editorial title cards and receipt summaries are explanatory graphics, not app screenshots",
+    "No profit or controlled strategy-performance comparison",
+    "Local source/media only; public publication and submission remain pending"
+  ],
+  "qa": {
+    "fullDecode": "passed",
+    "sourceHashesUnchanged": true,
+    "formatAndDuration": "passed; 1080p H264/AAC stereo, below 140 seconds",
+    "captions": {
+      "en": {
+        "cues": 24,
+        "sha256": "15b2f783d60368f8e99963eec21942c64bd2b887f6a362a0aa6232116220a487",
+        "validNonoverlappingTimes": true
+      },
+      "vi": {
+        "cues": 23,
+        "sha256": "1741a9af38020431631ffebc779fc451aafbb0c7b2f71a4a3c95068479b7269f",
+        "validNonoverlappingTimes": true
+      }
+    },
+    "loudness": {
+      "integratedLUFS": -16.29,
+      "truePeakDBTP": -4.48
+    },
+    "asrReview": [
+      {
+        "scene": "01-intro",
+        "model": "mimo-v2.5-asr",
+        "sourceAudioSha256": "c94b15f2164092fd56d835cc65b32b9a80d428531d80f24fb844f9b18bfc29e0",
+        "transcript": "1. Every trade has a point of view. Connect the thesis, the exact order, and an independent remix. Keep the reasoning. Make the decision your own.",
+        "expected": "Every trade has a point of view. Connect the thesis, the exact order, and an independent remix. Keep the reasoning. Make the decision your own."
+      },
+      {
+        "scene": "02-thesis",
+        "model": "mimo-v2.5-asr",
+        "sourceAudioSha256": "784387f00dab59efc3a78c8c9465c528c7123dfe7526920dc11888db07edf9fe",
+        "transcript": " A saved thesis captures the reasoning and invalidation conditions. Fresh previews bind one exact testnet order to a separate approval. This published card preserves the original version.",
+        "expected": "A saved thesis captures the reasoning and invalidation conditions. Fresh previews bind one exact testnet order to a separate approval. This published card preserves the original version."
+      },
+      {
+        "scene": "03-root",
+        "model": "mimo-v2.5-asr",
+        "sourceAudioSha256": "54f702d7bea39a3d1da235cf4578b969f99a626755d8808d44a67d7d606a7690",
+        "transcript": "1. The original Bitcoin order was confirmed and filled for 0.00013 BTC. Its receipt records zero remaining quantity. Confirmation and order outcome are tracked separately.",
+        "expected": "The original Bitcoin order was confirmed and filled for zero point zero zero zero one three B T C. Its receipt records zero remaining quantity. Confirmation and order outcome are tracked separately."
+      },
+      {
+        "scene": "04-remix",
+        "model": "mimo-v2.5-asr",
+        "sourceAudioSha256": "5455a2d64868f41660a6509bb3796778a9a898e31dd599009baaa1ea21e15eb6",
+        "transcript": "1. The remix has a different owner, its own version, and a separate approval. It changes the limit price by one tick, and keeps its own execution identity.",
+        "expected": "The remix has a different owner, its own version, and a separate approval. It changes the limit price by one tick and keeps its own execution identity."
+      },
+      {
+        "scene": "05-comparison",
+        "model": "mimo-v2.5-asr",
+        "sourceAudioSha256": "4d3d5dd3ffa3e1602751055595be9ed4be8c53fe5043d8fd60478e3bd62286b6",
+        "transcript": "2. The comparison shows title, rationale, and limit price side by side. The source version and one level lineage stay explicit. Different execution times do not establish a performance comparison.",
+        "expected": "The comparison shows title, rationale, and limit price side by side. The source version and one-level lineage stay explicit. Different execution times do not establish a performance comparison."
+      },
+      {
+        "scene": "06-mobile",
+        "model": "mimo-v2.5-asr",
+        "sourceAudioSha256": "e0e6d34820c6e002c3ef640a17c24fab55f646c52b36aef25dec82fbfbc92062",
+        "transcript": "1. The receipt and parameter differences remain readable on mobile. Reconciliation preserves the original request, and missing event history stays visible.",
+        "expected": "The receipt and parameter differences remain readable on mobile. Reconciliation preserves the original request, and missing event history stays visible."
+      },
+      {
+        "scene": "07-provenance",
+        "model": "mimo-v2.5-asr",
+        "sourceAudioSha256": "8376b148332a3da7b46a894dab8f7ccb7e496c80e6923270d606507ef487e84e",
+        "transcript": " Both receipts show zero remaining quantity. The two wallets belong to the same person. The user approved the original order manually and delegated the exact remix order to the agent.",
+        "expected": "Both receipts show zero remaining quantity. The two wallets belong to the same person. The user approved the original order manually, and delegated the exact remix order to the agent."
+      },
+      {
+        "scene": "08-outro",
+        "model": "mimo-v2.5-asr",
+        "sourceAudioSha256": "0c387f0926b2f2a12fd4513ada6a2b281583b2ab9f72472c56f21025b90cc863",
+        "transcript": "1. Borrow the perspective, keep your own judgment. These real screens were recorded after execution on October 23rd. Wallet signing and order approvals are not shown.",
+        "expected": "Borrow the perspective. Keep your own judgment. These real screens were recorded after execution on October twenty-third. Wallet signing and order approvals are not shown."
+      }
+    ],
+    "visualReview": "Passed: all eight final decoded scene frames and English subtitle placement inspected; original receipt and outro also inspected at full resolution. No clipping/overlap or rewritten screenshot content.",
+    "contactSheet": ".local/demo-2026-10-30/qa/contact.jpg",
+    "externalPublication": "not performed",
+    "asrSemanticReview": "Reviewed all eight final transcripts against script, including 0.00013 BTC, zero remainder, same-human/two-wallet and manual/delegated distinctions. Recognizer enumeration prefixes/punctuation are not treated as script content. Earlier unrequested trailing TTS speech was excluded; final edited thesis clip re-transcribed.",
+    "pythonCompilation": "All three authoring scripts compile; no app source/dependency change. App/browser/live checks not rerun."
+  },
+  "sourceBaseCommit": "891008e46cc5754ef9b156a43cd2424745e9ae48"
+}

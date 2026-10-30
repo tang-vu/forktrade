@@ -1,0 +1,97 @@
+{
+  "title": "ForkTrade — borrow the perspective, keep your judgment",
+  "language": "en",
+  "voice": "Chloe",
+  "model": "mimo-v2.5-tts",
+  "style": "Speak in clear, natural English as a thoughtful product presenter. Warm and assured, with a steady moderately brisk pace. Use short pauses between sentences. Say ForkTrade as Fork Trade, dreamDEX as dream decks, and BTC as the letters B T C. Read every sentence exactly. No music or sound effects.",
+  "scenes": [
+    {
+      "id": "01-intro",
+      "voiceStyle": "Clear conversational English. Friendly product narration at a brisk steady pace.",
+      "layout": "intro",
+      "eyebrow": "DREAMDEX PERPS / LOCAL MVP",
+      "title": "A trade has\na point of view.",
+      "description": "Keep the reasoning.\nMake the decision your own.",
+      "label": "THESIS → ORDER → INDEPENDENT REMIX",
+      "narration": "Every trade has a point of view. Connect the thesis, the exact order, and an independent remix. Keep the reasoning. Make the decision your own.",
+      "vi": "Mỗi giao dịch đều có một góc nhìn. Kết nối luận điểm, lệnh chính xác và remix độc lập. Giữ lại lý do. Tự đưa ra quyết định."
+    },
+    {
+      "id": "02-thesis",
+      "trimEndSeconds": 14.9,
+      "layout": "desktop",
+      "image": "evidence/live-root-card-desktop-2026-10-23.jpg",
+      "eyebrow": "01 / THESIS & REVIEW",
+      "title": "The reasoning\nstays attached.",
+      "description": "Versioned thesis\nExact order parameters\nFresh review for each approval",
+      "label": "RECORDED ORIGINAL / VERSION 1",
+      "narration": "A saved thesis captures the reasoning and invalidation conditions. Fresh previews bind one exact testnet order to a separate approval. This published card preserves the original version.",
+      "vi": "Luận điểm lưu lại lý do và điều kiện vô hiệu. Bản xem trước mới gắn một lệnh testnet chính xác với phê duyệt riêng. Thẻ đã chia sẻ giữ nguyên phiên bản gốc."
+    },
+    {
+      "id": "03-root",
+      "layout": "root-detail",
+      "image": "evidence/live-root-card-desktop-2026-10-23.jpg",
+      "eyebrow": "02 / ACTUAL ROOT RECEIPT",
+      "title": "An order.\nAn honest receipt.",
+      "description": "BUY 0.00013 BTC\nLimit 82,027.6 USDso · GTC\nConfirmed · filled · remainder 0",
+      "label": "ACTUAL TESTNET RESULT / 23 OCT 2026",
+      "narration": "The original Bitcoin order was confirmed and filled for zero point zero zero zero one three B T C. Its receipt records zero remaining quantity. Confirmation and order outcome are tracked separately.",
+      "vi": "Lệnh Bitcoin gốc đã được xác nhận và khớp 0,00013 BTC, không còn lượng chờ khớp. Xác nhận giao dịch và kết quả lệnh được theo dõi riêng."
+    },
+    {
+      "id": "04-remix",
+      "layout": "desktop",
+      "image": "evidence/live-remix-card-desktop-2026-10-23.jpg",
+      "eyebrow": "03 / INDEPENDENT REMIX",
+      "title": "Same starting point.\nYour next move.",
+      "description": "A different owner\nA separate approval and execution\nLimit 82,027.5 USDso · GTC",
+      "label": "RECORDED REMIX / VERSION 2",
+      "narration": "The remix has a different owner, its own version, and a separate approval. It changes the limit price by one tick and keeps its own execution identity.",
+      "vi": "Remix có chủ sở hữu khác, phiên bản riêng và phê duyệt riêng. Giá giới hạn thay đổi một bước giá; danh tính thực thi cũng độc lập."
+    },
+    {
+      "id": "05-comparison",
+      "layout": "comparison",
+      "image": "evidence/live-comparison-desktop-2026-10-23.jpg",
+      "eyebrow": "04 / LINEAGE & PARAMETER DIFF",
+      "title": "See exactly\nwhat changed.",
+      "description": "Original v1 → remix v2\nTitle · rationale · limit price\nOne remix level",
+      "label": "PARAMETER COMPARISON / NO PERFORMANCE RANKING",
+      "narration": "The comparison shows title, rationale, and limit price side by side. The source version and one-level lineage stay explicit. Different execution times do not establish a performance comparison.",
+      "vi": "Bảng so sánh hiển thị tiêu đề, lý do và giá giới hạn. Phiên bản nguồn và quan hệ một cấp được giữ rõ ràng. Thời điểm khớp khác nhau không chứng minh hiệu quả chiến lược."
+    },
+    {
+      "id": "06-mobile",
+      "layout": "mobile",
+      "images": ["evidence/live-remix-card-mobile-status-2026-10-23.jpg", "evidence/live-comparison-mobile-values-2026-10-23.jpg"],
+      "eyebrow": "05 / DESKTOP TO MOBILE",
+      "title": "The details\ntravel with you.",
+      "description": "Actual 360px viewport captures\nReadable receipts and differences\nMissing event history stays visible",
+      "label": "ACTUAL MOBILE CAPTURES / 23 OCT 2026",
+      "narration": "The receipt and parameter differences remain readable on mobile. Reconciliation preserves the original request, and missing event history stays visible.",
+      "vi": "Biên nhận và thay đổi tham số vẫn đọc được trên mobile. Đối soát giữ nguyên yêu cầu ban đầu và hiển thị rõ phần lịch sử sự kiện còn thiếu."
+    },
+    {
+      "id": "07-provenance",
+      "voiceStyle": "Clear conversational English. Friendly product narration at a brisk steady pace.",
+      "layout": "proof",
+      "eyebrow": "06 / WHAT THIS DEMO ESTABLISHES",
+      "title": "Two orders.\nSeparate decisions.",
+      "description": "0.00013 BTC filled per order\nTwo wallets, one human\nTestnet / paper funds",
+      "label": "VERIFIED RECEIPTS / NOT A PROFIT CLAIM",
+      "narration": "Both receipts show zero remaining quantity. The two wallets belong to the same person. The user approved the original order manually, and delegated the exact remix order to the agent.",
+      "vi": "Cả hai biên nhận ghi nhận không còn lượng chờ khớp. Hai ví thuộc cùng một người. Người dùng duyệt lệnh gốc thủ công và ủy quyền lệnh remix chính xác cho agent."
+    },
+    {
+      "id": "08-outro",
+      "layout": "outro",
+      "eyebrow": "FORKTRADE / TESTNET WALKTHROUGH",
+      "title": "Borrow the perspective.\nKeep your own judgment.",
+      "description": "Version → review → approve → reconcile\nShare → remix → compare",
+      "label": "LOCAL MVP / BTC LIMIT · GTC / CHAIN 50383",
+      "narration": "Borrow the perspective. Keep your own judgment. These real screens were recorded after execution on October twenty-third. Wallet signing and order approvals are not shown.",
+      "vi": "Tham khảo góc nhìn. Giữ phán đoán của riêng bạn. Đây là màn hình thật được ghi sau giao dịch ngày 23 tháng 10. Video không ghi lại ký ví hay phê duyệt lệnh."
+    }
+  ]
+}

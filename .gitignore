@@ -12,3 +12,4 @@ test-results/
 *.db-wal
 *.sqlite*
 *.tgz
+__pycache__/

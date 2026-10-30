@@ -27,6 +27,8 @@ Local links require the app on this machine; they are not hosted:
 
 ## Video and stills
 
+**Narrated edition, created 2026-10-30:** [100-second 1080p demo with MiMo voice and English captions](evidence/forktrade-demo-narrated-2026-10-30.mp4), [English SRT](evidence/forktrade-demo-2026-10-30.en.srt), [Vietnamese SRT](evidence/forktrade-demo-2026-10-30.vi.srt), [provenance/QA](evidence/narrated-demo-2026-10-30.json). This edited walkthrough combines the actual dated screenshots below with labelled editorial graphics. It uses the 2026-10-23 observations and does not establish fresh account state or show wallet signing/order approvals. Same human/two-wallet and root/manual versus child/delegated distinctions remain explicit. [Local authoring instructions](tools/demo/README.md). This media is stored locally/in private Git; no X or DoraHacks action follows from its creation. The older immutable public-release ZIP does not yet contain this edition.
+
 [Actual Edge walkthrough](evidence/forktrade-live-walkthrough-2026-10-23.mp4): 27.1 seconds, H264, 1280x900, recorded **after both executions**. It shows actual published root/child receipts and comparison. Ownership signatures and order approvals are not recorded. Ten original browser frames remain unmodified; static pauses were shortened to at most four seconds and a visible provenance caption added. No fill lifecycle or wallet confirmation was recreated. [Metadata and SHA-256](evidence/live-demo-video-2026-10-23.json).
 
 Reviewed unmodified actual screenshots:

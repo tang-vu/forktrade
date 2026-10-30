@@ -1,0 +1,91 @@
+1
+00:00:00,200 --> 00:00:02,379
+Mỗi giao dịch đều có một góc nhìn.
+
+2
+00:00:02,379 --> 00:00:04,557
+Kết nối luận điểm, lệnh chính xác và remix độc lập.
+
+3
+00:00:04,557 --> 00:00:06,736
+Giữ lại lý do.
+
+4
+00:00:06,736 --> 00:00:08,914
+Tự đưa ra quyết định.
+
+5
+00:00:09,733 --> 00:00:14,168
+Luận điểm lưu lại lý do và điều kiện vô hiệu.
+
+6
+00:00:14,168 --> 00:00:18,602
+Bản xem trước mới gắn một lệnh testnet chính xác với phê duyệt riêng.
+
+7
+00:00:18,602 --> 00:00:23,037
+Thẻ đã chia sẻ giữ nguyên phiên bản gốc.
+
+8
+00:00:23,867 --> 00:00:31,224
+Lệnh Bitcoin gốc đã được xác nhận và khớp 0,00013 BTC, không còn lượng chờ khớp.
+
+9
+00:00:31,224 --> 00:00:38,581
+Xác nhận giao dịch và kết quả lệnh được theo dõi riêng.
+
+10
+00:00:39,400 --> 00:00:44,829
+Remix có chủ sở hữu khác, phiên bản riêng và phê duyệt riêng.
+
+11
+00:00:44,829 --> 00:00:50,257
+Giá giới hạn thay đổi một bước giá; danh tính thực thi cũng độc lập.
+
+12
+00:00:51,067 --> 00:00:55,590
+Bảng so sánh hiển thị tiêu đề, lý do và giá giới hạn.
+
+13
+00:00:55,590 --> 00:01:00,114
+Phiên bản nguồn và quan hệ một cấp được giữ rõ ràng.
+
+14
+00:01:00,114 --> 00:01:04,638
+Thời điểm khớp khác nhau không chứng minh hiệu quả chiến lược.
+
+15
+00:01:05,467 --> 00:01:10,538
+Biên nhận và thay đổi tham số vẫn đọc được trên mobile.
+
+16
+00:01:10,538 --> 00:01:15,610
+Đối soát giữ nguyên yêu cầu ban đầu và hiển thị rõ phần lịch sử sự kiện còn thiếu.
+
+17
+00:01:16,433 --> 00:01:19,862
+Cả hai biên nhận ghi nhận không còn lượng chờ khớp.
+
+18
+00:01:19,862 --> 00:01:23,290
+Hai ví thuộc cùng một người.
+
+19
+00:01:23,290 --> 00:01:26,719
+Người dùng duyệt lệnh gốc thủ công và ủy quyền lệnh remix chính xác cho agent.
+
+20
+00:01:27,533 --> 00:01:30,533
+Tham khảo góc nhìn.
+
+21
+00:01:30,533 --> 00:01:33,533
+Giữ phán đoán của riêng bạn.
+
+22
+00:01:33,533 --> 00:01:36,533
+Đây là màn hình thật được ghi sau giao dịch ngày 23 tháng 10.
+
+23
+00:01:36,533 --> 00:01:39,533
+Video không ghi lại ký ví hay phê duyệt lệnh.

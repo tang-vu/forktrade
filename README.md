@@ -97,6 +97,8 @@ Implementation branch: `feat/forktrade-core`. User workflow: commit and push eac
 
 ## X posts
 
+The [100-second narrated 1080p demo](evidence/forktrade-demo-narrated-2026-10-30.mp4) is prepared with English captions and a [Vietnamese subtitle file](evidence/forktrade-demo-2026-10-30.vi.srt). It uses actual 2026-10-23 captures plus labelled explanatory graphics; [provenance/QA](evidence/narrated-demo-2026-10-30.json). It does not record signing/approval or constitute a new live execution. No public post or submission has been made by creating this video.
+
 No MVP posts have been published. The official requirements were rechecked on 2026-10-23: this section needs 2 or 3 actual post URLs tagging @DreamDEXSomnia before MVP submission. [Drafts and demo checklist](DEMO.md) are prepared; drafts are not submission evidence.
 
 ## Target end-to-end experience
