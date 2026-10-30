@@ -1,4 +1,4 @@
-name: Offline checks
+name: Source, offline and PostgreSQL checks
 on:
   push:
     branches: [main, feat/forktrade-core]
@@ -9,6 +9,20 @@ jobs:
   offline:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:18.4-alpine@sha256:9a8afca54e7861fd90fab5fdf4c42477a6b1cb7d293595148e674e0a3181de15
+        env:
+          POSTGRES_USER: forktrade_test
+          POSTGRES_PASSWORD: synthetic_ci_only
+          POSTGRES_DB: forktrade_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U forktrade_test -d forktrade_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      FORKTRADE_MODE: offline
+      FORKTRADE_POSTGRES_TEST_URL: postgresql://forktrade_test:synthetic_ci_only@127.0.0.1:5432/forktrade_test
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6, verified 2026-10-20
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6, verified 2026-10-20
@@ -21,5 +35,6 @@ jobs:
       - run: npm run lint
       - run: npm run test
       - run: npm run build
+      - run: npm run check:hosted
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e

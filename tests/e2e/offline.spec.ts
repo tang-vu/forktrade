@@ -1,6 +1,25 @@
 import {test,expect,type Page} from '@playwright/test';
 import {mkdirSync} from 'node:fs';
 import publicSnapshot from '../../evidence/read-only-m4-2026-10-20.json' with {type:'json'};
+
+test('hosted publication discloses access to anyone with the link and keeps fixtures labelled',async({page})=>{
+  await page.route('**/api/session',async route=>{
+    const response=await route.fetch();const data=await response.json();
+    await route.fulfill({response,json:{...data,hosted:true}});
+  });
+  await page.route('**/api/cards/*',async route=>{
+    const response=await route.fetch();const data=await response.json();
+    await route.fulfill({response,json:{...data,hosted:true}});
+  });
+  await createPlan(page);
+  await page.getByRole('button',{name:'Choose public fields'}).click();
+  await page.getByRole('checkbox',{name:'Make these selected fields available to anyone with the share link',exact:false}).check();
+  await page.getByRole('button',{name:'Publish selected card'}).click();
+  await expect(page.getByText('Selected fields published at a shareable URL.',{exact:false})).toBeVisible();
+  await page.getByRole('link',{name:'Open shared card'}).click();
+  await expect(page.getByText('PUBLIC SHARE URL',{exact:true})).toBeVisible();
+  await expect(page.getByText('SYNTHETIC · No evidence shared',{exact:true})).toBeVisible();
+});
 async function createPlan(page:Page) {
   await page.goto('/');await page.getByRole('button',{name:'Start offline session'}).click();
   await page.getByRole('button',{name:'Load synthetic example'}).click();

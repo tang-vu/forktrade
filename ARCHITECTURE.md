@@ -2,9 +2,19 @@
 
 Status: the offline path and guarded live adapters are implemented. On 2026-10-23 both actual owners authenticated and the root plus separately authorized one-level remix were confirmed/filled and independently reconciled. Both local cards, server-derived comparison, desktop/360px checks and an after-execution video are verified. Actual execution evidence is separate from 109 source tests/23 synthetic browser scenarios; external publication/submission remains pending.
 
+## Vercel/Neon storage revision — 2026-10-30
+
+The user requested removing dependence on a self-managed application server, then chose code preparation before creating cloud resources. The web path now uses PostgreSQL (`pg` pool + Drizzle), asynchronous repositories/auth/API handlers and Vercel Node.js functions. Neon provides durable storage across instances; local development/tests use PGlite with the same PostgreSQL schema. Vercel never falls back to local storage. Legacy SQLite files and 2026-10-23 execution evidence are preserved, not copied to a new database automatically.
+
+Write transactions acquire the plan row before version/approval/publication mutations. Stable request identity is protected by unique version/preview constraints and committed before a caller can use a signer. Attempt mutations re-read the current attempt after acquiring its owning plan lock. Source remix creation locks the source plan then its reviewed publication; publish/unpublish use the same order. Public multi-query projections use repeatable-read snapshots; the API rechecks publication after asynchronous external reads. Challenge consumption and session insertion commit together. Rate-limit UPSERTs, sessions, mode binding and execution state live in PostgreSQL rather than process memory.
+
+A small module-scoped pool uses Neon's pooled URL and `attachDatabasePool` for idle cleanup on Vercel. No query/session transaction is retained between requests. Explicit migration commands use checksums and transaction-scoped advisory locking; builds and hosted requests never run schema migrations. Wall-clock milliseconds are PostgreSQL BIGINT mapped to safe JavaScript timestamps; all economic raw amounts remain canonical strings. Hosted authentication uses an explicitly configured canonical HTTPS origin and Secure cookies. The deployment profile starts with auth/execution disabled. Local wallet tooling stays on the workstation and is excluded from function artifacts; a supported browser EOA remains the actual web signer.
+
+Verification is separated: 112 source/unit tests, 7 real local PostgreSQL tests, 24 labelled synthetic browser cases and the local production HTTP/restart check are not a real Vercel/Neon deployment or a new testnet execution. Exact results and remaining access gates are in ACCEPTANCE.md and the ledger.
+
 ## Baseline and boundaries
 
-Use one Next.js/React TypeScript app with server route handlers, strict domain modules, SQLite/Drizzle storage, Zod validation and Tailwind styling. Current local driver: Node 24 `node:sqlite` with Drizzle `1.0.0-rc.4`, selected after native-addon clean installation failed without a compiler. Vitest covers domain/adapter tests and Playwright covers browser flows. Exact pins are in package.json/lockfile. A local single-instance SQLite deployment is enough for v1; do not assume it works on a distributed/serverless host.
+Use one Next.js/React TypeScript app with server route handlers, strict domain modules, PostgreSQL/Drizzle storage, Zod validation and Tailwind styling. The prior Node SQLite driver was replaced by asynchronous `pg`/Neon; local synthetic development uses PGlite. Drizzle remains pinned at `1.0.0-rc.4`. Vitest covers domain/adapter tests and Playwright covers browser flows. Exact pins are in package.json/lockfile. The same PostgreSQL schema is used for local tests and multi-instance cloud requests; no private state depends on a Vercel filesystem.
 
 | Component | Responsibility | Must not do |
 | --- | --- | --- |
@@ -114,6 +124,6 @@ Connection, exact SIWE ownership and exact BTC limit/GTC transaction requests ha
 
 Use secure, HttpOnly, SameSite session cookies where applicable, CSRF protections and a verified ownership challenge. Account connection alone is not authentication. Keep endpoint secrets and sessions out of client bundles, telemetry and repository history. Runtime configuration separates offline, read-only and testnet-execution modes; an allowlisted chain ID and verified configuration gate signing. There is no mainnet fallback.
 
-Use migrations and transactional writes for version creation, request claims and publication changes. Document local DB path and backups. Do not erase or reseed a database containing real execution identities when resetting offline fixtures. SQLite uniqueness prevents concurrent local requests; do not promise multi-instance guarantees without a deployment design.
+Use migrations and transactional writes for version creation, request claims and publication changes. Document local DB path and backups. Do not erase or reseed a database containing real execution identities when resetting offline fixtures. PostgreSQL uniqueness, plan-row locking and atomic transactions are tested across independent pools. The actual Vercel/Neon deployment remains unrun until a project is created and selected.
 
 For public routes, disable unsafe caching or key caches by publication revision and invalidate on unpublish. Return no private draft data in HTML, JSON, error messages, page metadata or any future image render. Explain that copied content and public chain data cannot be revoked. See SECURITY.md for threat cases and ACCEPTANCE.md for verification.

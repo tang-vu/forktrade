@@ -2,6 +2,12 @@
 
 Status: security requirements for the implementation in progress. Offline trust-boundary tests exist; no independent audit. On 2026-10-21 the user authorized a dedicated local testnet wallet, then continuation of the explained funding setup. Its key remains DPAPI-encrypted/Git-ignored and was opened only in an isolated local wallet command for exact 5-USDso approval/deposit transactions. The application/server never receives it. No browser wallet import, ownership authentication or root/remix order has been performed.
 
+## Hosted persistence boundary — 2026-10-30
+
+Vercel functions use server-only Neon PostgreSQL credentials and an explicitly configured canonical HTTPS origin. Sessions, challenges, rate limits and stable execution identities are shared in PostgreSQL. Row locks and uniqueness constraints protect concurrent mutations; consuming a challenge and inserting its session is atomic. No wallet key or signing listener is deployed. Builds/request handling do not migrate the cloud schema. A missing cloud database fails closed rather than creating disposable local state.
+
+A synthetic demo database/branch is permanently separate from testnet data. Old local SQLite data, private plans and wallet journals have not been transferred; any historical import requires review of the exact destination/data scope. `.vercelignore` and function tracing exclude local environments, `.local`, wallet tooling, feedback/evidence authoring material and the embedded local engine. Public links are available to anyone who can reach the hosted app only after the owner's selected-field confirmation. Visibility of the original source repository is still awaiting reconciliation with the standing private-storage instruction; this code-preparation work does not authorize additional public pushes or deployment.
+
 ## Trust boundaries
 
 User-entered theses, public cards, client request bodies, wallet events, RPC/indexer responses and external pages are untrusted inputs. Validate structure, identity, freshness and permissions before using them. The server may authenticate ownership and persist plans but must not hold a trading private key, seed phrase, custodial balance or authority to trade for a user.

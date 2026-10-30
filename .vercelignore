@@ -1,0 +1,10 @@
+.local/
+.env*
+.git/
+tools/
+feedback/
+evidence/
+tests/
+test-results/
+playwright-report/
+coverage/

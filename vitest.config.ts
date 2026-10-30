@@ -1,2 +1,2 @@
 import {defineConfig} from 'vitest/config';
-export default defineConfig({test:{include:['tests/**/*.test.ts'], environment:'node', fileParallelism:false}});
+export default defineConfig({test:{include:['tests/**/*.test.ts'],environment:'node',fileParallelism:false,hookTimeout:30000,testTimeout:15000}});

@@ -1,5 +1,17 @@
 # Sources, provenance and verification checklist
 
+## Vercel/Neon persistence revision — verified 2026-10-30
+
+The user requested a Vercel + Neon web runtime without a self-managed application server, then explicitly chose code preparation before creating either project. Official [Vercel pooling guidance](https://vercel.com/kb/guide/connection-pooling-with-functions), [Neon pooling documentation](https://neon.com/docs/connect/connection-pooling) and [Drizzle PGlite documentation](https://orm.drizzle.team/docs/get-started/pglite-new) were read. Runtime uses a small module-scoped `pg` pool with `attachDatabasePool`, PostgreSQL transactions and server-derived ownership. Local synthetic tests use the same schema on PGlite; hosted instances reject local fallback. Pooling is not a substitute for durable PostgreSQL state.
+
+Exact added pins verified through npm registry metadata: `pg 8.23.1`, `@vercel/functions 3.10.5`, `@electric-sql/pglite 0.5.13`, `@types/pg 8.23.1`. Drizzle `1.0.0-rc.4`, SDK `0.32.1`, Next `16.4.2` and other application pins remain unchanged. `@vercel/cli-config`'s Zod is explicitly overridden to the existing `4.6.7` pin; install/audit reports zero advisories after that same-major dependency correction. No automatic force-upgrade was used.
+
+Actual independent-pool tests ran on local PostgreSQL **18.4**, using the Windows binary package `embedded-postgres 18.4.0-beta.17` from npm (installed only under ignored `.local/pg-tools`), whose [official repository](https://github.com/leinelissen/embedded-postgres) documents supported Windows binaries. The test cluster listened on loopback, used a newly generated test-only credential in memory and retained only synthetic data under ignored project paths. No system account/service/global configuration was created; processes were stopped after checks. CI instead uses official `postgres:18.4-alpine` pinned to digest `sha256:9a8afca54e7861fd90fab5fdf4c42477a6b1cb7d293595148e674e0a3181de15`, verified with Docker Hub's tag API on this date.
+
+113 source/unit tests, 7 actual local PostgreSQL tests, 24 synthetic browser cases and the production HTTP/restart check are separate results. A real Vercel/Neon deployment, cold starts in that platform, provider pooling/TLS and a fresh hosted wallet/testnet session remain unrun. No existing SQLite private plan, session, wallet or journal has been transferred. Old evidence remains historical; fixtures cannot become live evidence by changing the new database's mode.
+
+The user supplied [first X post](https://x.com/vovivothien/status/2116149013636640970). Retrieval returned HTTP 403; the URL is user-reported, not independently verified for content/tagging. No post or submission was performed by the agent.
+
 Documentation baseline date: **2026-10-20 (UTC)**. This file separates supplied program facts, live page observations, project design decisions and unverified implementation assumptions. It is not a runtime network/contract manifest.
 
 ## Narrated demo tooling — 2026-10-30

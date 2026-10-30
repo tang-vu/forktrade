@@ -1,0 +1,116 @@
+{
+  "kind": "Vercel/Neon code preparation; local source, PostgreSQL and synthetic browser evidence; NOT DEPLOYED",
+  "dateUtc": "2026-10-30",
+  "sourceBaseCommit": "d4b2b1b",
+  "branch": "feat/forktrade-core",
+  "authorization": "User requested serverless Vercel/Neon preparation and explicitly selected preparing code before creating projects. No cloud creation/deployment, data transfer, wallet or transaction performed.",
+  "stack": {
+    "pg": "8.23.1",
+    "vercelFunctions": "3.10.5",
+    "pglite": "0.5.13",
+    "typesPg": "8.23.1",
+    "drizzle": "1.0.0-rc.4",
+    "sdk": "0.32.1",
+    "next": "16.4.2",
+    "transitiveOverride": {
+      "@vercel/cli-config/zod": "4.6.7"
+    }
+  },
+  "checks": {
+    "typecheck": "passed after clean npm ci; npm.cmd run typecheck",
+    "lint": "passed after correcting the new helper startup catch; npm.cmd run lint",
+    "unit": {
+      "command": "npm.cmd run test",
+      "passed": 113,
+      "skipped": 7,
+      "reasonForSkip": "Dedicated actual PostgreSQL suite has its own explicit loopback URL and was run separately"
+    },
+    "postgres": {
+      "engine": "Actual PostgreSQL 18.4 on loopback",
+      "command": "npm.cmd run test:postgres with isolated FORKTRADE_POSTGRES_TEST_URL",
+      "passed": 7,
+      "independentPools": true,
+      "concurrentApprovalRequests": 8,
+      "uniqueClaimCount": 1,
+      "actualInvocation": "node .local/run-postgres-check.mjs -> node node_modules/vitest/vitest.mjs run tests/postgres.test.ts"
+    },
+    "browser": {
+      "command": "npm.cmd run test:e2e",
+      "passed": 24,
+      "seconds": 58.0,
+      "synthetic": true,
+      "includesHostedDisclosureCopy": true
+    },
+    "productionHttp": {
+      "command": "npm.cmd run check:hosted with isolated loopback PostgreSQL URL",
+      "status": "passed",
+      "checks": [
+        "production Next API with hosted flags",
+        "concurrent approval retains one identity",
+        "cross-owner denial",
+        "selected-field public projection",
+        "one-level remix and comparison",
+        "session/plan/request survive process restart",
+        "unpublish hides source/comparison",
+        "wallet and execution disabled"
+      ],
+      "notCloudDeployment": true,
+      "actualInvocation": "same isolated local cluster runner -> node --import tsx scripts/check-hosted.ts"
+    },
+    "build": "passed after clean install; npm.cmd run build",
+    "functionTrace": {
+      "status": "passed",
+      "tracedFileReferences": 2134,
+      "privateOrLocalEngineViolations": 0,
+      "initialIssue": "Turbopack hashed PGlite symlink remained in first trace; expanded exclusion and rebuilt successfully"
+    },
+    "cleanInstall": "npm.cmd ci passed; 263 packages installed, audit reported zero vulnerabilities",
+    "audit": "0 vulnerabilities reported after explicit same-major Zod override",
+    "textIntegrity": "Changed text NUL/credential scans, JSON parsing, guide links/fences and manifest-lock consistency passed",
+    "visualReview": "PostgreSQL synthetic desktop and 360px remix captures inspected; no overflow and labels visible. Original captures restored.",
+    "migrationCli": "Passed fresh initial apply and idempotent repeat via node --import tsx scripts/migrate.ts, with process-local offline flags and a new isolated PGlite directory; no external target. Ignored local log retained.",
+    "migrationIdentity": "Passed real embedded-PostgreSQL regression: same SQL with Windows/Linux line endings reapplies idempotently; altered SQL rejects before application. Final type/lint and targeted regression passed after correcting the new test query typing."
+  },
+  "preservation": {
+    "legacySQLite": "Untouched; not opened/imported by new runtime",
+    "wallets": "Untouched; no signing or new scope",
+    "historicalVideo": "Unchanged",
+    "screenshots": "Four dated explicitly synthetic PostgreSQL captures; historical fixture images restored",
+    "historicalVideoSha256": "3740ad679cd1d8f618ab0de815d8821fb7b8dca8be2c1955a4ca915b95f7258b"
+  },
+  "unrun": [
+    "Actual Vercel/Neon creation, migration and deployment",
+    "Provider TLS/pooler/cold-start behavior",
+    "Fresh hosted wallet session or testnet order",
+    "Historical private-data import"
+  ],
+  "externalGates": {
+    "cloud": "No project exists; user chose prepare code first",
+    "sourcePush": "Original GitHub repository is public despite standing private-storage requirement; no additional push in this run",
+    "x1": "User-reported https://x.com/vovivothien/status/2116149013636640970; fetch 403",
+    "x2": "No actual URL provided",
+    "mvpSubmission": "Not performed"
+  },
+  "fileHashes": {
+    "package.json": "abaca3554767f6a2638c84cfd3544922024aad8397d697b37929acaeb080d916",
+    "package-lock.json": "e536e540959420b68d1c60a260848f6f465875ec084654c4ecc8283c9054b6f9",
+    "vercel.json": "9fd4ea9e9bbb01391e7e946e1b2d3e2af2dd003b27067dadcdcaf4f20b799fb1",
+    ".vercelignore": "bf5daf5c1eee82c3fb6dc615df9e976c5241aac52e217b525237023a32598c35",
+    ".env.vercel.example": "e8914374b56a60e5c00beb97cdb3cf28d4a7f0b7afa289c200c274874038dc50",
+    "db/postgres/0001_core.sql": "ddae927ff2e100e25f01da25ebd21ee98395014f0bd79ad3f5d164270cd84616",
+    "src/server/database.ts": "2f25d535940d0112301d9508e2199d2bb42c498d71c088dcf37d6d8138fe830b",
+    "src/server/repository.ts": "b48f8aeef6cbe930750cdea0ca6cc431dada2dd61657dad93f95cb5adec296d8",
+    "src/server/auth.ts": "28c3322ed5e9c69320d614b7519d7ad0441d862b938f27fd78091d711b85f5bc",
+    "src/server/api-router.ts": "0084c9ac96d41a38565027badfeca81da8be5aa18785f50654044df53b936e45",
+    "scripts/check-hosted.ts": "7fd32b7bce9cfaf80cb9f32fe5dffe99431e7cf0beebd64a6bed7e5c81f88b05",
+    "tests/postgres.test.ts": "d99b52f59abf341e69890097a3bdfb38c51622baf79e05a74cb37a89b3a79ae9",
+    "tests/serverless-config.test.ts": "bd065c51823bef8c7372a7101709df803108db6926d6b4d23acf7c18f8deee61",
+    "evidence/offline-card-mobile-postgres-2026-10-30.png": "868b7ce5307f2fd0509fe80980b073a928f6a78a88cd83a8d242df4f57b8daa7",
+    "evidence/offline-desktop-postgres-2026-10-30.png": "a3883cac4d5948f834d04c30eee445cc9a4043776ad8ad2d7e043a8d1763fcdf",
+    "evidence/offline-remix-desktop-postgres-2026-10-30.png": "bd9cde1f0ec6105e3bd9d70aa2dc8531f8926e0ba96bbaf3fb15789111affbfa",
+    "evidence/offline-remix-mobile-postgres-2026-10-30.png": "e07dbc42312bae5b11c36bd7d52a3b53001eb0caad6d6e0f3c09ac9e535907fb",
+    "db/migrate.ts": "0d70395e12d6fdbe64af50ef35f39c37cec2735063ca803c0c2e9af3de61eb3d",
+    "tests/migrations.test.ts": "510ea3c4df0023270dd79172b30fb0ccf3dadff43a1268c6c00df2033bcd3a8f"
+  },
+  "fileHashScope": "Exact local working-tree bytes at verification; Git newline normalization may differ on another platform."
+}

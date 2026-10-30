@@ -1,5 +1,7 @@
 # ForkTrade demo and separate MVP submission preparation
 
+Hosting preparation (2026-10-30): the new code uses PostgreSQL/Neon for Vercel, while this demo's real order captures remain from the prior local SQLite build. No cloud resource/deployment or private historical-data transfer has occurred. User-supplied first X post: [@vovivothien](https://x.com/vovivothien/status/2116149013636640970); web retrieval returned 403, so content/tagging remain independently unverified. No second actual post URL has been recorded.
+
 Post-push storage check, 2026-10-30: the original source repository currently returns PUBLIC, conflicting with the standing private-storage instruction. User clarification is pending; this agent made no visibility change. The narrated video is complete at `55466a5`, but further remote publication/synchronization is stopped. This status note is local until that constraint is resolved.
 
 The narrow local/testnet path completed on 2026-10-23. Two distinct real EOAs controlled by the same human each executed one independently approved BTC/USDso BUY limit/GTC order. Both transactions are confirmed and matching orders filled 0.00013 BTC, remainder 0. These are two owner contexts, not two users. Different execution times/prices do not establish a controlled strategy comparison or profit.
@@ -69,4 +71,4 @@ Proposed destination: X @keryxpays (current signed-in Edge account), two posts t
 1. Built ForkTrade for @DreamDEXSomnia: version a thesis, review an exact testnet order, then share a card others can remix independently. BTC/USDso limit/GTC; paper funds only. Source + run guide: https://github.com/tang-vu/forktrade-mvp
 2. ForkTrade testnet check for @DreamDEXSomnia: root + independently approved remix each filled 0.00013 BTC. Two wallets, same human. Video shows receipts after execution; no performance claim. Evidence: https://github.com/tang-vu/forktrade-mvp
 
-Actual posted URLs: none. After authorized publication, verify both posts and insert their real URLs into the approved copy's README **X posts** section. A draft is not a posted link or qualifying submission. Original private source, separate Feedback Build and mainnet stay unchanged.
+Actual post URL supplied by the user: https://x.com/vovivothien/status/2116149013636640970 (retrieval 403; not independently verified). No second URL supplied. After authorized publication, verify both posts and insert their real URLs into the approved copy's README **X posts** section. A draft is not a posted link or qualifying submission. Original private source, separate Feedback Build and mainnet stay unchanged.

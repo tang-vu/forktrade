@@ -1,8 +1,10 @@
 # ForkTrade
 
-A local thesis-to-remix workspace for dreamDEX Perps testnet, for traders who want a versioned explanation and an independently editable remix tied to honest order evidence. **The complete narrow path passed on 2026-10-23: real root and separately approved remix, each confirmed/filled 0.00013 BTC with zero remainder, followed by local publication, lineage and parameter comparison. Typecheck/lint/build, 109 unit/integration tests and 23 offline browser scenarios pass.** The two distinct EOAs belong to the same human. Root approval was manual; the exact remix was agent-operated in Edge under explicit delegation. [Actual paired evidence](evidence/live-root-remix-2026-10-23.json), [verification](evidence/mvp-resume-2026-10-23.json), [27.1-second walkthrough](evidence/forktrade-live-walkthrough-2026-10-23.mp4) recorded after execution. Each account retains a testnet long position; no cleanup was sent. Source remains private; deployment, X posts and the separate MVP submission remain pending.
+**Vercel/Neon preparation (2026-10-30):** the web runtime now uses PostgreSQL through a shared pool and asynchronous transactions. Local synthetic development uses embedded PostgreSQL (PGlite); hosted instances require Neon and never create local state. Source checks, 113 tests, 7 actual local PostgreSQL tests and 24 synthetic browser scenarios pass. These are separate from the historical testnet orders below. The user chose code preparation only; no Vercel/Neon project or deployment has been created.
 
-**Active user priority: finish the separate ForkTrade MVP (2026-10-23).** Feedback was submitted first; its status follows. [Reports/candidates 001–008 are published in the separate Feedback repository](https://github.com/tang-vu/dreamdex-perps-feedback), with normal severity proposed. The user's end-to-end Feedback instruction covers the reviewed routine nonsecurity additions and current [eight-report submission](feedback/SUBMISSION.md); no repeat per-report approval is needed. The user reports Feedback submission as [DoraHacks Build 50119](https://dorahacks.io/build/50119) on 2026-10-22. The public Build title and GitHub repository link were independently verified in signed-out Edge; the hackathon/track registration status was not exposed on that page. Organizer acceptance, first-report priority and payment remain unverified. This application repository stays private, and ForkTrade's later MVP submission is separate.
+A thesis-to-remix workspace for dreamDEX Perps testnet, for traders who want a versioned explanation and an independently editable remix tied to honest order evidence. **The complete narrow path passed on 2026-10-23: real root and separately approved remix, each confirmed/filled 0.00013 BTC with zero remainder, followed by local publication, lineage and parameter comparison. Typecheck/lint/build, 109 unit/integration tests and 23 offline browser scenarios pass.** The two distinct EOAs belong to the same human. Root approval was manual; the exact remix was agent-operated in Edge under explicit delegation. [Actual paired evidence](evidence/live-root-remix-2026-10-23.json), [verification](evidence/mvp-resume-2026-10-23.json), [27.1-second walkthrough](evidence/forktrade-live-walkthrough-2026-10-23.mp4) recorded after execution. Each account retains a testnet long position; no cleanup was sent. Those receipts belong to the prior local SQLite build, not a newly deployed service. Repository visibility currently conflicts with the standing private-storage instruction; further pushes await clarification. Deployment and separate MVP submission remain pending. The first X link is user-reported below.
+
+**Active user priority: finish the separate ForkTrade MVP (2026-10-23).** Feedback was submitted first; its status follows. [Reports/candidates 001–008 are published in the separate Feedback repository](https://github.com/tang-vu/dreamdex-perps-feedback), with normal severity proposed. The user's end-to-end Feedback instruction covers the reviewed routine nonsecurity additions and current [eight-report submission](feedback/SUBMISSION.md); no repeat per-report approval is needed. The user reports Feedback submission as [DoraHacks Build 50119](https://dorahacks.io/build/50119) on 2026-10-22. The public Build title and GitHub repository link were independently verified in signed-out Edge; the hackathon/track registration status was not exposed on that page. Organizer acceptance, first-report priority and payment remain unverified. ForkTrade's later MVP submission is separate; current repository storage status is recorded in the ledger.
 
 [Report 001](feedback/001-perps-entry-opens-spot.md) has actual Edge/HTTP evidence of the official Perps entry redirecting to spot. [Report 002](feedback/002-existing-position-bracket-side.md) reproduces an official bot-kit bracket-side mismatch using unchanged pinned source and explicitly synthetic offline fixtures. No live trade, accepted stop or financial-impact outcome is claimed for 002. Current publication at 7e1aade0b87fd9ff5a1bd8d909c1adefb9d97b29 was verified against all 39 remote files and 38 manifest payload hashes/sizes.
 
@@ -12,7 +14,7 @@ Further audit published [006, cancel failure loses quote tracking](feedback/006-
 
 Additional SDK finding [008, funding-history cursor](feedback/008-sdk-funding-history-cursor.md) is published in that same package. Actual public BTC history returns a row before a millisecond cursor; 10 bounded original-SDK cases and an isolated reproduction passed. All eight items are visible in actual Edge; user-reported submission is linked above, with organizer acceptance/payment still unverified.
 
-Write and version a private thesis, review an exact bounded order, approve a labelled synthetic scenario, choose public fields for a local demo card, then create an independently owned one-level remix with a parameter comparison. Fixtures cannot become live evidence.
+Write and version a private thesis, review an exact bounded order, approve a labelled synthetic scenario, choose public fields for a share card, then create an independently owned one-level remix with a parameter comparison. Fixtures cannot become live evidence.
 
 ## Run locally (Windows PowerShell)
 
@@ -25,7 +27,7 @@ npm.cmd run dev
 # Open http://127.0.0.1:3000
 ```
 
-No .env or wallet is required. Defaults: offline mode, loopback-only server, SQLite at `.local/offline.db`. Migrations also run safely when opening the database. `Start offline session` creates a random synthetic identity with a private HttpOnly cookie; it does not create or connect a wallet. Each separate browser context gets its own identity. `End session` revokes it; offline sessions are disposable and cannot recover earlier private drafts after logout/expiry. Use separate contexts for the original and independent remix. Load the explicitly labelled synthetic example or enter your own draft.
+No .env or wallet is required. Defaults: synthetic offline mode, loopback-only server, embedded PostgreSQL at `.local/offline-pg` when DATABASE_URL is absent. Local migrations run safely on opening that new directory. Existing SQLite files are neither opened nor changed by the new app. Existing `.env.local` settings still take precedence unless overridden; keep them offline for synthetic development. `Start offline session` creates a random synthetic identity with a private HttpOnly cookie; it does not create or connect a wallet. Each separate browser context gets its own identity. `End session` revokes it; offline sessions are disposable and cannot recover earlier private drafts after logout/expiry. Use separate contexts for the original and independent remix. Load the explicitly labelled synthetic example or enter your own draft.
 
 ```powershell
 npm.cmd run typecheck
@@ -38,13 +40,40 @@ npm.cmd run test:e2e
 npm.cmd run check:readonly
 ```
 
-Browser tests start the production build on port 3000 with a separate, uniquely named `.local/e2e-offline-*.db`. Stop any app already using that port first. They exercise 1280px/360px views and write clearly synthetic screenshots under `evidence/`. For a production-mode local run: `npm.cmd run build`, then `npm.cmd run start`. Every local server binds 127.0.0.1. If changing the port, set `FORKTRADE_ORIGIN` to the exact origin (for example `http://127.0.0.1:3001`) before starting; mutation origins are checked.
+Browser tests start the production build on port 3000 with a separate, uniquely named `.local/e2e-offline-pg-*` directory. Stop any app already using that port first. They exercise 1280px/360px views and write clearly synthetic screenshots under `evidence/`. For a production-mode local run: `npm.cmd run build`, then `npm.cmd run start`. Every local server binds 127.0.0.1. If changing the port, set `FORKTRADE_ORIGIN` to the exact origin (for example `http://127.0.0.1:3001`) before starting; mutation origins are checked.
+
+## Prepare Vercel + Neon
+
+The repository includes `vercel.json`, `.vercelignore`, `.env.vercel.example`, a PostgreSQL migration and `/api/health`. Next.js/API functions run on Vercel; Neon owns durable storage. No workstation wallet companion or separate application server is required for the web app. Users use their own supported injected browser wallet if a later live session is enabled.
+
+1. Create/select the exact Vercel project with **Node 24.x**, root directory `.`, and the intended implementation branch. Add Neon through Vercel Marketplace in a nearby matching region. No resources have been created by this code-preparation run.
+2. For the first public synthetic demo, use a **new isolated Neon database/branch** and the disabled values in [.env.vercel.example](.env.vercel.example). `DATABASE_URL` is the pooled integration URL; keep it server-only. Set `FORKTRADE_ORIGIN` to the exact canonical HTTPS origin, without a path. Configure each preview deployment with its own origin/database; do not share production data with previews.
+3. Apply migrations explicitly to that selected database **before** enabling a deployment. Migrations are not part of `next build` or request handling. With the reviewed environment in ignored `.env.vercel.local`, use:
+
+   ```powershell
+   node --env-file=.env.vercel.local --import tsx scripts/migrate.ts
+   ```
+
+   `DATABASE_URL_UNPOOLED` may be set for the migration command; runtime uses `DATABASE_URL` (or legacy `POSTGRES_URL`). Migrations normalize SQL line endings across Windows/Linux, check recorded checksums, hold a transaction-scoped advisory lock, seed nothing and never copy old local records.
+4. Deploy only after approving the exact project and public data scope. Check `/api/health`, then test session, save, preview, repeated approval, share/remix, withdrawal and persistence through another instance/deployment. `/api/health` exposes no connection string or account data. A successful local build does not establish a successful Vercel/Neon deployment.
+5. Keep authentication/execution/environment flags **false** for the synthetic demo. A later readonly/testnet profile needs another database bound to testnet data, a separately authorized wallet session and each order's own approval. Do not reuse the synthetic Neon branch or upload `.local`, wallet keys/journals, SQLite backups, cookies or auth material.
+
+Actual PostgreSQL and production HTTP checks use only an isolated **loopback** test database, never the application URL:
+
+```powershell
+# Set FORKTRADE_POSTGRES_TEST_URL in the process to a local forktrade_test database.
+npm.cmd run test:postgres
+npm.cmd run build
+npm.cmd run check:hosted
+```
+
+The HTTP check starts two successive local production processes with Vercel-style configuration, exercises PostgreSQL-backed sessions/plans/approvals/publication/remix/withdrawal and verifies persistence after restart. It remains explicitly synthetic and does not claim a real cloud deployment or a testnet order. CI provisions disposable PostgreSQL 18.4 for these checks. `.vercelignore` and build tracing exclude local/private data, acceptance-wallet tooling and the local embedded engine from function artifacts.
 
 ## Modes, data and permissions
 
 `.env.example` documents the three modes and disabled permission flags. Offline mode uses synthetic sessions, data and outcomes. `/market`, `GET /api/market` and `check:readonly` read public chain 50383, verified BTC configuration and the current book through an interface with no trader/signer. The script defaults to `evidence/read-only-latest.json`; an optional filename preserves earlier snapshots.
 
-Readonly/testnet modes use a separate database, for example `.local/testnet.db`. A database is permanently bound to offline or testnet data on first use; renaming it cannot promote fixtures. Nonoffline ownership authentication requires `FORKTRADE_AUTH_ENABLED=true` **only after session authorization**. The user connects an existing injected EOA and separately reviews a domain/nonce/expiry-bound ownership challenge. Contract wallets and delegated EOAs are unsupported in v1. Readonly mode can save plans and review fresh account context after authentication but cannot send an order.
+Readonly/testnet modes require a separate PostgreSQL/Neon database URL. A database used for synthetic offline plans must remain separate from testnet data. A database is permanently bound to offline or testnet data on first use; renaming it cannot promote fixtures. Nonoffline ownership authentication requires `FORKTRADE_AUTH_ENABLED=true` **only after session authorization**. The user connects an existing injected EOA and separately reviews a domain/nonce/expiry-bound ownership challenge. Contract wallets and delegated EOAs are unsupported in v1. Readonly mode can save plans and review fresh account context after authentication but cannot send an order.
 
 Testnet execution additionally requires `FORKTRADE_EXECUTION_ENABLED=true` and `FORKTRADE_ENVIRONMENT_CONFIRMED=true`, dated confirmation of the accepted environment, a permitted live session, and each final order's approval in the app and wallet. All flags default false. The official program-resource environment mapping is [recorded](evidence/environment-2026-10-21.json). Both funded-owner sizing/margin and exact eth_call passed through the read-only CLI on 2026-10-23. Both owners completed real authentication and separately authorized orders; canonical receipts and matching filled orders were independently verified. The exact child was operated by the agent in Edge under explicit user delegation. Do not enable flags to work around missing permission or evidence.
 
@@ -58,11 +87,11 @@ Private versions are append-only and owner-scoped. Public cards expose only fiel
 
 For the dedicated DPAPI wallet created at the user's request, `wallet:testnet` supplies a user-controlled EIP-1193 wallet without importing its key into the app. This is a local acceptance companion, separate from the Next server. It opens isolated app and wallet windows, has no HTTP signing listener, and unlocks the key only in the wallet process after an explicit wallet-window decision. Standard injected browser wallets remain supported by the app.
 
-For an authorized session, put these nonsecret settings in an ignored `.env.local` (keep the default `.env.example` disabled):
+For an authorized session, put the application settings and private server-only database URL in an ignored `.env.local` (keep the default `.env.example` disabled):
 
 ```dotenv
 FORKTRADE_MODE=testnet
-FORKTRADE_DB=.local/testnet.db
+DATABASE_URL=<private-Neon-pooled-PostgreSQL-URL>
 FORKTRADE_ORIGIN=http://127.0.0.1:3000
 FORKTRADE_AUTH_ENABLED=true
 FORKTRADE_EXECUTION_ENABLED=true
@@ -89,7 +118,7 @@ The wallet window is labelled **REMIX**. Authenticate the second EOA, edit/save 
 
 The companion opens isolated Chromium windows; its provider is not installed into the user's existing Edge browser. Actual [Edge computer-use checks](evidence/edge-ui-2026-10-21.json) passed public market, missing-wallet, draft-preservation and responsive UI checks. Edge currently has no injected provider, so ownership signing and orders were not tested there. A supported user-controlled injected wallet is required; no key was imported into Edge.
 
-SQLite files, WAL files, sessions, environment files and test traces are ignored by Git. No database reset/seed command deletes execution identities. To back up the local database, stop the server and copy the database together with any remaining `-wal`/`-shm` files to a private location. Do not publish backups or reuse an offline database for testnet mode.
+Legacy SQLite/WAL files, local PostgreSQL directories, sessions, environment files and test traces remain ignored by Git. No reset/seed command deletes execution identities. Old SQLite data and wallet journals are preserved; they have not been imported into Neon or transferred externally. A new Neon database starts empty. Any later import of private historical plans/attempts requires a separately reviewed data-transfer scope that preserves their stable IDs and excludes sessions, challenges and wallet material. Use provider backups for Neon; never publish database backups or promote an offline database into testnet mode.
 
 Current source/browser evidence lives in [ACCEPTANCE.md](ACCEPTANCE.md) and the single [progress ledger](IMPLEMENTATION_PLAN.md). Latest public chain/config snapshot: [read-only evidence](evidence/read-only-m5-2026-10-20.json). Offline screenshots are synthetic and prove no live order. Mock-wallet browser routes intercept all live APIs and never reach a real signer or account. README commands describe the current app, while GOAL/PRODUCT/ARCHITECTURE retain the full target contract.
 
@@ -99,7 +128,7 @@ Implementation branch: `feat/forktrade-core`. User workflow: commit and push eac
 
 The [100-second narrated 1080p demo](evidence/forktrade-demo-narrated-2026-10-30.mp4) is prepared with English captions and a [Vietnamese subtitle file](evidence/forktrade-demo-2026-10-30.vi.srt). It uses actual 2026-10-23 captures plus labelled explanatory graphics; [provenance/QA](evidence/narrated-demo-2026-10-30.json). It does not record signing/approval or constitute a new live execution. No public post or submission has been made by creating this video.
 
-No MVP posts have been published. The official requirements were rechecked on 2026-10-23: this section needs 2 or 3 actual post URLs tagging @DreamDEXSomnia before MVP submission. [Drafts and demo checklist](DEMO.md) are prepared; drafts are not submission evidence.
+First post supplied by the user on 2026-10-30: [@vovivothien / post 1](https://x.com/vovivothien/status/2116149013636640970). Web retrieval returned 403, so content/tagging have not been independently verified. The second post URL has not been provided. The 2026-10-23 rule check requires 2 or 3 actual links tagging @DreamDEXSomnia. [Drafts and demo checklist](DEMO.md) remain separate from verified publication/submission evidence.
 
 ## Target end-to-end experience
 

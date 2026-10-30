@@ -1,7 +1,10 @@
 import type { NextConfig } from 'next';
 const config: NextConfig = {
   agentRules: false,
-  serverExternalPackages: ['@somnia-chain/markets-sdk'],
+  serverExternalPackages: ['@somnia-chain/markets-sdk','pg','@electric-sql/pglite'],
+  outputFileTracingExcludes: {
+    '/*':['./.local/**/*','./.env*','./tools/**/*','./feedback/**/*','./evidence/**/*','./db/migrations/**/*','**/node_modules/@electric-sql/pglite*','**/node_modules/@electric-sql/pglite*/**/*']
+  },
   poweredByHeader: false,
   async headers() {
     return [{source: '/:path*', headers: [

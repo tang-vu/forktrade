@@ -1,5 +1,7 @@
 # Copy-paste implementation goal
 
+**Hosting preparation update (2026-10-30):** current source supports Vercel Node.js functions with Neon/PostgreSQL persistence and local PGlite synthetic testing. The user selected preparing code before creating cloud resources. Source/database/browser checks are recorded separately from the historical 2026-10-23 live orders; no new live order or actual Vercel deployment is established. Historical SQLite data is preserved and has not been uploaded. External hosting readiness remains partial until a concrete project/database/origin is configured and verified.
+
 Open this repository in Codex and paste the entire fenced objective below as one goal. It intentionally supports a long run with resumable milestones and states the target contract. The narrow local/testnet implementation completed G1–G4 on 2026-10-23, including the actual root and separately authorized remix. External source/demo publication, X links and separate MVP submission remain pending G5. Current evidence, limitations and remaining positions are recorded in IMPLEMENTATION_PLAN.md and ACCEPTANCE.md.
 
 ```text

@@ -1,7 +1,7 @@
 import {existsSync,readFileSync,writeFileSync,mkdirSync,realpathSync,renameSync,unlinkSync,statSync} from 'node:fs';
 import {resolve,relative,isAbsolute} from 'node:path';
 import {keccak256,toHex} from 'viem';
-import {openDatabase,bindDataMode} from '../../src/server/database';
+import {database as appDatabase,mode} from '../../src/server/database';
 import {Repository} from '../../src/server/repository';
 import {invariant} from '../../src/domain/errors';
 import {verifyPreview} from '../../src/domain/plan';
@@ -27,7 +27,8 @@ async function main(){
   const lock=resolve(location.directory,'interactive-wallet.lock'),requestFile=resolve(directory,'request.json'),responseFile=resolve(directory,'response.json'),stopFile=resolve(directory,'stop.json');
   invariant(!existsSync(lock)&&!existsSync(requestFile)&&!existsSync(responseFile)&&!existsSync(stopFile),'Inspect existing wallet process/inbox before starting');
   writeFileSync(lock,JSON.stringify({pid:process.pid,startedAt:new Date().toISOString(),purpose:'temporary-one-order-edge-transport'})+'\n',{flag:'wx',mode:0o600});
-  const connection=connectReadOnly(),database=openDatabase('.local/testnet.db');bindDataMode(database,'testnet');
+  invariant(mode()!=='offline','The scoped local acceptance companion requires the same configured testnet PostgreSQL database as the app');
+  const connection=connectReadOnly(),database=await appDatabase();
   const repo=new Repository(database,'testnet'),journal=new WalletJournal(location.directory),cache=new Map<string,{fingerprint:string;reply:unknown}>();
   const stateFile=resolve(directory,`state-${scope.id}.json`);
   const state=existsSync(stateFile)?JSON.parse(readFileSync(stateFile,'utf8')) as {authSigned:boolean}:{authSigned:false};
@@ -35,7 +36,7 @@ async function main(){
   try{
     stage='public-verification';const market=await readPublicMarket();
     invariant(await connection.rpc.getChainId()===50383,'Wallet RPC network differs');
-    const plan=repo.get(location.owner.toLowerCase(),scope.planId);
+    const plan=await repo.get(location.owner.toLowerCase(),scope.planId);
     invariant(plan.currentVersion===scope.version&&plan.versions[0].id===scope.versionId&&plan.depth===1,'Authorized child version differs');
     writeFileSync(resolve(directory,'provider.js'),edgeProviderScript(location.owner,scope.origin,scope.id,scope.expiresAt),{mode:0o600});
     console.log('Temporary Edge wallet transport ready for the exact scoped child order. No HTTP listener, key export or signature yet.');
@@ -56,12 +57,12 @@ async function main(){
           const prior=journal.get(requestKey);
           if(prior){invariant(prior.requestHash===requestHash&&prior.hash,'Existing signed request needs reconciliation');reply.value=prior.hash;reply.ok=true;}
           else{
-            const current=repo.walletRequest(location.owner.toLowerCase(),tag),planNow=repo.get(location.owner.toLowerCase(),scope.planId);
+            const current=await repo.walletRequest(location.owner.toLowerCase(),tag),planNow=await repo.get(location.owner.toLowerCase(),scope.planId);
             invariant(planNow.currentVersion===scope.version,'Authorized child version changed');
             verifyEdgeOrder(scope,current.preview,planNow.id,market);
             const reviewed=walletOrder(raw,current.preview,market,location.owner);
             const fresh=await prepareLiveContext(location.owner.toLowerCase(),current.input,tag,current.preview.context.transaction);
-            verifyPreview(current.preview,fresh);repo.walletRequest(location.owner.toLowerCase(),tag);
+            verifyPreview(current.preview,fresh);await repo.walletRequest(location.owner.toLowerCase(),tag);
             walletOrder(raw,current.preview,market,location.owner);
             const [nonce,pending,native]=await Promise.all([connection.rpc.getTransactionCount({address:location.owner,blockTag:'latest'}),connection.rpc.getTransactionCount({address:location.owner,blockTag:'pending'}),connection.rpc.getBalance({address:location.owner})]);
             invariant(nonce===pending&&native>=reviewed.call.gas*reviewed.call.maxFeePerGas,'Wallet nonce/native context changed');
@@ -92,7 +93,7 @@ async function main(){
     }
     console.log('Temporary Edge wallet transport stopped. Request identities/hashes remain preserved; no automatic resend.');
   }finally{
-    database.sqlite.close();await connection.close();unlinkSync(lock);if(existsSync(stopFile))unlinkSync(stopFile);
+    await database.close();await connection.close();unlinkSync(lock);if(existsSync(stopFile))unlinkSync(stopFile);
   }
 }
 void main().catch(()=>{console.error(`Temporary Edge wallet stopped at ${stage}. No key, challenge, signature, cookie or raw payload logged. Inspect existing request state before any retry.`);process.exitCode=1;}).finally(()=>{process.removeListener('SIGINT',stop);process.removeListener('SIGTERM',stop);});
