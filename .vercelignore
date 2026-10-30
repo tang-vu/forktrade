@@ -8,3 +8,6 @@ tests/
 test-results/
 playwright-report/
 coverage/
+.vercel/
+.agents/
+skills-lock.json

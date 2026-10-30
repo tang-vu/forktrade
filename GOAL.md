@@ -1,5 +1,7 @@
 # Copy-paste implementation goal
 
+Hosted demo update (2026-10-30): the user separately authorized Vercel deployment/testing. The synthetic app is deployed at https://forktrade.vercel.app with a new Free Neon database; current hosted evidence is in evidence/vercel-neon-deployment-2026-10-30.json. Earlier code-only notes below are historical. No old private data or real order was transferred; new hosted live acceptance and external submission remain separate.
+
 Source-storage update (2026-10-30): the user confirmed intentional public visibility for tang-vu/forktrade and explicitly authorized source pushes. This supersedes the earlier private-storage restriction; deployment, historical-data transfer, wallet/live actions and external submissions remain separately scoped.
 
 **Hosting preparation update (2026-10-30):** current source supports Vercel Node.js functions with Neon/PostgreSQL persistence and local PGlite synthetic testing. The user selected preparing code before creating cloud resources. Source/database/browser checks are recorded separately from the historical 2026-10-23 live orders; no new live order or actual Vercel deployment is established. Historical SQLite data is preserved and has not been uploaded. External hosting readiness remains partial until a concrete project/database/origin is configured and verified.

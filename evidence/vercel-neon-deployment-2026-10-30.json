@@ -1,0 +1,113 @@
+{
+  "kind": "Actual Vercel + Neon deployment; explicitly synthetic/offline acceptance only",
+  "dateUtc": "2026-10-30",
+  "authorization": "User requested uploading to Vercel and testing after completing CLI login.",
+  "origin": "https://forktrade.vercel.app",
+  "sourceBaseCommit": "68f72c9cff72ffbdd6d0f0f928107b110680bcca",
+  "project": {
+    "name": "forktrade",
+    "team": "tang-vu",
+    "id": "prj_pulBN5dKMEfly9HfZf9XxTj6AOzt",
+    "plan": "Hobby",
+    "node": "24.x",
+    "framework": "nextjs",
+    "functionRegion": "sin1"
+  },
+  "database": {
+    "provider": "Neon",
+    "resource": "forktrade-demo",
+    "id": "store_VGBjZdq9ILvPLq4u",
+    "plan": "Free free_v3",
+    "requestedRegion": "sin1",
+    "environments": [
+      "production"
+    ],
+    "auth": false,
+    "realtime": false,
+    "mode": "permanently offline; new database; no historical import"
+  },
+  "initialDeployment": {
+    "id": "dpl_98YtsLRLhtGRFj5UzEF38gVwgBDz",
+    "url": "https://forktrade-i7nruwcj8-tang-vu.vercel.app",
+    "state": "READY",
+    "applicationSource": "Base commit plus reviewed region/upload-ignore configuration only"
+  },
+  "flags": {
+    "FORKTRADE_MODE": "offline",
+    "FORKTRADE_AUTH_ENABLED": false,
+    "FORKTRADE_EXECUTION_ENABLED": false,
+    "FORKTRADE_ENVIRONMENT_CONFIRMED": false
+  },
+  "checks": {
+    "migration": "Passed once explicitly against the new Neon target; no fixtures or old data seeded.",
+    "upload": "Dry manifest: 67 source files; no private/local/environment/wallet contents. Empty ignored directory entries contain no data.",
+    "https": {
+      "base": "https://forktrade.vercel.app",
+      "mode": "synthetic/offline",
+      "prepare": "passed",
+      "storage": "Neon PostgreSQL",
+      "concurrentApprovals": 4,
+      "uniqueRootAttempt": 1,
+      "crossOwner": "denied",
+      "csrf": "denied",
+      "crossOrigin": "denied",
+      "syntheticPublication": "labelled and redacted",
+      "remix": "independent approval and one-level source pinned",
+      "persistence": "pending redeployment verification"
+    },
+    "chromium": {
+      "origin": "https://forktrade.vercel.app",
+      "mode": "actual hosted synthetic demo",
+      "desktop": {
+        "width": 1280,
+        "flow": "save, explicit review, synthetic approval, selected-field publication, independent remix and separate approval",
+        "passed": true
+      },
+      "mobile": {
+        "width": 360,
+        "root": {
+          "client": 360,
+          "scroll": 360
+        },
+        "remix": {
+          "client": 360,
+          "scroll": 360
+        },
+        "passed": true
+      },
+      "pageErrors": 0,
+      "failedApiCalls": 0,
+      "cleanup": "both browser contexts withdrew their cards and revoked sessions",
+      "screenshots": "four actual hosted desktop/mobile captures; fixtures explicitly labelled",
+      "verifiedAt": "2026-10-30T16:00:58.111Z"
+    },
+    "publicMarket": {
+      "status": 200,
+      "mode": "read-only",
+      "chainId": 50383,
+      "elapsedMs": 2399
+    },
+    "visualReview": "Actual hosted desktop root and mobile remix captures inspected; explicit synthetic labels and readable layout.",
+    "persistence": "Pending second actual production deployment."
+  },
+  "corrections": [
+    "First test runner used unsupported synthetic scenario partial and correctly received 400 before any child approval claim. Corrected to partial_cancelled; complete independent synthetic approval then passed.",
+    "Initial dry-manifest reader assumed UTF-8, while PowerShell redirected UTF-16. Corrected BOM-aware decoding; upload review passed."
+  ],
+  "preservation": "No wallet/signature/order/mainnet/cleanup of real positions; old SQLite and wallet data not transferred. New synthetic test records only.",
+  "limitations": [
+    "No hosted wallet/live testnet session or order.",
+    "No bounty submission or second X post.",
+    "CLI public canonical domain verified with unauthenticated HTTP and actual browser; web fetch tool could not access the new domain."
+  ],
+  "fileHashes": {
+    "vercel.json": "7a1d2a076d1b08351887b42a0dd321506a3a2b845c34b8e4af24014fd9facc63",
+    ".vercelignore": "b9c4f9edb1fde9ce4a314ba394950582a52182a22eed8113e1e728277d2d614b",
+    ".gitignore": "5584f8673bd4d2997e16d67e8356ed9bcf2fd3fc7d2e1727998dc571e4673509",
+    "evidence/hosted-synthetic-card-desktop-2026-10-30.png": "38611732d65060faf7b90973b14d312c53ec2ed84361460af193b2d93b381ea6",
+    "evidence/hosted-synthetic-card-mobile-2026-10-30.png": "35b6e8ab7d6a56acbfac58fc2f1a741a9cc5ee40104e045d8796178e4de8c72c",
+    "evidence/hosted-synthetic-remix-desktop-2026-10-30.png": "6f8ab91d485b49a33da0399593b9b224a95d66febe42345a9f8c4d2444c579bd",
+    "evidence/hosted-synthetic-remix-mobile-2026-10-30.png": "865623dfcac8def69f7666d51148087f6c90b78dd47c1035ff328f5f381f5b12"
+  },
+  "fileHashScope": "Raw local working-tree bytes at capture; Git newline normalization may differ."
+}

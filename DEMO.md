@@ -1,6 +1,6 @@
 # ForkTrade demo and separate MVP submission preparation
 
-Hosting preparation (2026-10-30): the new code uses PostgreSQL/Neon for Vercel, while this demo's real order captures remain from the prior local SQLite build. No cloud resource/deployment or private historical-data transfer has occurred. User-supplied first X post: [@vovivothien](https://x.com/vovivothien/status/2116149013636640970); web retrieval returned 403, so content/tagging remain independently unverified. No second actual post URL has been recorded.
+Hosting update (2026-10-30): [forktrade.vercel.app](https://forktrade.vercel.app) is deployed on Vercel with a new Free Neon database and explicitly synthetic fixtures. HTTPS and desktop/mobile checks pass; this demo's real order captures remain from the prior local SQLite build. No private historical data or real order was imported. User-supplied first X post: [@vovivothien](https://x.com/vovivothien/status/2116149013636640970); web retrieval returned 403, so content/tagging remain independently unverified. No second actual post URL has been recorded.
 
 Source-storage clarification, 2026-10-30: the user confirmed they intentionally made the original source repository PUBLIC and explicitly instructed the agent to push and update the notes. The earlier private-storage hold is resolved; the agent did not change repository visibility. The narrated video remains complete at `55466a5`; PostgreSQL/Vercel code is committed at `68eaf62`. Source synchronization is authorized; deployment and separate MVP submission remain pending.
 

@@ -16,6 +16,8 @@ Never create fake users, real-looking execution histories, fills, screenshots, f
 
 ## Authorization gates
 
+Deployment session (2026-10-30): the user explicitly requested uploading to Vercel and testing. This authorizes the ForkTrade project in team tang-vu, a new Free Neon demo database, public synthetic deployment at https://forktrade.vercel.app, migrations and synthetic/read-only acceptance checks. Wallet authentication, signing, live orders and historical private-data transfer remain outside this deployment session. This specific session authorization supersedes the generic deployment gate below.
+
 The future implementation goal permits local source edits, suitable dependency installation when available and permitted by that environment, local builds/tests, synthetic fixtures, and harmless public/read-only integration checks. It does not itself authorize:
 
 - Wallet creation/import, key extraction, funding, faucets/voucher claims, token allowances, operator/session-key grants, signing requests, or any transaction.

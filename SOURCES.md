@@ -1,5 +1,9 @@
 # Sources, provenance and verification checklist
 
+## Actual Vercel/Neon deployment - 2026-10-30
+
+User authorized deployment/testing. Official [Vercel integration docs](https://vercel.com/docs/cli/integration), [project docs](https://vercel.com/docs/cli/project), [deploy docs](https://vercel.com/docs/cli/deploy) and [Neon managed-integration guide](https://neon.com/docs/guides/vercel-managed-integration) were read. CLI 65.8.0 help supplies the exact current flags: `--billing-plan free_v3 --meta region=sin1 --meta auth=false --meta realtime=false --environment production --no-env-pull`. No dependency change. Created only ForkTrade on the existing Hobby team and its new Free Neon resource. Production functions report sin1; a real Neon migration, HTTPS APIs, public chain reads and Chromium desktop/mobile checks passed. A second deployment tests durable state before final handoff. No wallet or real order is part of this hosted acceptance. [Evidence](evidence/vercel-neon-deployment-2026-10-30.json).
+
 ## Source visibility and local Vercel CLI check ? 2026-10-30
 
 The user confirmed they intentionally made `tang-vu/forktrade` public and explicitly requested pushing and updating the notes. Connected GitHub metadata verifies PUBLIC; this supersedes the earlier private-storage hold without changing any deployment or wallet permission.
