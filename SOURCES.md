@@ -1,5 +1,11 @@
 # Sources, provenance and verification checklist
 
+## Source visibility and local Vercel CLI check ? 2026-10-30
+
+The user confirmed they intentionally made `tang-vu/forktrade` public and explicitly requested pushing and updating the notes. Connected GitHub metadata verifies PUBLIC; this supersedes the earlier private-storage hold without changing any deployment or wallet permission.
+
+The official [Vercel whoami reference](https://vercel.com/docs/cli/whoami) and [CLI options](https://vercel.com/docs/cli/global-options) were checked. No global Vercel executable was on PATH. npm registry metadata pinned the one-time check to `vercel 65.8.0`, downloaded only into ignored `.local/npm-vercel-cache`; `npm.cmd exec --cache .local/npm-vercel-cache --yes --package vercel@65.8.0 -- vercel whoami` returned `Logged out` (exit 1). Telemetry was disabled for that process. No login, token display, project creation/linking or deployment was performed; no application dependency or lockfile changed.
+
 ## Vercel/Neon persistence revision — verified 2026-10-30
 
 The user requested a Vercel + Neon web runtime without a self-managed application server, then explicitly chose code preparation before creating either project. Official [Vercel pooling guidance](https://vercel.com/kb/guide/connection-pooling-with-functions), [Neon pooling documentation](https://neon.com/docs/connect/connection-pooling) and [Drizzle PGlite documentation](https://orm.drizzle.team/docs/get-started/pglite-new) were read. Runtime uses a small module-scoped `pg` pool with `attachDatabasePool`, PostgreSQL transactions and server-derived ownership. Local synthetic tests use the same schema on PGlite; hosted instances reject local fallback. Pooling is not a substitute for durable PostgreSQL state.

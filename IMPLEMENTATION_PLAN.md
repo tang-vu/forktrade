@@ -85,6 +85,12 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-30 ? public-source confirmation and Vercel login check
+
+User explicitly said ?Push ?i s?a note ?i, t?i ?? public r?: they intentionally made `tang-vu/forktrade` public and authorize pushing this branch. Connected GitHub metadata confirms PUBLIC. This supersedes the earlier private-storage instruction; no visibility mutation was made. Updated AGENTS.md and current README/GOAL/security/demo/bounty/acceptance/source notes; the earlier storage-hold entries below describe the state before this clarification. PostgreSQL code increment `68eaf6256311134ace4b825a19d55509305a2004` and this documentation follow-up are authorized for synchronization to `origin/feat/forktrade-core` without force-push.
+
+Vercel check: no global executable on PATH; official docs/npm metadata checked, then `npm.cmd exec --cache .local/npm-vercel-cache --yes --package vercel@65.8.0 -- vercel whoami` returned **Logged out**, exit 1. Download/cache stayed inside ignored `.local`; telemetry disabled for the check. No login/global credential update, project linking, resource creation or deployment. Cloud setup remains unrun under the user's code-first choice. For this documentation-only follow-up, JSON/Markdown/credential-pattern and `git diff --check` verification apply; prior code evidence remains 113 source tests, 7 actual PostgreSQL tests and 24 browser cases. Push/remote equality and CI results are recorded in the handoff after synchronization. Next concrete step is a user-completed Vercel login, then selection of an exact Vercel/Neon project and separately scoped cloud setup.
+
 ### 2026-10-30 — Vercel/Neon code preparation and PostgreSQL verification
 
 User requested that the full web app run on Vercel + Neon without a self-managed application server, then explicitly selected **prepare code first; no cloud project exists**. Continued from local d4b2b1b (remote 55466a5); this increment is the commit containing this entry. No Vercel/Neon resource, database transfer, wallet/signature/order, deployment or submission was created. The source repository still returns PUBLIC; the standing private-storage clarification remains pending, so no new push was made.

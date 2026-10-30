@@ -86,7 +86,7 @@
   ],
   "externalGates": {
     "cloud": "No project exists; user chose prepare code first",
-    "sourcePush": "Original GitHub repository is public despite standing private-storage requirement; no additional push in this run",
+    "sourcePush": "Resolved by explicit user instruction on 2026-10-30: user intentionally made tang-vu/forktrade public and authorized source pushes; connected GitHub metadata confirms public.",
     "x1": "User-reported https://x.com/vovivothien/status/2116149013636640970; fetch 403",
     "x2": "No actual URL provided",
     "mvpSubmission": "Not performed"
@@ -112,5 +112,13 @@
     "db/migrate.ts": "0d70395e12d6fdbe64af50ef35f39c37cec2735063ca803c0c2e9af3de61eb3d",
     "tests/migrations.test.ts": "510ea3c4df0023270dd79172b30fb0ccf3dadff43a1268c6c00df2033bcd3a8f"
   },
-  "fileHashScope": "Exact local working-tree bytes at verification; Git newline normalization may differ on another platform."
+  "fileHashScope": "Exact local working-tree bytes at verification; Git newline normalization may differ on another platform.",
+  "followup": {
+    "dateUtc": "2026-10-30",
+    "sourceStorage": "Intentional public source confirmed by user; push authorized; no visibility change by agent.",
+    "vercelCli": "65.8.0, process-local npm exec cache under ignored .local, whoami returned Logged out (exit 1).",
+    "cloud": "No login, project linking, cloud resource or deployment attempted.",
+    "sourceCommit": "68eaf6256311134ace4b825a19d55509305a2004",
+    "validation": "Documentation-only follow-up; source checks remain separately recorded above."
+  }
 }

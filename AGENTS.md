@@ -2,9 +2,9 @@
 
 ## Read and resume
 
-User workflow (2026-10-20): commit and push each coherent, verified update to the focused implementation branch. Keep this repository private; pushing this branch does not authorize deployment, public access, or live actions.
+User workflow (2026-10-20; source-storage update 2026-10-30): commit and push each coherent, verified update to the focused implementation branch. On 2026-10-30 the user confirmed they intentionally made tang-vu/forktrade public and explicitly instructed the agent to push and update the notes. Public source pushes to this repository are authorized and supersede the earlier private-storage requirement. Pushing this branch does not authorize deployment, data transfer, live actions or publication elsewhere.
 
-Read README.md, GOAL.md, PRODUCT.md, ARCHITECTURE.md, IMPLEMENTATION_PLAN.md, ACCEPTANCE.md, SECURITY.md, BOUNTY.md, SOURCES.md, and feedback/README.md before implementing. This is initially a Markdown-only planning repository; the app is unbuilt. The present documentation task authorizes documentation and private GitHub storage only. A later user invocation of GOAL.md authorizes local implementation within its boundaries.
+Read README.md, GOAL.md, PRODUCT.md, ARCHITECTURE.md, IMPLEMENTATION_PLAN.md, ACCEPTANCE.md, SECURITY.md, BOUNTY.md, SOURCES.md, and feedback/README.md before implementing. This is initially a Markdown-only planning repository; the app is unbuilt. The initial documentation task authorized documentation and private GitHub storage; the user's 2026-10-30 instruction supersedes that source-storage restriction for this now-public repository. A later user invocation of GOAL.md authorizes local implementation within its boundaries.
 
 At every resumed run, inspect the branch, working tree, latest ledger, and any newer user instructions. Preserve unrelated changes. Work only in this project. Do not modify local memories, other repositories, global credentials, or system settings to make a check pass. Use a focused implementation branch for the future app. Do not overwrite existing work or force-push shared history.
 
@@ -20,7 +20,7 @@ The future implementation goal permits local source edits, suitable dependency i
 
 - Wallet creation/import, key extraction, funding, faucets/voucher claims, token allowances, operator/session-key grants, signing requests, or any transaction.
 - Sending an order, retrying a possibly sent order, cancelling an order, closing a position, or any mainnet action.
-- Deployment, external publication, social posts, bounty submission, sending email, granting judge access, inviting collaborators, or changing this private repository to public.
+- Deployment, external publication outside the authorized public source pushes, social posts, bounty submission, sending email, granting judge access, inviting collaborators, or changing repository visibility again.
 
 Prepare concrete reviewable results and finish independent offline work before requesting a missing permission. Identify the exact action, account/network or destination, parameters/data, and reason it is needed. Obtain explicit user authorization for the required live test session and explicit approval of each final order in the application. A previous order approval never covers a remix or a changed order. Do not click through the user's wallet approval on their behalf without a specifically authorized supported flow.
 
