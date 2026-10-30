@@ -24,7 +24,8 @@
     ],
     "auth": false,
     "realtime": false,
-    "mode": "permanently offline; new database; no historical import"
+    "mode": "permanently offline; new database; no historical import",
+    "verifiedEndpointRegion": "ap-southeast-1"
   },
   "initialDeployment": {
     "id": "dpl_98YtsLRLhtGRFj5UzEF38gVwgBDz",
@@ -53,7 +54,9 @@
       "crossOrigin": "denied",
       "syntheticPublication": "labelled and redacted",
       "remix": "independent approval and one-level source pinned",
-      "persistence": "pending redeployment verification"
+      "persistence": "passed across a second actual Vercel production deployment",
+      "withdrawal": "original and remix unavailable; comparison source removed",
+      "verifiedAt": "2026-10-30T16:06:28.479Z"
     },
     "chromium": {
       "origin": "https://forktrade.vercel.app",
@@ -88,7 +91,27 @@
       "elapsedMs": 2399
     },
     "visualReview": "Actual hosted desktop root and mobile remix captures inspected; explicit synthetic labels and readable layout.",
-    "persistence": "Pending second actual production deployment."
+    "persistence": "Passed across two distinct actual Vercel production deployments; same cookies/plans/request IDs, no resend.",
+    "finalAnonymous": {
+      "homeStatus": 200,
+      "healthStatus": 200,
+      "health": {
+        "status": "ok",
+        "mode": "offline",
+        "storage": "postgresql",
+        "hosted": true
+      },
+      "anonymousSession": null,
+      "authEnabled": false,
+      "executionEnabled": false,
+      "cacheControl": "no-store, private"
+    },
+    "ci": {
+      "sourceCommit": "5fd7e1b2f39497d7a4d27f9281b011bdcbba5cb8",
+      "url": "https://github.com/tang-vu/forktrade/actions/runs/41086623264",
+      "conclusion": "success"
+    },
+    "cleanup": "All API/browser runner test cards withdrawn and sessions revoked. One abandoned initial-runner card plus its remaining exact-labelled fixture session were handled separately. Immutable synthetic plan/version/preview/request evidence retained."
   },
   "corrections": [
     "First test runner used unsupported synthetic scenario partial and correctly received 400 before any child approval claim. Corrected to partial_cancelled; complete independent synthetic approval then passed.",
@@ -98,7 +121,8 @@
   "limitations": [
     "No hosted wallet/live testnet session or order.",
     "No bounty submission or second X post.",
-    "CLI public canonical domain verified with unauthenticated HTTP and actual browser; web fetch tool could not access the new domain."
+    "CLI public canonical domain verified with unauthenticated HTTP and actual browser; web fetch tool could not access the new domain.",
+    "No sustained load test or extended Neon idle/wake test."
   ],
   "fileHashes": {
     "vercel.json": "7a1d2a076d1b08351887b42a0dd321506a3a2b845c34b8e4af24014fd9facc63",
@@ -109,5 +133,34 @@
     "evidence/hosted-synthetic-remix-desktop-2026-10-30.png": "6f8ab91d485b49a33da0399593b9b224a95d66febe42345a9f8c4d2444c579bd",
     "evidence/hosted-synthetic-remix-mobile-2026-10-30.png": "865623dfcac8def69f7666d51148087f6c90b78dd47c1035ff328f5f381f5b12"
   },
-  "fileHashScope": "Raw local working-tree bytes at capture; Git newline normalization may differ."
+  "fileHashScope": "Raw local working-tree bytes at capture; Git newline normalization may differ.",
+  "finalDeployment": {
+    "id": "dpl_Geg8UJQfdEsn9SY3Bq3Ts6Tt7WfN",
+    "state": "READY",
+    "target": "production",
+    "regions": [
+      "sin1"
+    ],
+    "sourceCommit": "5fd7e1b2f39497d7a4d27f9281b011bdcbba5cb8",
+    "sourceBranch": "feat/forktrade-core",
+    "url": "https://forktrade-gkbsx1e0r-tang-vu.vercel.app"
+  },
+  "commands": [
+    "CLI 65.8.0 project create/link/update forktrade in tang-vu",
+    "integration add neon --name forktrade-demo --billing-plan free_v3 --meta region=sin1 --meta auth=false --meta realtime=false --environment production --no-env-pull",
+    "env pull .local/vercel-deploy/production.env --environment production; server-only, ignored",
+    "node --env-file=.local/vercel-deploy/production.env --import tsx scripts/migrate.ts",
+    "deploy --dry --json --prod; manifest reviewed before upload",
+    "deploy --prod --yes --scope tang-vu (two READY deployments)",
+    "node .local/vercel-deploy/remote-check.mjs prepare, then verify after redeployment",
+    "node .local/vercel-deploy/browser-check.mjs (actual hosted Chromium)",
+    "Exact synthetic-fixture cleanup through repository publication rules and scoped session revocation; no identity/history deletion"
+  ],
+  "runnerHashes": {
+    ".local/vercel-deploy/remote-check.mjs": "e0dc320386eda861573e63a87a992cbfd1ec1e9ecf29d217dd01142d6036a1b4",
+    ".local/vercel-deploy/browser-check.mjs": "aaf068904e1436913f751cbca371c11a1249a42bf35b7f4c29dbfb72aac41c41",
+    ".local/vercel-deploy/cleanup.mts": "f1e16d83a1e27c3f9082f2f6fbc58f40e4a01ac4074bc5c48cb01bcdb8d66150"
+  },
+  "runnerScope": "One-off validation scripts retained only in ignored workspace; public evidence contains no cookies or connection values.",
+  "result": "Completed: actual public synthetic deployment and hosted acceptance; live wallet/order gates remain separate."
 }
