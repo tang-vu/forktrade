@@ -18,6 +18,10 @@ test('SYNTHETIC temporary Edge provider correlates replies, blocks unsupported m
   await page.evaluate(({id,scope})=>{const w=window as unknown as {forktradeEdgeDeliver:(p:unknown)=>void};w.forktradeEdgeDeliver({id,scopeId:'wrong-synthetic-scope',ok:true,value:'SYNTHETIC-WRONG'});w.forktradeEdgeDeliver({id,scopeId:scope,ok:true,value:'SYNTHETIC-NOT-A-SIGNATURE'});},{id:requests[0].id,scope});
   expect(await pending).toBe('SYNTHETIC-NOT-A-SIGNATURE');
   const rejected=await page.evaluate(async()=>{const w=window as unknown as {ethereum:{request:(p:unknown)=>Promise<unknown>}};try{await w.ethereum.request({method:'eth_sign'});}catch(error){return (error as {code:number}).code;}});expect(rejected).toBe(4200);expect(requests).toHaveLength(1);
+  const networkRead=page.evaluate(async()=>{const w=window as unknown as {ethereum:{request:(p:unknown)=>Promise<unknown>}};return w.ethereum.request({method:'eth_getBlockByNumber',params:['0x0',false]});});
+  await expect.poll(()=>requests.length).toBe(2);expect(requests[1].method).toBe('eth_getBlockByNumber');
+  await page.evaluate(({id,scope})=>{const w=window as unknown as {forktradeEdgeDeliver:(p:unknown)=>void};w.forktradeEdgeDeliver({id,scopeId:scope,ok:true,value:{hash:'SYNTHETIC_NETWORK_FINGERPRINT'}});},{id:requests[1].id,scope});
+  expect(await networkRead).toEqual({hash:'SYNTHETIC_NETWORK_FINGERPRINT'});
   expect(await page.evaluate(()=>{const w=window as unknown as {forktradeEdgeStop:()=>void;ethereum?:unknown};w.forktradeEdgeStop();return w.ethereum===undefined;})).toBe(true);
 });
 test('SYNTHETIC Edge provider preserves existing wallets and never installs in a child frame or wrong origin',async({browser})=>{

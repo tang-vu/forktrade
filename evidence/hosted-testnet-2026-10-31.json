@@ -1,0 +1,97 @@
+{
+  "kind": "Hosted testnet profile preparation; actual unsigned reads, local source/browser tests; real hosted ownership and orders remain separate",
+  "dateUtc": "2026-10-31",
+  "sourceBaseCommit": "4ade58c04b31eb55f30e12161e5141847e9e9075",
+  "branch": "feat/forktrade-core",
+  "authorization": "User requested completing the hosted testnet path; each exact final order still requires its own in-app and wallet decision. No new funding/key export/import/old-data transfer is included.",
+  "origin": "https://forktrade.vercel.app",
+  "provider": {
+    "project": "tang-vu/forktrade",
+    "testnetResource": "forktrade-testnet",
+    "resourceId": "store_DG8QO6VooDyX2f6t",
+    "plan": "Free free_v3",
+    "region": "sin1",
+    "productionOnly": true,
+    "oldOfflineResource": "forktrade-demo preserved and disconnected from future production config",
+    "modeIsolation": "New independent testnet database; explicit migration passed; zero historical plans/attempts imported; previous database remains offline"
+  },
+  "checks": {
+    "unit": {
+      "passed": 122,
+      "skipped": 7,
+      "skippedReason": "Actual PostgreSQL suite uses its isolated loopback URL; CI result recorded after push"
+    },
+    "typecheck": "passed",
+    "lint": "passed",
+    "build": "passed",
+    "syntheticBrowser": {
+      "passed": 26,
+      "scope": "Local Chromium, synthetic providers/API boundaries; not real ownership/signatures/orders"
+    },
+    "targetedOrderNetworkPolicy": {
+      "passed": 24
+    },
+    "publicReadonly": "evidence/read-only-hosted-testnet-2026-10-31.json",
+    "unsignedAccountReadiness": {
+      "recordedAt": "2026-10-31T01:47:11.898Z",
+      "results": [
+        {
+          "role": "root",
+          "status": "passed",
+          "chainId": 50383,
+          "quantity": "0.00013",
+          "scope": "actual owner/account/market and exact unsigned eth_call; no request persisted, key, signing or broadcast"
+        },
+        {
+          "role": "remix",
+          "status": "passed",
+          "chainId": 50383,
+          "quantity": "0.00013",
+          "scope": "actual owner/account/market and exact unsigned eth_call; no request persisted, key, signing or broadcast"
+        }
+      ]
+    },
+    "runtime": "pending deployment",
+    "actualOwnership": "unrun",
+    "newRootOrder": "unrun",
+    "newRemixOrder": "unrun"
+  },
+  "changes": [
+    "Explicit user-triggered chain switch/add and chain re-read; no account/sign/order action during setup",
+    "No initial offline controls while server mode loads",
+    "Wallet network fingerprint checked before ownership or durable order claim/signing",
+    "Existing local wallet client accepts only explicit --hosted plus exact canonical HTTPS origin; loopback remains default",
+    "Network fingerprint transport is a strictly scoped read; no key deployed or approval bypass"
+  ],
+  "flagsPrepared": {
+    "FORKTRADE_MODE": "testnet",
+    "FORKTRADE_AUTH_ENABLED": true,
+    "FORKTRADE_EXECUTION_ENABLED": true,
+    "FORKTRADE_ENVIRONMENT_CONFIRMED": true
+  },
+  "unrun": [
+    "New actual hosted ownership session",
+    "New separately approved root and remix orders/reconciliation",
+    "Second X URL and separate MVP submission"
+  ],
+  "preservation": "No wallet unlocked, signature, new order, funding, faucet, allowance, operator grant, old SQLite import or position cleanup in this preparation. Old journal identities preserved.",
+  "fileHashes": {
+    "src/integrations/network.ts": "aa59825f785dc25ebece95a1ee47d9621971dc87a802e157abb45eeecba3b4a7",
+    "src/integrations/browser-wallet.ts": "88c1e21ec7a361c8c9ca2166f305363c8d024e82200ab76e585781fa3656b721",
+    "src/components/wallet-session.tsx": "f464ad93d0644183741922dba6a6de4e7da6e251959c81d1d8dcb10ab13f17d5",
+    "src/components/workspace.tsx": "d281cfb09397175f9f4df841c7d85cb3ad98fa2b43872555c34d4b565fd910d5",
+    "tools/local-wallet/policy.ts": "2805bd7203ddb7ffd27a2b8c0abfb9cd5531241d120ccff73342e5fc0dc9ae83",
+    "tools/local-wallet/run.ts": "f23b84871998204afa286f200d149644b0745cab06b705c0bd97f705822915b1",
+    "tools/local-wallet/edge-policy.ts": "82085c99ed1acc711a193cd603a133dfd34ddff68376fd8527b9796bb0e82e76",
+    "tools/local-wallet/edge-provider.ts": "2d9fb85108f54a2241b9c1c56856dcb556824ba0b8d6eefe654ed1b13ce4f431",
+    "tools/local-wallet/edge.ts": "3f363dfc424da84cde2c6d87900e9bb90d8ffcabe9028d53e81c8c1341b7c9a6",
+    "tests/wallet-network.test.ts": "83ce81f2f9bfbb21f86a8050934662bbc2827c137f550904e7eb64cf85ee79dc",
+    "tests/order-flow.test.ts": "c3e17cce7a4c47e2329ebdd57b270bfeceb10f160d41a4587fd785acdfb9fc19",
+    "tests/local-wallet.test.ts": "765af7276d716d20b8d75e9362b3b8d99017bc438aaa59f05cfb9892941e13ab",
+    "tests/e2e/live-wallet.spec.ts": "a92828acd62c7f7b29e8d2e53bee8e92c49bd7f8c2fd6d083812c3463186a6dc",
+    "tests/e2e/local-wallet.spec.ts": "a701d2ed3b6c14adb689fb2a7e44a946e6ed309dc5b1a98fb5a5622a68440c1b",
+    ".env.vercel.testnet.example": "6fe28735521a9694f34baa37c79d3528c136ec589c7bb05a9648f5151257446b",
+    "evidence/read-only-hosted-testnet-2026-10-31.json": "54f609e97146a2a1f644a4c46655e434deb214d3370338d12759d6d6e8d3b335"
+  },
+  "fileHashScope": "Exact working-tree bytes; newline normalization may differ after checkout."
+}

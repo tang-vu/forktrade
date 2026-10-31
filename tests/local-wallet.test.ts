@@ -9,7 +9,7 @@ import {prepareLiveContext} from '../src/integrations/prepare-order';
 import {verifiedMarket} from '../src/integrations/read-context';
 import {makePreview} from '../src/domain/plan';
 import {orderCall} from '../src/integrations/order-call';
-import {localOrigin,ownershipMessage,requestFingerprint,transactionTag,walletOrder} from '../tools/local-wallet/policy';
+import {localOrigin,walletOrigin,HOSTED_TESTNET_ORIGIN,ownershipMessage,requestFingerprint,transactionTag,walletOrder} from '../tools/local-wallet/policy';
 import {WalletJournal} from '../tools/local-wallet/journal';
 const owner=SYNTHETIC_OWNER as Address;
 async function fixture(){
@@ -53,4 +53,19 @@ describe('durable local wallet requests (no key/network)',()=>{
     expect(journal.get('SYNTHETIC-failed')?.state).toBe('not_broadcast');expect(sends).toBe(0);
     await expect(journal.broadcast('SYNTHETIC-failed','SYNTHETIC-payload',0,async()=> '0x1234',async()=> '0x1234')).rejects.toThrow(/no hash/);
   }));
+});
+
+
+describe('explicit hosted companion origin (synthetic policy fixtures only)',()=>{
+  it('keeps loopback as the default and requires opt-in for one exact HTTPS host',()=>{
+    expect(walletOrigin('http://127.0.0.1:3000')).toBe('http://127.0.0.1:3000');
+    expect(()=>walletOrigin(HOSTED_TESTNET_ORIGIN)).toThrow(/loopback/);
+    expect(walletOrigin(HOSTED_TESTNET_ORIGIN,true)).toBe(HOSTED_TESTNET_ORIGIN);
+    for(const value of ['http://forktrade.vercel.app','https://forktrade.vercel.app/','https://forktrade.vercel.app:444','https://forktrade.vercel.app.evil.invalid','https://preview-forktrade.vercel.app','https://user:synthetic@forktrade.vercel.app','http://127.0.0.1:3000'])expect(()=>walletOrigin(value,true)).toThrow(/exact/);
+  });
+  it('binds hosted ownership challenges to the exact audience instead of accepting loopback signatures',()=>{
+    const now=Date.now(),fields={address:owner,chainId:50383,domain:'forktrade.vercel.app',uri:HOSTED_TESTNET_ORIGIN,version:'1' as const,nonce:'ab'.repeat(16),issuedAt:new Date(now),expirationTime:new Date(now+240000),statement:'Authenticate ownership for private ForkTrade testnet plans. This grants no trading authority.'};
+    const message=createSiweMessage(fields);expect(ownershipMessage([toHex(message),owner],owner,HOSTED_TESTNET_ORIGIN).message).toBe(message);
+    const old=createSiweMessage({...fields,domain:'127.0.0.1:3000',uri:'http://127.0.0.1:3000'});expect(()=>ownershipMessage([toHex(old),owner],owner,HOSTED_TESTNET_ORIGIN)).toThrow(/Unsupported ownership/);
+  });
 });

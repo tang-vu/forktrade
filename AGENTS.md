@@ -16,6 +16,8 @@ Never create fake users, real-looking execution histories, fills, screenshots, f
 
 ## Authorization gates
 
+Hosted testnet continuation (2026-10-31): after reviewing the missing live-hosted path, the user explicitly said to do it. This authorizes implementing and deploying the testnet profile on the existing tang-vu/forktrade Vercel project, a separate Free Neon testnet database, current public/unsigned account readiness checks, and preparing the supported user-controlled wallet/ownership flow. Each final order still requires its own explicit in-app approval and wallet decision; this is not blanket approval for a changed/new order, funding, new wallet, allowance, key export, historical-data import or position cleanup. The exact canonical hosted wallet origin is https://forktrade.vercel.app.
+
 Deployment session (2026-10-30): the user explicitly requested uploading to Vercel and testing. This authorizes the ForkTrade project in team tang-vu, a new Free Neon demo database, public synthetic deployment at https://forktrade.vercel.app, migrations and synthetic/read-only acceptance checks. Wallet authentication, signing, live orders and historical private-data transfer remain outside this deployment session. This specific session authorization supersedes the generic deployment gate below.
 
 The future implementation goal permits local source edits, suitable dependency installation when available and permitted by that environment, local builds/tests, synthetic fixtures, and harmless public/read-only integration checks. It does not itself authorize:

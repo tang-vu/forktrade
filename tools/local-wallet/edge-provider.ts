@@ -16,7 +16,7 @@ export function edgeProviderScript(owner:string,origin:string,scopeId:string,exp
         if (args.method === 'eth_chainId') return '0xc4cf';
         if (args.method === 'eth_accounts') return connected ? [owner] : [];
         if (args.method === 'eth_requestAccounts') {connected = true; return [owner];}
-        if (!connected || !['personal_sign', 'eth_sendTransaction'].includes(args.method)) throw error('Unsupported wallet method', 4200);
+        if (!connected || !['personal_sign', 'eth_sendTransaction', 'eth_getBlockByNumber'].includes(args.method)) throw error('Unsupported wallet method', 4200);
         if (pending.size) throw error('An existing local wallet request must finish first', -32000);
         const id = crypto.randomUUID();
         return new Promise((resolve, reject) => {

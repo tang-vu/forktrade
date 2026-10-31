@@ -3,7 +3,7 @@ import {hidekiTestnet} from '@somnia-chain/markets-sdk/chains';
 import {parseSiweMessage} from 'viem/siwe';
 import type {OrderPayload} from '../domain/plan';
 import {invariant} from '../domain/errors';
-import {EXPECTED_CHAIN} from './network';
+import {EXPECTED_CHAIN,EXPECTED_GENESIS_HASH,RPC,EXPLORER} from './network';
 import {orderCall} from './order-call';
 
 export type WalletProvider=EIP1193Provider;
@@ -12,7 +12,24 @@ export async function walletContext(provider:WalletProvider,owner:string) {
   const [accounts,chain]=await Promise.all([provider.request({method:'eth_accounts'}),provider.request({method:'eth_chainId'})]);
   invariant(accounts.length>0 && isAddress(accounts[0]) && accounts[0].toLowerCase()===owner.toLowerCase(),'Wallet account changed or disconnected; fresh review required');
   invariant(BigInt(chain)===BigInt(EXPECTED_CHAIN),'Wallet network changed; switch manually and review again');
+  const genesis=await provider.request({method:'eth_getBlockByNumber',params:['0x0',false]});
+  invariant(genesis?.hash?.toLowerCase()===EXPECTED_GENESIS_HASH,'Wallet RPC does not match the verified Hideki testnet. Update its RPC to '+RPC+' and connect again');
   return {owner:accounts[0],chainId:EXPECTED_CHAIN};
+}
+/** Only called from the user's explicit network-setup button; never signs or sends. */
+export async function prepareWalletNetwork(provider:WalletProvider|undefined,enabled:boolean) {
+  invariant(enabled,'Wallet network setup is disabled');
+  invariant(provider,'No supported injected wallet found');
+  const chainId=numberToHex(EXPECTED_CHAIN);
+  if(BigInt(await provider.request({method:'eth_chainId'}))===BigInt(EXPECTED_CHAIN))return;
+  try{await provider.request({method:'wallet_switchEthereumChain',params:[{chainId}]});}
+  catch(error){
+    if(!walletErrorCode(error,4902))throw error;
+    await provider.request({method:'wallet_addEthereumChain',params:[{chainId,chainName:hidekiTestnet.name,nativeCurrency:hidekiTestnet.nativeCurrency,rpcUrls:[RPC],blockExplorerUrls:[EXPLORER]}]});
+    // Adding a chain need not select it. Re-read the wallet's authoritative context.
+    if(BigInt(await provider.request({method:'eth_chainId'}))!==BigInt(EXPECTED_CHAIN))await provider.request({method:'wallet_switchEthereumChain',params:[{chainId}]});
+  }
+  invariant(BigInt(await provider.request({method:'eth_chainId'}))===BigInt(EXPECTED_CHAIN),'Wallet is still on another network; select Hideki testnet (50383) and connect again');
 }
 export async function connectWallet(provider:WalletProvider|undefined,enabled:boolean) {
   invariant(enabled,'Wallet connection/authentication is disabled until the session is authorized');
@@ -73,10 +90,11 @@ export class BrowserOrderSender {
     }
   }
 }
-function isUserRejection(error:unknown):boolean {
+function isUserRejection(error:unknown):boolean {return walletErrorCode(error,4001);}
+function walletErrorCode(error:unknown,code:number):boolean {
   let current:unknown=error;
   for(let i=0;i<5 && current && typeof current==='object';i++) {
-    if('code' in current && current.code===4001)return true;
+    if('code' in current && current.code===code)return true;
     current='cause' in current?current.cause:undefined;
   }
   return false;

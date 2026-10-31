@@ -1,6 +1,7 @@
 import {existsSync,readFileSync,writeFileSync,mkdirSync,realpathSync,renameSync,unlinkSync,statSync} from 'node:fs';
 import {resolve,relative,isAbsolute} from 'node:path';
 import {keccak256,toHex} from 'viem';
+import {z} from 'zod';
 import {database as appDatabase,mode} from '../../src/server/database';
 import {Repository} from '../../src/server/repository';
 import {invariant} from '../../src/domain/errors';
@@ -47,7 +48,9 @@ async function main(){
       const reply={id:request.id,scopeId:scope.id,ok:false,value:undefined as unknown,code:4001};
       try{
         invariant(await connection.rpc.getChainId()===50383,'Wallet network changed');
-        if(request.method==='personal_sign'){
+        if(request.method==='eth_getBlockByNumber'){
+          z.tuple([z.literal('0x0'),z.literal(false)]).parse(request.params);reply.value=await connection.rpc.request({method:'eth_getBlockByNumber',params:['0x0',false]});reply.ok=true;
+        }else if(request.method==='personal_sign'){
           invariant(!state.authSigned,'Ownership signature already used for this scoped transport');
           const ownership=ownershipMessage(request.params,location.owner,scope.origin);state.authSigned=true;saveState();
           verifyEdgeScope(scope,location.owner);reply.value=await unlockLocalWallet(location).signMessage({message:ownership.message});reply.ok=true;

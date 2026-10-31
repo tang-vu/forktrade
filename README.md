@@ -1,5 +1,7 @@
 # ForkTrade
 
+**Hosted testnet rollout (2026-10-31):** a new Free Neon `forktrade-testnet` database is migrated and permanently bound to testnet data, with zero historical plans/requests imported. Production settings now select it with testnet/auth/execution flags; a new deployment is being prepared. Source checks pass 122 cases (7 PostgreSQL cases run in CI separately), type/lint/build and 26 synthetic browser cases. Added explicit Hideki network setup and a canonical-host opt-in for the existing local wallet client. These tests do not constitute a new signed order; the runtime/ownership/live acceptance result is recorded in the latest ledger.
+
 **Hosted synthetic demo (2026-10-30): [forktrade.vercel.app](https://forktrade.vercel.app)** now runs on Vercel with a new Free Neon PostgreSQL database in Singapore. Actual HTTPS and Chromium desktop/mobile checks passed for private versions, explicit synthetic approval, selected-field share cards and independent remix. Wallet authentication/execution flags remain disabled; this is labelled synthetic data, separate from the historical real orders below. The same private sessions, plans and approval identities survived a second actual production deployment; withdrawal and logout also passed. [Hosted evidence](evidence/vercel-neon-deployment-2026-10-30.json).
 
 A thesis-to-remix workspace for dreamDEX Perps testnet, for traders who want a versioned explanation and an independently editable remix tied to honest order evidence. **The complete narrow path passed on 2026-10-23: real root and separately approved remix, each confirmed/filled 0.00013 BTC with zero remainder, followed by local publication, lineage and parameter comparison. Typecheck/lint/build, 109 unit/integration tests and 23 offline browser scenarios pass.** The two distinct EOAs belong to the same human. Root approval was manual; the exact remix was agent-operated in Edge under explicit delegation. [Actual paired evidence](evidence/live-root-remix-2026-10-23.json), [verification](evidence/mvp-resume-2026-10-23.json), [27.1-second walkthrough](evidence/forktrade-live-walkthrough-2026-10-23.mp4) recorded after execution. Each account retains a testnet long position; no cleanup was sent. Those receipts belong to the prior local SQLite build, not a newly deployed service. The user confirmed on 2026-10-30 that they intentionally made this source repository public and explicitly authorized pushes; the earlier private-storage hold is resolved. The public synthetic app is deployed; separate MVP submission and new hosted live acceptance remain pending. The first X link is user-reported below.
@@ -44,7 +46,7 @@ Browser tests start the production build on port 3000 with a separate, uniquely 
 
 ## Prepare Vercel + Neon
 
-Current target: `tang-vu/forktrade`, https://forktrade.vercel.app, Node 24.x, functions in `sin1`, Neon `forktrade-demo` on Free in Singapore. The deployment and hosted synthetic acceptance are recorded in [hosted evidence](evidence/vercel-neon-deployment-2026-10-30.json); use these steps to reproduce the configuration rather than create duplicate resources. Source updates are deployed manually through the CLI.
+Current target: `tang-vu/forktrade`, https://forktrade.vercel.app, Node 24.x, functions in `sin1`. The testnet continuation uses new Free Neon `forktrade-testnet` in Singapore; `forktrade-demo` remains a separate offline database and is disconnected from future production deployments. The deployment and hosted synthetic acceptance are recorded in [hosted evidence](evidence/vercel-neon-deployment-2026-10-30.json); use these steps to reproduce the configuration rather than create duplicate resources. Source updates are deployed manually through the CLI.
 
 The repository includes `vercel.json`, `.vercelignore`, `.env.vercel.example`, a PostgreSQL migration and `/api/health`. Next.js/API functions run on Vercel; Neon owns durable storage. No workstation wallet companion or separate application server is required for the web app. Users use their own supported injected browser wallet if a later live session is enabled.
 
@@ -86,6 +88,16 @@ The browser awaits a durable server claim before one explicit `eth_sendTransacti
 Private versions are append-only and owner-scoped. Public cards expose only fields selected in a private publication preview; unpublish withdraws future app access and comparisons. Address/link disclosure is optional, and transaction links reveal the full account and public activity. Without sufficient disclosed links, execution is labelled owner-reported. The public version hash covers the selected public projection, excludes private notes and is no proof of pre-trade existence. Local demo URLs need the local app to be reachable; they are not hosted. Copied content and screenshots cannot be recalled.
 
 ## Local testnet wallet for acceptance (Windows)
+
+For the hosted testnet profile, use [.env.vercel.testnet.example](.env.vercel.testnet.example) as the server-only configuration reference and a supported injected wallet. On the site choose `Switch to Hideki testnet`, then connect, review/sign the ownership challenge and save a private plan. This network setup requests only chain selection/addition; it never connects an account, signs or sends an order by itself.
+
+The existing Windows wallet client also supports the exact hosted origin only with explicit opt-in:
+
+```powershell
+npm.cmd run wallet:testnet -- --wallet-dir .local/wallets/hideki-testnet-2026-10-21 --hosted --origin https://forktrade.vercel.app --prepare-root
+```
+
+This opens an isolated app window and a separate user-controlled wallet window. The key stays in the local wallet process; no backend signing service is deployed. Connection, ownership and each final order have separate review steps. Other HTTPS origins, preview subdomains and alternate ports are rejected. Default local runs remain loopback-only.
 
 For the dedicated DPAPI wallet created at the user's request, `wallet:testnet` supplies a user-controlled EIP-1193 wallet without importing its key into the app. This is a local acceptance companion, separate from the Next server. It opens isolated app and wallet windows, has no HTTP signing listener, and unlocks the key only in the wallet process after an explicit wallet-window decision. Standard injected browser wallets remain supported by the app.
 

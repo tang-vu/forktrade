@@ -14,7 +14,7 @@ export const edgeScopeSchema=z.object({
   authorization:z.literal('Explicit user-directed exact testnet order in Edge; no other order or authority')
 }).strict();
 export type EdgeScope=z.infer<typeof edgeScopeSchema>;
-export const edgeRequestSchema=z.object({id:z.string().uuid(),scopeId:z.string().uuid(),method:z.enum(['personal_sign','eth_sendTransaction']),params:z.unknown()}).strict();
+export const edgeRequestSchema=z.object({id:z.string().uuid(),scopeId:z.string().uuid(),method:z.enum(['personal_sign','eth_sendTransaction','eth_getBlockByNumber']),params:z.unknown()}).strict();
 export function verifyEdgeScope(scope:EdgeScope,owner:string,now=Date.now()) {
   invariant(scope.schema===1&&scope.chainId===50383&&getAddress(scope.owner)===getAddress(owner),'Edge wallet owner/network differs');
   localOrigin(scope.origin);

@@ -13,6 +13,13 @@ export function localOrigin(value:string) {
   invariant(url.protocol==='http:'&&url.hostname==='127.0.0.1'&&url.origin===value,'Wallet companion accepts only an exact loopback origin');
   return url.origin;
 }
+export const HOSTED_TESTNET_ORIGIN='https://forktrade.vercel.app';
+/** Hosted access is an explicit CLI choice, scoped to this one approved origin. */
+export function walletOrigin(value:string,hosted=false) {
+  if(!hosted)return localOrigin(value);
+  invariant(value===HOSTED_TESTNET_ORIGIN,'Hosted wallet companion accepts only the exact ForkTrade HTTPS origin');
+  return HOSTED_TESTNET_ORIGIN;
+}
 const hex=z.string().regex(/^0x[0-9a-fA-F]+$/);
 const transaction=z.object({from:z.string(),to:z.string(),data:hex,value:hex,gas:hex,maxFeePerGas:hex,maxPriorityFeePerGas:hex,chainId:hex}).strict();
 export function requestFingerprint(raw:unknown) {

@@ -3,22 +3,23 @@ import type {EIP1193Provider} from 'viem';
 import {createSiweMessage} from 'viem/siwe';
 import {makePreview,marketIdentity,type PlanInput} from '../../src/domain/plan';
 import {offlineContext} from '../../src/integrations/offline';
+import {EXPECTED_GENESIS_HASH} from '../../src/integrations/network';
 import metadata from '../../evidence/read-only-m4-2026-10-20.json' with {type:'json'};
 const OWNER='0x0000000000000000000000000000000000000001',HASH=`0x${'11'.repeat(32)}`;
 const planId='10000000-0000-4000-8000-000000000001',versionId='20000000-0000-4000-8000-000000000001',previewId='30000000-0000-4000-8000-000000000001',attemptId='40000000-0000-4000-8000-000000000001';
 type Scenario='open'|'reject'|'timeout'|'switch-before'|'switch-after'|'connect-reject'|'auth';
 async function provider(page:Page,scenario:Scenario) {
-  await page.addInitScript(({owner,hash,scenario})=>{
+  await page.addInitScript(({owner,hash,scenario,genesisHash})=>{
     let account=owner;const calls:string[]=[],listeners=new Map<string,Set<()=>void>>();
     const switchOwner=()=>{account='0x0000000000000000000000000000000000000002';listeners.get('accountsChanged')?.forEach(fn=>fn());};
     Object.assign(window,{__syntheticWalletCalls:calls,__syntheticSwitch:switchOwner});
     window.ethereum={request:async({method}:{method:string})=>{
-      calls.push(method);if(method==='eth_requestAccounts'&&scenario==='connect-reject')throw Object.assign(new Error('SYNTHETIC_SECRET_CANARY'),{code:4001});if(method==='eth_accounts'||method==='eth_requestAccounts')return [account];if(method==='eth_chainId')return '0xc4cf';
+      calls.push(method);if(method==='eth_requestAccounts'&&scenario==='connect-reject')throw Object.assign(new Error('SYNTHETIC_SECRET_CANARY'),{code:4001});if(method==='eth_accounts'||method==='eth_requestAccounts')return [account];if(method==='eth_chainId')return '0xc4cf';if(method==='eth_getBlockByNumber')return {hash:genesisHash};
       if(method==='eth_sendTransaction'){if(scenario==='reject')throw Object.assign(new Error('SYNTHETIC_SECRET_CANARY'),{code:4001});if(scenario==='timeout')throw Object.assign(new Error('SYNTHETIC_SECRET_CANARY'),{code:-32000});if(scenario==='switch-after')switchOwner();return hash;}
       if(method==='personal_sign'&&scenario==='auth')return `0x${'ab'.repeat(65)}`;
       throw new Error('Unsupported synthetic wallet method');
     },on:(event:string,fn:()=>void)=>{if(!listeners.has(event))listeners.set(event,new Set());listeners.get(event)!.add(fn);},removeListener:(event:string,fn:()=>void)=>listeners.get(event)?.delete(fn)} as unknown as EIP1193Provider;
-  },{owner:OWNER,hash:HASH,scenario});
+  },{owner:OWNER,hash:HASH,scenario,genesisHash:EXPECTED_GENESIS_HASH});
 }
 test('testnet UI keeps all wallet calls disabled when session permission is absent',async({page})=>{
   await provider(page,'open');await page.route('**/api/session',route=>route.fulfill({json:{mode:'testnet',session:null,authEnabled:false,executionEnabled:false,disabledReason:'Session permission disabled'}}));
@@ -99,4 +100,29 @@ for(const scenario of ['open','reject','timeout','switch-before','switch-after']
     await page.reload();await page.getByLabel('Saved private plans').selectOption(planId);await expect(page.getByRole('region',{name:'Execution receipt'})).toBeVisible();
     expect(await page.evaluate(()=>(window as unknown as {__syntheticWalletCalls:string[]}).__syntheticWalletCalls.filter(m=>m==='eth_sendTransaction'))).toEqual([]);
   }
+});
+
+
+test('explicit network setup selects Hideki without requesting ownership or an order',async({page})=>{
+  await page.addInitScript(()=>{
+    let chain='0x1';const calls:string[]=[];
+    Object.assign(window,{__networkSetupCalls:calls});
+    window.ethereum={request:async({method}:{method:string})=>{calls.push(method);if(method==='eth_chainId')return chain;if(method==='wallet_switchEthereumChain'){chain='0xc4cf';return null;}throw new Error('Unexpected wallet action');},on:()=>{},removeListener:()=>{}} as unknown as EIP1193Provider;
+  });
+  let authRequests=0;
+  await page.route('**/api/session',route=>route.fulfill({json:{mode:'testnet',session:null,authEnabled:true,executionEnabled:false,disabledReason:'Synthetic browser test; real orders disabled'}}));
+  await page.route('**/api/auth/**',route=>{authRequests++;return route.fulfill({status:403,json:{error:'Unexpected auth request'}});});
+  await page.goto('/');await expect(page.getByRole('button',{name:'Switch to Hideki testnet'})).toBeEnabled();
+  expect(await page.evaluate(()=>(window as unknown as {__networkSetupCalls:string[]}).__networkSetupCalls)).toEqual([]);
+  await page.getByRole('button',{name:'Switch to Hideki testnet'}).click();
+  await expect.poll(()=>page.evaluate(()=>(window as unknown as {__networkSetupCalls:string[]}).__networkSetupCalls)).toEqual(['eth_chainId','wallet_switchEthereumChain','eth_chainId']);
+  expect(authRequests).toBe(0);await expect(page.getByRole('button',{name:'Connect permitted wallet'})).toBeEnabled();
+});
+
+
+test('pending server mode does not briefly expose offline controls',async({page})=>{
+  let release!:()=>void;const gate=new Promise<void>(resolve=>{release=resolve;});
+  await page.route('**/api/session',async route=>{await gate;await route.fulfill({json:{mode:'testnet',session:null,authEnabled:true,executionEnabled:false,disabledReason:'Synthetic browser fixture'}});});
+  await page.goto('/');await expect(page.getByRole('status')).toContainText('Loading workspace');await expect(page.getByRole('button',{name:'Load synthetic example'})).toHaveCount(0);await expect(page.getByRole('button',{name:'Start offline session'})).toHaveCount(0);
+  release();await expect(page.getByRole('button',{name:'Connect permitted wallet'})).toBeEnabled();await expect(page.getByRole('button',{name:'Load synthetic example'})).toHaveCount(0);
 });

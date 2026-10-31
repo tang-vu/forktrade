@@ -12,12 +12,12 @@ import {ApprovalWindow} from './approval';
 import {installLocalWalletProvider} from './provider';
 import {walletLocation,unlockLocalWallet} from './keystore';
 import {WalletJournal} from './journal';
-import {localOrigin,ownershipMessage,requestFingerprint,transactionTag,walletOrder} from './policy';
+import {walletOrigin,ownershipMessage,requestFingerprint,transactionTag,walletOrder} from './policy';
 import {recoverDiagnosticRoot,type SavedPlan} from './resume';
 
 const args=process.argv.slice(2),option=(name:string)=>{const index=args.indexOf(name);return index<0?undefined:args[index+1];};
 const walletDirectory=option('--wallet-dir');
-if(!walletDirectory){console.error('Usage: npm run wallet:testnet -- --wallet-dir .local/wallets/<wallet> [--origin http://127.0.0.1:3000] [--prepare-root | --remix <publication-UUID>]');process.exit(1);}
+if(!walletDirectory){console.error('Usage: npm run wallet:testnet -- --wallet-dir .local/wallets/<wallet> [--origin http://127.0.0.1:3000 | --hosted --origin https://forktrade.vercel.app] [--prepare-root | --remix <publication-UUID>]');process.exit(1);}
 const prepareRoot=args.includes('--prepare-root');
 const remixPublication=option('--remix');
 if(args.includes('--remix')&&(!z.string().uuid().safeParse(remixPublication).success||prepareRoot)){
@@ -28,12 +28,12 @@ let lockOwned=false,stopping=false,browser:Browser|undefined,connection:ReturnTy
 let stage='application-readiness';
 const stop=()=>{stopping=true;void browser?.close();};process.on('SIGINT',stop);process.on('SIGTERM',stop);
 async function main(){
-  origin=localOrigin(option('--origin')||'http://127.0.0.1:3000');
+  origin=walletOrigin(option('--origin')||'http://127.0.0.1:3000',args.includes('--hosted'));
   stage='wallet-configuration';invariant(process.platform==='win32','DPAPI companion requires the original Windows profile');location=walletLocation(walletDirectory!);journal=new WalletJournal(location.directory);lockFile=resolve(location.directory,'interactive-wallet.lock');
   connection=connectReadOnly();rpc=connection.rpc;stage='application-readiness';
   const response=await fetch(`${origin}/api/session`,{signal:AbortSignal.timeout(10000)});
   const settings=await response.json() as {mode:string;authEnabled:boolean;executionEnabled:boolean;environmentConfirmed:boolean};
-  invariant(response.ok&&['readonly','testnet'].includes(settings.mode)&&settings.authEnabled,'Start the local app with a permitted nonoffline ownership session first');
+  invariant(response.ok&&['readonly','testnet'].includes(settings.mode)&&settings.authEnabled,'Open the selected testnet app with wallet ownership authentication enabled first');
   invariant(!existsSync(lockFile),'This wallet already has a companion lock; inspect the existing process and requests before retrying');
   writeFileSync(lockFile,JSON.stringify({pid:process.pid,startedAt:new Date().toISOString()})+'\n',{flag:'wx',mode:0o600});lockOwned=true;
   const market=await readPublicMarket();
@@ -68,10 +68,11 @@ async function main(){
   async function request(method:string,params:unknown):Promise<unknown>{
     invariant(await rpc.getChainId()===50383,'Wallet RPC network changed');
     if(method==='eth_chainId')return '0xc4cf';
+    if(method==='eth_getBlockByNumber'){z.tuple([z.literal('0x0'),z.literal(false)]).parse(params);return rpc.request({method:'eth_getBlockByNumber',params:['0x0',false]});}
     if(method==='eth_accounts')return connected?[location.owner]:[];
     if(method==='eth_requestAccounts'){
-      const allowed=await approval.request({title:'Connect this testnet wallet?',rows:[['App origin',origin],['Owner',location.owner],['Network','Hideki / 50383']],expiresAt:Date.now()+300000,note:'Connection reveals this address to the local app. It signs no message or transaction.'});
-      invariant(allowed,'Wallet declined');connected=true;await approval.idle('Connected to the local app. Return there to review the ownership challenge.');await appPage.bringToFront();return [location.owner];
+      const allowed=await approval.request({title:'Connect this testnet wallet?',rows:[['App origin',origin],['Owner',location.owner],['Network','Hideki / 50383']],expiresAt:Date.now()+300000,note:'Connection reveals this address to the selected app. It signs no message or transaction.'});
+      invariant(allowed,'Wallet declined');connected=true;await approval.idle('Connected to the selected app. Return there to review the ownership challenge.');await appPage.bringToFront();return [location.owner];
     }
     invariant(connected,'Connect the wallet before requesting a signature');
     if(method==='personal_sign'){
@@ -80,7 +81,7 @@ async function main(){
       invariant(allowed,'Wallet declined');ownershipMessage(params,location.owner,origin);
       invariant(await rpc.getChainId()===50383,'Wallet network changed');
       const signer=unlockLocalWallet(location);
-      const signature=await signer.signMessage({message:ownership.message});await approval.idle('Ownership signature returned only to the local app. No transaction authority was granted.');await appPage.bringToFront();return signature;
+      const signature=await signer.signMessage({message:ownership.message});await approval.idle('Ownership signature returned only to the selected app. No transaction authority was granted.');await appPage.bringToFront();return signature;
     }
     invariant(method==='eth_sendTransaction'&&settings.mode==='testnet'&&settings.executionEnabled&&settings.environmentConfirmed,'Unsupported or disabled wallet method');
     const raw=z.tuple([z.unknown()]).parse(params)[0],tag=transactionTag(raw),fingerprint=requestFingerprint(raw);
@@ -92,7 +93,7 @@ async function main(){
       const previous=journal.get(reviewed.requestKey);
       if(previous){invariant(previous.requestHash===reviewed.requestHash&&previous.hash,'Existing wallet request requires reconciliation');return previous.hash;}
       invariant(!journal.list().some(value=>['claimed','signed','broadcasting','submitted','unknown'].includes(value.state)),'Earlier wallet request unresolved');
-      const allowed=await approval.request({title:'Sign this exact BTC testnet order?',rows:[['Owner / signer',location.owner],['Network / chain','Hideki / 50383'],['Market / pool',`${c.symbol}\n${p.pool}`],['Side / price / quantity',`${p.side.toUpperCase()} / ${formatAmount(p.price,c.quoteDecimals)} USDso / ${formatAmount(p.quantity,c.baseDecimals)} BTC`],['Order flags','Limit / GTC / reduce-only off / cancel taker'],['Builder / fee / value','None / 0 / 0'],['Margin / fee reserve',`${formatAmount(preview.estimatedMargin,c.quoteDecimals)} / ${formatAmount(preview.estimatedFee,c.quoteDecimals)} USDso`],['Gas / max fee / priority',`${p.gas} / ${p.maxFeePerGas} / ${p.maxPriorityFeePerGas} wei per gas`],['Maximum native cost',`${formatAmount(BigInt(p.gas)*BigInt(p.maxFeePerGas),18)} STT`],['Expiry nanoseconds / request tag',`${p.expireTimestampNs} / ${p.userData}`]],expiresAt:preview.expiresAt,note:'Real testnet transaction. A resting GTC order remains exposed. This approves only the displayed order; the app rechecks fresh context before signing.'});
+      const allowed=await approval.request({title:'Sign this exact BTC testnet order?',rows:[['App origin',origin],['Owner / signer',location.owner],['Network / chain','Hideki / 50383'],['Market / pool',`${c.symbol}\n${p.pool}`],['Side / price / quantity',`${p.side.toUpperCase()} / ${formatAmount(p.price,c.quoteDecimals)} USDso / ${formatAmount(p.quantity,c.baseDecimals)} BTC`],['Order flags','Limit / GTC / reduce-only off / cancel taker'],['Builder / fee / value','None / 0 / 0'],['Margin / fee reserve',`${formatAmount(preview.estimatedMargin,c.quoteDecimals)} / ${formatAmount(preview.estimatedFee,c.quoteDecimals)} USDso`],['Gas / max fee / priority',`${p.gas} / ${p.maxFeePerGas} / ${p.maxPriorityFeePerGas} wei per gas`],['Maximum native cost',`${formatAmount(BigInt(p.gas)*BigInt(p.maxFeePerGas),18)} STT`],['Expiry nanoseconds / request tag',`${p.expireTimestampNs} / ${p.userData}`]],expiresAt:preview.expiresAt,note:'Real testnet transaction. A resting GTC order remains exposed. This approves only the displayed order; the app rechecks fresh context before signing.'});
       invariant(allowed,'Wallet declined or review expired');
       await appJson(`wallet-requests/${tag}/validate`,{payloadHash:preview.payloadHash});
       walletOrder(raw,preview,market,location.owner);

@@ -8,10 +8,11 @@ import { BrowserOrderSender, connectWallet, watchWallet } from '../src/integrati
 import { readFixture, SYNTHETIC_OWNER } from './helpers/read-fixture';
 import { openDatabase } from '../src/server/database';
 import { Repository, correlationTag } from '../src/server/repository';
+import {EXPECTED_GENESIS_HASH} from '../src/integrations/network';
 const input = { title: 'SYNTHETIC wallet contract test', rationale: 'Mock only; no real wallet', invalidation: 'Synthetic condition', riskNotes: 'PRIVATE_CANARY', side: 'buy' as const, price: '82000', quantity: '0.0002', quantityCap: '0.001', notionalCap: '100' };
 async function ready() { const f = readFixture(), tag = correlationTag(), context = await prepareLiveContext(SYNTHETIC_OWNER, input, tag, undefined, f.connect); return { f, tag, context, preview: makePreview(input, context, Date.now(), tag) }; }
 function walletFixture() {
-    const controls = { owner: SYNTHETIC_OWNER as string, chain: '0xc4cf', error: null as {
+    const controls = { owner: SYNTHETIC_OWNER as string, chain: '0xc4cf', genesis: EXPECTED_GENESIS_HASH as string, error: null as {
             code: number;
             message: string;
         } | null, afterSend: () => { } };
@@ -23,6 +24,7 @@ function walletFixture() {
             return [controls.owner];
         if (method === 'eth_chainId')
             return controls.chain;
+        if (method === 'eth_getBlockByNumber')return {hash:controls.genesis};
         if (method === 'eth_sendTransaction') {
             controls.afterSend();
             if (controls.error)
@@ -125,4 +127,13 @@ describe('W01 W03–W07 browser signer without real wallet operations', () => {
         expect(reports[1]).toMatchObject({ id: 'original-after', kind: 'hash' });
         dispose();
     });
+});
+
+
+it('rejects a different network fingerprint before an ownership challenge or durable order claim',async()=>{
+    const w=walletFixture();w.controls.genesis=`0x${'00'.repeat(32)}`;
+    await expect(connectWallet(w.provider,true)).rejects.toThrow(/verified Hideki/);
+    const claim=vi.fn(async()=>{throw new Error('Must never claim on the wrong network');});
+    await expect(new BrowserOrderSender().send({approvalId:'SYNTHETIC-wrong-network',owner:SYNTHETIC_OWNER,enabled:true,provider:w.provider,contextValid:()=>true,claim,report:async()=>{}})).rejects.toThrow(/verified Hideki/);
+    expect(claim).not.toHaveBeenCalled();expect(w.request.mock.calls.some(([a])=>a.method==='eth_sendTransaction'||a.method==='personal_sign')).toBe(false);
 });
