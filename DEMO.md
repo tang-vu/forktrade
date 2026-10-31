@@ -1,5 +1,7 @@
 # ForkTrade demo and separate MVP submission preparation
 
+Hosted testnet update (2026-10-31): [forktrade.vercel.app](https://forktrade.vercel.app) now exposes the real testnet wallet/order flow on separate Neon testnet storage. Real hosted pre-sign and desktop/mobile checks pass, with all order approvals still explicit. The local wallet client is ready for the user; actual new ownership/order outcomes remain unrun/pending. Earlier video/captures below remain historical, with no new hosted fill claim.
+
 Hosting update (2026-10-30): [forktrade.vercel.app](https://forktrade.vercel.app) is deployed on Vercel with a new Free Neon database and explicitly synthetic fixtures. HTTPS and desktop/mobile checks pass; this demo's real order captures remain from the prior local SQLite build. No private historical data or real order was imported. User-supplied first X post: [@vovivothien](https://x.com/vovivothien/status/2116149013636640970); web retrieval returned 403, so content/tagging remain independently unverified. No second actual post URL has been recorded.
 
 Source-storage clarification, 2026-10-30: the user confirmed they intentionally made the original source repository PUBLIC and explicitly instructed the agent to push and update the notes. The earlier private-storage hold is resolved; the agent did not change repository visibility. The narrated video remains complete at `55466a5`; PostgreSQL/Vercel code is committed at `68eaf62`. Source synchronization and the subsequent public synthetic deployment are complete; new hosted live acceptance and separate MVP submission remain pending.
@@ -72,3 +74,15 @@ Proposed destination: X @keryxpays (current signed-in Edge account), two posts t
 2. ForkTrade testnet check for @DreamDEXSomnia: root + independently approved remix each filled 0.00013 BTC. Two wallets, same human. Video shows receipts after execution; no performance claim. Evidence: https://github.com/tang-vu/forktrade-mvp
 
 Actual post URL supplied by the user: https://x.com/vovivothien/status/2116149013636640970 (retrieval 403; not independently verified). No second URL supplied. After authorized publication, verify both posts and insert their real URLs into the approved copy's README **X posts** section. A draft is not a posted link or qualifying submission. Original private source, separate Feedback Build and mainnet stay unchanged.
+
+## Updated second X draft - publish after hosted live acceptance
+
+Draft only; not posted and not an actual second URL. Recheck the live-order result before publishing:
+
+> ForkTrade is live on Vercel + Neon. Write a thesis, review an exact BTC order, share selected evidence and remix with your own approval. Testnet only; your wallet signs.
+>
+> https://forktrade.vercel.app
+>
+> https://github.com/tang-vu/forktrade/tree/feat/forktrade-core
+>
+> @DreamDEXSomnia

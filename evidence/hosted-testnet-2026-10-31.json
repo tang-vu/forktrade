@@ -51,10 +51,51 @@
         }
       ]
     },
-    "runtime": "pending deployment",
-    "actualOwnership": "unrun",
-    "newRootOrder": "unrun",
-    "newRemixOrder": "unrun"
+    "runtime": {
+      "origin": "https://forktrade.vercel.app",
+      "recordedAt": "2026-10-31T01:59:57.735Z",
+      "mode": "testnet",
+      "storage": "postgresql",
+      "hosted": true,
+      "flags": {
+        "authEnabled": true,
+        "executionEnabled": true,
+        "environmentConfirmed": true
+      },
+      "anonymousAccess": "denied",
+      "offlineSession": "disabled",
+      "crossOrigin": "denied",
+      "market": {
+        "status": 200,
+        "mode": "read-only",
+        "chainId": 50383,
+        "minQuantity": "13000",
+        "baseDecimals": 8,
+        "quoteDecimals": 18
+      },
+      "browser": {
+        "desktop": 1280,
+        "mobile": 360,
+        "widths": {
+          "client": 360,
+          "scroll": 360
+        },
+        "pageErrors": 0,
+        "missingProvider": "explained without auth request; unsaved draft retained",
+        "syntheticControls": "absent"
+      },
+      "writes": "No private plans, synthetic users, sessions or order requests created; no wallet signature or transaction"
+    },
+    "actualOwnership": "Pending user connection and ownership signature in the opened supported wallet client",
+    "newRootOrder": "Unrun; requires the exact fresh app review and wallet decision",
+    "newRemixOrder": "Unrun; separate owner context, review and wallet decision required",
+    "ci": {
+      "url": "https://github.com/tang-vu/forktrade/actions/runs/41157728901",
+      "sourceCommit": "beb2d3eb277dd0fd2e1867880be090177e07623a",
+      "conclusion": "success",
+      "testsPassed": 129,
+      "browserPassed": 26
+    }
   },
   "changes": [
     "Explicit user-triggered chain switch/add and chain re-read; no account/sign/order action during setup",
@@ -91,7 +132,28 @@
     "tests/e2e/live-wallet.spec.ts": "a92828acd62c7f7b29e8d2e53bee8e92c49bd7f8c2fd6d083812c3463186a6dc",
     "tests/e2e/local-wallet.spec.ts": "a701d2ed3b6c14adb689fb2a7e44a946e6ed309dc5b1a98fb5a5622a68440c1b",
     ".env.vercel.testnet.example": "6fe28735521a9694f34baa37c79d3528c136ec589c7bb05a9648f5151257446b",
-    "evidence/read-only-hosted-testnet-2026-10-31.json": "54f609e97146a2a1f644a4c46655e434deb214d3370338d12759d6d6e8d3b335"
+    "evidence/read-only-hosted-testnet-2026-10-31.json": "54f609e97146a2a1f644a4c46655e434deb214d3370338d12759d6d6e8d3b335",
+    "evidence/hosted-testnet-desktop-2026-10-31.png": "cc2c32489ed819b81fef56d1463350791de7a240393016ceba06ada67a4cfc6d",
+    "evidence/hosted-testnet-mobile-2026-10-31.png": "f7f7bd1778214bedb0fb589a5dde1b288df5a003ef5e1baa91797655e4fdc034"
   },
-  "fileHashScope": "Exact working-tree bytes; newline normalization may differ after checkout."
+  "fileHashScope": "Exact working-tree bytes; newline normalization may differ after checkout.",
+  "deployment": {
+    "id": "dpl_C1JKYR5VQLqLe6wYY5WJZq4iTHwF",
+    "state": "READY",
+    "target": "production",
+    "regions": [
+      "sin1"
+    ],
+    "sourceCommit": "beb2d3eb277dd0fd2e1867880be090177e07623a",
+    "sourceBranch": "feat/forktrade-core",
+    "url": "https://forktrade-ixppee8ea-tang-vu.vercel.app"
+  },
+  "walletClient": {
+    "role": "existing root testnet wallet",
+    "origin": "https://forktrade.vercel.app",
+    "providerBridge": "verified",
+    "approval": "User-controlled separate wallet window; no agent wallet approval click",
+    "scope": "Existing client only; no server key or signing service; no key export/import/new wallet"
+  },
+  "result": "Hosted testnet deployment and pre-sign readiness passed; actual ownership/root/remix/live receipt acceptance pending user actions."
 }
