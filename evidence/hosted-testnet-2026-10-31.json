@@ -113,7 +113,7 @@
   "unrun": [
     "New actual hosted ownership session",
     "New separately approved root and remix orders/reconciliation",
-    "Second X URL and separate MVP submission"
+    "Separate MVP submission"
   ],
   "preservation": "No wallet unlocked, signature, new order, funding, faucet, allowance, operator grant, old SQLite import or position cleanup in this preparation. Old journal identities preserved.",
   "fileHashes": {
@@ -155,5 +155,15 @@
     "approval": "User-controlled separate wallet window; no agent wallet approval click",
     "scope": "Existing client only; no server key or signing service; no key export/import/new wallet"
   },
-  "result": "Hosted testnet deployment and pre-sign readiness passed; actual ownership/root/remix/live receipt acceptance pending user actions."
+  "result": "Hosted testnet deployment and pre-sign readiness passed; actual ownership/root/remix/live receipt acceptance pending user actions.",
+  "xPosts": {
+    "verification": "evidence/x-posts-verified-2026-10-31.json",
+    "urls": [
+      "https://x.com/vovivothien/status/2116149013636640970",
+      "https://x.com/vovivothien/status/2116458627020235152"
+    ],
+    "requiredMentionsVerified": true,
+    "countAndTagChecklist": "passed",
+    "userPublished": true
+  }
 }

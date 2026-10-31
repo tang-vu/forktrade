@@ -1,0 +1,41 @@
+{
+  "kind": "Actual user-published X posts independently verified through public X oEmbed",
+  "verifiedAt": "2026-10-31T09:18:58.060590+00:00",
+  "posts": [
+    {
+      "url": "https://x.com/vovivothien/status/2116149013636640970",
+      "publishedDate": "2026-10-30",
+      "author": "Tang Vu",
+      "handle": "vovivothien",
+      "publicOEmbedStatus": 200,
+      "requiredMentionPresent": true,
+      "summary": "Thesis/order review/remix concept and source/run guide"
+    },
+    {
+      "url": "https://x.com/vovivothien/status/2116458627020235152",
+      "publishedDate": "2026-10-31",
+      "author": "Tang Vu",
+      "handle": "vovivothien",
+      "publicOEmbedStatus": 200,
+      "requiredMentionPresent": true,
+      "summary": "Vercel/Neon deployment, BTC perps order review, separate remix approval, testnet scope and app/source links"
+    }
+  ],
+  "requiredMention": "@DreamDEXSomnia",
+  "mentionComparison": "case-insensitive",
+  "secondPostLinks": [
+    {
+      "short": "https://t.co/x3ulSpCtQf",
+      "status": 301,
+      "destination": "https://forktrade.vercel.app/"
+    },
+    {
+      "short": "https://t.co/UFZ2guXYjg",
+      "status": 301,
+      "destination": "https://github.com/tang-vu/forktrade/tree/feat/forktrade-core"
+    }
+  ],
+  "retrieval": "Direct web-reader post-2 request returned cache miss; ordinary public HTTPS oEmbed reads succeeded. No authentication or access-gate bypass.",
+  "agentActions": "Read/record/verify only; the user published both posts. No edit, repost, message or submission.",
+  "result": "Two-post count and required-mention checklist passed; organizer acceptance, new hosted executions and MVP submission remain separate."
+}

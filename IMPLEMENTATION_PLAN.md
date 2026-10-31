@@ -85,6 +85,12 @@ If access to a required service fails, add a specific row with action, target, r
 
 ## How to update and resume
 
+### 2026-10-31 - second X post recorded; both public posts and required tags verified
+
+User supplied https://x.com/vovivothien/status/2116458627020235152. Initial direct web-reader access returned cache miss; normal public X oEmbed GETs then returned 200 for both status URLs, author Tang Vu / @vovivothien and the required @DreamDEXSomnia mention in each. Public t.co HEADs returned 301 to the canonical app and exact implementation branch. Both count/tag links now pass the documented X checklist, superseding the earlier missing-second-URL/blocked-content status. No agent post, edit, message or account action occurred; the user published the posts.
+
+Updated README X posts, current bounty/demo/acceptance notes, source provenance and structured evidence/x-posts-verified-2026-10-31.json. Hosted-testnet evidence removes the missing-second-URL item while retaining pending actual ownership/new orders and MVP submission. This documentation/evidence-only containing commit follows 2a129c4; Markdown/JSON/diff/credential/hash checks apply, with unchanged application tests not repeated. Source push remains authorized. Actual hosted live acceptance and separate MVP submission remain pending; no new wallet/signature/order authorization is inferred from receiving a social link.
+
 ### 2026-10-31 - testnet deployed; user wallet ready for actual ownership/order decisions
 
 Pushed source beb2d3eb277dd0fd2e1867880be090177e07623a and deployed it to canonical https://forktrade.vercel.app. Vercel metadata verifies READY dpl_C1JKYR5VQLqLe6wYY5WJZq4iTHwF, production, sin1 and that exact source SHA/branch. New Free Neon forktrade-testnet is the active production connection; offline forktrade-demo remains intact. No historical private plans, execution records or sessions were imported. [CI 41157728901](https://github.com/tang-vu/forktrade/actions/runs/41157728901) passed 129 total tests (122 source + 7 actual PostgreSQL) and 26 browser cases on this source.

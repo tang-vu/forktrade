@@ -1,5 +1,11 @@
 # Sources, provenance and verification checklist
 
+## Actual X links independently verified - 2026-10-31
+
+User supplied [post 2](https://x.com/vovivothien/status/2116458627020235152), supplementing [post 1](https://x.com/vovivothien/status/2116149013636640970). The web-reader request to post 2 returned a cache miss. Normal public HTTPS GETs to https://publish.twitter.com/oembed with each public status URL returned HTTP 200, author Tang Vu / @vovivothien and each post's required @DreamDEXSomnia mention. Case-insensitive matching accounts for the second post's displayed capitalization. No login, CAPTCHA, private token, post/edit or message was used.
+
+Normal HEAD reads of the second post's public t.co links returned 301 to https://forktrade.vercel.app/ and https://github.com/tang-vu/forktrade/tree/feat/forktrade-core. Evidence stores verification fields and summaries rather than full post text. This verifies count/tag/link facts, not organizer acceptance, submission or a new hosted order.
+
 ## Hosted testnet profile preparation - 2026-10-31
 
 Runtime follow-up: production deployment dpl_C1JKYR5VQLqLe6wYY5WJZq4iTHwF is READY in sin1 on exact source beb2d3eb277dd0fd2e1867880be090177e07623a. Actual /api/health reports testnet/PostgreSQL/hosted; /api/session flags auth/execution/environment true. Hosted preflight verified anonymous and cross-origin denial, offline-session refusal, live public market data, 1280/360px wallet onboarding, no page errors or overflow, and missing-provider recovery without an ownership request. CI 41157728901 passed on the exact deployed source. User wallet/real order results remain distinct and pending.
